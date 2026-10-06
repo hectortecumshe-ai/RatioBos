@@ -1,0 +1,92 @@
+
+<!-- ============================ S · SOSTENIBILIDAD ============================ -->
+<section class="chap" id="sostenibilidad" data-toc="S" style="--c:var(--b10)">
+  <div class="chap-head"><span class="big">S</span>
+    <div class="eyebrow" lang="es">Bloque 10</div><div class="eyebrow" lang="en">Block 10</div>
+    <h2 lang="es">Huella ambiental y frontera costo–huella</h2><h2 lang="en">Environmental footprint and cost–footprint frontier</h2>
+    <p lang="es">Inventario por animal al día con los métodos del IPCC (2019) y potenciales de calentamiento del AR6, y una formulación biobjetivo por precio interno del carbono.</p>
+    <p lang="en">Per-head daily inventory with IPCC (2019) methods and AR6 warming potentials, and a bi-objective formulation via an internal carbon price.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38c0-16 12-28 30-28 0 18-12 30-28 30"/><path d="M10 38l14-14"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <div class="box def"><span class="bi">≡</span><span class="bt" lang="es">Definición · sostenibilidad</span><span class="bt" lang="en">Definition · sustainability</span>
+    <p lang="es">RatioBos sigue a la FAO (2014, 2018): un sistema es sostenible cuando satisface las necesidades presentes sin comprometer la capacidad de las generaciones futuras, en sus dimensiones ambiental, económica y social. Por eso el bloque no minimiza la huella aislada, sino que muestra el costo económico de reducirla.</p>
+    <p lang="en">RatioBos follows FAO (2014, 2018): a system is sustainable when it meets present needs without compromising the ability of future generations to meet theirs, across its environmental, economic and social dimensions. Hence the block does not minimise footprint in isolation, but shows the economic cost of reducing it.</p></div>
+
+  <h3 id="s-gei" data-n="S.1"><span lang="es">Gases de efecto invernadero</span><span lang="en">Greenhouse gases</span></h3>
+  <div class="eq"><math display="block"><mtable columnalign="right left" rowspacing="0.6em">
+    <mtr><mtd><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>ent</mtext></mrow></msub></mtd><mtd><mo>=</mo><mi>C</mi><mo>·</mo><mn>18.45</mn><mo>·</mo><mfrac><msub><mi>Y</mi><mi>m</mi></msub><mn>100</mn></mfrac><mo>/</mo><mn>55.65</mn><mspace width="1em"/><mtext lang="es">(kg/d)</mtext><mtext lang="en">(kg/d)</mtext></mtd></mtr>
+    <mtr><mtd><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>est</mtext></mrow></msub></mtd><mtd><mo>=</mo><mi>VS</mi><mo>·</mo><msub><mi>B</mi><mn>0</mn></msub><mo>·</mo><mn>0.67</mn><mo>·</mo><mi>MCF</mi><mo>,</mo><mspace width="0.8em"/><mi>VS</mi><mo>=</mo><mi>C</mi><mo>(</mo><mn>1</mn><mo>−</mo><mi>DE</mi><mo>+</mo><mn>0.04</mn><mo>)</mo><mo>(</mo><mn>1</mn><mo>−</mo><mn>0.08</mn><mo>)</mo></mtd></mtr>
+    <mtr><mtd><msub><mi>N</mi><mn>2</mn></msub><mi>O</mi></mtd><mtd><mo>=</mo><msub><mi>N</mi><mtext>ex</mtext></msub><mo>[</mo><msub><mi>EF</mi><mn>3</mn></msub><mo>+</mo><msub><mi>Frac</mi><mtext>gas</mtext></msub><mo>·</mo><mn>0.010</mn><mo>+</mo><msub><mi>Frac</mi><mtext>leach</mtext></msub><mo>·</mo><mn>0.011</mn><mo>]</mo><mo>·</mo><mn>44</mn><mo>/</mo><mn>28</mn></mtd></mtr>
+    <mtr><mtd><msub><mi>CO</mi><mn>2</mn></msub><mi>e</mi></mtd><mtd><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>C</mi><mi>i</mi></msub><msub><mi>e</mi><mi>i</mi></msub><mo>+</mo><mn>27</mn><mo>(</mo><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>ent</mtext></mrow></msub><mo>+</mo><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>est</mtext></mrow></msub><mo>)</mo><mo>+</mo><mn>273</mn><mspace width="0.15em"/><msub><mi>N</mi><mn>2</mn></msub><mi>O</mi></mtd></mtr>
+  </mtable></math><span class="no">(9)</span></div>
+  <p lang="es">El <b>Y<sub>m</sub></b> de la ración es el promedio ponderado del de cada ingrediente según las categorías del IPCC (2019, cuadro 10.12): concentrados 3.0 %; forrajes 4.0, 6.3 o 7.0 % según su TND (≥ 72, ≥ 62 o menos); minerales, aditivos y urea 0. B<sub>0</sub> = 0.18 m³/kg SV; MCF de 1.0, 1.5 o 2.0 % en corral seco según la temperatura (&lt; 15, 15–25, &gt; 25 °C) y 0.47 % en pastoreo. EF<sub>3</sub> = 0.02 en corral y 0.004 en pastoreo; Frac<sub>gas</sub> = 0.30 y 0.21; Frac<sub>leach</sub> = 0.24 solo en las regiones húmedas. <i>N</i><sub>ex</sub> = N consumido − N retenido (PN<sub>g</sub>/6.25 en crecimiento). <i>e<sub>i</sub></i> es la huella de producir 1 kg de MS del ingrediente <i>i</i> (cultivo, fertilizante, proceso y transporte, sin cambio de uso de suelo), con valores orientativos dentro de los intervalos de GFLI y FAO-GLEAM y asignación económica para los subproductos; todos son editables en la vista científica.</p>
+  <p lang="en">The ration <b>Y<sub>m</sub></b> is the weighted mean of each ingredient’s value under the IPCC (2019, table 10.12) categories: concentrates 3.0 %; forages 4.0, 6.3 or 7.0 % by TDN (≥ 72, ≥ 62 or lower); minerals, additives and urea 0. B<sub>0</sub> = 0.18 m³/kg VS; MCF of 1.0, 1.5 or 2.0 % in a dry lot by temperature (&lt; 15, 15–25, &gt; 25 °C) and 0.47 % on pasture. EF<sub>3</sub> = 0.02 in feedlots and 0.004 on pasture; Frac<sub>gas</sub> = 0.30 and 0.21; Frac<sub>leach</sub> = 0.24 only in humid regions. <i>N</i><sub>ex</sub> = N intake − N retained (NP<sub>g</sub>/6.25 in growing cattle). <i>e<sub>i</sub></i> is the footprint of producing 1 kg DM of ingredient <i>i</i> (crop, fertiliser, processing and transport, excluding land-use change), with indicative values within the GFLI and FAO-GLEAM ranges and economic allocation for by-products; all are editable in the scientist view.</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Y<sub>m</sub> = 3.38 %; CH<sub>4</sub> entérico 86.9 g/d; N consumido 162.3 g/d, retenido 32.2 g/d, excretado 130.1 g/d. CO<sub>2</sub>e: alimento 3.08, entérico 2.35, N<sub>2</sub>O 1.43 y CH<sub>4</sub> del estiércol 0.09 kg/d; total <b>6.95 kg CO<sub>2</sub>e/d</b>, 5.15 kg por kg ganado.</p>
+    <p lang="en">Y<sub>m</sub> = 3.38 %; enteric CH<sub>4</sub> 86.9 g/d; N intake 162.3 g/d, retained 32.2 g/d, excreted 130.1 g/d. CO<sub>2</sub>e: feed 3.08, enteric 2.35, N<sub>2</sub>O 1.43 and manure CH<sub>4</sub> 0.09 kg/d; total <b>6.95 kg CO<sub>2</sub>e/d</b>, 5.15 kg per kg gained.</p></div>
+
+  <h3 id="s-recursos" data-n="S.2"><span lang="es">Agua, suelo y estiércol</span><span lang="en">Water, land and manure</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Indicador</th><th lang="en">Indicator</th><th lang="es">Cálculo</th><th lang="en">Computation</th><th lang="es">Fuente</th><th lang="en">Source</th></tr></thead>
+    <tbody>
+      <tr><td lang="es">Agua de bebida</td><td lang="en">Drinking water</td><td lang="es">3.5 L/kg MS (5 L arriba de 25 °C)</td><td lang="en">3.5 L/kg DM (5 L above 25 °C)</td><td>NASEM (2016)</td></tr>
+      <tr><td lang="es">Huella hídrica del alimento</td><td lang="en">Feed water footprint</td><td lang="es">Σ C<sub>i</sub> × agua verde + azul por kg MS</td><td lang="en">Σ C<sub>i</sub> × green + blue water per kg DM</td><td>Mekonnen y Hoekstra (2011)</td></tr>
+      <tr><td lang="es">Agua gris</td><td lang="en">Grey water</td><td lang="es">N lixiviado / 10 mg N/L</td><td lang="en">Leached N / 10 mg N/L</td><td>Mekonnen y Hoekstra (2011)</td></tr>
+      <tr><td lang="es">Tierra para el alimento</td><td lang="en">Land for feed</td><td lang="es">Σ C<sub>i</sub> × m²·año por kg MS (rendimientos medios)</td><td lang="en">Σ C<sub>i</sub> × m²·yr per kg DM (mean yields)</td><td>SIAP (2024)</td></tr>
+      <tr><td lang="es">Tierra para el estiércol</td><td lang="en">Land for manure</td><td lang="es">máx(N<sub>ex</sub>(1 − Frac<sub>gas</sub>)/170, P<sub>ex</sub>/25) ha·año</td><td lang="en">max(N<sub>ex</sub>(1 − Frac<sub>gas</sub>)/170, P<sub>ex</sub>/25) ha·yr</td><td lang="es">límites de 170 kg N y 25 kg P/ha</td><td lang="en">170 kg N and 25 kg P/ha limits</td></tr>
+      <tr><td lang="es">Amoniaco</td><td lang="en">Ammonia</td><td>N<sub>ex</sub> × Frac<sub>gas</sub> × 17/14</td><td>IPCC (2019)</td></tr>
+    </tbody></table></div>
+
+  <h3 id="s-frontera" data-n="S.3"><span lang="es">Formulación con precio interno del carbono</span><span lang="en">Formulation with an internal carbon price</span></h3>
+  <p lang="es">Para trazar la frontera costo–huella se resuelve el mismo procedimiento F.3 con un costo ampliado c<sub>i</sub> + w · CO<sub>2</sub>e<sub>i</sub>/1000, donde CO<sub>2</sub>e<sub>i</sub> (kg por kg de MS) suma la huella del alimento, el metano entérico atribuible por su Y<sub>m</sub>, el metano y el N<sub>2</sub>O de su estiércol, y <i>w</i> recorre 0, 1,000, 2,000, 3,500, 5,000, 8,000, 12,000 y 20,000 $/t CO<sub>2</sub>e. Cada solución es eficiente en el sentido de Pareto (método de ponderación). El punto de <b>equilibrio</b> sugerido es el que maximiza la reducción de CO<sub>2</sub>e por peso adicional entre los que reducen la huella al menos 2 %.</p>
+  <p lang="en">To trace the cost–footprint frontier, the same F.3 procedure is solved with an extended cost c<sub>i</sub> + w · CO<sub>2</sub>e<sub>i</sub>/1000, where CO<sub>2</sub>e<sub>i</sub> (kg per kg DM) adds the feed footprint, the enteric methane attributable through its Y<sub>m</sub>, and its manure methane and N<sub>2</sub>O, and <i>w</i> runs through 0, 1,000, 2,000, 3,500, 5,000, 8,000, 12,000 and 20,000 $/t CO<sub>2</sub>e. Every solution is Pareto-efficient (weighting method). The suggested <b>balance</b> point is the one that maximises CO<sub>2</sub>e reduction per extra peso among those cutting the footprint by at least 2 %.</p>
+  {{FIG_FRONTERA}}
+</section>
+
+<!-- ============================ V · VALIDACIÓN ============================ -->
+<section class="chap" id="validacion" data-toc="V" style="--c:var(--b3)">
+  <div class="chap-head"><span class="big">V</span>
+    <div class="eyebrow" lang="es">Bloque ✓</div><div class="eyebrow" lang="en">Block ✓</div>
+    <h2 lang="es">Validación con dietas publicadas</h2><h2 lang="en">Validation against published diets</h2>
+    <p lang="es">Cinco pruebas independientes: composición, optimizador, energía neta observada, economía y proteína metabolizable; más la comparación del solucionador con HiGHS.</p>
+    <p lang="en">Five independent tests: composition, optimiser, observed net energy, economics and metabolizable protein; plus a solver comparison with HiGHS.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 26l10 10L40 12"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="v-datos" data-n="V.1"><span lang="es">Los experimentos</span><span lang="en">The experiments</span></h3>
+  <p lang="es">Se capturaron, tal cual, las fórmulas de 19 dietas de 9 artículos publicados entre 2017 y 2025, con 27 grupos de animales con desempeño medido: engordas de toretes cruzados en Sinaloa, becerros de alto riesgo en Zacatecas y becerros y novillos Holstein del grupo de Zinn en El Centro, California. Los ingredientes que la biblioteca no tiene se agregaron con la composición que reporta cada artículo.</p>
+  <p lang="en">The formulas of 19 diets from 9 papers published 2017–2025 were entered as published, with 27 animal groups with measured performance: crossbred bull feedlots in Sinaloa, high-risk calves in Zacatecas, and Holstein calves and steers from Zinn’s group at El Centro, California. Ingredients missing from the library were added with the composition each paper reports.</p>
+  {{TABLA_ARTICULOS}}
+
+  <h3 id="v-comp" data-n="V.2"><span lang="es">Prueba 1 · composición calculada</span><span lang="en">Test 1 · computed composition</span></h3>
+  <p lang="es">La app analiza cada fórmula con su propia biblioteca y compara el resultado con la composición que reportan los autores. Los errores absolutos medios son de 3.0 % en energía neta (38 valores), 2.1 % en proteína cruda, 4.4 % en fibra y grasa y 7.8 % en minerales.</p>
+  <p lang="en">The app analyses each formula with its own library and compares the result with the composition reported by the authors. Mean absolute errors are 3.0 % for net energy (38 values), 2.1 % for crude protein, 4.4 % for fibre and fat and 7.8 % for minerals.</p>
+  {{FIG_VAL_COMP}}
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución · sesgo en la energía tabular</span><span class="bt" lang="en">Caution · bias in tabular energy</span>
+    <p lang="es">En las dietas de maíz hojueleado la app da 2–3 % menos ENm y 3–6 % menos ENg que los autores. No es un error de cálculo: los artículos usan para ese grano valores tabulares de energía más altos (≈ 2.4 Mcal ENm/kg) que la tabla de Oklahoma State que trae la app (2.29). En las dietas con más forraje (las de adaptación de Castro-Pérez et al., 2020, y la de recepción de Rodríguez-Cordero et al., 2025) el sesgo desaparece o se invierte. Si conoce el valor de su ingrediente, edítelo en el Bloque 5.</p>
+    <p lang="en">On steam-flaked corn diets the app gives 2–3 % less NEm and 3–6 % less NEg than the authors. This is not a computing error: the papers use higher tabular energy values for that grain (≈ 2.4 Mcal NEm/kg) than the Oklahoma State table shipped with the app (2.29). On the higher-forage diets (the step-up diets of Castro-Pérez et al., 2020, and the receiving diet of Rodríguez-Cordero et al., 2025) the bias vanishes or reverses. If you know your ingredient’s value, edit it in Block 5.</p></div>
+
+  <h3 id="v-optim" data-n="V.3"><span lang="es">Prueba 2 · el optimizador</span><span lang="en">Test 2 · the optimiser</span></h3>
+  <p lang="es">Para cada dieta publicada se fijaron como requerimientos sus propios aportes de nutrientes (mínimos de energía, proteína y minerales; máximos de FDN, grasa y azufre) y se dejó que el optimizador eligiera entre los mismos ingredientes, con la premezcla y los aditivos fijos. Si el optimizador funciona, debe devolver una ración igual o más barata que la publicada. Resultado: <b>19 de 19</b>, todas con certificado de dualidad válido.</p>
+  <p lang="en">For each published diet, its own nutrient supply was set as the requirement (minimums for energy, protein and minerals; maximums for NDF, fat and sulfur), and the optimiser chose among the same ingredients, with premix and additives fixed. If the optimiser works, it must return a ration at least as cheap as the published one. Result: <b>19 of 19</b>, all with a valid duality certificate.</p>
+  {{FIG_VAL_COSTO}}
+
+  <h3 id="v-ene" data-n="V.4"><span lang="es">Prueba 3 · energía neta observada</span><span lang="en">Test 3 · observed net energy</span></h3>
+  <p lang="es">Los artículos del grupo de Zinn reportan la energía neta de la dieta «observada» en el desempeño de los animales (Zinn y Shen, 1998). RatioBos repite ese cálculo con los pesos, la ganancia y el consumo publicados, resolviendo para ENm la ecuación cuadrática</p>
+  <p lang="en">Papers from Zinn’s group report the diet net energy “observed” from animal performance (Zinn &amp; Shen, 1998). RatioBos repeats that calculation with the published weights, gain and intake, solving for NEm the quadratic</p>
+  <div class="eq"><math display="block"><mrow><mi>C</mi><mo>=</mo><mfrac><mrow><msub><mi>e</mi><mi>m</mi></msub><msup><mi>W</mi><mn>0.75</mn></msup></mrow><mi>ENm</mi></mfrac><mo>+</mo><mfrac><mrow><msub><mi>e</mi><mi>g</mi></msub><msup><mi>W</mi><mn>0.75</mn></msup><msup><mi>GDP</mi><mn>1.097</mn></msup></mrow><mrow><mn>0.877</mn><mspace width="0.1em"/><mi>ENm</mi><mo>−</mo><mn>0.41</mn></mrow></mfrac></mrow></math><span class="no">(10)</span></div>
+  <p lang="es">con <i>W</i> el peso medio y los coeficientes <i>e<sub>m</sub></i> y <i>e<sub>g</sub></i> de cada artículo. El error absoluto medio frente a lo publicado es de <b>0.5 %</b> (27 grupos, ENm y ENg): la app reproduce el método de los autores.</p>
+  <p lang="en">with <i>W</i> the mean weight and each paper’s <i>e<sub>m</sub></i> and <i>e<sub>g</sub></i> coefficients. The mean absolute error against the published values is <b>0.5 %</b> (27 groups, NEm and NEg): the app reproduces the authors’ method.</p>
+  {{FIG_VAL_ENE}}
+
+  <h3 id="v-econ" data-n="V.5"><span lang="es">Pruebas 4 y 5 · economía y proteína metabolizable</span><span lang="en">Tests 4 and 5 · economics and metabolizable protein</span></h3>
+  <p lang="es">Con los precios de Rodríguez-Cordero et al. (2025), el costo por kilo ganado que calcula la app difiere 0.2 % del publicado. Con las dietas de Montano et al. (2023), la PM aportada como porcentaje de la requerida, calculada con las ecuaciones de RatioBos, queda en promedio 3.5 puntos por debajo de la estimación de los autores (89–98 % contra 93–100 %), con el mismo orden entre tratamientos.</p>
+  <p lang="en">With the prices in Rodríguez-Cordero et al. (2025), the cost per kilo gained computed by the app differs by 0.2 % from the published value. With the Montano et al. (2023) diets, MP supplied as a percentage of MP required, computed with RatioBos equations, averages 3.5 points below the authors’ estimate (89–98 % versus 93–100 %), with the same ranking across treatments.</p>
+
+  <h3 id="v-highs" data-n="V.6"><span lang="es">El solucionador frente a HiGHS</span><span lang="en">The solver against HiGHS</span></h3>
+  <p lang="es">Se generaron con semilla fija 500 problemas reales de la app (las 5 etapas, 6 biotipos, 9 regiones y 3 temporadas; ingredientes al azar de la biblioteca; precios entre −50 % y +50 %; ENm supuesta entre 1.2 y 2.3 Mcal/kg) y se resolvieron también con HiGHS (SciPy 1.18). Coincidieron los 500: en los 288 factibles el costo difiere como máximo 4 × 10⁻¹⁴ en términos relativos, y los 212 infactibles lo son para ambos. Los guiones están en la carpeta <code>pruebas</code> del repositorio.</p>
+  <p lang="en">500 real app problems were generated with a fixed seed (all 5 stages, 6 biotypes, 9 regions and 3 seasons; random library ingredients; prices from −50 % to +50 %; assumed NEm 1.2–2.3 Mcal/kg) and also solved with HiGHS (SciPy 1.18). All 500 agreed: in the 288 feasible ones cost differs by at most 4 × 10⁻¹⁴ in relative terms, and the 212 infeasible ones are infeasible for both. The scripts are in the repository’s <code>pruebas</code> folder.</p>
+</section>

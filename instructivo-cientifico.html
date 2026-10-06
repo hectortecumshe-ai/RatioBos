@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RatioBos · Instructivo del Científico</title>
+<meta name="description" content="Instructivo del Científico de RatioBos: ecuaciones NASEM (2016), programación lineal con certificado de dualidad, ajuste de energía y consumo, huella IPCC (2019) y validación. · RatioBos Scientist Guide.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+
+/* =====================================================================
+   RatioBos · Instructivo del Científico
+   Tipografía: Palatino Linotype (texto), Segoe UI (rótulos pequeños),
+   Consolas (código) y MathML con Cambria Math para las ecuaciones.
+   ===================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f5f4ee; --paper:#fffefa; --soft:#efede4; --text:#1b221e; --muted:#58625c; --faint:#8a918a;
+  --line:#dfdcd1; --line2:#c6c2b3;
+  --pri:#2f5d50; --pri-d:#1f4037; --pri-s:rgba(47,93,80,.09);
+  --acc:#b05434; --acc-d:#8a3a1f; --acc-s:rgba(176,84,52,.12);
+  --ink:#24425e; --ink-s:rgba(36,66,94,.09);
+  --ok:#2f8f4a; --ok-s:#e9f5ec; --warn:#b5730c; --warn-s:#fcf3e2; --bad:#b8382e; --bad-s:#fbeae8; --info:#2d78b0; --info-s:#e8f1f8;
+  --b1:#2f5d50; --b2:#4f7d3a; --b3:#2f6f8f; --b4:#7a5c99; --b5:#a7801c; --b6:#b86a2a; --b7:#b05434; --b8:#8a3f5a; --b9:#39718a; --b10:#3f8a5c; --b11:#4a5d6b;
+  --serif:"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",P052,"TeX Gyre Pagella",Georgia,serif;
+  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --mono:Consolas,ui-monospace,"SF Mono",Menlo,monospace;
+  --math:"STIX Two Math","Cambria Math","Latin Modern Math","Libertinus Math",serif;
+  --shadow:0 1px 2px rgba(30,36,24,.06),0 10px 30px rgba(30,36,24,.08);
+  --shadow-lg:0 2px 6px rgba(30,36,24,.08),0 24px 60px rgba(30,36,24,.14);
+  --r:14px; --side:296px; --col:800px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#111513; --paper:#181d1a; --soft:#1f2521; --text:#e6eae4; --muted:#a7b0a9; --faint:#7b847d;
+    --line:#2b332e; --line2:#3a443e;
+    --pri:#8fc2ad; --pri-d:#b5dccb; --pri-s:rgba(143,194,173,.12);
+    --acc:#ea926b; --acc-d:#f4b596; --acc-s:rgba(234,146,107,.14);
+    --ink:#9cc1e3; --ink-s:rgba(156,193,227,.12);
+    --ok:#6cc488; --ok-s:rgba(108,196,136,.12); --warn:#e7b052; --warn-s:rgba(231,176,82,.12); --bad:#ee8a7f; --bad-s:rgba(238,138,127,.12); --info:#78b8e4; --info-s:rgba(120,184,228,.12);
+    --b1:#8fc2ad; --b2:#a9cf7e; --b3:#7fbddb; --b4:#bba3d6; --b5:#e3c063; --b6:#e9a066; --b7:#ea926b; --b8:#e08aa8; --b9:#86c3dc; --b10:#86d1a2; --b11:#9fb4c2;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); --shadow-lg:0 2px 6px rgba(0,0,0,.45),0 24px 60px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#111513; --paper:#181d1a; --soft:#1f2521; --text:#e6eae4; --muted:#a7b0a9; --faint:#7b847d;
+  --line:#2b332e; --line2:#3a443e;
+  --pri:#8fc2ad; --pri-d:#b5dccb; --pri-s:rgba(143,194,173,.12);
+  --acc:#ea926b; --acc-d:#f4b596; --acc-s:rgba(234,146,107,.14);
+  --ink:#9cc1e3; --ink-s:rgba(156,193,227,.12);
+  --ok:#6cc488; --ok-s:rgba(108,196,136,.12); --warn:#e7b052; --warn-s:rgba(231,176,82,.12); --bad:#ee8a7f; --bad-s:rgba(238,138,127,.12); --info:#78b8e4; --info-s:rgba(120,184,228,.12);
+  --b1:#8fc2ad; --b2:#a9cf7e; --b3:#7fbddb; --b4:#bba3d6; --b5:#e3c063; --b6:#e9a066; --b7:#ea926b; --b8:#e08aa8; --b9:#86c3dc; --b10:#86d1a2; --b11:#9fb4c2;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); --shadow-lg:0 2px 6px rgba(0,0,0,.45),0 24px 60px rgba(0,0,0,.5);
+}
+
+html[data-lang="es"] [lang="en"]:not(html), html[data-lang="en"] [lang="es"]:not(html){display:none!important}
+
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--serif);font-size:18.5px;line-height:1.66;font-optical-sizing:auto;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-variant-numeric:lining-nums proportional-nums;hyphens:auto;-webkit-hyphens:auto;font-kerning:normal}
+img{max-width:100%;display:block}
+a{color:var(--pri);text-decoration-thickness:1px;text-underline-offset:3px}
+b,strong{font-weight:700}
+h1,h2,h3,h4{font-weight:700;line-height:1.16;color:var(--text);hyphens:none}
+table,.kpi b,figcaption .fn,.tnum{font-variant-numeric:lining-nums tabular-nums}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+math{font-family:var(--math);font-size:1.06em}
+code,pre{font-family:var(--mono)}
+code{font-size:.82em;background:var(--soft);padding:1px 6px;border-radius:5px}
+
+/* ---------- barra superior ---------- */
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 22px;
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);min-width:0}
+.top .brand img{width:34px;height:34px;border-radius:9px;flex:none}
+.top .brand span{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .brand i{color:var(--acc)}
+.top .brand small{color:var(--muted);font-style:italic;font-size:14.5px}
+.top .sp{flex:1}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:999px;padding:3px;background:var(--paper)}
+.seg button{border:0;background:none;font:700 12.5px/1 var(--sans);letter-spacing:.06em;color:var(--muted);padding:7px 12px;border-radius:999px;cursor:pointer}
+.seg button.on{background:var(--pri);color:var(--paper)}
+.ib{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:var(--paper);color:var(--text);cursor:pointer;font-size:16px;text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--pri);background:var(--pri);color:var(--paper);font:700 13.5px/1 var(--sans);letter-spacing:.02em;padding:10px 16px;border-radius:999px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:var(--paper);color:var(--pri);border-color:var(--line2)}
+.btn.sm{padding:7px 12px;font-size:12.5px}
+.btn svg{width:16px;height:16px}
+#leido{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--pri),var(--acc))}
+#menuBtn{display:none}
+
+/* ---------- maqueta ---------- */
+.layout{display:grid;grid-template-columns:var(--side) minmax(0,1fr);max-width:1340px;margin:0 auto}
+aside.toc{position:sticky;top:59px;align-self:start;height:calc(100vh - 59px);overflow:auto;padding:26px 18px 40px 22px;border-right:1px solid var(--line);font-family:var(--sans);font-size:14px}
+.search{position:relative;margin-bottom:18px}
+.search input{width:100%;padding:10px 12px 10px 36px;border:1px solid var(--line2);border-radius:10px;background:var(--paper);color:var(--text);font:14.5px var(--sans)}
+.search svg{position:absolute;left:11px;top:20px;width:16px;height:16px;transform:translateY(-50%);color:var(--faint)}
+.search .hits{font-size:12.5px;color:var(--muted);margin:6px 2px 0;min-height:1em}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:1px 0}
+.toc a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border-radius:8px;color:var(--muted);text-decoration:none;line-height:1.35}
+.toc a:hover{background:var(--soft);color:var(--text)}
+.toc a.act{background:var(--pri-s);color:var(--text);font-weight:600}
+.toc .n{flex:none;display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 4px;border-radius:11px;font-size:11.5px;font-weight:700;color:#fff;background:var(--c,var(--faint))}
+:root[data-theme="dark"] .toc .n{color:#111}
+.toc .sub a{padding-left:44px;font-size:13px}
+.toc .grp{margin:18px 10px 6px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.toc li.hide{display:none}
+main{min-width:0;padding:0 40px 120px}
+.doc{max-width:var(--col);margin:0 auto}
+
+/* ---------- portada ---------- */
+.cover{position:relative;margin:34px auto 30px;max-width:1060px;border-radius:24px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+.cover .band{display:flex;height:8px}.cover .band i{flex:1}
+.cover .in{display:grid;grid-template-columns:1fr 1fr;gap:34px;padding:52px 56px 40px;align-items:center}
+.cover .kick{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.cover .kick img{width:52px;height:52px;border-radius:13px}
+.cover h1{font-size:clamp(36px,4.4vw,54px);margin:0 0 6px;letter-spacing:-.018em;line-height:1.04;font-weight:600;font-variation-settings:"opsz" 60}
+.cover h1 em{font-style:italic;color:var(--pri);font-weight:500}
+.cover h1 .a{color:var(--acc)}
+.cover .sub{font-size:20px;color:var(--muted);margin:16px 0 22px;line-height:1.45;font-variation-settings:"opsz" 24}
+.cover .meta{font-family:var(--sans);font-size:13.5px;color:var(--muted);line-height:1.7}
+.cover .meta b{color:var(--text)}
+.cover .who{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-size:16px}
+.cover .who span{color:var(--muted);font-style:italic}
+.cover .art{position:relative}
+.cover .art .eqc{position:absolute;left:4%;bottom:-6px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 16px;box-shadow:var(--shadow);font-size:17px}
+.cover .pillars{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);font-family:var(--sans)}
+.cover .pillars div{padding:16px 18px 18px;border-right:1px solid var(--line);font-size:13px;color:var(--muted);line-height:1.35}
+.cover .pillars div:last-child{border-right:0}
+.cover .pillars b{display:block;font:600 19px/1.2 var(--serif);color:var(--text);margin-bottom:4px}
+.cover .pillars i{font-style:normal;color:var(--acc);font-weight:700;letter-spacing:.1em;font-size:11px;text-transform:uppercase;display:block;margin-bottom:6px}
+
+/* ---------- capítulos ---------- */
+.chap{position:relative;margin-top:84px;padding-top:4px}
+.chap-head{position:relative;display:grid;grid-template-columns:auto 1fr;gap:4px 26px;align-items:end;padding:34px 0 26px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.chap-head .big{grid-row:span 3;font-size:116px;line-height:.8;font-weight:300;color:var(--c);letter-spacing:-.04em;font-variation-settings:"opsz" 60}
+.chap-head .eyebrow{color:var(--c)}
+.chap-head h2{font-size:clamp(30px,3.5vw,42px);margin:4px 0 0;letter-spacing:-.012em;padding-right:76px;font-variation-settings:"opsz" 48}
+.chap-head p{grid-column:2;margin:10px 0 0;color:var(--muted);font-size:19.5px;line-height:1.5;max-width:58ch}
+.chap-head .rule{position:absolute;left:0;bottom:-1px;width:120px;height:3px;background:var(--c)}
+.chap-head .ico{position:absolute;right:0;top:20px;width:62px;height:62px;color:var(--c);opacity:.9}
+.inchap{display:flex;flex-wrap:wrap;gap:6px 18px;margin:-6px 0 28px;font-family:var(--sans);font-size:13.5px}
+.inchap a{color:var(--muted);text-decoration:none}
+.inchap a::before{content:attr(data-n)" ";color:var(--c);font-weight:700}
+.inchap a:hover{color:var(--text)}
+h3{font-size:25px;margin:48px 0 12px;letter-spacing:-.006em;scroll-margin-top:84px;font-variation-settings:"opsz" 32}
+h3 .sn{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--c,var(--acc));margin-right:12px;vertical-align:3px;letter-spacing:.04em}
+h4{font-size:19.5px;margin:30px 0 8px;font-variation-settings:"opsz" 24}
+p{margin:0 0 16px}
+.lead{font-size:21px;line-height:1.58;font-variation-settings:"opsz" 28}
+.lead::first-letter{float:left;font-size:3.4em;line-height:.88;padding:6px 10px 0 0;color:var(--c,var(--pri));font-weight:500}
+ul,ol{padding-left:24px;margin:0 0 18px}
+li{margin:5px 0}
+li::marker{color:var(--c,var(--acc))}
+.ui{font-family:var(--sans);font-size:.8em;font-weight:700;white-space:nowrap;padding:3px 9px;border-radius:7px;border:1px solid var(--line2);border-bottom-width:2px;background:var(--paper);color:var(--text);vertical-align:1px}
+.ui.pri{background:var(--pri);border-color:var(--pri-d);color:var(--paper)}
+.path{font-family:var(--sans);font-size:.82em;font-weight:600;color:var(--pri);white-space:nowrap}
+.path i{font-style:normal;color:var(--faint);margin:0 5px}
+.sc{font-variant:all-small-caps;letter-spacing:.05em}
+
+/* ---------- ecuaciones ---------- */
+.eq{position:relative;display:flex;align-items:center;justify-content:center;gap:20px;margin:22px 0 24px;padding:20px 64px 20px 24px;background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--c,var(--ink));border-radius:12px;overflow-x:auto}
+.eq math{font-size:1.18em}
+.eq mtd{text-align:left;padding:2px 0}
+.eq mtr > mtd:first-child:not(:only-child){text-align:right;padding-right:.9em}
+.eq .no{position:absolute;right:18px;top:50%;transform:translateY(-50%);font:600 14px var(--sans);color:var(--faint)}
+.eq.left{justify-content:flex-start}
+.where{font-size:16.5px;color:var(--muted);margin:-8px 0 22px}
+.where math{font-size:1em}
+
+/* ---------- recuadros ---------- */
+.box{position:relative;margin:24px 0;padding:18px 22px 16px 62px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line)}
+.box::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:0 3px 3px 0;background:var(--k)}
+.box .bi{position:absolute;left:18px;top:18px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--ks);color:var(--k);font:700 14px/1 var(--sans)}
+.box .bt{display:block;font:700 12px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--k);margin:6px 0 8px}
+.box p:last-child,.box ul:last-child,.box ol:last-child,.box table:last-child{margin-bottom:0}
+.box.def{--k:var(--ink);--ks:var(--ink-s)}
+.box.thm{--k:var(--pri);--ks:var(--pri-s);background:linear-gradient(135deg,color-mix(in srgb,var(--pri-s) 80%,var(--paper)),var(--paper) 55%)}
+.box.warn{--k:var(--warn);--ks:var(--warn-s);background:color-mix(in srgb,var(--warn-s) 55%,var(--paper))}
+.box.case{--k:var(--acc);--ks:var(--acc-s);background:linear-gradient(135deg,color-mix(in srgb,var(--acc-s) 70%,var(--paper)),var(--paper) 60%)}
+.box.tip{--k:var(--ok);--ks:var(--ok-s)}
+.box.ref{--k:var(--faint);--ks:var(--soft);font-size:16.5px}
+
+/* ---------- tablas ---------- */
+table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:16px}
+th{font:700 11.5px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--line2)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td.r,th.r{text-align:right}
+td.c,th.c{text-align:center}
+tr.hl td{background:var(--acc-s)}
+tr.sum td{font-weight:650;border-top:2px solid var(--line2)}
+.tbl{overflow-x:auto;margin:0 -4px}
+caption{caption-side:top;text-align:left;font:600 13px var(--sans);color:var(--muted);padding:0 0 6px}
+.badge{display:inline-block;font:700 12px/1 var(--sans);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.badge.ok{background:var(--ok-s);color:var(--ok)} .badge.warn{background:var(--warn-s);color:var(--warn)} .badge.info{background:var(--info-s);color:var(--info)} .badge.bad{background:var(--bad-s);color:var(--bad)} .badge.pri{background:var(--pri-s);color:var(--pri)}
+
+/* ---------- figuras: capturas y gráficos ---------- */
+figure{margin:28px -44px 30px;padding:0}
+figure.narrow{margin-left:0;margin-right:0}
+.shot{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--paper);cursor:zoom-in}
+.shot img{width:100%;height:auto}
+.mk{position:absolute;pointer-events:none}
+.mk .ring{position:absolute;inset:-5px;border:2.5px solid var(--acc);border-radius:10px;box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 18%,transparent)}
+.mk .num{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#fff;font:700 14px/28px var(--sans);text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.25);border:2px solid #fff}
+.chart{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px 16px;box-shadow:var(--shadow)}
+.chart svg{display:block;width:100%;height:auto;font-family:var(--sans);overflow:visible}
+.chart .ttl{font:700 12px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+figcaption{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:14px 44px 0;font-size:16px;color:var(--muted);line-height:1.5}
+figure.narrow figcaption{margin-left:0;margin-right:0}
+figcaption .fn{font:700 12px/1.6 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--c,var(--acc));white-space:nowrap;padding-top:2px}
+figcaption b{color:var(--text)}
+.legend{list-style:none;counter-reset:lg;margin:14px 44px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 22px;font-size:16.5px}
+.legend li{counter-increment:lg;display:grid;grid-template-columns:28px 1fr;gap:12px;margin:0;align-items:start}
+.legend li::before{content:counter(lg);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;font:700 13px/1 var(--sans);margin-top:1px}
+.legend li::marker{content:none}
+svg text{fill:var(--text)}
+svg .mut{fill:var(--muted)}
+svg .ax{stroke:var(--line2);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1}
+
+/* ---------- tarjetas ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 24px}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi span{display:block;font:600 11.5px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi b{display:block;font-size:25px;color:var(--pri-d);margin-top:4px;line-height:1.15;font-weight:600}
+.kpi small{color:var(--muted);font-size:14px}
+.spec{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);margin:20px 0 26px}
+.spec div{padding:12px 18px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:150px 1fr;gap:12px;font-size:16px}
+.spec div:nth-child(odd){border-right:1px solid var(--line)}
+.spec span{font:600 11.5px/1.5 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding-top:3px}
+
+/* ---------- código ---------- */
+.code{position:relative;margin:20px 0 26px;border-radius:12px;background:#17201c;color:#e4ebe6;overflow:hidden;border:1px solid #26302b}
+.code .bar{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:#1e2924;font:600 12px var(--sans);color:#9fb0a6;letter-spacing:.06em}
+.code pre{margin:0;padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.6}
+.code .k{color:#e2a15c} .code .s{color:#a9cf7e} .code .c{color:#7d8f85;font-style:italic} .code .f{color:#8fc2ad}
+.copy{border:1px solid #3a4a42;background:#24302a;color:#d7e1db;border-radius:7px;padding:4px 10px;font:600 12px var(--sans);cursor:pointer}
+.methods{position:relative;margin:20px 0;padding:24px 26px 18px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line);font-size:17px}
+.methods .copy{position:absolute;right:14px;top:14px;background:var(--soft);color:var(--text);border-color:var(--line2)}
+
+/* ---------- referencias ---------- */
+ol.refs{padding-left:0;list-style:none;font-size:16px}
+ol.refs li{padding-left:2em;text-indent:-2em;margin:8px 0}
+dl.glos{display:grid;grid-template-columns:minmax(170px,240px) 1fr;margin:16px 0}
+dl.glos dt,dl.glos dd{padding:10px 0;border-bottom:1px solid var(--line);margin:0}
+dl.glos dt{font-weight:650;padding-right:18px}
+dl.glos dt small{display:block;font-weight:400;font-style:italic;color:var(--muted);font-size:14.5px}
+.colophon{margin:90px 0 0;padding-top:24px;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+.colophon p{margin:0 0 8px}
+
+#zoom{position:fixed;inset:0;z-index:100;background:rgba(10,14,12,.86);display:none;place-items:center;padding:24px;cursor:zoom-out}
+#zoom.on{display:grid}
+#zoom .zi{position:relative;max-width:min(1600px,96vw)}
+#zoom img{max-height:92vh;width:auto;border-radius:10px}
+.totop{position:fixed;right:22px;bottom:22px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.totop.on{opacity:1;pointer-events:auto}
+
+@media screen and (max-width:1100px){
+  .layout{grid-template-columns:1fr}
+  aside.toc{position:fixed;left:0;top:59px;width:min(340px,88vw);z-index:45;background:var(--bg);transform:translateX(-102%);transition:transform .25s;box-shadow:var(--shadow-lg)}
+  aside.toc.open{transform:none}
+  #menuBtn{display:inline-grid}
+  main{padding:0 28px 100px}
+  figure{margin-left:0;margin-right:0}
+  figcaption,.legend{margin-left:0;margin-right:0}
+}
+@media screen and (max-width:760px){
+  body{font-size:17.5px}
+  .top{padding:8px 14px;gap:8px}
+  .top .brand small,.top .pdf span,.top .btn.ghost{display:none}
+  .top .brand span{font-size:15.5px}
+  .seg button{padding:6px 9px}
+  .top .btn.pdf{padding:9px 11px}
+  main{padding:0 16px 80px}
+  .cover{margin:16px 0 20px;border-radius:18px}
+  .cover .in{grid-template-columns:1fr;padding:30px 22px 26px}
+  .cover h1{font-size:34px}
+  .cover .pillars{grid-template-columns:1fr 1fr}
+  .cover .pillars div:nth-child(2){border-right:0}
+  .cover .pillars div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .chap-head{grid-template-columns:1fr}
+  .chap-head .big{grid-row:auto;font-size:74px}
+  .chap-head p{grid-column:1}
+  .chap-head .ico{width:42px;height:42px}
+  .kpis{grid-template-columns:1fr 1fr}
+  .spec{grid-template-columns:1fr}
+  .spec div{grid-template-columns:1fr;gap:2px;border-right:0!important}
+  .eq{padding:16px 48px 16px 14px;justify-content:flex-start}
+  .chart{padding:14px 12px 10px}
+  dl.glos{grid-template-columns:1fr}
+  dl.glos dt{border-bottom:0;padding-bottom:0}
+  .box{padding:16px 16px 14px 54px}
+  .box .bi{left:14px}
+  .mk .num{width:22px;height:22px;font-size:12px;line-height:22px;left:-11px;top:-11px}
+}
+
+@page{size:A4;margin:18mm 17mm 20mm}
+@page{@bottom-center{content:counter(page);font-family:"Palatino Linotype",Palatino,serif;font-size:9pt;color:#777}}
+@page :first{margin:0;@bottom-center{content:none}}
+@media print{
+  :root{--bg:#fff;--paper:#fff}
+  html{scroll-behavior:auto}
+  body{font-size:10.4pt;line-height:1.52;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .top,aside.toc,.totop,#zoom,.no-print,.inchap,.copy{display:none!important}
+  .layout{display:block;max-width:none}
+  main{padding:0}
+  .doc{max-width:none}
+  .cover{margin:0;border-radius:0;box-shadow:none;border:0;min-height:297mm;display:flex;flex-direction:column;page-break-after:always}
+  .cover{height:297mm;overflow:hidden}
+  .cover{position:relative}
+  .cover .in{flex:none;height:262mm;overflow:hidden;grid-template-columns:1fr;padding:18mm 18mm 4mm;gap:5mm;align-content:start}
+  .cover .pillars{position:absolute;left:0;right:0;bottom:0;height:30mm;background:#fff}
+  .cover h1{font-size:34pt}
+  .cover .sub{font-size:13pt;margin:10px 0 14px}
+  .cover .who{margin-top:14px;padding-top:12px}
+  .cover .art{width:60%;justify-self:center}
+  .cover .art .chart{padding:10px 12px 6px}
+  .chap{margin-top:0;break-before:page}
+  .chap-head{padding-top:0}
+  .chap-head .big{font-size:82pt}
+  h3{break-after:avoid;margin-top:24px}
+  figure,.box,.kpis,.spec,.eq,table,.code,.methods,.chart{break-inside:avoid}
+  figure{margin:14px 0 16px}
+  figcaption,.legend{margin-left:0;margin-right:0}
+  .shot,.chart{box-shadow:none}
+  .code{background:#f4f3ee;color:#1b221e;border-color:#ddd}
+  .code .bar{background:#e9e7df;color:#555}
+  .code .k{color:#8a5214} .code .s{color:#3f6b2a} .code .c{color:#777} .code .f{color:#1f4037}
+  a{color:inherit;text-decoration:none}
+}
+
+/* ---------- figuras propias y referencias ---------- */
+figure.svgfig{padding:18px 18px 4px}
+figure.svgfig svg,.cover .art .chart svg{display:block;width:100%;height:auto;font-family:var(--sans)}
+figure.svgfig svg text:not([fill]):not(.mu),.cover .art svg text:not([fill]):not(.mu){fill:var(--text)}
+figure.svgfig svg .mu,.cover .art svg .mu{fill:var(--muted)}
+figure.svgfig svg .ln,.cover .art svg .ln{stroke:var(--line2)}
+.cover .art .chart{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 14px 8px;box-shadow:var(--shadow)}
+/* la ecuación de portada debajo de la gráfica */
+.cover .art .eqc{bottom:-34px;left:auto;right:6%}
+@media print{ .cover .pillars{height:auto!important;min-height:30mm} }
+ul.refs{padding-left:1.2em;font-size:16px;line-height:1.55}
+ul.refs li{margin:0 0 10px;padding-left:.2em}
+ul.refs a{word-break:break-all}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <button class="ib" id="menuBtn" aria-label="Índice / Contents">☰</button>
+  <a class="brand" href="./" title="RatioBos">
+    <img src="logo.svg" alt="">
+    <span>Ratio<i>Bos</i> <small lang="es">· Instructivo del Científico</small><small lang="en">· Scientist Guide</small></span>
+  </a>
+  <span class="sp"></span>
+  <a class="btn ghost no-print" href="./" target="_blank" rel="noopener"><span lang="es">Abrir la app</span><span lang="en">Open the app</span> ↗</a>
+  <div class="seg" role="group" aria-label="Idioma / Language"><button data-lang="es">ES</button><button data-lang="en">EN</button></div>
+  <a class="btn pdf" id="pdfBtn" title="PDF" href="instructivo/RatioBos-Instructivo-Cientifico.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span>PDF</span></a>
+  <button class="ib" id="temaBtn" aria-label="Tema / Theme">☾</button>
+  <div id="leido"></div>
+</header>
+
+<div class="layout">
+<aside class="toc" id="toc">
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>
+    <input id="q" type="search" autocomplete="off" placeholder="Buscar en el instructivo…" aria-label="Buscar / Search">
+    <div class="hits" id="hits"></div>
+  </div>
+  <ol id="tocList"></ol>
+</aside>
+
+<main>
+<!-- ============================ PORTADA ============================ -->
+<section class="cover" id="portada">
+  <div class="band"><i style="background:var(--b1)"></i><i style="background:var(--b2)"></i><i style="background:var(--b3)"></i><i style="background:var(--b4)"></i><i style="background:var(--b5)"></i><i style="background:var(--b6)"></i><i style="background:var(--b7)"></i><i style="background:var(--b8)"></i><i style="background:var(--b9)"></i><i style="background:var(--b10)"></i><i style="background:var(--b11)"></i></div>
+  <div class="in">
+    <div>
+      <div class="kick"><img src="logo.svg" alt="RatioBos"><div><div class="eyebrow" lang="es">Instructivo del Científico</div><div class="eyebrow" lang="en">Scientist Guide</div><div style="font-size:15px;color:var(--muted)">RatioBos 1.0.0</div></div></div>
+      <h1 lang="es">Del <em>animal factorial</em> a la <span class="a">ración certificada</span></h1>
+      <h1 lang="en">From the <em>factorial animal</em> to the <span class="a">certified ration</span></h1>
+      <p class="sub" lang="es">Formulación de mínimo costo para bovinos de carne: ecuaciones NASEM (2016), ajuste iterativo de energía y consumo, programación lineal con certificado de dualidad, huella ambiental IPCC (2019) y validación con dietas publicadas.</p>
+      <p class="sub" lang="en">Least-cost beef cattle formulation: NASEM (2016) equations, iterative energy–intake adjustment, linear programming with a duality certificate, IPCC (2019) environmental footprint and validation against published diets.</p>
+      <div class="meta">
+        <div lang="es"><b>1.ª edición</b> · octubre de 2026 · describe RatioBos 1.0.0</div>
+        <div lang="en"><b>1st edition</b> · October 2026 · covers RatioBos 1.0.0</div>
+        <div><span lang="es">Licencia MIT</span><span lang="en">MIT License</span></div>
+      </div>
+      <div class="who">Héctor Tecumshé Mojica-Zárate · Luis Ángel Barrera-Guzmán<br><span lang="es">Guía complementaria del <a href="instructivo-productor.html">Instructivo del Productor</a>.</span><span lang="en">Companion to the <a href="instructivo-productor.html">Producer Guide</a>.</span></div>
+    </div>
+    <div class="art">
+      <div class="chart"><svg viewBox="0 0 520 340" role="img"><rect x="64.0" y="20" width="96.2" height="256" fill="var(--b8)" opacity=".08"/><rect x="391.0" y="20" width="109.0" height="256" fill="var(--b8)" opacity=".08"/><text lang="es" x="112.7" y="38" text-anchor="middle" font-size="12" class="mu">sin solución</text><text lang="en" x="112.7" y="38" text-anchor="middle" font-size="12" class="mu">infeasible</text><text lang="es" x="446.1" y="38" text-anchor="middle" font-size="12" class="mu">sin solución</text><text lang="en" x="446.1" y="38" text-anchor="middle" font-size="12" class="mu">infeasible</text><line class="ln" x1="64" x2="500" y1="276.0" y2="276.0" stroke-dasharray="2 4"/><text x="56" y="280.0" text-anchor="end" font-size="12" class="mu">1.2</text><line class="ln" x1="64" x2="500" y1="215.8" y2="215.8" stroke-dasharray="2 4"/><text x="56" y="219.8" text-anchor="end" font-size="12" class="mu">1.6</text><line class="ln" x1="64" x2="500" y1="155.5" y2="155.5" stroke-dasharray="2 4"/><text x="56" y="159.5" text-anchor="end" font-size="12" class="mu">2.0</text><line class="ln" x1="64" x2="500" y1="95.3" y2="95.3" stroke-dasharray="2 4"/><text x="56" y="99.3" text-anchor="end" font-size="12" class="mu">2.4</text><line class="ln" x1="64" x2="500" y1="35.1" y2="35.1" stroke-dasharray="2 4"/><text x="56" y="39.1" text-anchor="end" font-size="12" class="mu">2.8</text><text x="64.0" y="294" text-anchor="middle" font-size="12" class="mu">1.2</text><text x="166.6" y="294" text-anchor="middle" font-size="12" class="mu">1.6</text><text x="269.2" y="294" text-anchor="middle" font-size="12" class="mu">2.0</text><text x="371.8" y="294" text-anchor="middle" font-size="12" class="mu">2.4</text><text x="474.4" y="294" text-anchor="middle" font-size="12" class="mu">2.8</text><line class="ln" x1="64" x2="500" y1="276" y2="276"/><text lang="es" x="282" y="314" text-anchor="middle" font-size="12.5" class="mu">ENm supuesta g (Mcal/kg MS)</text><text lang="en" x="282" y="314" text-anchor="middle" font-size="12.5" class="mu">assumed NEm g (Mcal/kg DM)</text><g transform="translate(16 148) rotate(-90)"><text lang="es" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">ENm de la ración</text><text lang="en" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">ration NEm</text></g><line x1="64.0" y1="276.0" x2="500.0" y2="20.0" stroke="var(--muted)" stroke-dasharray="6 5"/><text lang="es" x="428.2" y="54.2" text-anchor="end" font-size="12" class="mu">ENm ración = g</text><text lang="en" x="428.2" y="54.2" text-anchor="end" font-size="12" class="mu">ration NEm = g</text><polyline points="166.6,146.4 179.4,157.4 192.2,162.6 205.1,166.4 217.9,169.1 230.7,171.3 243.5,172.8 256.4,173.8 269.2,174.2 282.0,174.3 294.8,173.8 307.6,173.1 320.5,171.9 333.3,170.4 346.1,168.4 358.9,166.2 371.8,163.5 384.6,160.6" fill="none" stroke="var(--b7)" stroke-width="3"/><circle cx="166.6" cy="146.4" r="2.6" fill="var(--b7)"/><circle cx="179.4" cy="157.4" r="2.6" fill="var(--b7)"/><circle cx="192.2" cy="162.6" r="2.6" fill="var(--b7)"/><circle cx="205.1" cy="166.4" r="2.6" fill="var(--b7)"/><circle cx="217.9" cy="169.1" r="2.6" fill="var(--b7)"/><circle cx="230.7" cy="171.3" r="2.6" fill="var(--b7)"/><circle cx="243.5" cy="172.8" r="2.6" fill="var(--b7)"/><circle cx="256.4" cy="173.8" r="2.6" fill="var(--b7)"/><circle cx="269.2" cy="174.2" r="2.6" fill="var(--b7)"/><circle cx="282.0" cy="174.3" r="2.6" fill="var(--b7)"/><circle cx="294.8" cy="173.8" r="2.6" fill="var(--b7)"/><circle cx="307.6" cy="173.1" r="2.6" fill="var(--b7)"/><circle cx="320.5" cy="171.9" r="2.6" fill="var(--b7)"/><circle cx="333.3" cy="170.4" r="2.6" fill="var(--b7)"/><circle cx="346.1" cy="168.4" r="2.6" fill="var(--b7)"/><circle cx="358.9" cy="166.2" r="2.6" fill="var(--b7)"/><circle cx="371.8" cy="163.5" r="2.6" fill="var(--b7)"/><circle cx="384.6" cy="160.6" r="2.6" fill="var(--b7)"/><polyline points="282.0,148.0 282.0,174.3 237.1,174.3 243.9,170.4 243.9,172.8 239.8,172.8 240.4,172.4 240.4,172.5 240.3,172.5" fill="none" stroke="var(--b3)" stroke-width="1.8"/><circle cx="282.0" cy="174.3" r="5" fill="var(--paper)" stroke="var(--b3)" stroke-width="2"/><circle cx="243.9" cy="172.8" r="5" fill="var(--paper)" stroke="var(--b3)" stroke-width="2"/><circle cx="240.4" cy="172.5" r="5" fill="var(--paper)" stroke="var(--b3)" stroke-width="2"/><circle cx="240.5" cy="172.4" r="7" fill="var(--b7)"/><text lang="es" x="228.5" y="158.4" text-anchor="end" font-size="13" font-weight="700">punto fijo g* = 1.888</text><text lang="en" x="228.5" y="158.4" text-anchor="end" font-size="13" font-weight="700">fixed point g* = 1.888</text></svg></div>
+      <div class="eqc"><math display="inline"><mrow><msub><mi>g</mi><mo>*</mo></msub><mo>:</mo><mspace width="0.3em"/><msub><mi>ENm</mi><mtext>dieta</mtext></msub><mo>(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>(</mo><msub><mi>g</mi><mo>*</mo></msub><mo>)</mo><mo>)</mo><mo>=</mo><msub><mi>g</mi><mo>*</mo></msub></mrow></math></div>
+    </div>
+  </div>
+  <div class="pillars">
+    <div><i lang="es">Animal</i><i lang="en">Animal</i><b>NASEM (2016)</b><span lang="es">energía neta de California y proteína metabolizable</span><span lang="en">California net energy and metabolizable protein</span></div>
+    <div><i lang="es">Método</i><i lang="en">Method</i><b lang="es">Símplex + punto fijo</b><b lang="en">Simplex + fixed point</b><span lang="es">la ENm supuesta y la de la ración coinciden</span><span lang="en">assumed and ration NEm agree</span></div>
+    <div><i lang="es">Validación</i><i lang="en">Validation</i><b>19 / 19 · 0.5 %</b><span lang="es">dietas igualadas o abaratadas · error en EN observada</span><span lang="en">diets matched or cheaper · observed NE error</span></div>
+    <div><i lang="es">Prueba</i><i lang="en">Test</i><b>500 / 500</b><span lang="es">problemas idénticos a HiGHS (SciPy)</span><span lang="en">problems identical to HiGHS (SciPy)</span></div>
+  </div>
+</section>
+
+<div class="doc">
+
+<!-- ============================ P · ALCANCE ============================ -->
+<section class="chap" id="leer" data-toc="P" style="--c:var(--acc)">
+  <div class="chap-head"><span class="big">P</span>
+    <div class="eyebrow" lang="es">Antes de leer</div><div class="eyebrow" lang="en">Before reading</div>
+    <h2 lang="es">Alcance, notación y cómo citar</h2><h2 lang="en">Scope, notation and citation</h2>
+    <p lang="es">Para quién es esta guía, qué supone del lector y cómo se organiza.</p>
+    <p lang="en">Who this guide is for, what it assumes of the reader and how it is organised.</p>
+    <span class="rule"></span></div>
+
+  <p class="lead" lang="es">Esta guía documenta el método de RatioBos con el detalle necesario para evaluarlo, enseñarlo y reproducirlo: cada ecuación del animal, la construcción del modelo lineal, el algoritmo que hace coincidir la energía de la ración con la que se supuso para predecir el consumo, la huella ambiental y la validación con experimentos publicados. Supone conocimientos de nutrición de rumiantes y nociones de programación lineal.</p>
+  <p class="lead" lang="en">This guide documents RatioBos’s method in the detail needed to evaluate, teach and reproduce it: every animal equation, the construction of the linear model, the algorithm that makes the ration’s energy match the one assumed to predict intake, the environmental footprint and the validation against published experiments. It assumes knowledge of ruminant nutrition and a basic grasp of linear programming.</p>
+  <p lang="es">Todos los números provienen de la app con el mismo caso del Instructivo del Productor: <b>300 toretes cruza cebú × europeo de 380 kg</b>, meta de 1.35 kg/d, Jalisco en temporada seca, con implante y monensina (30 mg/kg MS). En la app, la <b>vista científica</b> (botón en la barra superior) muestra todo lo que aquí se describe.</p>
+  <p lang="en">Every number comes from the app with the same case as the Producer Guide: <b>300 zebu × European cross bulls at 380 kg</b>, 1.35 kg/d target, Jalisco in the dry season, implanted and fed monensin (30 mg/kg DM). In the app, the <b>scientist view</b> (button in the top bar) shows everything described here.</p>
+
+  <h3 id="recuadros"><span lang="es">Recuadros</span><span lang="en">Boxes</span></h3>
+  <div class="box def"><span class="bi">≡</span><span class="bt" lang="es">Definición</span><span class="bt" lang="en">Definition</span><p lang="es">Un concepto con su significado exacto.</p><p lang="en">A concept with its exact meaning.</p></div>
+  <div class="box thm"><span class="bi">∴</span><span class="bt" lang="es">Resultado</span><span class="bt" lang="en">Result</span><p lang="es">Una propiedad que el programa aprovecha, con su consecuencia práctica.</p><p lang="en">A property the program relies on, with its practical consequence.</p></div>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span><p lang="es">Los números del caso, tal como los calcula la app.</p><p lang="en">The case numbers, exactly as the app computes them.</p></div>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución</span><span class="bt" lang="en">Caution</span><p lang="es">Un supuesto o límite del método que puede cambiar una conclusión.</p><p lang="en">An assumption or limitation that can change a conclusion.</p></div>
+
+  <h3 id="notacion"><span lang="es">Notación</span><span lang="en">Notation</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Símbolo</th><th lang="en">Symbol</th><th lang="es">Significado</th><th lang="en">Meaning</th><th lang="es">Unidad</th><th lang="en">Unit</th></tr></thead>
+    <tbody>
+      <tr><td>PV · SBW</td><td lang="es">peso vivo · peso vivo en ayuno (0.96 PV)</td><td lang="en">live weight · shrunk body weight (0.96 LW)</td><td>kg</td></tr>
+      <tr><td>EQSBW</td><td lang="es">peso equivalente: SBW × SRW / FSBW</td><td lang="en">equivalent weight: SBW × SRW / FSBW</td><td>kg</td></tr>
+      <tr><td>SWG · GDP</td><td lang="es">ganancia de peso en ayuno · ganancia diaria</td><td lang="en">shrunk weight gain · daily gain</td><td>kg/d</td></tr>
+      <tr><td>CMS</td><td lang="es">consumo de materia seca</td><td lang="en">dry matter intake (DMI)</td><td>kg/d</td></tr>
+      <tr><td>ENm · ENg</td><td lang="es">energía neta de mantenimiento · de ganancia</td><td lang="en">net energy for maintenance · for gain</td><td>Mcal/kg MS</td></tr>
+      <tr><td>ER</td><td lang="es">energía retenida (ENg requerida al día)</td><td lang="en">retained energy (daily NEg required)</td><td>Mcal/d</td></tr>
+      <tr><td>PM · PCM · PNDR</td><td lang="es">proteína metabolizable · microbiana cruda · no degradable</td><td lang="en">metabolizable · microbial crude · rumen-undegradable protein</td><td>g</td></tr>
+      <tr><td><math><msub><mi>x</mi><mi>i</mi></msub></math></td><td lang="es">inclusión del ingrediente <i>i</i></td><td lang="en">inclusion of ingredient <i>i</i></td><td lang="es">% de la MS</td><td lang="en">% of DM</td></tr>
+      <tr><td><math><msub><mi>c</mi><mi>i</mi></msub></math></td><td lang="es">precio del ingrediente en base seca</td><td lang="en">ingredient price on a DM basis</td><td>$/kg MS</td></tr>
+      <tr><td><math><mi>g</mi></math></td><td lang="es">ENm supuesta de la ración</td><td lang="en">assumed ration NEm</td><td>Mcal/kg MS</td></tr>
+    </tbody></table></div>
+
+  <h3 id="citar"><span lang="es">Cómo citar</span><span lang="en">How to cite</span></h3>
+  <div class="box ref"><span class="bi">“</span><span class="bt" lang="es">Programa</span><span class="bt" lang="en">Software</span>
+    <p lang="es">Mojica-Zárate, H. T., y Barrera-Guzmán, L. A. (2026). <i>RatioBos: Guided least-cost diet formulation for beef cattle</i> (Versión 1.0.0) [Software]. https://github.com/hectortecumshe-ai/RatioBos</p>
+    <p lang="en">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. A. (2026). <i>RatioBos: Guided least-cost diet formulation for beef cattle</i> (Version 1.0.0) [Software]. https://github.com/hectortecumshe-ai/RatioBos</p></div>
+</section>
+
+<!-- ============================ M · MODELO DEL ANIMAL ============================ -->
+<section class="chap" id="animal" data-toc="M" style="--c:var(--b1)">
+  <div class="chap-head"><span class="big">M</span>
+    <div class="eyebrow" lang="es">Bloques 1 a 4</div><div class="eyebrow" lang="en">Blocks 1 to 4</div>
+    <h2 lang="es">El modelo del animal</h2><h2 lang="en">The animal model</h2>
+    <p lang="es">Requerimientos factoriales del sistema de energía neta de California (Lofgreen y Garrett, 1968) con las ecuaciones de NRC (1996, 2000) y NASEM (2016).</p>
+    <p lang="en">Factorial requirements from the California net energy system (Lofgreen &amp; Garrett, 1968) with the NRC (1996, 2000) and NASEM (2016) equations.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14c3 0 5-3 5-6M40 14c-3 0-5-3-5-6M13 14h22l3 8-4 4v10a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V26l-4-4z"/><path d="M20 33h8"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="m-peso" data-n="M.1"><span lang="es">Peso equivalente</span><span lang="en">Equivalent weight</span></h3>
+  <p lang="es">La composición de la ganancia depende de qué tan cerca está el animal de su peso a engrasamiento objetivo. NASEM lo resuelve escalando el peso del animal al de un animal de referencia con 478 kg de peso en ayuno al 28 % de grasa en la canal (SRW):</p>
+  <p lang="en">Gain composition depends on how close the animal is to its target-fatness weight. NASEM handles this by scaling the animal’s weight to a reference animal with 478 kg shrunk weight at 28 % carcass fat (SRW):</p>
+  <div class="eq"><math display="block"><mrow><mi>SBW</mi><mo>=</mo><mn>0.96</mn><mspace width="0.2em"/><mi>PV</mi><mo>,</mo><mspace width="1.2em"/><mi>EQSBW</mi><mo>=</mo><mi>SBW</mi><mo>·</mo><mfrac><mi>SRW</mi><mi>FSBW</mi></mfrac></mrow></math><span class="no">(1)</span></div>
+  <p lang="es">donde FSBW es 0.96 veces el peso final de referencia del Bloque 3 (o el peso adulto en vaquillas).</p>
+  <p lang="en">where FSBW is 0.96 times the final reference weight in Block 3 (or the mature weight for heifers).</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">SBW = 0.96 × 380 = 364.8 kg; FSBW = 0.96 × 620 = 595.2 kg; EQSBW = 364.8 × 478 / 595.2 = <b>293.0 kg</b>.</p>
+    <p lang="en">SBW = 0.96 × 380 = 364.8 kg; FSBW = 0.96 × 620 = 595.2 kg; EQSBW = 364.8 × 478 / 595.2 = <b>293.0 kg</b>.</p></div>
+
+  <h3 id="m-mant" data-n="M.2"><span lang="es">Mantenimiento</span><span lang="en">Maintenance</span></h3>
+  <div class="eq"><math display="block"><mrow><msub><mi>ENm</mi><mtext>req</mtext></msub><mo>=</mo><mo>(</mo><mn>0.077</mn><mspace width="0.15em"/><msub><mi>f</mi><mtext>raza</mtext></msub><mspace width="0.15em"/><msub><mi>f</mi><mtext>sexo</mtext></msub><mspace width="0.15em"/><msub><mi>f</mi><mtext>lact</mtext></msub><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><mo>)</mo><mspace width="0.15em"/><msup><mi>SBW</mi><mn>0.75</mn></msup><mo>·</mo><msub><mi>f</mi><mtext>jadeo</mtext></msub><mo>·</mo><msub><mi>f</mi><mtext>act</mtext></msub></mrow></math><span class="no">(2)</span></div>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Factor</th><th lang="en">Factor</th><th lang="es">Valores</th><th lang="en">Values</th><th lang="es">Fuente</th><th lang="en">Source</th></tr></thead>
+    <tbody>
+      <tr><td><math><msub><mi>f</mi><mtext>raza</mtext></msub></math></td><td lang="es">británico y continental 1.00; cebú 0.90; cruza 0.95; criollo 1.00; lechero 1.20</td><td lang="en">British and Continental 1.00; zebu 0.90; cross 0.95; Criollo 1.00; dairy 1.20</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>sexo</mtext></msub></math></td><td lang="es">novillo y vaquilla 1.00; torete 1.15</td><td lang="en">steer and heifer 1.00; bull 1.15</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>lact</mtext></msub></math></td><td lang="es">1.20 en vacas lactando</td><td lang="en">1.20 in lactating cows</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>a</mi><mn>2</mn></msub></math></td><td lang="es">0.0007 (20 − T<sub>previa</sub>): aclimatación a la temperatura del mes anterior</td><td lang="en">0.0007 (20 − T<sub>previous</sub>): acclimation to the previous month’s temperature</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>jadeo</mtext></msub></math></td><td lang="es">1.07 con jadeo rápido (ITH efectivo 79–83); 1.18 con boca abierta (≥ 84)</td><td lang="en">1.07 with rapid panting (effective THI 79–83); 1.18 open-mouth (≥ 84)</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>act</mtext></msub></math></td><td lang="es">corral 1.00; semiestabulado 1.05; pastoreo plano 1.10; lomerío 1.20</td><td lang="en">feedlot 1.00; semi-confined 1.05; flat grazing 1.10; hill grazing 1.20</td><td>NRC (1996)</td></tr>
+    </tbody></table></div>
+  <p lang="es">El ITH (NRC, 1971) es 0.81 T + HR/100 (T − 14.4) + 46.4. El <b>ITH efectivo</b> descuenta la sombra (lámina −2 puntos, sombra amplia −4, domo con ventiladores −6) y la adaptación del biotipo (cebú +3 puntos; cruzas y criollo +1.5; lechero −1), y decide el factor de jadeo.</p>
+  <p lang="en">THI (NRC, 1971) is 0.81 T + RH/100 (T − 14.4) + 46.4. The <b>effective THI</b> credits shade (sheet −2 points, ample shade −4, dome with fans −6) and biotype adaptation (zebu +3 points; crosses and Criollo +1.5; dairy −1), and sets the panting factor.</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Mes anterior a 17 °C: a<sub>2</sub> = 0.0021. ENm<sub>req</sub> = (0.077 × 0.95 × 1.15 + 0.0021) × 364.8<sup>0.75</sup> = <b>7.20 Mcal/d</b>. Sin jadeo (ITH efectivo 64.1) y en corral.</p>
+    <p lang="en">Previous month at 17 °C: a<sub>2</sub> = 0.0021. NEm<sub>req</sub> = (0.077 × 0.95 × 1.15 + 0.0021) × 364.8<sup>0.75</sup> = <b>7.20 Mcal/d</b>. No panting (effective THI 64.1), feedlot.</p></div>
+
+  <h3 id="m-consumo" data-n="M.3"><span lang="es">Consumo</span><span lang="en">Intake</span></h3>
+  <p lang="es">El consumo esperado depende de la ENm de la ración (NRC, 1996). Para animales en crecimiento:</p>
+  <p lang="en">Expected intake depends on the ration’s NEm (NRC, 1996). For growing cattle:</p>
+  <div class="eq"><math display="block"><mrow><mi>CMS</mi><mo>=</mo><msup><mi>SBW</mi><mn>0.75</mn></msup><mo>·</mo><mfrac><mrow><mn>0.2435</mn><mspace width="0.1em"/><mi>g</mi><mo>−</mo><mn>0.0466</mn><mspace width="0.1em"/><msup><mi>g</mi><mn>2</mn></msup><mo>−</mo><mi>k</mi></mrow><mi>g</mi></mfrac><mo>·</mo><munder><mo>∏</mo><mi>m</mi></munder><msub><mi>F</mi><mi>m</mi></msub></mrow></math><span class="no">(3)</span></div>
+  <p lang="es">con <i>k</i> = 0.1128 para añojos y 0.0869 para becerros, y <i>g</i> la ENm de la ración en Mcal/kg MS. En vacas: CMS = SBW<sup>0.75</sup> (0.04997 <i>g</i><sup>2</sup> + 0.03840)/<i>g</i> (0.04631 en lactación) + 0.2 × leche. Los factores <i>F</i> son: grasa corporal por EQSBW (de 1.00 a 0.73 entre 350 y 550 kg), sin implante 0.94, ionóforo 0.97, temperatura (0.65 a 1.16) y lodo (−1 % por cm). El usuario puede sustituir el consumo predicho por el observado.</p>
+  <p lang="en">with <i>k</i> = 0.1128 for yearlings and 0.0869 for calves, and <i>g</i> the ration NEm in Mcal/kg DM. For cows: DMI = SBW<sup>0.75</sup> (0.04997 <i>g</i><sup>2</sup> + 0.03840)/<i>g</i> (0.04631 in lactation) + 0.2 × milk. The factors <i>F</i> are: body fat by EQSBW (from 1.00 to 0.73 between 350 and 550 kg), no implant 0.94, ionophore 0.97, temperature (0.65 to 1.16) and mud (−1 % per cm). The user can replace predicted intake with observed intake.</p>
+
+  <h3 id="m-ganancia" data-n="M.4"><span lang="es">Energía y proteína de la ganancia</span><span lang="en">Energy and protein of gain</span></h3>
+  <div class="eq"><math display="block"><mtable columnalign="right left" rowspacing="0.6em">
+    <mtr><mtd><mi>ER</mi></mtd><mtd><mo>=</mo><mn>0.0635</mn><mspace width="0.15em"/><msup><mrow><mo>(</mo><mn>0.891</mn><mspace width="0.1em"/><mi>EQSBW</mi><mo>)</mo></mrow><mn>0.75</mn></msup><msup><mrow><mo>(</mo><mn>0.956</mn><mspace width="0.1em"/><mi>SWG</mi><mo>)</mo></mrow><mn>1.097</mn></msup></mtd></mtr>
+    <mtr><mtd><msub><mi>PN</mi><mi>g</mi></msub></mtd><mtd><mo>=</mo><mi>SWG</mi><mspace width="0.15em"/><mo>(</mo><mn>268</mn><mo>−</mo><mn>29.4</mn><mspace width="0.15em"/><mi>ER</mi><mo>/</mo><mi>SWG</mi><mo>)</mo></mtd></mtr>
+    <mtr><mtd><msub><mi>PM</mi><mi>g</mi></msub></mtd><mtd><mo>=</mo><msub><mi>PN</mi><mi>g</mi></msub><mo>/</mo><mi>e</mi><mo>,</mo><mspace width="1em"/><mi>e</mi><mo>=</mo><mn>0.834</mn><mo>−</mo><mn>0.00114</mn><mspace width="0.1em"/><mi>EQSBW</mi><mspace width="0.6em"/><mtext lang="es">(≥ 0.492)</mtext><mtext lang="en">(≥ 0.492)</mtext></mtd></mtr>
+    <mtr><mtd><msub><mi>PM</mi><mi>m</mi></msub></mtd><mtd><mo>=</mo><mn>3.8</mn><mspace width="0.15em"/><msup><mi>SBW</mi><mn>0.75</mn></msup></mtd></mtr>
+  </mtable></math><span class="no">(4)</span></div>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Con SWG = 1.35 kg/d: ER = <b>5.46 Mcal/d</b>; PN<sub>g</sub> = 201.4 g/d; <i>e</i> = 0.500; PM<sub>g</sub> = 402.8 g/d; PM<sub>m</sub> = 317.2 g/d; PM total = <b>720 g/d</b>.</p>
+    <p lang="en">With SWG = 1.35 kg/d: RE = <b>5.46 Mcal/d</b>; NP<sub>g</sub> = 201.4 g/d; <i>e</i> = 0.500; MP<sub>g</sub> = 402.8 g/d; MP<sub>m</sub> = 317.2 g/d; total MP = <b>720 g/d</b>.</p></div>
+
+  <h3 id="m-pm" data-n="M.5"><span lang="es">Aporte de proteína metabolizable</span><span lang="en">Metabolizable protein supply</span></h3>
+  <p lang="es">La síntesis microbiana se estima con la ecuación de Galyean y Tedeschi (2014), adoptada por NASEM (2016), a partir del TND consumido; la grasa añadida no se cuenta porque no alimenta a los microbios:</p>
+  <p lang="en">Microbial synthesis is estimated with the Galyean and Tedeschi (2014) equation, adopted by NASEM (2016), from TDN intake; added fat is excluded because it does not feed the microbes:</p>
+  <div class="eq"><math display="block"><mrow><mi>PCM</mi><mo>=</mo><mn>42.73</mn><mo>+</mo><mn>0.087</mn><mspace width="0.15em"/><msub><mi>TND</mi><mtext>cons</mtext></msub><mo>,</mo><mspace width="1.2em"/><mi>PM</mi><mo>=</mo><mn>0.64</mn><mspace width="0.15em"/><mi>PCM</mi><mo>+</mo><mn>0.80</mn><mspace width="0.15em"/><mi>PNDR</mi></mrow></math><span class="no">(5)</span></div>
+  <p lang="es">Además se exige que la proteína degradable cubra la proteína microbiana (balance PDR − PCM ≥ 0); si no la cubre, la PM aportada se reduce en consecuencia. El término constante 42.73 g/d se divide entre el consumo para expresarlo por kilo de MS, de modo que la restricción sigue siendo lineal en las inclusiones.</p>
+  <p lang="en">The degradable protein must also cover microbial protein (RDP − MCP balance ≥ 0); otherwise the MP supply is reduced accordingly. The constant 42.73 g/d is divided by intake to express it per kilo of DM, so the constraint stays linear in the inclusions.</p>
+
+  <h3 id="m-vacas" data-n="M.6"><span lang="es">Gestación, lactación y minerales</span><span lang="en">Pregnancy, lactation and minerals</span></h3>
+  <p lang="es">Gestación (NRC, 1996), con <i>t</i> días de gestación y PN el peso al nacer:</p>
+  <p lang="en">Pregnancy (NRC, 1996), with <i>t</i> days pregnant and BW<sub>b</sub> the birth weight:</p>
+  <div class="eq"><math display="block"><mtable columnalign="right left" rowspacing="0.6em">
+    <mtr><mtd><msub><mi>EM</mi><mi>y</mi></msub></mtd><mtd><mo>=</mo><mi>PN</mi><mspace width="0.15em"/><mo>(</mo><mn>0.4504</mn><mo>−</mo><mn>0.000766</mn><mspace width="0.1em"/><mi>t</mi><mo>)</mo><mspace width="0.15em"/><msup><mi>e</mi><mrow><mo>(</mo><mn>0.03233</mn><mo>−</mo><mn>0.0000275</mn><mi>t</mi><mo>)</mo><mi>t</mi></mrow></msup><mo>/</mo><mn>1000</mn></mtd></mtr>
+    <mtr><mtd><msub><mi>PM</mi><mi>y</mi></msub></mtd><mtd><mo>=</mo><mn>6.25</mn><mspace width="0.15em"/><mi>PN</mi><mspace width="0.15em"/><mo>(</mo><mn>0.001669</mn><mo>−</mo><mn>0.00000211</mn><mspace width="0.1em"/><mi>t</mi><mo>)</mo><mspace width="0.15em"/><msup><mi>e</mi><mrow><mo>(</mo><mn>0.0278</mn><mo>−</mo><mn>0.0000176</mn><mi>t</mi><mo>)</mo><mi>t</mi></mrow></msup><mo>/</mo><mn>0.65</mn></mtd></mtr>
+  </mtable></math><span class="no">(6)</span></div>
+  <p lang="es">La EM<sub>y</sub> se convierte a ENm con k<sub>m</sub> = ENm/EM de la ración. Lactación: ENl = leche × (0.3512 + 0.0962 × grasa %) y PM<sub>l</sub> = leche × proteína % × 10 / 0.65. Calcio y fósforo son factoriales: mantenimiento 15.4 y 16 mg/kg SBW, crecimiento 7.1 % y 3.9 % de la proteína retenida, más la gestación tardía y la leche, con absorción de 50 % (Ca) y 68 % (P).</p>
+  <p lang="en">ME<sub>y</sub> is converted to NEm with k<sub>m</sub> = ration NEm/ME. Lactation: NEl = milk × (0.3512 + 0.0962 × fat %) and MP<sub>l</sub> = milk × protein % × 10 / 0.65. Calcium and phosphorus are factorial: maintenance 15.4 and 16 mg/kg SBW, growth 7.1 % and 3.9 % of retained protein, plus late pregnancy and milk, with 50 % (Ca) and 68 % (P) absorption.</p>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución · límites prácticos</span><span class="bt" lang="en">Caution · practical limits</span>
+    <p lang="es">Forraje, FDN físicamente efectiva, grasa, azufre, sodio y proteína cruda máxima no salen de ecuaciones: son límites prácticos por tipo de animal (por ejemplo, 8–15 % de forraje y FDNfe ≥ 7 % en finalización). El máximo de azufre se reduce con el azufre que aporta el agua (3.5–5 L por kg de MS según la temperatura).</p>
+    <p lang="en">Forage, physically effective NDF, fat, sulfur, sodium and maximum crude protein do not come from equations: they are practical limits per animal type (e.g. 8–15 % forage and peNDF ≥ 7 % in finishing). The sulfur maximum is reduced by the sulfur supplied by water (3.5–5 L per kg DM depending on temperature).</p></div>
+</section>
+
+<!-- ============================ F · FORMULACIÓN ============================ -->
+<section class="chap" id="formulacion" data-toc="F" style="--c:var(--b7)">
+  <div class="chap-head"><span class="big">F</span>
+    <div class="eyebrow" lang="es">Bloques 5 a 7</div><div class="eyebrow" lang="en">Blocks 5 to 7</div>
+    <h2 lang="es">Formulación: programa lineal y punto fijo</h2><h2 lang="en">Formulation: linear program and fixed point</h2>
+    <p lang="es">El costo mínimo se obtiene con programación lineal; la dependencia entre la energía de la ración y el consumo se resuelve con un punto fijo alrededor del programa lineal.</p>
+    <p lang="en">Least cost comes from linear programming; the dependence between ration energy and intake is resolved with a fixed point around the linear program.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42V6M6 42h36"/><path d="M10 14l26 6-10 18z" fill="currentColor" fill-opacity=".14"/><circle cx="26" cy="38" r="2.6" fill="currentColor"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="f-pl" data-n="F.1"><span lang="es">El programa lineal</span><span lang="en">The linear program</span></h3>
+  <p lang="es">Las variables son las inclusiones <i>x<sub>i</sub></i> en % de la MS. Para un consumo <i>C</i> y unos requerimientos por kilo de MS dados, RatioBos resuelve:</p>
+  <p lang="en">The variables are the inclusions <i>x<sub>i</sub></i> in % of DM. For a given intake <i>C</i> and per-kilo requirements, RatioBos solves:</p>
+  <div class="eq"><math display="block">
+    <mtable columnalign="right left" rowspacing="0.55em">
+      <mtr><mtd><munder><mo movablelimits="false">min</mo><mi>𝐱</mi></munder></mtd><mtd><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>c</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mtd></mtr>
+      <mtr><mtd><mtext lang="es">sujeto a</mtext><mtext lang="en">subject to</mtext></mtd><mtd><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mn>100</mn></mtd></mtr>
+      <mtr><mtd></mtd><mtd><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>x</mi><mi>i</mi></msub><mo>≥</mo><mn>100</mn><mo>(</mo><msubsup><mi>b</mi><mi>j</mi><mo>−</mo></msubsup><mo>−</mo><msub><mi>k</mi><mi>j</mi></msub><mo>(</mo><mi>C</mi><mo>)</mo><mo>)</mo><mo>,</mo><mspace width="0.8em"/><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>x</mi><mi>i</mi></msub><mo>≤</mo><mn>100</mn><mo>(</mo><msubsup><mi>b</mi><mi>j</mi><mo>+</mo></msubsup><mo>−</mo><msub><mi>k</mi><mi>j</mi></msub><mo>(</mo><mi>C</mi><mo>)</mo><mo>)</mo></mtd></mtr>
+      <mtr><mtd></mtd><mtd><msub><mi>l</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>x</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>u</mi><mi>i</mi></msub></mtd></mtr>
+    </mtable></math><span class="no">(7)</span></div>
+  <p lang="es">donde <i>a<sub>ij</sub></i> es el aporte de 1 kg de MS del ingrediente <i>i</i> al nutriente <i>j</i> y <i>k<sub>j</sub></i>(<i>C</i>) es el término constante de la síntesis microbiana (0.64 × 42.73/<i>C</i> para la PM y −42.73/<i>C</i> para el balance de PDR; cero para los demás). Los aportes por ingrediente de las restricciones derivadas son:</p>
+  <p lang="en">where <i>a<sub>ij</sub></i> is the contribution of 1 kg DM of ingredient <i>i</i> to nutrient <i>j</i> and <i>k<sub>j</sub></i>(<i>C</i>) is the constant term of microbial synthesis (0.64 × 42.73/<i>C</i> for MP and −42.73/<i>C</i> for the RDP balance; zero otherwise). The per-ingredient contributions of the derived constraints are:</p>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Restricción</th><th lang="en">Constraint</th><th lang="es">Aporte de 1 kg MS del ingrediente</th><th lang="en">Contribution of 1 kg DM of the ingredient</th></tr></thead>
+    <tbody>
+      <tr><td lang="es">Proteína metabolizable (g/kg)</td><td lang="en">Metabolizable protein (g/kg)</td><td>0.64 × 0.087 × 10 TND<sub>i</sub> + 0.80 × 10 PC<sub>i</sub> (1 − PDR<sub>i</sub>/100)</td></tr>
+      <tr><td lang="es">Balance PDR − PCM (g/kg)</td><td lang="en">RDP − MCP balance (g/kg)</td><td>10 PC<sub>i</sub> PDR<sub>i</sub>/100 − 0.087 × 10 TND<sub>i</sub></td></tr>
+      <tr><td lang="es">FDN físicamente efectiva (%)</td><td lang="en">Physically effective NDF (%)</td><td>FDN<sub>i</sub> × pef<sub>i</sub></td></tr>
+      <tr><td lang="es">Forraje (%)</td><td lang="en">Forage (%)</td><td lang="es">100 si es forraje seco, ensilaje o forraje verde; 0 si no</td><td lang="en">100 for dry forage, silage or fresh forage; 0 otherwise</td></tr>
+    </tbody></table></div>
+  <p lang="es">En la grasa añadida TND<sub>i</sub> se toma como cero en las dos primeras filas. Cada fila se escala dividiéndola entre su mayor coeficiente en valor absoluto antes de resolver.</p>
+  <p lang="en">For added fat TDN<sub>i</sub> is taken as zero in the first two rows. Each row is scaled by its largest absolute coefficient before solving.</p>
+
+  <h3 id="f-simplex" data-n="F.2"><span lang="es">Símplex y certificado de optimalidad</span><span lang="en">Simplex and optimality certificate</span></h3>
+  <div class="spec">
+    <div><span lang="es">Método</span><span lang="en">Method</span><b lang="es">Símplex tabular en dos fases</b><b lang="en">Two-phase tableau simplex</b></div>
+    <div><span lang="es">Pivoteo</span><span lang="en">Pivoting</span><b lang="es">Regla de Bland (anticiclado)</b><b lang="en">Bland’s rule (anti-cycling)</b></div>
+    <div><span lang="es">Aritmética</span><span lang="en">Arithmetic</span><b lang="es">Doble precisión (IEEE 754)</b><b lang="en">Double precision (IEEE 754)</b></div>
+    <div><span lang="es">Infactibilidad</span><span lang="en">Infeasibility</span><b lang="es">Suma de artificiales &gt; 10⁻⁷</b><b lang="en">Artificial sum &gt; 10⁻⁷</b></div>
+    <div><span lang="es">Certificado</span><span lang="en">Certificate</span><b lang="es">Dualidad fuerte, brecha &lt; 10⁻⁷</b><b lang="en">Strong duality, gap &lt; 10⁻⁷</b></div>
+    <div><span lang="es">Diagnóstico</span><span lang="en">Diagnosis</span><b lang="es">Relajación de una restricción a la vez</b><b lang="en">One-constraint-at-a-time relaxation</b></div>
+  </div>
+  <div class="box thm"><span class="bi">∴</span><span class="bt" lang="es">Resultado · dualidad fuerte</span><span class="bt" lang="en">Result · strong duality</span>
+    <p lang="es">Si <b>x</b> es factible en el primal, <b>y</b> es factible en el dual y <b>c</b>ᵀ<b>x</b> = <b>b</b>ᵀ<b>y</b>, ambos son óptimos (Dantzig, 1963). RatioBos comprueba las tres condiciones con los valores numéricos de la solución antes de mostrarla; si alguna falla, lo dice.</p>
+    <p lang="en">If <b>x</b> is primal feasible, <b>y</b> is dual feasible and <b>c</b>ᵀ<b>x</b> = <b>b</b>ᵀ<b>y</b>, both are optimal (Dantzig, 1963). RatioBos checks all three conditions on the numerical solution before displaying it; if one fails, it says so.</p></div>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">12 variables, 21 restricciones, 39 pivotes. Violación primal 4.3 × 10⁻¹⁴, violación dual 1.5 × 10⁻¹³, brecha relativa <b>2.0 × 10⁻¹⁵</b>. Restricciones activas: ENg ≥ 1.254 Mcal/kg (precio sombra $2.39 por Mcal/kg), PM ≥ 92.8 g/kg ($0.0095 por g/kg), balance de PDR ≥ 0, Ca ≥ 0.514 %, Na ≥ 0.08 % y la premezcla fija en 0.3 %.</p>
+    <p lang="en">12 variables, 21 constraints, 39 pivots. Primal violation 4.3 × 10⁻¹⁴, dual violation 1.5 × 10⁻¹³, relative gap <b>2.0 × 10⁻¹⁵</b>. Binding constraints: NEg ≥ 1.254 Mcal/kg (shadow price $2.39 per Mcal/kg), MP ≥ 92.8 g/kg ($0.0095 per g/kg), RDP balance ≥ 0, Ca ≥ 0.514 %, Na ≥ 0.08 % and premix fixed at 0.3 %.</p></div>
+  <p lang="es">El <b>precio sombra</b> se lee como el cambio del costo por kilo de MS al subir en una unidad el requerimiento: exigir 0.01 Mcal/kg más de ENg encarece la ración $23.9 por tonelada de MS. El <b>costo reducido</b> de un ingrediente no usado es lo que debería bajar su precio por kilo de MS para entrar; dividido entre 100/MS da el «precio de entrada» tal como se ofrece que ve el productor.</p>
+  <p lang="en">The <b>shadow price</b> reads as the change in cost per kilo of DM when the requirement rises by one unit: demanding 0.01 Mcal/kg more NEg raises the ration cost by $23.9 per tonne of DM. The <b>reduced cost</b> of an unused ingredient is how much its price per kilo of DM must fall for it to enter; converted to an as-fed basis it gives the “entry price” the producer sees.</p>
+
+  <h3 id="f-puntofijo" data-n="F.3"><span lang="es">El ajuste de energía y consumo</span><span lang="en">The energy–intake adjustment</span></h3>
+  <p lang="es">El programa lineal necesita el consumo <i>C</i> y la ENg requerida por kilo, pero ambos dependen de la ENm de la ración que todavía no se conoce. Para una ENm supuesta <i>g</i>, el consumo sale de (3) y la ENg requerida por kilo es</p>
+  <p lang="en">The linear program needs intake <i>C</i> and the NEg required per kilo, but both depend on the ration NEm, which is not yet known. For an assumed NEm <i>g</i>, intake comes from (3) and the NEg required per kilo is</p>
+  <div class="eq"><math display="block"><mrow><msub><mi>ENg</mi><mtext>req</mtext></msub><mo>(</mo><mi>g</mi><mo>)</mo><mo>=</mo><mfrac><mi>ER</mi><mrow><mi>C</mi><mo>(</mo><mi>g</mi><mo>)</mo><mo>−</mo><msub><mi>ENm</mi><mtext>req</mtext></msub><mo>/</mo><mo>(</mo><mi>g</mi><mspace width="0.1em"/><msub><mi>f</mi><mtext>ion</mtext></msub><mo>)</mo></mrow></mfrac></mrow></math><span class="no">(8)</span></div>
+  <p lang="es">(el alimento que se va en mantenimiento no queda para ganar). Con esos datos se resuelve (7) y se obtiene una ración con su propia ENm, ENm<sub>dieta</sub>(<i>g</i>). La solución coherente es un <b>punto fijo</b>: f(<i>g</i>) = ENm<sub>dieta</sub>(<i>g</i>) − <i>g</i> = 0. RatioBos lo busca así:</p>
+  <p lang="en">(feed spent on maintenance is not available for gain). With these data (7) is solved, giving a ration with its own NEm, NEm<sub>diet</sub>(<i>g</i>). The consistent solution is a <b>fixed point</b>: f(<i>g</i>) = NEm<sub>diet</sub>(<i>g</i>) − <i>g</i> = 0. RatioBos searches for it as follows:</p>
+  <ol>
+    <li lang="es"><b>Pasos directos amortiguados</b>: <i>g</i> ← <i>g</i> + 0.85 f(<i>g</i>), hasta 7 evaluaciones, deteniéndose si |f| &lt; 0.002 Mcal/kg.</li>
+    <li lang="en"><b>Damped direct steps</b>: <i>g</i> ← <i>g</i> + 0.85 f(<i>g</i>), up to 7 evaluations, stopping when |f| &lt; 0.002 Mcal/kg.</li>
+    <li lang="es">Si no converge, <b>barrido</b> de <i>g</i> entre 0.8 y 2.9 Mcal/kg cada 0.1, y <b>bisección</b> (30 pasos, tolerancia 0.0005) en el primer par de raciones factibles con cambio de signo (f ≥ 0 → f &lt; 0).</li>
+    <li lang="en">If it does not converge, a <b>sweep</b> of <i>g</i> from 0.8 to 2.9 Mcal/kg in 0.1 steps, and <b>bisection</b> (30 steps, tolerance 0.0005) on the first pair of feasible rations with a sign change (f ≥ 0 → f &lt; 0).</li>
+    <li lang="es">Se conserva la ración del lado <b>conservador</b> (f ≥ 0): su ENm real es al menos la supuesta, así que cumple el requerimiento verdadero. Sin cambio de signo, se usa la factible con f ≥ 0 más cercana a cero.</li>
+    <li lang="en">The ration on the <b>conservative</b> side (f ≥ 0) is kept: its true NEm is at least the assumed one, so it meets the true requirement. With no sign change, the feasible one with f ≥ 0 closest to zero is used.</li>
+  </ol>
+  <figure class="svgfig"><svg viewBox="0 0 760 400" role="img"><rect x="64.0" y="20" width="149.1" height="316" fill="var(--b8)" opacity=".08"/><rect x="571.0" y="20" width="169.0" height="316" fill="var(--b8)" opacity=".08"/><text lang="es" x="139.6" y="38" text-anchor="middle" font-size="12" class="mu">sin solución</text><text lang="en" x="139.6" y="38" text-anchor="middle" font-size="12" class="mu">infeasible</text><text lang="es" x="656.5" y="38" text-anchor="middle" font-size="12" class="mu">sin solución</text><text lang="en" x="656.5" y="38" text-anchor="middle" font-size="12" class="mu">infeasible</text><line class="ln" x1="64" x2="740" y1="336.0" y2="336.0" stroke-dasharray="2 4"/><text x="56" y="340.0" text-anchor="end" font-size="12" class="mu">1.2</text><line class="ln" x1="64" x2="740" y1="261.6" y2="261.6" stroke-dasharray="2 4"/><text x="56" y="265.6" text-anchor="end" font-size="12" class="mu">1.6</text><line class="ln" x1="64" x2="740" y1="187.3" y2="187.3" stroke-dasharray="2 4"/><text x="56" y="191.3" text-anchor="end" font-size="12" class="mu">2.0</text><line class="ln" x1="64" x2="740" y1="112.9" y2="112.9" stroke-dasharray="2 4"/><text x="56" y="116.9" text-anchor="end" font-size="12" class="mu">2.4</text><line class="ln" x1="64" x2="740" y1="38.6" y2="38.6" stroke-dasharray="2 4"/><text x="56" y="42.6" text-anchor="end" font-size="12" class="mu">2.8</text><text x="64.0" y="354" text-anchor="middle" font-size="12" class="mu">1.2</text><text x="223.1" y="354" text-anchor="middle" font-size="12" class="mu">1.6</text><text x="382.1" y="354" text-anchor="middle" font-size="12" class="mu">2.0</text><text x="541.2" y="354" text-anchor="middle" font-size="12" class="mu">2.4</text><text x="700.2" y="354" text-anchor="middle" font-size="12" class="mu">2.8</text><line class="ln" x1="64" x2="740" y1="336" y2="336"/><text lang="es" x="402" y="374" text-anchor="middle" font-size="12.5" class="mu">ENm supuesta g (Mcal/kg MS)</text><text lang="en" x="402" y="374" text-anchor="middle" font-size="12.5" class="mu">assumed NEm g (Mcal/kg DM)</text><g transform="translate(16 178) rotate(-90)"><text lang="es" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">ENm de la ración</text><text lang="en" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">ration NEm</text></g><line x1="64.0" y1="336.0" x2="740.0" y2="20.0" stroke="var(--muted)" stroke-dasharray="6 5"/><text lang="es" x="628.7" y="64.0" text-anchor="end" font-size="12" class="mu">ENm ración = g</text><text lang="en" x="628.7" y="64.0" text-anchor="end" font-size="12" class="mu">ration NEm = g</text><polyline points="223.1,176.1 242.9,189.6 262.8,196.0 282.7,200.7 302.6,204.0 322.5,206.8 342.4,208.6 362.2,209.8 382.1,210.3 402.0,210.5 421.9,209.9 441.8,209.0 461.6,207.5 481.5,205.7 501.4,203.2 521.3,200.5 541.2,197.2 561.1,193.5" fill="none" stroke="var(--b7)" stroke-width="3"/><circle cx="223.1" cy="176.1" r="2.6" fill="var(--b7)"/><circle cx="242.9" cy="189.6" r="2.6" fill="var(--b7)"/><circle cx="262.8" cy="196.0" r="2.6" fill="var(--b7)"/><circle cx="282.7" cy="200.7" r="2.6" fill="var(--b7)"/><circle cx="302.6" cy="204.0" r="2.6" fill="var(--b7)"/><circle cx="322.5" cy="206.8" r="2.6" fill="var(--b7)"/><circle cx="342.4" cy="208.6" r="2.6" fill="var(--b7)"/><circle cx="362.2" cy="209.8" r="2.6" fill="var(--b7)"/><circle cx="382.1" cy="210.3" r="2.6" fill="var(--b7)"/><circle cx="402.0" cy="210.5" r="2.6" fill="var(--b7)"/><circle cx="421.9" cy="209.9" r="2.6" fill="var(--b7)"/><circle cx="441.8" cy="209.0" r="2.6" fill="var(--b7)"/><circle cx="461.6" cy="207.5" r="2.6" fill="var(--b7)"/><circle cx="481.5" cy="205.7" r="2.6" fill="var(--b7)"/><circle cx="501.4" cy="203.2" r="2.6" fill="var(--b7)"/><circle cx="521.3" cy="200.5" r="2.6" fill="var(--b7)"/><circle cx="541.2" cy="197.2" r="2.6" fill="var(--b7)"/><circle cx="561.1" cy="193.5" r="2.6" fill="var(--b7)"/><polyline points="402.0,178.0 402.0,210.5 332.5,210.5 342.9,205.6 342.9,208.6 336.5,208.6 337.5,208.2 337.5,208.2 337.4,208.2" fill="none" stroke="var(--b3)" stroke-width="1.8"/><circle cx="402.0" cy="210.5" r="5" fill="var(--paper)" stroke="var(--b3)" stroke-width="2"/><text x="410.0" y="230.5" font-size="12" font-weight="700" fill="var(--b3)">1</text><circle cx="342.9" cy="208.6" r="5" fill="var(--paper)" stroke="var(--b3)" stroke-width="2"/><circle cx="337.5" cy="208.2" r="5" fill="var(--paper)" stroke="var(--b3)" stroke-width="2"/><text x="319.5" y="228.2" font-size="12" font-weight="700" fill="var(--b3)">3</text><circle cx="337.6" cy="208.1" r="7" fill="var(--b7)"/><text lang="es" x="325.6" y="194.1" text-anchor="end" font-size="13" font-weight="700">punto fijo g* = 1.888</text><text lang="en" x="325.6" y="194.1" text-anchor="end" font-size="13" font-weight="700">fixed point g* = 1.888</text></svg><figcaption><span class="fn"></span><span lang="es"><b>El punto fijo del caso.</b> Curva terracota: ENm de la ración de costo mínimo para cada ENm supuesta; línea punteada: identidad. En azul, las tres iteraciones que hizo la app desde g = 2.05. Fuera de 1.6–2.45 Mcal/kg el programa lineal no tiene solución.</span><span lang="en"><b>The case fixed point.</b> Terracotta curve: NEm of the least-cost ration for each assumed NEm; dashed line: identity. In blue, the three iterations the app made from g = 2.05. Outside 1.6–2.45 Mcal/kg the linear program has no solution.</span></figcaption></figure>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Partiendo de <i>g</i> = 2.05: la ración resultante tiene 1.875 Mcal/kg; con <i>g</i> = 1.901 da 1.885; con <i>g</i> = 1.888 da 1.8875 (|f| = 0.0003). Tres programas lineales bastaron. Consumo final 7.75 kg MS/d; ENg requerida 1.254 Mcal/kg.</p>
+    <p lang="en">Starting from <i>g</i> = 2.05: the resulting ration has 1.875 Mcal/kg; with <i>g</i> = 1.901 it gives 1.885; with <i>g</i> = 1.888 it gives 1.8875 (|f| = 0.0003). Three linear programs sufficed. Final intake 7.75 kg DM/d; NEg required 1.254 Mcal/kg.</p></div>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución · por qué no basta iterar</span><span class="bt" lang="en">Caution · why plain iteration is not enough</span>
+    <p lang="es">Con metas de ganancia bajas, el programa lineal de costo mínimo puede devolver raciones con ENm muy por debajo de la supuesta, y con ENm supuestas bajas el problema se vuelve infactible (el consumo cae y la ENg requerida por kilo se dispara). La iteración simple oscila o se detiene en la región infactible; el barrido con bisección encuentra el cruce si existe. Los minerales sin energía (carbonato, fosfato) se limitan a 2 % de la MS para impedir que funcionen como «diluyentes» baratos de la energía.</p>
+    <p lang="en">With low gain targets, the least-cost linear program can return rations with NEm far below the assumed value, and with low assumed NEm the problem turns infeasible (intake falls and the NEg required per kilo soars). Plain iteration oscillates or stalls in the infeasible region; the sweep with bisection finds the crossing if it exists. Energy-free minerals (limestone, phosphate) are capped at 2 % of DM to stop them acting as cheap energy “diluents”.</p></div>
+
+  <h3 id="f-gmax" data-n="F.4"><span lang="es">Ganancia máxima factible</span><span lang="en">Maximum feasible gain</span></h3>
+  <p lang="es">Si (7) no tiene solución para la meta, se busca por bisección (14 pasos entre 0.1 kg/d y la meta) la mayor ganancia con la que el procedimiento F.3 da una ración factible. Es la que ofrece el botón «Usar … kg/d y formular» y la que usan el programa y la comparación regional cuando el clima no permite la meta.</p>
+  <p lang="en">If (7) has no solution for the target, bisection (14 steps between 0.1 kg/d and the target) finds the highest gain for which the F.3 procedure yields a feasible ration. It is the gain behind the “Use … kg/d and formulate” button, and the one the program and the regional comparison use when the climate does not allow the target.</p>
+</section>
+
+<!-- ============================ D · DESEMPEÑO Y ECONOMÍA ============================ -->
+<section class="chap" id="desempeno" data-toc="D" style="--c:var(--b9)">
+  <div class="chap-head"><span class="big">D</span>
+    <div class="eyebrow" lang="es">Bloques 7 a 9</div><div class="eyebrow" lang="en">Blocks 7 to 9</div>
+    <h2 lang="es">Desempeño predicho y economía</h2><h2 lang="en">Predicted performance and economics</h2>
+    <p lang="es">De la ración a la ganancia, del día al ciclo completo y del ciclo a la utilidad.</p>
+    <p lang="en">From ration to gain, from one day to the whole cycle and from the cycle to profit.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42h36"/><rect x="9" y="26" width="6" height="12"/><rect x="21" y="18" width="6" height="20"/><rect x="33" y="10" width="6" height="28"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="d-ganancia" data-n="D.1"><span lang="es">Ganancia permitida por energía y por proteína</span><span lang="en">Energy- and protein-allowable gain</span></h3>
+  <p lang="es">Con la ración formulada se calcula el alimento destinado a mantenimiento, FM = ENm<sub>req</sub>/(ENm<sub>dieta</sub> · f<sub>ion</sub>), y la energía disponible para ganar, ER<sub>disp</sub> = (C − FM) ENg<sub>dieta</sub>. La <b>ganancia permitida por energía</b> es la inversa exacta de (4), resuelta por bisección (60 pasos). La <b>ganancia permitida por proteína</b> resuelve PN<sub>g</sub>(SWG) = (PM<sub>aportada</sub> − PM<sub>m</sub>) · <i>e</i>. La ganancia predicha es la menor de las dos y la app indica cuál limita.</p>
+  <p lang="en">With the formulated ration, feed for maintenance is FM = NEm<sub>req</sub>/(NEm<sub>diet</sub> · f<sub>ion</sub>) and energy available for gain is RE<sub>av</sub> = (C − FM) NEg<sub>diet</sub>. <b>Energy-allowable gain</b> is the exact inverse of (4), solved by bisection (60 steps). <b>Protein-allowable gain</b> solves NP<sub>g</sub>(SWG) = (MP<sub>supplied</sub> − MP<sub>m</sub>) · <i>e</i>. Predicted gain is the smaller of the two, and the app reports which one limits.</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">FM = 3.40 kg MS/d; C − FM = 4.35 kg MS/d; ER<sub>disp</sub> = 5.455 Mcal/d; ganancia por energía 1.34996 kg/d y por proteína 1.35001 kg/d: <b>las dos restricciones están activas a la vez</b>, señal de una ración bien equilibrada.</p>
+    <p lang="en">FM = 3.40 kg DM/d; C − FM = 4.35 kg DM/d; RE<sub>av</sub> = 5.455 Mcal/d; energy-allowable gain 1.34996 kg/d and protein-allowable 1.35001 kg/d: <b>both constraints bind at once</b>, the mark of a well-balanced ration.</p></div>
+
+  <h3 id="d-programa" data-n="D.2"><span lang="es">Simulación del programa</span><span lang="en">Program simulation</span></h3>
+  <p lang="es">Para cada fase se formula una ración con el peso medio de la fase, su meta de ganancia (o la máxima factible, buscada por bisección) y su rango de forraje (en la recepción de engorda, además, FDNfe ≥ 12 %), y luego se simula el crecimiento <b>día a día</b>: cada día se recalculan el consumo esperado (con el término microbiano de la PM ajustado a ese consumo) y la ganancia permitida por esa ración al peso de ese día, hasta alcanzar el peso final de la fase. Se acumulan días, MS, costo, metano y nitrógeno. La utilidad incluye compra, alimento, otros costos por día y venta; el precio de equilibrio es el precio de venta que la hace cero.</p>
+  <p lang="en">For each phase a ration is formulated at the phase’s mid-weight, gain target (or the maximum feasible, found by bisection) and forage range (in feedlot receiving, also peNDF ≥ 12 %), then growth is simulated <b>day by day</b>: each day expected intake (with the microbial MP term adjusted to that intake) and the gain that ration allows at that day’s weight are recomputed, until the phase end weight is reached. Days, DM, cost, methane and nitrogen are accumulated. Profit includes purchase, feed, other daily costs and sale; the break-even price is the sale price that makes it zero.</p>
+
+  <h3 id="d-optimo" data-n="D.3"><span lang="es">Ganancia económica óptima, regiones y sensibilidad</span><span lang="en">Economic optimum gain, regions and sensitivity</span></h3>
+  <p lang="es">El tablero formula la ración para una rejilla de metas de ganancia y calcula para cada una el margen diario, GDP × precio de venta − CMS × costo − otros costos, y el costo de alimento por kilo ganado. El óptimo económico es la meta de mayor margen; en el caso, 1.40 kg/d ($36.44 por animal al día, contra $34.30 a 1.35 kg/d). La comparación regional repite el procedimiento F.3 con el clima de la temporada y los factores de precio de cada región; la sensibilidad mueve el precio del ingrediente de mayor aporte al costo entre 70 % y 130 % y reformula en cada punto.</p>
+  <p lang="en">The dashboard formulates the ration over a grid of gain targets and computes, for each, the daily margin, ADG × sale price − DMI × cost − other costs, and the feed cost per kilo gained. The economic optimum is the highest-margin target; in the case, 1.40 kg/d ($36.44 per head per day versus $34.30 at 1.35 kg/d). The regional comparison repeats procedure F.3 with each region’s seasonal climate and price factors; the sensitivity analysis moves the price of the ingredient with the largest cost share between 70 % and 130 % and reformulates at each point.</p>
+</section>
+
+<!-- ============================ S · SOSTENIBILIDAD ============================ -->
+<section class="chap" id="sostenibilidad" data-toc="S" style="--c:var(--b10)">
+  <div class="chap-head"><span class="big">S</span>
+    <div class="eyebrow" lang="es">Bloque 10</div><div class="eyebrow" lang="en">Block 10</div>
+    <h2 lang="es">Huella ambiental y frontera costo–huella</h2><h2 lang="en">Environmental footprint and cost–footprint frontier</h2>
+    <p lang="es">Inventario por animal al día con los métodos del IPCC (2019) y potenciales de calentamiento del AR6, y una formulación biobjetivo por precio interno del carbono.</p>
+    <p lang="en">Per-head daily inventory with IPCC (2019) methods and AR6 warming potentials, and a bi-objective formulation via an internal carbon price.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38c0-16 12-28 30-28 0 18-12 30-28 30"/><path d="M10 38l14-14"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <div class="box def"><span class="bi">≡</span><span class="bt" lang="es">Definición · sostenibilidad</span><span class="bt" lang="en">Definition · sustainability</span>
+    <p lang="es">RatioBos sigue a la FAO (2014, 2018): un sistema es sostenible cuando satisface las necesidades presentes sin comprometer la capacidad de las generaciones futuras, en sus dimensiones ambiental, económica y social. Por eso el bloque no minimiza la huella aislada, sino que muestra el costo económico de reducirla.</p>
+    <p lang="en">RatioBos follows FAO (2014, 2018): a system is sustainable when it meets present needs without compromising the ability of future generations to meet theirs, across its environmental, economic and social dimensions. Hence the block does not minimise footprint in isolation, but shows the economic cost of reducing it.</p></div>
+
+  <h3 id="s-gei" data-n="S.1"><span lang="es">Gases de efecto invernadero</span><span lang="en">Greenhouse gases</span></h3>
+  <div class="eq"><math display="block"><mtable columnalign="right left" rowspacing="0.6em">
+    <mtr><mtd><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>ent</mtext></mrow></msub></mtd><mtd><mo>=</mo><mi>C</mi><mo>·</mo><mn>18.45</mn><mo>·</mo><mfrac><msub><mi>Y</mi><mi>m</mi></msub><mn>100</mn></mfrac><mo>/</mo><mn>55.65</mn><mspace width="1em"/><mtext lang="es">(kg/d)</mtext><mtext lang="en">(kg/d)</mtext></mtd></mtr>
+    <mtr><mtd><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>est</mtext></mrow></msub></mtd><mtd><mo>=</mo><mi>VS</mi><mo>·</mo><msub><mi>B</mi><mn>0</mn></msub><mo>·</mo><mn>0.67</mn><mo>·</mo><mi>MCF</mi><mo>,</mo><mspace width="0.8em"/><mi>VS</mi><mo>=</mo><mi>C</mi><mo>(</mo><mn>1</mn><mo>−</mo><mi>DE</mi><mo>+</mo><mn>0.04</mn><mo>)</mo><mo>(</mo><mn>1</mn><mo>−</mo><mn>0.08</mn><mo>)</mo></mtd></mtr>
+    <mtr><mtd><msub><mi>N</mi><mn>2</mn></msub><mi>O</mi></mtd><mtd><mo>=</mo><msub><mi>N</mi><mtext>ex</mtext></msub><mo>[</mo><msub><mi>EF</mi><mn>3</mn></msub><mo>+</mo><msub><mi>Frac</mi><mtext>gas</mtext></msub><mo>·</mo><mn>0.010</mn><mo>+</mo><msub><mi>Frac</mi><mtext>leach</mtext></msub><mo>·</mo><mn>0.011</mn><mo>]</mo><mo>·</mo><mn>44</mn><mo>/</mo><mn>28</mn></mtd></mtr>
+    <mtr><mtd><msub><mi>CO</mi><mn>2</mn></msub><mi>e</mi></mtd><mtd><mo>=</mo><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>C</mi><mi>i</mi></msub><msub><mi>e</mi><mi>i</mi></msub><mo>+</mo><mn>27</mn><mo>(</mo><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>ent</mtext></mrow></msub><mo>+</mo><msub><mi>CH</mi><mrow><mn>4</mn><mo>,</mo><mtext>est</mtext></mrow></msub><mo>)</mo><mo>+</mo><mn>273</mn><mspace width="0.15em"/><msub><mi>N</mi><mn>2</mn></msub><mi>O</mi></mtd></mtr>
+  </mtable></math><span class="no">(9)</span></div>
+  <p lang="es">El <b>Y<sub>m</sub></b> de la ración es el promedio ponderado del de cada ingrediente según las categorías del IPCC (2019, cuadro 10.12): concentrados 3.0 %; forrajes 4.0, 6.3 o 7.0 % según su TND (≥ 72, ≥ 62 o menos); minerales, aditivos y urea 0. B<sub>0</sub> = 0.18 m³/kg SV; MCF de 1.0, 1.5 o 2.0 % en corral seco según la temperatura (&lt; 15, 15–25, &gt; 25 °C) y 0.47 % en pastoreo. EF<sub>3</sub> = 0.02 en corral y 0.004 en pastoreo; Frac<sub>gas</sub> = 0.30 y 0.21; Frac<sub>leach</sub> = 0.24 solo en las regiones húmedas. <i>N</i><sub>ex</sub> = N consumido − N retenido (PN<sub>g</sub>/6.25 en crecimiento). <i>e<sub>i</sub></i> es la huella de producir 1 kg de MS del ingrediente <i>i</i> (cultivo, fertilizante, proceso y transporte, sin cambio de uso de suelo), con valores orientativos dentro de los intervalos de GFLI y FAO-GLEAM y asignación económica para los subproductos; todos son editables en la vista científica.</p>
+  <p lang="en">The ration <b>Y<sub>m</sub></b> is the weighted mean of each ingredient’s value under the IPCC (2019, table 10.12) categories: concentrates 3.0 %; forages 4.0, 6.3 or 7.0 % by TDN (≥ 72, ≥ 62 or lower); minerals, additives and urea 0. B<sub>0</sub> = 0.18 m³/kg VS; MCF of 1.0, 1.5 or 2.0 % in a dry lot by temperature (&lt; 15, 15–25, &gt; 25 °C) and 0.47 % on pasture. EF<sub>3</sub> = 0.02 in feedlots and 0.004 on pasture; Frac<sub>gas</sub> = 0.30 and 0.21; Frac<sub>leach</sub> = 0.24 only in humid regions. <i>N</i><sub>ex</sub> = N intake − N retained (NP<sub>g</sub>/6.25 in growing cattle). <i>e<sub>i</sub></i> is the footprint of producing 1 kg DM of ingredient <i>i</i> (crop, fertiliser, processing and transport, excluding land-use change), with indicative values within the GFLI and FAO-GLEAM ranges and economic allocation for by-products; all are editable in the scientist view.</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Y<sub>m</sub> = 3.38 %; CH<sub>4</sub> entérico 86.9 g/d; N consumido 162.3 g/d, retenido 32.2 g/d, excretado 130.1 g/d. CO<sub>2</sub>e: alimento 3.08, entérico 2.35, N<sub>2</sub>O 1.43 y CH<sub>4</sub> del estiércol 0.09 kg/d; total <b>6.95 kg CO<sub>2</sub>e/d</b>, 5.15 kg por kg ganado.</p>
+    <p lang="en">Y<sub>m</sub> = 3.38 %; enteric CH<sub>4</sub> 86.9 g/d; N intake 162.3 g/d, retained 32.2 g/d, excreted 130.1 g/d. CO<sub>2</sub>e: feed 3.08, enteric 2.35, N<sub>2</sub>O 1.43 and manure CH<sub>4</sub> 0.09 kg/d; total <b>6.95 kg CO<sub>2</sub>e/d</b>, 5.15 kg per kg gained.</p></div>
+
+  <h3 id="s-recursos" data-n="S.2"><span lang="es">Agua, suelo y estiércol</span><span lang="en">Water, land and manure</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Indicador</th><th lang="en">Indicator</th><th lang="es">Cálculo</th><th lang="en">Computation</th><th lang="es">Fuente</th><th lang="en">Source</th></tr></thead>
+    <tbody>
+      <tr><td lang="es">Agua de bebida</td><td lang="en">Drinking water</td><td lang="es">3.5 L/kg MS (5 L arriba de 25 °C)</td><td lang="en">3.5 L/kg DM (5 L above 25 °C)</td><td>NASEM (2016)</td></tr>
+      <tr><td lang="es">Huella hídrica del alimento</td><td lang="en">Feed water footprint</td><td lang="es">Σ C<sub>i</sub> × agua verde + azul por kg MS</td><td lang="en">Σ C<sub>i</sub> × green + blue water per kg DM</td><td>Mekonnen y Hoekstra (2011)</td></tr>
+      <tr><td lang="es">Agua gris</td><td lang="en">Grey water</td><td lang="es">N lixiviado / 10 mg N/L</td><td lang="en">Leached N / 10 mg N/L</td><td>Mekonnen y Hoekstra (2011)</td></tr>
+      <tr><td lang="es">Tierra para el alimento</td><td lang="en">Land for feed</td><td lang="es">Σ C<sub>i</sub> × m²·año por kg MS (rendimientos medios)</td><td lang="en">Σ C<sub>i</sub> × m²·yr per kg DM (mean yields)</td><td>SIAP (2024)</td></tr>
+      <tr><td lang="es">Tierra para el estiércol</td><td lang="en">Land for manure</td><td lang="es">máx(N<sub>ex</sub>(1 − Frac<sub>gas</sub>)/170, P<sub>ex</sub>/25) ha·año</td><td lang="en">max(N<sub>ex</sub>(1 − Frac<sub>gas</sub>)/170, P<sub>ex</sub>/25) ha·yr</td><td lang="es">límites de 170 kg N y 25 kg P/ha</td><td lang="en">170 kg N and 25 kg P/ha limits</td></tr>
+      <tr><td lang="es">Amoniaco</td><td lang="en">Ammonia</td><td>N<sub>ex</sub> × Frac<sub>gas</sub> × 17/14</td><td>IPCC (2019)</td></tr>
+    </tbody></table></div>
+
+  <h3 id="s-frontera" data-n="S.3"><span lang="es">Formulación con precio interno del carbono</span><span lang="en">Formulation with an internal carbon price</span></h3>
+  <p lang="es">Para trazar la frontera costo–huella se resuelve el mismo procedimiento F.3 con un costo ampliado c<sub>i</sub> + w · CO<sub>2</sub>e<sub>i</sub>/1000, donde CO<sub>2</sub>e<sub>i</sub> (kg por kg de MS) suma la huella del alimento, el metano entérico atribuible por su Y<sub>m</sub>, el metano y el N<sub>2</sub>O de su estiércol, y <i>w</i> recorre 0, 1,000, 2,000, 3,500, 5,000, 8,000, 12,000 y 20,000 $/t CO<sub>2</sub>e. Cada solución es eficiente en el sentido de Pareto (método de ponderación). El punto de <b>equilibrio</b> sugerido es el que maximiza la reducción de CO<sub>2</sub>e por peso adicional entre los que reducen la huella al menos 2 %.</p>
+  <p lang="en">To trace the cost–footprint frontier, the same F.3 procedure is solved with an extended cost c<sub>i</sub> + w · CO<sub>2</sub>e<sub>i</sub>/1000, where CO<sub>2</sub>e<sub>i</sub> (kg per kg DM) adds the feed footprint, the enteric methane attributable through its Y<sub>m</sub>, and its manure methane and N<sub>2</sub>O, and <i>w</i> runs through 0, 1,000, 2,000, 3,500, 5,000, 8,000, 12,000 and 20,000 $/t CO<sub>2</sub>e. Every solution is Pareto-efficient (weighting method). The suggested <b>balance</b> point is the one that maximises CO<sub>2</sub>e reduction per extra peso among those cutting the footprint by at least 2 %.</p>
+  <figure class="svgfig"><svg viewBox="0 0 760 330" role="img"><line class="ln" x1="70" x2="740" y1="225.7" y2="225.7" stroke-dasharray="2 4"/><text x="62" y="229.7" text-anchor="end" font-size="12" class="mu">26.0</text><line class="ln" x1="70" x2="740" y1="182.9" y2="182.9" stroke-dasharray="2 4"/><text x="62" y="186.9" text-anchor="end" font-size="12" class="mu">26.5</text><line class="ln" x1="70" x2="740" y1="140.0" y2="140.0" stroke-dasharray="2 4"/><text x="62" y="144.0" text-anchor="end" font-size="12" class="mu">27.0</text><line class="ln" x1="70" x2="740" y1="97.1" y2="97.1" stroke-dasharray="2 4"/><text x="62" y="101.1" text-anchor="end" font-size="12" class="mu">27.5</text><line class="ln" x1="70" x2="740" y1="54.3" y2="54.3" stroke-dasharray="2 4"/><text x="62" y="58.3" text-anchor="end" font-size="12" class="mu">28.0</text><text x="89.7" y="278" text-anchor="middle" font-size="12" class="mu">4.85</text><text x="286.8" y="278" text-anchor="middle" font-size="12" class="mu">4.95</text><text x="483.8" y="278" text-anchor="middle" font-size="12" class="mu">5.05</text><text x="680.9" y="278" text-anchor="middle" font-size="12" class="mu">5.15</text><line class="ln" x1="70" x2="740" y1="260" y2="260"/><text lang="es" x="405" y="298" text-anchor="middle" font-size="12.5" class="mu">kg CO₂e por kg ganado</text><text lang="en" x="405" y="298" text-anchor="middle" font-size="12.5" class="mu">kg CO₂e per kg gained</text><g transform="translate(16 140) rotate(-90)"><text lang="es" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">$ de alimento por kg ganado</text><text lang="en" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">feed $ per kg gained</text></g><polyline points="121.2,51.7 294.6,169.1 312.4,176.0 609.9,224.0 676.9,231.7" fill="none" stroke="var(--b10)" stroke-width="3"/><circle cx="676.9" cy="231.7" r="5" fill="var(--paper)" stroke="var(--b10)" stroke-width="2.2"/><text x="686.9" y="222.7" font-size="12" font-weight="400">w = 0</text><circle cx="609.9" cy="224.0" r="5" fill="var(--paper)" stroke="var(--b10)" stroke-width="2.2"/><text x="619.9" y="215.0" font-size="12" font-weight="400">w = 2,000</text><circle cx="312.4" cy="176.0" r="7" fill="var(--b7)" stroke="var(--b7)" stroke-width="2.2"/><text x="322.4" y="167.0" font-size="12" font-weight="700">w = 5,000</text><circle cx="294.6" cy="169.1" r="5" fill="var(--paper)" stroke="var(--b10)" stroke-width="2.2"/><text x="284.6" y="160.1" font-size="12" font-weight="400" text-anchor="end">w = 8,000</text><circle cx="121.2" cy="51.7" r="5" fill="var(--paper)" stroke="var(--b10)" stroke-width="2.2"/><text x="131.2" y="42.7" font-size="12" font-weight="400">w = 20,000</text><text lang="es" x="322.4" y="196.0" font-size="12" fill="var(--b7)">equilibrio: −3.6 % de huella, +2.5 % de costo</text><text lang="en" x="322.4" y="196.0" font-size="12" fill="var(--b7)">balance: −3.6 % footprint, +2.5 % cost</text></svg><figcaption><span class="fn"></span><span lang="es"><b>Frontera costo–huella del caso.</b> Cada punto es una ración óptima con un precio interno del carbono <i>w</i> ($/t CO₂e). Con <i>w</i> = 1,000, 3,500 y 12,000 la ración no cambia respecto al punto anterior. Cada tonelada evitada en el equilibrio cuesta ≈ $3,500.</span><span lang="en"><b>Cost–footprint frontier for the case.</b> Each point is an optimal ration under an internal carbon price <i>w</i> ($/t CO₂e). At <i>w</i> = 1,000, 3,500 and 12,000 the ration does not change from the previous point. Each tonne avoided at the balance point costs ≈ $3,500.</span></figcaption></figure>
+</section>
+
+<!-- ============================ V · VALIDACIÓN ============================ -->
+<section class="chap" id="validacion" data-toc="V" style="--c:var(--b3)">
+  <div class="chap-head"><span class="big">V</span>
+    <div class="eyebrow" lang="es">Bloque ✓</div><div class="eyebrow" lang="en">Block ✓</div>
+    <h2 lang="es">Validación con dietas publicadas</h2><h2 lang="en">Validation against published diets</h2>
+    <p lang="es">Cinco pruebas independientes: composición, optimizador, energía neta observada, economía y proteína metabolizable; más la comparación del solucionador con HiGHS.</p>
+    <p lang="en">Five independent tests: composition, optimiser, observed net energy, economics and metabolizable protein; plus a solver comparison with HiGHS.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 26l10 10L40 12"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="v-datos" data-n="V.1"><span lang="es">Los experimentos</span><span lang="en">The experiments</span></h3>
+  <p lang="es">Se capturaron, tal cual, las fórmulas de 19 dietas de 9 artículos publicados entre 2017 y 2025, con 27 grupos de animales con desempeño medido: engordas de toretes cruzados en Sinaloa, becerros de alto riesgo en Zacatecas y becerros y novillos Holstein del grupo de Zinn en El Centro, California. Los ingredientes que la biblioteca no tiene se agregaron con la composición que reporta cada artículo.</p>
+  <p lang="en">The formulas of 19 diets from 9 papers published 2017–2025 were entered as published, with 27 animal groups with measured performance: crossbred bull feedlots in Sinaloa, high-risk calves in Zacatecas, and Holstein calves and steers from Zinn’s group at El Centro, California. Ingredients missing from the library were added with the composition each paper reports.</p>
+  <div class="tbl"><table><thead><tr><th lang="es">Artículo</th><th lang="en">Paper</th><th lang="es">Lugar</th><th lang="en">Site</th><th lang="es">Animales</th><th lang="en">Animals</th><th class="r" lang="es">Dietas</th><th class="r" lang="en">Diets</th><th class="r" lang="es">Grupos</th><th class="r" lang="en">Groups</th></tr></thead><tbody><tr><td>Estrada-Angulo et al. (2022)</td><td>Culiacán, Sinaloa</td><td lang="es">Toretes cruzados, finalización</td><td lang="en">Crossbred bulls, finishing</td><td class="r">1</td><td class="r">2</td></tr><tr><td>Plascencia et al. (2022)</td><td>El Centro, California</td><td lang="es">Becerros Holstein, crecimiento</td><td lang="en">Holstein calves, growing</td><td class="r">2</td><td class="r">2</td></tr><tr><td>Ramos-Aviña et al. (2018)</td><td>El Centro, California</td><td lang="es">Novillos Holstein, 1–112 d</td><td lang="en">Holstein steers, d 1–112</td><td class="r">2</td><td class="r">2</td></tr><tr><td>Castro-Pérez et al. (2020)</td><td>Culiacán, Sinaloa</td><td lang="es">Toretes en clima tropical (sombra)</td><td lang="en">Bulls in tropical climate (shade)</td><td class="r">3</td><td class="r">4</td></tr><tr><td>Rodríguez-Cordero et al. (2025)</td><td>Zacatecas</td><td lang="es">Becerros enteros de alto riesgo</td><td lang="en">High-risk bull calves</td><td class="r">1</td><td class="r">5</td></tr><tr><td>González-Vizcarra et al. (2017)</td><td>El Centro, California</td><td lang="es">Novillos, maíz rolado contra hojueleado</td><td lang="en">Steers, dry-rolled vs flaked corn</td><td class="r">2</td><td class="r">4</td></tr><tr><td>Montano et al. (2023)</td><td>El Centro, California</td><td lang="es">Becerros Holstein, DDGS</td><td lang="en">Holstein calves, DDGS</td><td class="r">4</td><td class="r">4</td></tr><tr><td>Salinas-Chavira et al. (2024)</td><td>El Centro, California</td><td lang="es">Becerros Holstein, PM y metionina</td><td lang="en">Holstein calves, MP and methionine</td><td class="r">2</td><td class="r">2</td></tr><tr><td>Carvalho et al. (2022)</td><td>El Centro, California</td><td lang="es">Novillos Holstein, PM y virginiamicina</td><td lang="en">Holstein steers, MP and virginiamycin</td><td class="r">2</td><td class="r">2</td></tr><tr class="hl"><td><b>Total</b></td><td></td><td></td><td class="r"><b>19</b></td><td class="r"><b>27</b></td></tr></tbody></table></div>
+
+  <h3 id="v-comp" data-n="V.2"><span lang="es">Prueba 1 · composición calculada</span><span lang="en">Test 1 · computed composition</span></h3>
+  <p lang="es">La app analiza cada fórmula con su propia biblioteca y compara el resultado con la composición que reportan los autores. Los errores absolutos medios son de 3.0 % en energía neta (38 valores), 2.1 % en proteína cruda, 4.4 % en fibra y grasa y 7.8 % en minerales.</p>
+  <p lang="en">The app analyses each formula with its own library and compares the result with the composition reported by the authors. Mean absolute errors are 3.0 % for net energy (38 values), 2.1 % for crude protein, 4.4 % for fibre and fat and 7.8 % for minerals.</p>
+  <figure class="svgfig"><svg viewBox="0 0 760 380" role="img"><line class="ln" x1="70" x2="470" y1="299.3" y2="299.3" stroke-dasharray="2 4"/><text x="62" y="303.3" text-anchor="end" font-size="12" class="mu">1.0</text><line class="ln" x1="70" x2="470" y1="216.6" y2="216.6" stroke-dasharray="2 4"/><text x="62" y="220.6" text-anchor="end" font-size="12" class="mu">1.4</text><line class="ln" x1="70" x2="470" y1="133.8" y2="133.8" stroke-dasharray="2 4"/><text x="62" y="137.8" text-anchor="end" font-size="12" class="mu">1.8</text><line class="ln" x1="70" x2="470" y1="51.0" y2="51.0" stroke-dasharray="2 4"/><text x="62" y="55.0" text-anchor="end" font-size="12" class="mu">2.2</text><text x="97.6" y="338" text-anchor="middle" font-size="12" class="mu">1.0</text><text x="207.9" y="338" text-anchor="middle" font-size="12" class="mu">1.4</text><text x="318.3" y="338" text-anchor="middle" font-size="12" class="mu">1.8</text><text x="428.6" y="338" text-anchor="middle" font-size="12" class="mu">2.2</text><line class="ln" x1="70" x2="470" y1="320" y2="320"/><text lang="es" x="270" y="358" text-anchor="middle" font-size="12.5" class="mu">reportada por los autores (Mcal/kg)</text><text lang="en" x="270" y="358" text-anchor="middle" font-size="12.5" class="mu">reported by the authors (Mcal/kg)</text><g transform="translate(16 170) rotate(-90)"><text lang="es" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">calculada por RatioBos</text><text lang="en" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">computed by RatioBos</text></g><line x1="70.0" y1="320.0" x2="470.0" y2="20.0" stroke="var(--muted)" stroke-dasharray="6 5"/><circle cx="412.1" cy="74.2" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="220.5" y="209.9" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="392.8" cy="88.1" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="209.4" y="223.1" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="428.6" cy="59.3" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="239.8" y="197.9" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="403.8" cy="79.0" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="217.7" y="214.4" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="425.9" cy="66.8" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="239.8" y="203.9" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="271.4" cy="157.0" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="99.1" y="282.9" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="337.6" cy="115.2" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="157.0" y="246.5" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="412.1" cy="77.5" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="212.2" y="211.7" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="254.8" cy="177.2" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="88.1" y="299.0" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="401.0" cy="69.0" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="215.0" y="214.2" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="439.7" cy="51.0" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="250.8" y="193.7" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="431.4" cy="59.5" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="242.6" y="197.9" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="431.4" cy="59.3" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="242.6" y="197.4" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="431.4" cy="58.9" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="242.6" y="197.2" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="428.6" cy="58.9" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="239.8" y="197.0" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="431.4" cy="60.8" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="242.6" y="198.7" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="423.1" cy="64.3" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="237.0" y="201.6" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="431.4" cy="60.8" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="242.6" y="198.7" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="425.9" cy="63.9" r="4.5" fill="var(--b3)" opacity=".8"/><rect x="237.0" y="201.4" width="8" height="8" fill="var(--b7)" opacity=".8"/><circle cx="86" cy="28" r="4.5" fill="var(--b3)"/><text x="96" y="32" font-size="12.5">ENm</text><rect x="140" y="24" width="8" height="8" fill="var(--b7)"/><text x="154" y="32" font-size="12.5">ENg</text><text lang="es" x="540" y="32" font-size="13" font-weight="700">Error absoluto medio</text><text lang="en" x="540" y="32" font-size="13" font-weight="700">Mean absolute error</text><text lang="es" x="540" y="70" font-size="12.5">Energía neta · n = 38</text><text lang="en" x="540" y="70" font-size="12.5">Net energy · n = 38</text><rect x="540" y="78" width="44.6" height="16" rx="4" fill="var(--b3)"/><text x="590.6" y="91" font-size="13" font-weight="700">3.0 %</text><text lang="es" x="540" y="132" font-size="12.5">Proteína cruda · n = 19</text><text lang="en" x="540" y="132" font-size="12.5">Crude protein · n = 19</text><rect x="540" y="140" width="31.1" height="16" rx="4" fill="var(--b3)"/><text x="577.1" y="153" font-size="13" font-weight="700">2.1 %</text><text lang="es" x="540" y="194" font-size="12.5">Fibra y grasa · n = 29</text><text lang="en" x="540" y="194" font-size="12.5">Fibre and fat · n = 29</text><rect x="540" y="202" width="66.7" height="16" rx="4" fill="var(--b3)"/><text x="612.7" y="215" font-size="13" font-weight="700">4.4 %</text><text lang="es" x="540" y="256" font-size="12.5">Ca, P y S · n = 46</text><text lang="en" x="540" y="256" font-size="12.5">Ca, P and S · n = 46</text><rect x="540" y="264" width="116.4" height="16" rx="4" fill="var(--b5)"/><text x="662.4" y="277" font-size="13" font-weight="700">7.8 %</text></svg><figcaption><span class="fn"></span><span lang="es"><b>Composición reportada contra calculada.</b> Izquierda: energía neta de las 19 dietas (la línea punteada es la igualdad). Derecha: error absoluto medio por grupo de nutrientes.</span><span lang="en"><b>Reported versus computed composition.</b> Left: net energy of the 19 diets (dashed line = equality). Right: mean absolute error by nutrient group.</span></figcaption></figure>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución · sesgo en la energía tabular</span><span class="bt" lang="en">Caution · bias in tabular energy</span>
+    <p lang="es">En las dietas de maíz hojueleado la app da 2–3 % menos ENm y 3–6 % menos ENg que los autores. No es un error de cálculo: los artículos usan para ese grano valores tabulares de energía más altos (≈ 2.4 Mcal ENm/kg) que la tabla de Oklahoma State que trae la app (2.29). En las dietas con más forraje (las de adaptación de Castro-Pérez et al., 2020, y la de recepción de Rodríguez-Cordero et al., 2025) el sesgo desaparece o se invierte. Si conoce el valor de su ingrediente, edítelo en el Bloque 5.</p>
+    <p lang="en">On steam-flaked corn diets the app gives 2–3 % less NEm and 3–6 % less NEg than the authors. This is not a computing error: the papers use higher tabular energy values for that grain (≈ 2.4 Mcal NEm/kg) than the Oklahoma State table shipped with the app (2.29). On the higher-forage diets (the step-up diets of Castro-Pérez et al., 2020, and the receiving diet of Rodríguez-Cordero et al., 2025) the bias vanishes or reverses. If you know your ingredient’s value, edit it in Block 5.</p></div>
+
+  <h3 id="v-optim" data-n="V.3"><span lang="es">Prueba 2 · el optimizador</span><span lang="en">Test 2 · the optimiser</span></h3>
+  <p lang="es">Para cada dieta publicada se fijaron como requerimientos sus propios aportes de nutrientes (mínimos de energía, proteína y minerales; máximos de FDN, grasa y azufre) y se dejó que el optimizador eligiera entre los mismos ingredientes, con la premezcla y los aditivos fijos. Si el optimizador funciona, debe devolver una ración igual o más barata que la publicada. Resultado: <b>19 de 19</b>, todas con certificado de dualidad válido.</p>
+  <p lang="en">For each published diet, its own nutrient supply was set as the requirement (minimums for energy, protein and minerals; maximums for NDF, fat and sulfur), and the optimiser chose among the same ingredients, with premix and additives fixed. If the optimiser works, it must return a ration at least as cheap as the published one. Result: <b>19 of 19</b>, all with a valid duality certificate.</p>
+  <figure class="svgfig"><svg viewBox="0 0 760 421" role="img"><text x="290" y="36" text-anchor="end" font-size="12">Estrada-Angulo et al. (2022) · 1</text><rect x="300" y="26" width="2.6" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="308.6" y="37" font-size="11.5">0.2 %</text><text x="290" y="55" text-anchor="end" font-size="12">Plascencia et al. (2022) · 1</text><rect x="300" y="45" width="11.2" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="317.2" y="56" font-size="11.5">1.0 %</text><text x="290" y="74" text-anchor="end" font-size="12">Plascencia et al. (2022) · 2</text><rect x="300" y="64" width="70.8" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="376.8" y="75" font-size="11.5">6.5 %</text><text x="290" y="93" text-anchor="end" font-size="12">Ramos-Aviña et al. (2018) · 1</text><rect x="300" y="83" width="88.1" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="394.1" y="94" font-size="11.5">8.1 %</text><text x="290" y="112" text-anchor="end" font-size="12">Ramos-Aviña et al. (2018) · 2</text><rect x="300" y="102" width="26.7" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="332.7" y="113" font-size="11.5">2.4 %</text><text x="290" y="131" text-anchor="end" font-size="12">Castro-Pérez et al. (2020) · 1</text><rect x="300" y="121" width="83.7" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="389.7" y="132" font-size="11.5">7.7 %</text><text x="290" y="150" text-anchor="end" font-size="12">Castro-Pérez et al. (2020) · 2</text><rect x="300" y="140" width="47.8" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="353.8" y="151" font-size="11.5">4.4 %</text><text x="290" y="169" text-anchor="end" font-size="12">Castro-Pérez et al. (2020) · 3</text><rect x="300" y="159" width="12.8" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="318.8" y="170" font-size="11.5">1.2 %</text><text x="290" y="188" text-anchor="end" font-size="12">Rodríguez-Cordero et al. (2025) · 1</text><rect x="300" y="178" width="225.9" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="531.9" y="189" font-size="11.5">20.7 %</text><text x="290" y="207" text-anchor="end" font-size="12">González-Vizcarra et al. (2017) · 1</text><rect x="300" y="197" width="73.3" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="379.3" y="208" font-size="11.5">6.7 %</text><text x="290" y="226" text-anchor="end" font-size="12">González-Vizcarra et al. (2017) · 2</text><rect x="300" y="216" width="22.3" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="328.3" y="227" font-size="11.5">2.0 %</text><text x="290" y="245" text-anchor="end" font-size="12">Montano et al. (2023) · 1</text><rect x="300" y="235" width="39.0" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="345.0" y="246" font-size="11.5">3.6 %</text><text x="290" y="264" text-anchor="end" font-size="12">Montano et al. (2023) · 2</text><rect x="300" y="254" width="39.3" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="345.3" y="265" font-size="11.5">3.6 %</text><text x="290" y="283" text-anchor="end" font-size="12">Montano et al. (2023) · 3</text><rect x="300" y="273" width="39.5" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="345.5" y="284" font-size="11.5">3.6 %</text><text x="290" y="302" text-anchor="end" font-size="12">Montano et al. (2023) · 4</text><rect x="300" y="292" width="37.3" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="343.3" y="303" font-size="11.5">3.4 %</text><text x="290" y="321" text-anchor="end" font-size="12">Salinas-Chavira et al. (2024) · 1</text><rect x="300" y="311" width="41.6" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="347.6" y="322" font-size="11.5">3.8 %</text><text x="290" y="340" text-anchor="end" font-size="12">Salinas-Chavira et al. (2024) · 2</text><rect x="300" y="330" width="185.6" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="491.6" y="341" font-size="11.5">17.0 %</text><text x="290" y="359" text-anchor="end" font-size="12">Carvalho et al. (2022) · 1</text><rect x="300" y="349" width="62.8" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="368.8" y="360" font-size="11.5">5.7 %</text><text x="290" y="378" text-anchor="end" font-size="12">Carvalho et al. (2022) · 2</text><rect x="300" y="368" width="360.0" height="13" rx="3" fill="var(--b3)" opacity=".85"/><text x="666.0" y="379" font-size="11.5">32.9 %</text><text lang="es" x="70" y="415" font-size="12" class="mu">ahorro de la ración del optimizador frente a la publicada (mismos ingredientes y aportes)</text><text lang="en" x="70" y="415" font-size="12" class="mu">saving of the optimiser’s ration over the published one (same ingredients and supply)</text></svg><figcaption><span class="fn"></span><span lang="es"><b>Prueba del optimizador.</b> En las 19 dietas la app encontró una ración igual de nutritiva y más barata con los mismos ingredientes (costos con los precios de ejemplo de la app).</span><span lang="en"><b>Optimiser test.</b> For all 19 diets the app found an equally nutritious, cheaper ration with the same ingredients (costs at the app’s example prices).</span></figcaption></figure>
+
+  <h3 id="v-ene" data-n="V.4"><span lang="es">Prueba 3 · energía neta observada</span><span lang="en">Test 3 · observed net energy</span></h3>
+  <p lang="es">Los artículos del grupo de Zinn reportan la energía neta de la dieta «observada» en el desempeño de los animales (Zinn y Shen, 1998). RatioBos repite ese cálculo con los pesos, la ganancia y el consumo publicados, resolviendo para ENm la ecuación cuadrática</p>
+  <p lang="en">Papers from Zinn’s group report the diet net energy “observed” from animal performance (Zinn &amp; Shen, 1998). RatioBos repeats that calculation with the published weights, gain and intake, solving for NEm the quadratic</p>
+  <div class="eq"><math display="block"><mrow><mi>C</mi><mo>=</mo><mfrac><mrow><msub><mi>e</mi><mi>m</mi></msub><msup><mi>W</mi><mn>0.75</mn></msup></mrow><mi>ENm</mi></mfrac><mo>+</mo><mfrac><mrow><msub><mi>e</mi><mi>g</mi></msub><msup><mi>W</mi><mn>0.75</mn></msup><msup><mi>GDP</mi><mn>1.097</mn></msup></mrow><mrow><mn>0.877</mn><mspace width="0.1em"/><mi>ENm</mi><mo>−</mo><mn>0.41</mn></mrow></mfrac></mrow></math><span class="no">(10)</span></div>
+  <p lang="es">con <i>W</i> el peso medio y los coeficientes <i>e<sub>m</sub></i> y <i>e<sub>g</sub></i> de cada artículo. El error absoluto medio frente a lo publicado es de <b>0.5 %</b> (27 grupos, ENm y ENg): la app reproduce el método de los autores.</p>
+  <p lang="en">with <i>W</i> the mean weight and each paper’s <i>e<sub>m</sub></i> and <i>e<sub>g</sub></i> coefficients. The mean absolute error against the published values is <b>0.5 %</b> (27 groups, NEm and NEg): the app reproduces the authors’ method.</p>
+  <figure class="svgfig"><svg viewBox="0 0 760 360" role="img"><line class="ln" x1="70" x2="470" y1="276.7" y2="276.7" stroke-dasharray="2 4"/><text x="62" y="280.7" text-anchor="end" font-size="12" class="mu">1.2</text><line class="ln" x1="70" x2="470" y1="206.7" y2="206.7" stroke-dasharray="2 4"/><text x="62" y="210.7" text-anchor="end" font-size="12" class="mu">1.5</text><line class="ln" x1="70" x2="470" y1="136.7" y2="136.7" stroke-dasharray="2 4"/><text x="62" y="140.7" text-anchor="end" font-size="12" class="mu">1.8</text><line class="ln" x1="70" x2="470" y1="66.7" y2="66.7" stroke-dasharray="2 4"/><text x="62" y="70.7" text-anchor="end" font-size="12" class="mu">2.1</text><text x="103.3" y="318" text-anchor="middle" font-size="12" class="mu">1.2</text><text x="203.3" y="318" text-anchor="middle" font-size="12" class="mu">1.5</text><text x="303.3" y="318" text-anchor="middle" font-size="12" class="mu">1.8</text><text x="403.3" y="318" text-anchor="middle" font-size="12" class="mu">2.1</text><line class="ln" x1="70" x2="470" y1="300" y2="300"/><text lang="es" x="270" y="338" text-anchor="middle" font-size="12.5" class="mu">publicada (Mcal/kg)</text><text lang="en" x="270" y="338" text-anchor="middle" font-size="12.5" class="mu">published (Mcal/kg)</text><g transform="translate(16 160) rotate(-90)"><text lang="es" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">recalculada por RatioBos</text><text lang="en" x="0" y="0" text-anchor="middle" font-size="12.5" class="mu">recomputed by RatioBos</text></g><line x1="70.0" y1="300.0" x2="470.0" y2="20.0" stroke="var(--muted)" stroke-dasharray="6 5"/><circle cx="456.7" cy="29.3" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="222.7" y="185.9" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="453.3" cy="31.7" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="219.3" y="188.0" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="333.3" cy="122.7" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="116.0" y="267.8" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="360.0" cy="97.9" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="139.3" y="246.1" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="346.7" cy="108.4" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="129.3" y="255.2" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="313.3" cy="131.3" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="99.3" y="275.2" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="370.0" cy="90.0" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="146.0" y="239.1" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="346.7" cy="107.5" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="126.0" y="254.5" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="360.0" cy="99.6" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="139.3" y="247.5" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="393.3" cy="76.0" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="166.0" y="226.7" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="331.0" cy="117.3" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="115.7" y="263.1" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="348.7" cy="104.7" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="128.7" y="251.9" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="359.7" cy="97.0" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="138.3" y="245.1" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="394.0" cy="73.4" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="168.3" y="224.4" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="363.0" cy="94.9" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="141.3" y="243.3" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="386.7" cy="78.8" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="162.7" y="229.3" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="356.7" cy="100.3" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="136.0" y="248.2" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="430.0" cy="50.3" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="199.3" y="204.3" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="443.3" cy="39.6" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="212.7" y="195.0" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="360.0" cy="100.5" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="139.3" y="248.2" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="380.0" cy="86.7" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="156.0" y="236.3" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="366.7" cy="95.6" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="146.0" y="244.0" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="376.7" cy="89.3" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="152.7" y="238.4" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="296.7" cy="140.6" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="82.7" y="283.4" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="316.7" cy="125.9" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="102.7" y="270.6" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="316.7" cy="130.1" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="102.7" y="274.1" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="333.3" cy="118.7" r="4.5" fill="var(--b3)" opacity=".85"/><rect x="116.0" y="264.3" width="8" height="8" fill="var(--b7)" opacity=".85"/><circle cx="86" cy="28" r="4.5" fill="var(--b3)"/><text x="96" y="32" font-size="12.5">ENm</text><rect x="140" y="24" width="8" height="8" fill="var(--b7)"/><text x="154" y="32" font-size="12.5">ENg</text><text lang="es" x="520" y="70" font-size="13" class="mu">Grupos de animales</text><text lang="en" x="520" y="70" font-size="13" class="mu">Animal groups</text><text x="520" y="112" font-size="40" font-weight="700">27</text><text lang="es" x="520" y="160" font-size="13" class="mu">Error absoluto medio</text><text lang="en" x="520" y="160" font-size="13" class="mu">Mean absolute error</text><text x="520" y="202" font-size="40" font-weight="700" fill="var(--b3)">0.49 %</text><text lang="es" x="520" y="250" font-size="13" class="mu">Error máximo</text><text lang="en" x="520" y="250" font-size="13" class="mu">Largest error</text><text x="520" y="284" font-size="28" font-weight="700">2.3 %</text></svg><figcaption><span class="fn"></span><span lang="es"><b>Energía neta observada.</b> Con los pesos, la ganancia y el consumo publicados, la app reproduce la ENm y la ENg «observadas» que reportan los autores (Zinn y Shen, 1998).</span><span lang="en"><b>Observed net energy.</b> From the published weights, gain and intake, the app reproduces the “observed” NEm and NEg reported by the authors (Zinn &amp; Shen, 1998).</span></figcaption></figure>
+
+  <h3 id="v-econ" data-n="V.5"><span lang="es">Pruebas 4 y 5 · economía y proteína metabolizable</span><span lang="en">Tests 4 and 5 · economics and metabolizable protein</span></h3>
+  <p lang="es">Con los precios de Rodríguez-Cordero et al. (2025), el costo por kilo ganado que calcula la app difiere 0.2 % del publicado. Con las dietas de Montano et al. (2023), la PM aportada como porcentaje de la requerida, calculada con las ecuaciones de RatioBos, queda en promedio 3.5 puntos por debajo de la estimación de los autores (89–98 % contra 93–100 %), con el mismo orden entre tratamientos.</p>
+  <p lang="en">With the prices in Rodríguez-Cordero et al. (2025), the cost per kilo gained computed by the app differs by 0.2 % from the published value. With the Montano et al. (2023) diets, MP supplied as a percentage of MP required, computed with RatioBos equations, averages 3.5 points below the authors’ estimate (89–98 % versus 93–100 %), with the same ranking across treatments.</p>
+
+  <h3 id="v-highs" data-n="V.6"><span lang="es">El solucionador frente a HiGHS</span><span lang="en">The solver against HiGHS</span></h3>
+  <p lang="es">Se generaron con semilla fija 500 problemas reales de la app (las 5 etapas, 6 biotipos, 9 regiones y 3 temporadas; ingredientes al azar de la biblioteca; precios entre −50 % y +50 %; ENm supuesta entre 1.2 y 2.3 Mcal/kg) y se resolvieron también con HiGHS (SciPy 1.18). Coincidieron los 500: en los 288 factibles el costo difiere como máximo 4 × 10⁻¹⁴ en términos relativos, y los 212 infactibles lo son para ambos. Los guiones están en la carpeta <code>pruebas</code> del repositorio.</p>
+  <p lang="en">500 real app problems were generated with a fixed seed (all 5 stages, 6 biotypes, 9 regions and 3 seasons; random library ingredients; prices from −50 % to +50 %; assumed NEm 1.2–2.3 Mcal/kg) and also solved with HiGHS (SciPy 1.18). All 500 agreed: in the 288 feasible ones cost differs by at most 4 × 10⁻¹⁴ in relative terms, and the 212 infeasible ones are infeasible for both. The scripts are in the repository’s <code>pruebas</code> folder.</p>
+</section>
+
+<!-- ============================ R · REPRODUCIBILIDAD ============================ -->
+<section class="chap" id="repro" data-toc="R" style="--c:var(--b11)">
+  <div class="chap-head"><span class="big">R</span>
+    <div class="eyebrow" lang="es">Vista científica</div><div class="eyebrow" lang="en">Scientist view</div>
+    <h2 lang="es">Reproducibilidad y publicación</h2><h2 lang="en">Reproducibility and publication</h2>
+    <p lang="es">Qué muestra la vista científica, cómo exportar el modelo y cómo verificarlo fuera de la app.</p>
+    <p lang="en">What the scientist view shows, how to export the model and how to verify it outside the app.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6h20l8 8v28H14z"/><path d="M34 6v8h8M20 24l-4 4 4 4M28 24l4 4-4 4"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="r-vista" data-n="R.1"><span lang="es">Lo que agrega la vista científica</span><span lang="en">What the scientist view adds</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Bloque</th><th lang="en">Block</th><th lang="es">Contenido adicional</th><th lang="en">Additional content</th></tr></thead>
+    <tbody>
+      <tr><td>3</td><td lang="es">Los 15 nutrientes e indicadores, factores de consumo, ENm supuesta y peso a engrasamiento (SRW).</td><td lang="en">All 15 nutrients and indicators, intake factors, assumed NEm and target-fatness weight (SRW).</td></tr>
+      <tr><td>5</td><td lang="es">Composición completa de cada ingrediente y sus factores de huella (CO<sub>2</sub>e, agua, suelo).</td><td lang="en">Full composition of each ingredient and its footprint factors (CO<sub>2</sub>e, water, land).</td></tr>
+      <tr><td>7</td><td lang="es">Tarjeta del modelo (variables, restricciones, pivotes, certificado), tabla de iteraciones del ajuste de energía, precios sombra, costos reducidos, ganancia por energía y por proteína, metano y nitrógeno, y exportación del modelo en JSON.</td><td lang="en">Model card (variables, constraints, pivots, certificate), energy-adjustment iteration table, shadow prices, reduced costs, energy- and protein-allowable gain, methane and nitrogen, and JSON export of the model.</td></tr>
+      <tr><td>✓</td><td lang="es">Cada dieta publicada: composición reportada contra calculada, prueba del optimizador, energía observada, economía y PM.</td><td lang="en">Each published diet: reported versus computed composition, optimiser test, observed energy, economics and MP.</td></tr>
+      <tr><td>§</td><td lang="es">Marco teórico completo con referencias en formato APA.</td><td lang="en">Full theoretical framework with APA references.</td></tr>
+    </tbody></table></div>
+
+  <h3 id="r-json" data-n="R.2"><span lang="es">Verificación independiente</span><span lang="en">Independent verification</span></h3>
+  <p lang="es">El botón <span class="ui">⬇ Modelo y solución (JSON)</span> del Bloque 7 guarda el animal, las condiciones, el consumo, los requerimientos, las iteraciones, los ingredientes con su composición, precio y límites, y la solución completa. El siguiente guion reconstruye el modelo lineal (7) desde ese archivo, lo resuelve con HiGHS y compara. Con el caso: misma fórmula y diferencia relativa de costo 0.</p>
+  <p lang="en">The <span class="ui">⬇ Model and solution (JSON)</span> button in Block 7 saves the animal, conditions, intake, requirements, iterations, ingredients with their composition, price and limits, and the complete solution. The script below rebuilds linear model (7) from that file, solves it with HiGHS and compares. With the case: identical formula and zero relative cost difference.</p>
+  <div class="code"><div class="bar"><span>pruebas/verificar_ratiobos.py · Python ≥ 3.9 · SciPy ≥ 1.9</span><button class="copy" data-copy="py" lang="es">Copiar</button><button class="copy" data-copy="py" lang="en">Copy</button></div>
+<pre id="py">"""Verifica con HiGHS (SciPy) una ración exportada desde RatioBos (vista científica,
+botón «Modelo y solución (JSON)»). Reconstruye el modelo lineal a partir de los
+ingredientes, los requerimientos y el consumo, lo resuelve y compara el costo y
+la fórmula con los de la app.   Uso:  python verificar_ratiobos.py archivo_modelo.json"""
+<span class="k">import</span> json
+<span class="k">import</span> sys
+
+<span class="k">import</span> numpy as np
+<span class="k">from</span> scipy.optimize import linprog
+
+m = json.load(open(sys.argv[1] if len(sys.argv) &gt; 1 else "ratiobos_modelo.json", encoding="utf-8"))
+ings, req, dmi = m["ingredientes"], m["requerimientos"], m["consumoMS"]
+FORRAJE = {"for", "ens"}
+MCP_A, MCP_B, MP_MCP, D_RUP = 42.73, 0.087, 0.64, 0.80      <span class="c"># Galyean y Tedeschi (2014); NASEM (2016)</span>
+
+
+<span class="k">def</span> aporte(ing, k):
+    """Aporte de 1 kg de MS del ingrediente al nutriente k (misma definición que la app)."""
+    c = ing["comp"]
+    tnd = 0 if ing["cat"] == "gras" else c.get("TND", 0)          <span class="c"># la grasa no alimenta a los microbios</span>
+    pc, pdr = c.get("PC", 0), c.get("PDR", 0)
+    <span class="k">if</span> k == "PM":
+        <span class="k">return</span> MP_MCP * MCP_B * tnd * 10 + pc * 10 * (1 - pdr / 100) * D_RUP
+    <span class="k">if</span> k == "PDRb":
+        <span class="k">return</span> pc * 10 * pdr / 100 - MCP_B * tnd * 10
+    <span class="k">if</span> k == "PDR":
+        <span class="k">return</span> pc * pdr / 100
+    <span class="k">if</span> k == "FDNef":
+        <span class="k">return</span> c.get("FDN", 0) * c.get("pef", 0)
+    <span class="k">if</span> k == "For":
+        <span class="k">return</span> 100 if ing["cat"] in FORRAJE else 0
+    <span class="k">return</span> c.get(k, 0)
+
+
+<span class="k">def</span> constante(k):
+    """Término constante de la síntesis microbiana por kg de MS (depende del consumo)."""
+    <span class="k">return</span> {"PM": MP_MCP * MCP_A / dmi, "PDRb": -MCP_A / dmi}.get(k, 0)
+
+
+precio = np.array([i["precio"] / max(i["comp"]["MS"] / 100, 0.01) for i in ings])   <span class="c"># $ por kg de MS</span>
+A_ub, b_ub = [], []
+<span class="k">for</span> k, (lo, hi) in req.items():
+    fila = np.array([aporte(i, k) for i in ings])
+    <span class="k">if</span> lo is not None:
+        A_ub.append(-fila); b_ub.append(-100 * (lo - constante(k)))
+    <span class="k">if</span> hi is not None:
+        A_ub.append(fila); b_ub.append(100 * (hi - constante(k)))
+cotas = [(i.get("min") or 0, i["max"] if i.get("max") not in (None, "") else 100) for i in ings]
+r = linprog(precio, A_ub=np.array(A_ub), b_ub=b_ub, A_eq=[np.ones(len(ings))], b_eq=[100],
+            bounds=cotas, method="highs")
+<span class="k">if</span> r.status != 0:
+    sys.exit("HiGHS: " + r.message)
+
+app = {f["id"]: f["pct"] for f in m["solucion"]["formula"]}
+costo_app, costo_highs = m["solucion"]["costoKgMS"], r.fun / 100
+print(f"{'Ingrediente':38s} {'RatioBos':&gt;9s} {'HiGHS':&gt;9s}")
+<span class="k">for</span> i, x in zip(ings, r.x):
+    <span class="k">if</span> x &gt; 1e-6 or app.get(i["id"], 0) &gt; 1e-6:
+        print(f"{i['nombre'][:38]:38s} {app.get(i['id'], 0):9.3f} {x:9.3f}")
+print(f"\nCosto por kg de MS · RatioBos: {costo_app:.6f}  HiGHS: {costo_highs:.6f}")
+print(f"Diferencia relativa: {abs(costo_app - costo_highs) / costo_highs:.2e}")
+</pre></div>
+
+  <h3 id="r-metodos" data-n="R.3"><span lang="es">Texto para Materiales y métodos</span><span lang="en">Text for Materials and methods</span></h3>
+  <p lang="es">Un párrafo base para describir el uso de RatioBos en un artículo. Ajuste los datos entre corchetes:</p>
+  <p lang="en">A base paragraph to describe the use of RatioBos in a paper. Adjust the bracketed data:</p>
+  <div class="methods" id="metES" lang="es"><button class="copy" data-copy="metES">Copiar</button>
+    <p>Las raciones se formularon al mínimo costo con RatioBos versión 1.0.0 (Mojica-Zárate y Barrera-Guzmán, 2026). Los requerimientos de energía neta, proteína metabolizable, calcio y fósforo se calcularon con las ecuaciones de NASEM (2016) para [toretes cruza cebú × europeo de 380 kg con una ganancia objetivo de 1.35 kg/d], incluyendo los ajustes de NRC (1996) por biotipo, sexo, aclimatación térmica, índice de temperatura y humedad y actividad, y la síntesis de proteína microbiana de Galyean y Tedeschi (2014). El consumo se predijo con las ecuaciones de NRC (1996) [o: se fijó en el consumo observado]. La dependencia entre la energía de la ración y el consumo se resolvió iterando hasta que la ENm supuesta y la de la ración difirieron menos de 0.002 Mcal/kg de MS. Cada programa lineal se resolvió con el método símplex en dos fases y la regla de Bland, y su optimalidad se verificó por dualidad fuerte (brecha primal–dual relativa &lt; 10⁻⁷). La composición de los ingredientes se tomó de Beck et al. (2024) [o: de análisis de laboratorio], y se impusieron límites de inclusión de [describir]. La huella de gases de efecto invernadero se estimó con el Nivel 2 del IPCC (2019) y los potenciales de calentamiento a 100 años del AR6. El modelo y la solución completos se exportaron en formato JSON y se incluyen como material suplementario.</p></div>
+  <div class="methods" id="metEN" lang="en"><button class="copy" data-copy="metEN">Copy</button>
+    <p>Rations were formulated at least cost with RatioBos version 1.0.0 (Mojica-Zárate &amp; Barrera-Guzmán, 2026). Net energy, metabolizable protein, calcium and phosphorus requirements were computed with the NASEM (2016) equations for [380 kg zebu × European crossbred bulls with a 1.35 kg/d target gain], including the NRC (1996) adjustments for biotype, sex, thermal acclimation, temperature-humidity index and activity, and the microbial protein synthesis of Galyean and Tedeschi (2014). Intake was predicted with the NRC (1996) equations [or: fixed at observed intake]. The dependence between ration energy and intake was resolved by iterating until assumed and ration NEm differed by less than 0.002 Mcal/kg DM. Each linear program was solved with the two-phase simplex method under Bland’s rule, and optimality was verified by strong duality (relative primal–dual gap &lt; 10⁻⁷). Ingredient composition was taken from Beck et al. (2024) [or: from laboratory analyses], with inclusion limits of [describe]. The greenhouse-gas footprint was estimated with the IPCC (2019) Tier 2 method and AR6 100-year global warming potentials. The complete model and solution were exported as JSON and are provided as supplementary material.</p></div>
+</section>
+
+<!-- ============================ L · LÍMITES ============================ -->
+<section class="chap" id="limites" data-toc="L" style="--c:var(--b8)">
+  <div class="chap-head"><span class="big">L</span>
+    <div class="eyebrow" lang="es">Alcance</div><div class="eyebrow" lang="en">Scope</div>
+    <h2 lang="es">Supuestos y limitaciones</h2><h2 lang="en">Assumptions and limitations</h2>
+    <p lang="es">Lo que el modelo no hace y cuándo conviene desconfiar de un número.</p>
+    <p lang="en">What the model does not do, and when to distrust a number.</p>
+    <span class="rule"></span></div>
+  <ul>
+    <li lang="es"><b>Energía tabular.</b> La energía de los ingredientes es tabular y constante; no se ajusta por nivel de consumo, procesamiento fino ni interacciones entre ingredientes. El procesamiento del grano pesa mucho (rolado contra hojueleado ≈ 15 %).</li>
+    <li lang="en"><b>Tabular energy.</b> Ingredient energy is tabular and constant; it is not adjusted for intake level, fine processing or associative effects. Grain processing matters a lot (dry-rolled versus flaked ≈ 15 %).</li>
+    <li lang="es"><b>Proteína.</b> La PM usa la síntesis microbiana a partir del TND (nivel 1 de NASEM); no modela aminoácidos individuales ni tasas de pasaje.</li>
+    <li lang="en"><b>Protein.</b> MP uses microbial synthesis from TDN (NASEM level 1); individual amino acids and passage rates are not modelled.</li>
+    <li lang="es"><b>Consumo.</b> Las ecuaciones de consumo de NRC (1996) explican una parte limitada de la variación entre corrales; si conoce el consumo real, captúrelo.</li>
+    <li lang="en"><b>Intake.</b> The NRC (1996) intake equations explain a limited share of pen-to-pen variation; if you know actual intake, enter it.</li>
+    <li lang="es"><b>Clima.</b> Las normales regionales son aproximadas y la respuesta al calor se reduce a factores de mantenimiento y consumo; no hay modelo de balance térmico.</li>
+    <li lang="en"><b>Climate.</b> Regional normals are approximate and the heat response is reduced to maintenance and intake factors; there is no heat-balance model.</li>
+    <li lang="es"><b>Precios.</b> Los precios regionales son un ejemplo con factores estimados; no sustituyen las cotizaciones del usuario.</li>
+    <li lang="en"><b>Prices.</b> Regional prices are an example with estimated factors; they do not replace the user’s quotes.</li>
+    <li lang="es"><b>Huella.</b> Los factores por ingrediente son orientativos, excluyen el cambio de uso de suelo y no forman un análisis de ciclo de vida certificado.</li>
+    <li lang="en"><b>Footprint.</b> Per-ingredient factors are indicative, exclude land-use change and do not amount to a certified life-cycle assessment.</li>
+    <li lang="es"><b>Linealidad.</b> El programa es lineal en las inclusiones; los efectos no lineales (por ejemplo, la grasa sobre la digestión de la fibra) se controlan con límites, no con el objetivo.</li>
+    <li lang="en"><b>Linearity.</b> The program is linear in the inclusions; nonlinear effects (fat on fibre digestion, for instance) are handled with limits, not in the objective.</li>
+  </ul>
+</section>
+
+<!-- ============================ REFERENCIAS ============================ -->
+<section class="chap" id="referencias" data-toc="★" style="--c:var(--pri)">
+  <div class="chap-head"><span class="big">★</span>
+    <div class="eyebrow" lang="es">Bibliografía</div><div class="eyebrow" lang="en">Bibliography</div>
+    <h2 lang="es">Referencias</h2><h2 lang="en">References</h2>
+    <span class="rule"></span></div>
+  <ul class="refs"><li>Avendaño-Reyes, L., Macías-Cruz, U., Vicente-Pérez, A., Aguilar, J. A., López-Baca, M. Á., Roque-Jiménez, J. A., Mellado, M., Gastelum, M. Á., & Siller, J. A. (2025). Toros <i>Bos indicus</i> engordados bajo estrés por calor en corrales provisto de sombra tipo domo: respuestas fisiológicas y productivas. <i>Revista Mexicana de Ciencias Pecuarias, 16</i>(3), 537–554. <a href="https://doi.org/10.22319/rmcp.v16i3.6859">https://doi.org/10.22319/rmcp.v16i3.6859</a></li><li>Beck, P., Lalman, D., & Moehlenpah, A. (2024). <i>Nutritive value of feeds</i> (ANSI-3018). Oklahoma State University Extension.</li><li>Carvalho, P. H. V., Latack, B. C., Flores, R., Montano, M. F., & Zinn, R. A. (2022). Interaction of early metabolizable protein supplementation and virginiamycin on feedlot growth performance and carcass characteristics of calf-fed Holstein steers. <i>Translational Animal Science, 6</i>(1), txab228. <a href="https://doi.org/10.1093/tas/txab228">https://doi.org/10.1093/tas/txab228</a></li><li>Castro-Pérez, B. I., Estrada-Angulo, A., Ríos-Rincón, F. G., Núñez-Benítez, V. H., Rivera-Méndez, C. R., Urías-Estrada, J. D., Zinn, R. A., Barreras, A., & Plascencia, A. (2020). The influence of shade allocation or total shade plus overhead fan on growth performance, efficiency of dietary energy utilization, and carcass characteristics of feedlot cattle under tropical ambient conditions. <i>Asian-Australasian Journal of Animal Sciences, 33</i>(6), 1034. <a href="https://doi.org/10.5713/ajas.19.0112">https://doi.org/10.5713/ajas.19.0112</a></li><li>Dantzig, G. B. (1963). <i>Linear programming and extensions</i>. Princeton University Press.</li><li>Estrada-Angulo, A., Mendoza-Cortez, D. A., Ramos-Méndez, J. L., Arteaga-Wences, Y. J., Urías-Estrada, J. D., Castro-Pérez, B. I., Ríos-Rincón, F. G., Rodríguez-Gaxiola, M. A., Barreras, A., Zinn, R. A., & Plascencia, A. (2022). Comparing blend of essential oils plus 25-hydroxy-vit-D3 versus monensin plus virginiamycin combination in finishing feedlot cattle. <i>Animals, 12</i>(13), 1715. <a href="https://doi.org/10.3390/ani12131715">https://doi.org/10.3390/ani12131715</a></li><li>FAO. (2014). <i>SAFA: Sustainability assessment of food and agriculture systems. Guidelines</i> (versión 3.0). Food and Agriculture Organization of the United Nations.</li><li>FAO. (2018). <i>Transforming food and agriculture to achieve the SDGs: 20 interconnected actions to guide decision-makers</i>. Food and Agriculture Organization of the United Nations.</li><li>Floriano-López, A., Rodríguez-Almeida, F. A., Martínez-Quintana, J. A. A., Sandoval-Villalobos, J., Roacho-Estrada, O., Villarreal-Balderrama, J., & Antillón-Ruiz, J. (2024). Productive performance of Raramuri Criollo, Angus × Raramuri Criollo and Hereford × Angus cows in a low-input cow-calf system in northern Mexico. <i>Journal of Animal Science, 102</i>(Suppl. 3), 456–457. <a href="https://doi.org/10.1093/jas/skae234.516">https://doi.org/10.1093/jas/skae234.516</a></li><li>Galyean, M. L., & Tedeschi, L. O. (2014). Predicting microbial protein synthesis in beef cattle: Relationship to intakes of total digestible nutrients and crude protein. <i>Journal of Animal Science, 92</i>(11), 5099–5111. <a href="https://doi.org/10.2527/jas.2014-8098">https://doi.org/10.2527/jas.2014-8098</a></li><li>González-Vizcarra, V. M., Plascencia, A., Ramos-Aviña, D., & Zinn, R. A. (2017). Influence of substituting steam-flaked corn for dry rolled corn on feedlot cattle growth performance when cattle are allowed either ad libitum or restricted access to the finishing diet. <i>Asian-Australasian Journal of Animal Sciences, 30</i>(11), 1563. <a href="https://doi.org/10.5713/ajas.17.0185">https://doi.org/10.5713/ajas.17.0185</a></li><li>Gómez-Alarcón, R., Limón-Navarro, J. E., & Arellanes-Ayala, J. (1989). <i>Nutrición animal: 20 años de investigación pecuaria en el CIPES</i>. Centro de Investigaciones Pecuarias del Estado de Sonora.</li><li>IPCC. (2019). <i>2019 refinement to the 2006 IPCC guidelines for national greenhouse gas inventories</i>, vol. 4, cap. 10 y 11. Intergovernmental Panel on Climate Change.</li><li>Lofgreen, G. P., & Garrett, W. N. (1968). A system for expressing net energy requirements and feed values for growing and finishing beef cattle. <i>Journal of Animal Science, 27</i>(3), 793–806.</li><li>Martínez, E. D. (2023). Implicaciones que influyen en el desempeño productivo, características de la canal y de la carne de ganado bovino engordado en corral. <i>Revista de Investigaciones Veterinarias del Perú, 34</i>(3), e24517. <a href="https://doi.org/10.15381/rivep.v34i3.24517">https://doi.org/10.15381/rivep.v34i3.24517</a></li><li>Mejía-Turcios, S. E., Rotz, A., McGlone, J. J., Rivera, C., & Mitloehner, F. M. (2024). Effects of heat stress mitigation methods on growth performance, environmental, and economic outcomes of feedlot cattle raised in a hot climate. <i>Journal of Animal Science, 102</i>(Suppl. 3), 664–665. <a href="https://doi.org/10.1093/jas/skae234.754">https://doi.org/10.1093/jas/skae234.754</a></li><li>Mekonnen, M. M., & Hoekstra, A. Y. (2011). The green, blue and grey water footprint of crops and derived crop products. <i>Hydrology and Earth System Sciences, 15</i>, 1577–1600.</li><li>Monsalve, J. G., & Millen, D. D. (2025). A snapshot of nutritional recommendations and management practices adopted by feedlot cattle nutritionists in Brazil in 2023. <i>Frontiers in Veterinary Science, 12</i>, 1518571. <a href="https://doi.org/10.3389/fvets.2025.1518571">https://doi.org/10.3389/fvets.2025.1518571</a></li><li>Montano, M. F., Carvalho, P. H. V., Ferraz Junior, M. V. C., Latack, B. C., & Zinn, R. A. (2023). Influence of level of dried distillers grains plus solubles substitution for steam-flaked corn on characteristics of growth performance, and dietary energetics of calf-fed Holstein steers during the initial 16-week growing phase. <i>Translational Animal Science, 7</i>(1), txad024. <a href="https://doi.org/10.1093/tas/txad024">https://doi.org/10.1093/tas/txad024</a></li><li>National Academies of Sciences, Engineering, and Medicine. (2016). <i>Nutrient requirements of beef cattle</i> (8th rev. ed.). The National Academies Press. <a href="https://doi.org/10.17226/19014">https://doi.org/10.17226/19014</a></li><li>National Research Council. (1971). <i>A guide to environmental research on animals</i>. National Academy of Sciences.</li><li>National Research Council. (1996, 2000). <i>Nutrient requirements of beef cattle</i> (7th rev. ed.). National Academy Press.</li><li>Plascencia, A., Latack, B. C., Carvalho, P. H. V., & Zinn, R. A. (2022). Feeding value of supplemental fat as a partial replacement for steam-flaked corn in diets for Holstein calves during the early growing phase. <i>Translational Animal Science, 6</i>(2), txac048. <a href="https://doi.org/10.1093/tas/txac048">https://doi.org/10.1093/tas/txac048</a></li><li>Ramos-Aviña, D., Plascencia, A., & Zinn, R. A. (2018). Influence of dietary nonstructural carbohydrate concentration on growth performance and carcass characteristics of Holstein steers. <i>Asian-Australasian Journal of Animal Sciences, 31</i>(6), 859–865. <a href="https://doi.org/10.5713/ajas.17.0425">https://doi.org/10.5713/ajas.17.0425</a></li><li>Rodríguez-Cordero, D., Carrillo-Muro, O., Hernández-Briano, P., Correa-Aguado, P. I., Rivera-Villegas, A., Barreras, A., Lazalde-Cruz, R., Zinn, R. A., & Plascencia, A. (2025). Optimal period of calcium propionate supplementation in arrival high-risk bull calves: Growth performance, body fat reserves, and serum metabolites. <i>Animals, 15</i>(8), 1170. <a href="https://doi.org/10.3390/ani15081170">https://doi.org/10.3390/ani15081170</a></li><li>Salinas-Chavira, J., Carvalho, P. H. V., Latack, B. C., Ferraz Junior, M. V. C., Montano, M., & Zinn, R. A. (2024). Influence of metabolizable protein and methionine supplementation on growth-performance of Holstein steer calves during the initial 112-d feedlot growing phase. <i>Translational Animal Science, 8</i>, txae003. <a href="https://doi.org/10.1093/tas/txae003">https://doi.org/10.1093/tas/txae003</a></li><li>SIAP. (2024). <i>Panorama agroalimentario 2024</i>. Servicio de Información Agroalimentaria y Pesquera, SADER.</li><li>Sánchez-Arroyo, E., Vargas-Romero, J. M., Rosendo-Ponce, A., Hernández-Mendo, O., Pérez-Chabela, M. L., Pro-Martínez, A., & Becerril-Pérez, C. M. (2023). Growth performance, carcass, and meat quality traits of Tropical Milking criollo bulls fed with two energy-level diets. <i>Tropical Animal Health and Production, 55</i>, 62. <a href="https://doi.org/10.1007/s11250-023-03469-8">https://doi.org/10.1007/s11250-023-03469-8</a></li><li>Tedeschi, L. O., & Fox, D. G. (2020). <i>The ruminant nutrition system: Volume I – An applied model for predicting nutrient requirements and feed utilization in ruminants</i> (3rd ed.). XanEdu.</li><li>Valadares Filho, S. C., et al. (2023). <i>BR-CORTE: Nutrient requirements of zebu and crossbred cattle</i> (4th ed.). Universidade Federal de Viçosa. <a href="https://doi.org/10.26626/978-85-8179-194-4.2023">https://doi.org/10.26626/978-85-8179-194-4.2023</a></li><li>Zambrano, R., & Salcedo, M. (1973). <i>Comparación de cuatro forrajes toscos en la engorda de vaquillas en corral</i> (F73003). Centro de Investigaciones Pecuarias del Estado de Sonora.</li><li>Zinn, R. A., & Shen, Y. (1998). An evaluation of ruminally degradable intake protein and metabolizable amino acid requirements of feedlot calves. <i>Journal of Animal Science, 76</i>(5), 1280–1289. <a href="https://doi.org/10.2527/1998.7651280x">https://doi.org/10.2527/1998.7651280x</a></li></ul>
+</section>
+
+<div class="colophon">
+  <p lang="es"><b>RatioBos · Instructivo del Científico</b>, 1.ª edición, octubre de 2026. Describe RatioBos 1.0.0. Todos los números provienen de la app con el caso del Instructivo del Productor; las figuras se dibujan con esos datos.</p>
+  <p lang="en"><b>RatioBos · Scientist Guide</b>, 1st edition, October 2026. Covers RatioBos 1.0.0. Every number comes from the app with the Producer Guide case; the figures are drawn from those data.</p>
+  <p lang="es">Herramienta de apoyo: los resultados deben ser revisados por un profesional en nutrición animal. © 2026 Héctor Tecumshé Mojica-Zárate. El programa se distribuye con licencia MIT.</p>
+  <p lang="en">Decision-support tool: results should be reviewed by a qualified animal nutritionist. © 2026 Héctor Tecumshé Mojica-Zárate. The software is distributed under the MIT License.</p>
+</div>
+
+</div><!-- .doc -->
+
+</main>
+</div>
+
+<a class="ib totop" href="#portada" aria-label="Arriba / Top">↑</a>
+<div id="zoom" role="dialog" aria-label="Imagen ampliada / Enlarged image"><div class="zi"></div></div>
+
+<script src="instructivo/capturas.js"></script>
+<script>
+"use strict";
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const CAP = window.CAPTURAS || {};
+
+/* ---------- idioma ---------- */
+function getLang(){
+  const u = new URLSearchParams(location.search).get('lang');
+  if (u === 'es' || u === 'en') return u;
+  try { const s = localStorage.getItem('ratiobos_lang'); if (s === 'es' || s === 'en') return s; } catch (_) {}
+  return (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+}
+let LANG = getLang();
+function setLang(l){
+  LANG = l; document.documentElement.lang = l; document.documentElement.dataset.lang = l;
+  $$('.seg button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  $('#q').placeholder = l === 'es' ? 'Buscar en el instructivo…' : 'Search the guide…';
+  document.title = l === 'es' ? 'RatioBos · Instructivo del Científico' : 'RatioBos · Scientist Guide';
+  try { localStorage.setItem('ratiobos_lang', l); } catch (_) {}
+  $('#pdfBtn').href = l === 'es' ? 'instructivo/RatioBos-Instructivo-Cientifico.pdf' : 'instructivo/RatioBos-Scientist-Guide.pdf';
+  buildToc(); numberFigures(); buscar();
+}
+$$('.seg button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+/* ---------- tema ---------- */
+function setTheme(t){
+  if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+  const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  $('#temaBtn').textContent = dark ? '☀' : '☾';
+}
+try { setTheme(localStorage.getItem('ratiobos_tema')); } catch (_) { setTheme(null); }
+$('#temaBtn').addEventListener('click', () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const nt = cur === 'dark' ? 'light' : 'dark'; setTheme(nt); try { localStorage.setItem('ratiobos_tema', nt); } catch (_) {}
+});
+
+/* ---------- figuras: dos idiomas + marcas sobre la captura ---------- */
+$$('figure[data-fig]').forEach(fig => {
+  const id = fig.dataset.fig, cap = fig.querySelector('figcaption');
+  const order = (fig.dataset.marks || '').split(',').filter(Boolean).map(Number);
+  const fix = Object.fromEntries((fig.dataset.fix || '').split(';').filter(Boolean).map(s => { const [k, v] = s.split(':'); return [+k, v.split(',').map(Number)]; }));
+  const holder = document.createElement('div');
+  ['es', 'en'].forEach(l => {
+    const shot = document.createElement('div'); shot.className = 'shot'; shot.lang = l;
+    const img = new Image(); img.src = `instructivo/img/${id}-${l}.jpg`; img.loading = new URLSearchParams(location.search).has('eager') ? 'eager' : 'lazy'; img.decoding = 'async';
+    img.alt = (cap ? cap.querySelector(`[lang="${l}"] b, [lang="${l}"]`)?.textContent : '') || id;
+    shot.appendChild(img);
+    const data = CAP[`${id}-${l}`];
+    order.forEach((mi, n) => {
+      const m = data && data.marks && data.marks[mi];
+      const mk = document.createElement('span'); mk.className = 'mk';
+      if (fix[n]) { mk.classList.add('dotonly'); mk.style.left = fix[n][0] + '%'; mk.style.top = fix[n][1] + '%'; mk.style.width = mk.style.height = '0'; }
+      else if (m) { mk.style.left = m.l + '%'; mk.style.top = m.t + '%'; mk.style.width = (m.r - m.l) + '%'; mk.style.height = (m.b - m.t) + '%'; }
+      else return;
+      mk.innerHTML = `<span class="ring"></span><span class="num">${n + 1}</span>`;
+      shot.appendChild(mk);
+    });
+    shot.addEventListener('click', () => abrirZoom(shot));
+    holder.appendChild(shot);
+  });
+  if (fig.dataset.phone) { holder.className = 'phone'; }
+  fig.insertBefore(holder, fig.firstChild);
+});
+function numberFigures(){
+  $$('section.chap').forEach(sec => {
+    const n = sec.dataset.toc; let i = 0;
+    $$('figure .fn', sec).forEach(fn => { i++; fn.textContent = (LANG === 'es' ? 'Figura ' : 'Figure ') + n + '.' + i; });
+  });
+}
+
+/* ---------- visor ---------- */
+function abrirZoom(shot){ const z = $('#zoom .zi'); z.innerHTML = ''; const c = shot.cloneNode(true); c.style.cursor = 'zoom-out'; c.querySelector('img').loading = 'eager'; z.appendChild(c); $('#zoom').classList.add('on'); }
+$('#zoom').addEventListener('click', () => $('#zoom').classList.remove('on'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { $('#zoom').classList.remove('on'); $('#toc').classList.remove('open'); } });
+
+/* ---------- índice lateral ---------- */
+const GRUPOS = { leer: ['Para empezar', 'Getting started'], animal: ['Método', 'Method'], validacion: ['Evidencia', 'Evidence'], repro: ['Uso científico', 'Scientific use'] };
+function txt(el){ const x = el.querySelector(`[lang="${LANG}"]`); return (x || el).textContent.trim(); }
+function buildToc(){
+  const ol = $('#tocList'); ol.innerHTML = '';
+  $$('section.chap').forEach(sec => {
+    const g = GRUPOS[sec.id]; if (g) { const li = document.createElement('li'); li.className = 'grp'; li.textContent = g[LANG === 'es' ? 0 : 1]; ol.appendChild(li); }
+    const h2 = sec.querySelector('h2[lang="' + LANG + '"]') || sec.querySelector('h2');
+    const li = document.createElement('li'); li.dataset.sec = sec.id;
+    li.innerHTML = `<a href="#${sec.id}" style="--c:${getComputedStyle(sec).getPropertyValue('--c')}"><span class="n">${sec.dataset.toc}</span><span>${h2 ? h2.textContent : ''}</span></a>`;
+    ol.appendChild(li);
+    const subs = $$('h3[id]', sec);
+    if (subs.length && /^[\dA-Z]+$/.test(sec.dataset.toc) && sec.dataset.toc !== 'P') {
+      const so = document.createElement('ol'); so.className = 'sub';
+      subs.forEach(h => { const s = document.createElement('li'); s.dataset.sec = h.id; s.innerHTML = `<a href="#${h.id}">${txt(h)}</a>`; so.appendChild(s); });
+      li.appendChild(so);
+    }
+    const nav = sec.querySelector('.inchap');
+    if (nav) nav.innerHTML = subs.map(h => `<a href="#${h.id}" data-n="${h.dataset.n || ''}">${txt(h)}</a>`).join('');
+    subs.forEach(h => { if (h.dataset.n && !h.querySelector('.sn')) h.insertAdjacentHTML('afterbegin', `<span class="sn">${h.dataset.n}</span>`); });
+  });
+  spy();
+}
+$('#tocList').addEventListener('click', e => { if (e.target.closest('a')) $('#toc').classList.remove('open'); });
+$('#menuBtn').addEventListener('click', () => $('#toc').classList.toggle('open'));
+
+/* ---------- posición de lectura ---------- */
+function spy(){
+  const y = scrollY + 120; let cur = null;
+  $$('section.chap, h3[id]').forEach(el => { if (el.getBoundingClientRect().top + scrollY <= y) cur = el.id; });
+  $$('#tocList a').forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
+  const h = document.documentElement.scrollHeight - innerHeight;
+  $('#leido').style.width = (h > 0 ? 100 * scrollY / h : 0) + '%';
+  $('.totop').classList.toggle('on', scrollY > 900);
+}
+addEventListener('scroll', spy, { passive: true });
+
+/* ---------- buscador ---------- */
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+function buscar(){
+  const q = norm($('#q').value.trim()), hits = $('#hits');
+  const items = $$('#tocList > li[data-sec]');
+  if (q.length < 2) { items.forEach(li => { li.classList.remove('hide'); $$('.sub li', li).forEach(s => s.classList.remove('hide')); }); hits.textContent = ''; return; }
+  let n = 0;
+  items.forEach(li => {
+    const sec = document.getElementById(li.dataset.sec);
+    const vis = el => norm($$(`[lang="${LANG}"]`, el).map(x => x.textContent).join(' ') + ' ' + (el.dataset.toc || ''));
+    let any = false;
+    $$('.sub li', li).forEach(s => {
+      const h = document.getElementById(s.dataset.sec); let seg = '', el = h;
+      do { seg += ' ' + (el.matches && el.matches(`[lang="${LANG}"]`) ? el.textContent : $$(`[lang="${LANG}"]`, el).map(x => x.textContent).join(' ')); el = el.nextElementSibling; } while (el && el.tagName !== 'H3');
+      const ok = norm(seg).includes(q); s.classList.toggle('hide', !ok); if (ok) { any = true; n++; }
+    });
+    const self = vis(sec).includes(q); if (self && !any) n++;
+    li.classList.toggle('hide', !(self || any));
+  });
+  hits.textContent = n ? (LANG === 'es' ? `${n} coincidencia${n > 1 ? 's' : ''}` : `${n} match${n > 1 ? 'es' : ''}`) : (LANG === 'es' ? 'Sin coincidencias' : 'No matches');
+}
+$('#q').addEventListener('input', buscar);
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter') { const a = $('#tocList li:not(.hide) .sub li:not(.hide) a') || $('#tocList li:not(.hide) a'); if (a) a.click(); } });
+
+/* ---------- glosario ---------- */
+const GLOS = [
+[
+"Acidosis ruminal",
+"Rumen acidosis",
+"Exceso de ácido en el rumen por mucho grano y poca fibra; baja el consumo y causa cojeras.",
+"Too much acid in the rumen from much grain and little fibre; cuts intake and causes lameness."
+],
+[
+"Base seca (MS)",
+"Dry basis (DM)",
+"El alimento sin su agua. Así se comparan los ingredientes y se calcula la ración.",
+"Feed without its water. Ingredients are compared and the ration computed this way."
+],
+[
+"Beneficio : costo",
+"Benefit : cost",
+"Lo que entra entre lo que sale. Mayor que 1 significa utilidad.",
+"Money in over money out. Above 1 means profit."
+],
+[
+"Biotipo",
+"Biotype",
+"Grupo de razas que se comportan parecido: británico, continental, cebú, cruza, criollo, lechero.",
+"Group of breeds that behave alike: British, Continental, zebu, cross, Criollo, dairy."
+],
+[
+"Conversión alimenticia",
+"Feed conversion",
+"Kilos de alimento (MS) por kilo de peso ganado. Más baja, mejor.",
+"Kilos of feed (DM) per kilo of weight gained. Lower is better."
+],
+[
+"CO₂ equivalente (CO₂e)",
+"CO₂ equivalent (CO₂e)",
+"Gases sumados según su efecto en el clima: 1 kg de metano = 27 kg de CO₂; 1 kg de óxido nitroso = 273.",
+"Gases added by their climate effect: 1 kg methane = 27 kg CO₂; 1 kg nitrous oxide = 273."
+],
+[
+"Eficiencia alimenticia",
+"Feed efficiency",
+"Kilos ganados por kilo de alimento. Más alta, mejor.",
+"Kilos gained per kilo of feed. Higher is better."
+],
+[
+"Energía neta de ganancia (ENg)",
+"Net energy for gain (NEg)",
+"La energía del alimento que se convierte en kilos, en Mcal por kg de MS.",
+"The feed energy that becomes kilos, in Mcal per kg DM."
+],
+[
+"Energía neta de mantenimiento (ENm)",
+"Net energy for maintenance (NEm)",
+"La energía que el animal gasta solo en mantenerse vivo, sin ganar peso.",
+"The energy the animal spends just staying alive, without gaining weight."
+],
+[
+"FDN físicamente efectiva (FDNfe)",
+"Physically effective NDF (peNDF)",
+"La fibra larga que hace rumiar y produce saliva, el amortiguador natural del rumen.",
+"Long fibre that makes cattle chew cud and produce saliva, the rumen’s natural buffer."
+],
+[
+"GDP",
+"ADG",
+"Ganancia diaria de peso, en kg por día.",
+"Average daily gain, in kg per day."
+],
+[
+"Ionóforo",
+"Ionophore",
+"Aditivo (monensina, lasalocida) que mejora el aprovechamiento de la energía y reduce la acidosis.",
+"Additive (monensin, lasalocid) that improves energy use and reduces acidosis."
+],
+[
+"ITH",
+"THI",
+"Índice de temperatura y humedad: el calor que siente el animal.",
+"Temperature-humidity index: the heat the animal feels."
+],
+[
+"Mínimo costo",
+"Least cost",
+"La ración más barata entre todas las que cumplen los requerimientos.",
+"The cheapest ration among all those that meet the requirements."
+],
+[
+"Precio de entrada",
+"Entry price",
+"Precio al que un ingrediente que quedó fuera empezaría a convenir.",
+"Price at which an ingredient left out would start to pay off."
+],
+[
+"Precio de equilibrio",
+"Break-even price",
+"Precio de venta por kilo en pie al que el lote ni gana ni pierde.",
+"Sale price per kilo live weight at which the lot neither gains nor loses."
+],
+[
+"Premezcla",
+"Premix",
+"Mezcla previa de los ingredientes pequeños con un poco de grano molido, para repartirlos bien.",
+"A pre-blend of the small ingredients with a little ground grain, so they spread evenly."
+],
+[
+"Proteína metabolizable (PM)",
+"Metabolizable protein (MP)",
+"La proteína que de verdad llega al intestino: la de los microbios del rumen más la que no se degrada.",
+"The protein that actually reaches the gut: rumen microbial protein plus undegraded protein."
+],
+[
+"Sostenibilidad",
+"Sustainability",
+"Según la FAO: producir hoy sin comprometer la capacidad de producir mañana, en lo ambiental, lo económico y lo social.",
+"As FAO defines it: producing today without compromising the capacity to produce tomorrow, environmentally, economically and socially."
+],
+[
+"Tal como se ofrece (TCO)",
+"As fed (AF)",
+"El alimento con su agua, como lo pesa la báscula del carro.",
+"Feed with its water, as the wagon scale weighs it."
+],
+[
+"Urea",
+"Urea",
+"Nitrógeno no proteico barato que los microbios del rumen convierten en proteína. Máximo ≈ 1 % de la MS.",
+"Cheap non-protein nitrogen that rumen microbes turn into protein. At most ≈ 1 % of DM."
+]
+];
+if ($('#glos')) $('#glos').innerHTML = GLOS.map(g => `<dt><span lang="es">${g[0]}<small>${g[1]}</small></span><span lang="en">${g[1]}<small>${g[0]}</small></span></dt><dd><span lang="es">${g[2]}</span><span lang="en">${g[3]}</span></dd>`).join('');
+
+/* ---------- al imprimir, carga todas las imágenes ---------- */
+addEventListener('beforeprint', () => $$('img[loading="lazy"]').forEach(i => i.loading = 'eager'));
+
+
+setLang(LANG);
+/* al abrir con #ancla, ir ahí cuando las figuras ya ocupan su lugar */
+addEventListener('load', () => { const h = decodeURIComponent(location.hash.slice(1)); const el = h && document.getElementById(h); if (el) { document.documentElement.style.scrollBehavior = 'auto'; el.scrollIntoView(); document.documentElement.style.scrollBehavior = ''; } });
+
+/* ---------- copiar código y texto de métodos ---------- */
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-copy]'); if (!b) return;
+  const el = document.getElementById(b.dataset.copy); const t = el.querySelector('p') ? el.querySelector('p').innerText : el.innerText;
+  try { navigator.clipboard.writeText(t); const o = b.textContent; b.textContent = LANG === 'es' ? '✓ Copiado' : '✓ Copied'; setTimeout(() => b.textContent = o, 1400); } catch (_) {}
+});
+</script>
+</body>
+</html>

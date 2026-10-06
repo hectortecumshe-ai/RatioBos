@@ -1,0 +1,81 @@
+
+<!-- ============================ R · REPRODUCIBILIDAD ============================ -->
+<section class="chap" id="repro" data-toc="R" style="--c:var(--b11)">
+  <div class="chap-head"><span class="big">R</span>
+    <div class="eyebrow" lang="es">Vista científica</div><div class="eyebrow" lang="en">Scientist view</div>
+    <h2 lang="es">Reproducibilidad y publicación</h2><h2 lang="en">Reproducibility and publication</h2>
+    <p lang="es">Qué muestra la vista científica, cómo exportar el modelo y cómo verificarlo fuera de la app.</p>
+    <p lang="en">What the scientist view shows, how to export the model and how to verify it outside the app.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6h20l8 8v28H14z"/><path d="M34 6v8h8M20 24l-4 4 4 4M28 24l4 4-4 4"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="r-vista" data-n="R.1"><span lang="es">Lo que agrega la vista científica</span><span lang="en">What the scientist view adds</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Bloque</th><th lang="en">Block</th><th lang="es">Contenido adicional</th><th lang="en">Additional content</th></tr></thead>
+    <tbody>
+      <tr><td>3</td><td lang="es">Los 15 nutrientes e indicadores, factores de consumo, ENm supuesta y peso a engrasamiento (SRW).</td><td lang="en">All 15 nutrients and indicators, intake factors, assumed NEm and target-fatness weight (SRW).</td></tr>
+      <tr><td>5</td><td lang="es">Composición completa de cada ingrediente y sus factores de huella (CO<sub>2</sub>e, agua, suelo).</td><td lang="en">Full composition of each ingredient and its footprint factors (CO<sub>2</sub>e, water, land).</td></tr>
+      <tr><td>7</td><td lang="es">Tarjeta del modelo (variables, restricciones, pivotes, certificado), tabla de iteraciones del ajuste de energía, precios sombra, costos reducidos, ganancia por energía y por proteína, metano y nitrógeno, y exportación del modelo en JSON.</td><td lang="en">Model card (variables, constraints, pivots, certificate), energy-adjustment iteration table, shadow prices, reduced costs, energy- and protein-allowable gain, methane and nitrogen, and JSON export of the model.</td></tr>
+      <tr><td>✓</td><td lang="es">Cada dieta publicada: composición reportada contra calculada, prueba del optimizador, energía observada, economía y PM.</td><td lang="en">Each published diet: reported versus computed composition, optimiser test, observed energy, economics and MP.</td></tr>
+      <tr><td>§</td><td lang="es">Marco teórico completo con referencias en formato APA.</td><td lang="en">Full theoretical framework with APA references.</td></tr>
+    </tbody></table></div>
+
+  <h3 id="r-json" data-n="R.2"><span lang="es">Verificación independiente</span><span lang="en">Independent verification</span></h3>
+  <p lang="es">El botón <span class="ui">⬇ Modelo y solución (JSON)</span> del Bloque 7 guarda el animal, las condiciones, el consumo, los requerimientos, las iteraciones, los ingredientes con su composición, precio y límites, y la solución completa. El siguiente guion reconstruye el modelo lineal (7) desde ese archivo, lo resuelve con HiGHS y compara. Con el caso: misma fórmula y diferencia relativa de costo 0.</p>
+  <p lang="en">The <span class="ui">⬇ Model and solution (JSON)</span> button in Block 7 saves the animal, conditions, intake, requirements, iterations, ingredients with their composition, price and limits, and the complete solution. The script below rebuilds linear model (7) from that file, solves it with HiGHS and compares. With the case: identical formula and zero relative cost difference.</p>
+  <div class="code"><div class="bar"><span>pruebas/verificar_ratiobos.py · Python ≥ 3.9 · SciPy ≥ 1.9</span><button class="copy" data-copy="py" lang="es">Copiar</button><button class="copy" data-copy="py" lang="en">Copy</button></div>
+<pre id="py">{{CODIGO_PY}}</pre></div>
+
+  <h3 id="r-metodos" data-n="R.3"><span lang="es">Texto para Materiales y métodos</span><span lang="en">Text for Materials and methods</span></h3>
+  <p lang="es">Un párrafo base para describir el uso de RatioBos en un artículo. Ajuste los datos entre corchetes:</p>
+  <p lang="en">A base paragraph to describe the use of RatioBos in a paper. Adjust the bracketed data:</p>
+  <div class="methods" id="metES" lang="es"><button class="copy" data-copy="metES">Copiar</button>
+    <p>Las raciones se formularon al mínimo costo con RatioBos versión {{VERSION}} (Mojica-Zárate y Barrera-Guzmán, 2026). Los requerimientos de energía neta, proteína metabolizable, calcio y fósforo se calcularon con las ecuaciones de NASEM (2016) para [toretes cruza cebú × europeo de 380 kg con una ganancia objetivo de 1.35 kg/d], incluyendo los ajustes de NRC (1996) por biotipo, sexo, aclimatación térmica, índice de temperatura y humedad y actividad, y la síntesis de proteína microbiana de Galyean y Tedeschi (2014). El consumo se predijo con las ecuaciones de NRC (1996) [o: se fijó en el consumo observado]. La dependencia entre la energía de la ración y el consumo se resolvió iterando hasta que la ENm supuesta y la de la ración difirieron menos de 0.002 Mcal/kg de MS. Cada programa lineal se resolvió con el método símplex en dos fases y la regla de Bland, y su optimalidad se verificó por dualidad fuerte (brecha primal–dual relativa &lt; 10⁻⁷). La composición de los ingredientes se tomó de Beck et al. (2024) [o: de análisis de laboratorio], y se impusieron límites de inclusión de [describir]. La huella de gases de efecto invernadero se estimó con el Nivel 2 del IPCC (2019) y los potenciales de calentamiento a 100 años del AR6. El modelo y la solución completos se exportaron en formato JSON y se incluyen como material suplementario.</p></div>
+  <div class="methods" id="metEN" lang="en"><button class="copy" data-copy="metEN">Copy</button>
+    <p>Rations were formulated at least cost with RatioBos version {{VERSION}} (Mojica-Zárate &amp; Barrera-Guzmán, 2026). Net energy, metabolizable protein, calcium and phosphorus requirements were computed with the NASEM (2016) equations for [380 kg zebu × European crossbred bulls with a 1.35 kg/d target gain], including the NRC (1996) adjustments for biotype, sex, thermal acclimation, temperature-humidity index and activity, and the microbial protein synthesis of Galyean and Tedeschi (2014). Intake was predicted with the NRC (1996) equations [or: fixed at observed intake]. The dependence between ration energy and intake was resolved by iterating until assumed and ration NEm differed by less than 0.002 Mcal/kg DM. Each linear program was solved with the two-phase simplex method under Bland’s rule, and optimality was verified by strong duality (relative primal–dual gap &lt; 10⁻⁷). Ingredient composition was taken from Beck et al. (2024) [or: from laboratory analyses], with inclusion limits of [describe]. The greenhouse-gas footprint was estimated with the IPCC (2019) Tier 2 method and AR6 100-year global warming potentials. The complete model and solution were exported as JSON and are provided as supplementary material.</p></div>
+</section>
+
+<!-- ============================ L · LÍMITES ============================ -->
+<section class="chap" id="limites" data-toc="L" style="--c:var(--b8)">
+  <div class="chap-head"><span class="big">L</span>
+    <div class="eyebrow" lang="es">Alcance</div><div class="eyebrow" lang="en">Scope</div>
+    <h2 lang="es">Supuestos y limitaciones</h2><h2 lang="en">Assumptions and limitations</h2>
+    <p lang="es">Lo que el modelo no hace y cuándo conviene desconfiar de un número.</p>
+    <p lang="en">What the model does not do, and when to distrust a number.</p>
+    <span class="rule"></span></div>
+  <ul>
+    <li lang="es"><b>Energía tabular.</b> La energía de los ingredientes es tabular y constante; no se ajusta por nivel de consumo, procesamiento fino ni interacciones entre ingredientes. El procesamiento del grano pesa mucho (rolado contra hojueleado ≈ 15 %).</li>
+    <li lang="en"><b>Tabular energy.</b> Ingredient energy is tabular and constant; it is not adjusted for intake level, fine processing or associative effects. Grain processing matters a lot (dry-rolled versus flaked ≈ 15 %).</li>
+    <li lang="es"><b>Proteína.</b> La PM usa la síntesis microbiana a partir del TND (nivel 1 de NASEM); no modela aminoácidos individuales ni tasas de pasaje.</li>
+    <li lang="en"><b>Protein.</b> MP uses microbial synthesis from TDN (NASEM level 1); individual amino acids and passage rates are not modelled.</li>
+    <li lang="es"><b>Consumo.</b> Las ecuaciones de consumo de NRC (1996) explican una parte limitada de la variación entre corrales; si conoce el consumo real, captúrelo.</li>
+    <li lang="en"><b>Intake.</b> The NRC (1996) intake equations explain a limited share of pen-to-pen variation; if you know actual intake, enter it.</li>
+    <li lang="es"><b>Clima.</b> Las normales regionales son aproximadas y la respuesta al calor se reduce a factores de mantenimiento y consumo; no hay modelo de balance térmico.</li>
+    <li lang="en"><b>Climate.</b> Regional normals are approximate and the heat response is reduced to maintenance and intake factors; there is no heat-balance model.</li>
+    <li lang="es"><b>Precios.</b> Los precios regionales son un ejemplo con factores estimados; no sustituyen las cotizaciones del usuario.</li>
+    <li lang="en"><b>Prices.</b> Regional prices are an example with estimated factors; they do not replace the user’s quotes.</li>
+    <li lang="es"><b>Huella.</b> Los factores por ingrediente son orientativos, excluyen el cambio de uso de suelo y no forman un análisis de ciclo de vida certificado.</li>
+    <li lang="en"><b>Footprint.</b> Per-ingredient factors are indicative, exclude land-use change and do not amount to a certified life-cycle assessment.</li>
+    <li lang="es"><b>Linealidad.</b> El programa es lineal en las inclusiones; los efectos no lineales (por ejemplo, la grasa sobre la digestión de la fibra) se controlan con límites, no con el objetivo.</li>
+    <li lang="en"><b>Linearity.</b> The program is linear in the inclusions; nonlinear effects (fat on fibre digestion, for instance) are handled with limits, not in the objective.</li>
+  </ul>
+</section>
+
+<!-- ============================ REFERENCIAS ============================ -->
+<section class="chap" id="referencias" data-toc="★" style="--c:var(--pri)">
+  <div class="chap-head"><span class="big">★</span>
+    <div class="eyebrow" lang="es">Bibliografía</div><div class="eyebrow" lang="en">Bibliography</div>
+    <h2 lang="es">Referencias</h2><h2 lang="en">References</h2>
+    <span class="rule"></span></div>
+  <ul class="refs">{{REFERENCIAS}}</ul>
+</section>
+
+<div class="colophon">
+  <p lang="es"><b>RatioBos · Instructivo del Científico</b>, 1.ª edición, octubre de 2026. Describe RatioBos {{VERSION}}. Todos los números provienen de la app con el caso del Instructivo del Productor; las figuras se dibujan con esos datos.</p>
+  <p lang="en"><b>RatioBos · Scientist Guide</b>, 1st edition, October 2026. Covers RatioBos {{VERSION}}. Every number comes from the app with the Producer Guide case; the figures are drawn from those data.</p>
+  <p lang="es">Herramienta de apoyo: los resultados deben ser revisados por un profesional en nutrición animal. © 2026 Héctor Tecumshé Mojica-Zárate. El programa se distribuye con licencia MIT.</p>
+  <p lang="en">Decision-support tool: results should be reviewed by a qualified animal nutritionist. © 2026 Héctor Tecumshé Mojica-Zárate. The software is distributed under the MIT License.</p>
+</div>
+
+</div><!-- .doc -->

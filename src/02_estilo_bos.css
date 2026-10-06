@@ -100,3 +100,17 @@
 @media (max-width:900px){ .mapa-wrap{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:600px){ .bal{grid-template-columns:96px minmax(0,1fr) 70px} .basesw button{padding:4px 8px} }
 @media print{ .basesw{display:none!important} }
+
+/* Barra superior: el resumen y el lema nunca parten en dos líneas */
+#pill{min-width:0;max-width:44vw;flex:0 1 auto}
+#pill .lbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.brand-sub{white-space:nowrap}
+@media (max-width:1380px){ .brand-sub{display:none} }
+
+/* Imprimir solo la hoja de mezclado */
+@media print{
+  body.solo-mezcla *{visibility:hidden}
+  body.solo-mezcla .hoja-mezcla, body.solo-mezcla .hoja-mezcla *{visibility:visible}
+  body.solo-mezcla .hoja-mezcla{position:absolute;left:0;top:0;width:100%;border:0;box-shadow:none}
+  body.solo-mezcla .hoja-mezcla .mezcla label{break-inside:avoid}
+}

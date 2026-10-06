@@ -1,0 +1,867 @@
+{
+ "software": "RatioBos 1.0.0",
+ "doi": null,
+ "fecha": "2026-10-06T08:52:18.429Z",
+ "animal": {
+  "categoria": "engorda",
+  "biotipo": "cruza",
+  "sexo": "torete",
+  "datos": {
+   "pv": 380,
+   "pf": 620,
+   "mw": 520,
+   "adg": 1.35,
+   "srw": 478,
+   "dmi": null,
+   "diasGest": 60,
+   "pn": 33,
+   "leche": 0,
+   "grasaL": 4,
+   "protL": 3.4,
+   "nemSup": 2.05
+  },
+  "condiciones": {
+   "tPrev": 17,
+   "tAct": 23,
+   "hr": 30,
+   "noche": true,
+   "jadeo": "no",
+   "lodo": 0,
+   "sombra": "lamina",
+   "piso": "drenado",
+   "sistema": "corral",
+   "sAgua": 150,
+   "ith": 67.6,
+   "ithEf": 64.1,
+   "implante": true,
+   "ionoforo": true,
+   "cabezas": 300,
+   "mezcla": 3000,
+   "comprakg": 62,
+   "ventakg": 58,
+   "otrosDia": 9,
+   "med": {
+    "ionDosis": 30,
+    "antib": "ninguno",
+    "antibDosis": 11,
+    "beta": "ninguno",
+    "betaDosis": 6.5,
+    "betaDias": 30,
+    "implantes": 1,
+    "desparas": 1,
+    "vacunas": 2
+   }
+  }
+ },
+ "consumoMS": 7.754845141557993,
+ "requerimientos": {
+  "NEm": [
+   null,
+   null
+  ],
+  "NEg": [
+   1.254,
+   null
+  ],
+  "TND": [
+   null,
+   null
+  ],
+  "PC": [
+   null,
+   15
+  ],
+  "PM": [
+   92.845,
+   null
+  ],
+  "PDRb": [
+   0,
+   null
+  ],
+  "PDR": [
+   null,
+   null
+  ],
+  "FDN": [
+   null,
+   null
+  ],
+  "FDNef": [
+   7,
+   null
+  ],
+  "For": [
+   8,
+   15
+  ],
+  "EE": [
+   null,
+   6.5
+  ],
+  "Ca": [
+   0.514,
+   null
+  ],
+  "P": [
+   0.26,
+   null
+  ],
+  "S": [
+   null,
+   0.282
+  ],
+  "Na": [
+   0.08,
+   null
+  ]
+ },
+ "diarios": {
+  "nemM": 7.1971695390890575,
+  "re": 5.455509394605838,
+  "nemP": 0,
+  "nel": 0,
+  "npg": 201.4080237985884,
+  "mpM": 317.19382120140824,
+  "mpG": 402.8025342218352,
+  "mpY": 0,
+  "mpL": 0,
+  "ca": 39.835779379399554,
+  "p": 20.134871953154335,
+  "km": 0.6660495686459853,
+  "mp": 719.9963554232434,
+  "agua": 27.141957995452977,
+  "sAgua": 0.017521861336664585
+ },
+ "iteraciones": [
+  {
+   "it": 1,
+   "nem": 2.05,
+   "dmi": 7.525610507568032,
+   "neg": 1.242442626210113,
+   "nemReq": null,
+   "costo": 4.5111249635316,
+   "nemDieta": 1.875082540792495
+  },
+  {
+   "it": 2,
+   "nem": 1.9013201596736207,
+   "dmi": 7.738205607943622,
+   "neg": 1.2517156737041268,
+   "nemReq": null,
+   "costo": 4.510273767972233,
+   "nemDieta": 1.885385640990149
+  },
+  {
+   "it": 3,
+   "nem": 1.8877758187926699,
+   "dmi": 7.754845141557993,
+   "neg": 1.253904926052933,
+   "nemReq": null,
+   "costo": 4.513186013476137,
+   "nemDieta": 1.8875191778803782
+  }
+ ],
+ "ingredientes": [
+  {
+   "id": "alfalfa",
+   "nombre": "Heno de alfalfa (media floración)",
+   "cat": "for",
+   "precio": 5.22,
+   "min": 0,
+   "max": null,
+   "comp": {
+    "MS": 88,
+    "TND": 60,
+    "NEm": 1.32,
+    "NEg": 0.75,
+    "PC": 18,
+    "PDR": 80,
+    "FDN": 46,
+    "pef": 0.8,
+    "EE": 2.6,
+    "Ca": 1.35,
+    "P": 0.27,
+    "S": 0.29,
+    "Na": 0
+   }
+  },
+  {
+   "id": "rastrojo",
+   "nombre": "Rastrojo de maíz",
+   "cat": "for",
+   "precio": 1.66,
+   "min": 0,
+   "max": 50,
+   "comp": {
+    "MS": 85,
+    "TND": 50,
+    "NEm": 0.97,
+    "NEg": 0.42,
+    "PC": 6,
+    "PDR": 70,
+    "FDN": 67,
+    "pef": 1,
+    "EE": 1.3,
+    "Ca": 0.33,
+    "P": 0.16,
+    "S": 0.08,
+    "Na": 0
+   }
+  },
+  {
+   "id": "ensmaiz",
+   "nombre": "Ensilaje de maíz",
+   "cat": "ens",
+   "precio": 1.23,
+   "min": 0,
+   "max": null,
+   "comp": {
+    "MS": 34,
+    "TND": 71,
+    "NEm": 1.61,
+    "NEg": 1.01,
+    "PC": 8,
+    "PDR": 72,
+    "FDN": 44,
+    "pef": 0.8,
+    "EE": 3.3,
+    "Ca": 0.25,
+    "P": 0.24,
+    "S": 0.1,
+    "Na": 0
+   }
+  },
+  {
+   "id": "maizr",
+   "nombre": "Maíz rolado",
+   "cat": "gra",
+   "precio": 5.03,
+   "min": 0,
+   "max": null,
+   "comp": {
+    "MS": 88,
+    "TND": 88,
+    "NEm": 2.16,
+    "NEg": 1.43,
+    "PC": 9,
+    "PDR": 46,
+    "FDN": 10,
+    "pef": 0.2,
+    "EE": 4.2,
+    "Ca": 0.02,
+    "P": 0.3,
+    "S": 0.14,
+    "Na": 0
+   }
+  },
+  {
+   "id": "sorgor",
+   "nombre": "Sorgo rolado",
+   "cat": "gra",
+   "precio": 4.23,
+   "min": 0,
+   "max": null,
+   "comp": {
+    "MS": 90,
+    "TND": 84,
+    "NEm": 2.05,
+    "NEg": 1.39,
+    "PC": 11,
+    "PDR": 45,
+    "FDN": 16,
+    "pef": 0.35,
+    "EE": 3.4,
+    "Ca": 0.15,
+    "P": 0.36,
+    "S": 0.11,
+    "Na": 0
+   }
+  },
+  {
+   "id": "melaza",
+   "nombre": "Melaza de caña",
+   "cat": "sub",
+   "precio": 3.34,
+   "min": 0,
+   "max": 10,
+   "comp": {
+    "MS": 73,
+    "TND": 72,
+    "NEm": 1.7,
+    "NEg": 1.08,
+    "PC": 9,
+    "PDR": 100,
+    "FDN": 1,
+    "pef": 0.1,
+    "EE": 2.3,
+    "Ca": 1,
+    "P": 0.25,
+    "S": 1,
+    "Na": 0
+   }
+  },
+  {
+   "id": "ddgs",
+   "nombre": "Granos de destilería con solubles (DDGS)",
+   "cat": "pro",
+   "precio": 5.4,
+   "min": 0,
+   "max": 30,
+   "comp": {
+    "MS": 89,
+    "TND": 89,
+    "NEm": 2.2,
+    "NEg": 1.52,
+    "PC": 31,
+    "PDR": 50,
+    "FDN": 33,
+    "pef": 0.35,
+    "EE": 13,
+    "Ca": 0.07,
+    "P": 0.87,
+    "S": 0.65,
+    "Na": 0
+   }
+  },
+  {
+   "id": "soya44",
+   "nombre": "Pasta de soya 44 %",
+   "cat": "pro",
+   "precio": 8.6,
+   "min": 0,
+   "max": null,
+   "comp": {
+    "MS": 89,
+    "TND": 84,
+    "NEm": 2.03,
+    "NEg": 1.34,
+    "PC": 49,
+    "PDR": 65,
+    "FDN": 15,
+    "pef": 0.15,
+    "EE": 1.5,
+    "Ca": 0.36,
+    "P": 0.7,
+    "S": 0.41,
+    "Na": 0
+   }
+  },
+  {
+   "id": "urea",
+   "nombre": "Urea (46 % N)",
+   "cat": "nnp",
+   "precio": 9.5,
+   "min": 0,
+   "max": 1,
+   "comp": {
+    "MS": 99,
+    "TND": 0,
+    "NEm": 0,
+    "NEg": 0,
+    "PC": 288,
+    "PDR": 100,
+    "FDN": 0,
+    "pef": 0,
+    "EE": 0,
+    "Ca": 0,
+    "P": 0,
+    "S": 0,
+    "Na": 0
+   }
+  },
+  {
+   "id": "carbonato",
+   "nombre": "Carbonato de calcio",
+   "cat": "min",
+   "precio": 1.6,
+   "min": 0,
+   "max": 2,
+   "comp": {
+    "MS": 99,
+    "TND": 0,
+    "NEm": 0,
+    "NEg": 0,
+    "PC": 0,
+    "PDR": 0,
+    "FDN": 0,
+    "pef": 0,
+    "EE": 0,
+    "Ca": 38,
+    "P": 0.04,
+    "S": 0.01,
+    "Na": 0
+   }
+  },
+  {
+   "id": "sal",
+   "nombre": "Sal común (NaCl)",
+   "cat": "min",
+   "precio": 3.2,
+   "min": 0,
+   "max": 0.6,
+   "comp": {
+    "MS": 99,
+    "TND": 0,
+    "NEm": 0,
+    "NEg": 0,
+    "PC": 0,
+    "PDR": 0,
+    "FDN": 0,
+    "pef": 0,
+    "EE": 0,
+    "Ca": 0,
+    "P": 0,
+    "S": 0,
+    "Na": 39.3
+   }
+  },
+  {
+   "id": "premezcla",
+   "nombre": "Premezcla de microminerales y vitaminas",
+   "cat": "adi",
+   "precio": 28,
+   "min": 0.3,
+   "max": 0.3,
+   "comp": {
+    "MS": 95,
+    "TND": 0,
+    "NEm": 0,
+    "NEg": 0,
+    "PC": 0,
+    "PDR": 0,
+    "FDN": 0,
+    "pef": 0,
+    "EE": 0,
+    "Ca": 0,
+    "P": 0,
+    "S": 0,
+    "Na": 0
+   }
+  }
+ ],
+ "solucion": {
+  "costoKgMS": 4.513186013476137,
+  "costoKgTCO": 4.041697089005642,
+  "msDieta": 89.55308017301628,
+  "formula": [
+   {
+    "id": "alfalfa",
+    "nombre": {
+     "es": "Heno de alfalfa (media floración)",
+     "en": "Alfalfa hay (mid-bloom)"
+    },
+    "cat": "for",
+    "pct": 0,
+    "ms": 88,
+    "pctTCO": 0,
+    "precio": 5.22,
+    "precioMS": 5.931818181818182,
+    "reducido": 2.678429224444273
+   },
+   {
+    "id": "rastrojo",
+    "nombre": {
+     "es": "Rastrojo de maíz",
+     "en": "Corn stover"
+    },
+    "cat": "for",
+    "pct": 11.200179468023256,
+    "ms": 85,
+    "pctTCO": 11.800124351200676,
+    "precio": 1.66,
+    "precioMS": 1.9529411764705882,
+    "reducido": 0
+   },
+   {
+    "id": "ensmaiz",
+    "nombre": {
+     "es": "Ensilaje de maíz",
+     "en": "Corn silage"
+    },
+    "cat": "ens",
+    "pct": 0,
+    "ms": 34,
+    "pctTCO": 0,
+    "precio": 1.23,
+    "precioMS": 3.617647058823529,
+    "reducido": 0.11962907152172252
+   },
+   {
+    "id": "maizr",
+    "nombre": {
+     "es": "Maíz rolado",
+     "en": "Dry-rolled corn"
+    },
+    "cat": "gra",
+    "pct": 0,
+    "ms": 88,
+    "pctTCO": 0,
+    "precio": 5.03,
+    "precioMS": 5.715909090909091,
+    "reducido": 1.02915417802013
+   },
+   {
+    "id": "sorgor",
+    "nombre": {
+     "es": "Sorgo rolado",
+     "en": "Dry-rolled sorghum"
+    },
+    "cat": "gra",
+    "pct": 83.76441825202656,
+    "ms": 90,
+    "pctTCO": 83.34846292633114,
+    "precio": 4.23,
+    "precioMS": 4.7,
+    "reducido": 2.2041351734283177e-15
+   },
+   {
+    "id": "melaza",
+    "nombre": {
+     "es": "Melaza de caña",
+     "en": "Cane molasses"
+    },
+    "cat": "sub",
+    "pct": 0,
+    "ms": 73,
+    "pctTCO": 0,
+    "precio": 3.34,
+    "precioMS": 4.575342465753424,
+    "reducido": 0.9536057960566532
+   },
+   {
+    "id": "ddgs",
+    "nombre": {
+     "es": "Granos de destilería con solubles (DDGS)",
+     "en": "Distillers grains with solubles (DDGS)"
+    },
+    "cat": "pro",
+    "pct": 2.8048574033640095,
+    "ms": 89,
+    "pctTCO": 2.822287864239724,
+    "precio": 5.4,
+    "precioMS": 6.067415730337079,
+    "reducido": 0
+   },
+   {
+    "id": "soya44",
+    "nombre": {
+     "es": "Pasta de soya 44 %",
+     "en": "Soybean meal 44 %"
+    },
+    "cat": "pro",
+    "pct": 0,
+    "ms": 89,
+    "pctTCO": 0,
+    "precio": 8.6,
+    "precioMS": 9.662921348314606,
+    "reducido": 3.392123663840385
+   },
+   {
+    "id": "urea",
+    "nombre": {
+     "es": "Urea (46 % N)",
+     "en": "Urea (46 % N)"
+    },
+    "cat": "nnp",
+    "pct": 0.8074315351057196,
+    "ms": 99,
+    "pctTCO": 0.7303836464398396,
+    "precio": 9.5,
+    "precioMS": 9.595959595959597,
+    "reducido": -7.105427357601002e-15
+   },
+   {
+    "id": "carbonato",
+    "nombre": {
+     "es": "Carbonato de calcio",
+     "en": "Calcium carbonate"
+    },
+    "cat": "min",
+    "pct": 0.9195510005134968,
+    "ms": 99,
+    "pctTCO": 0.8318042875976012,
+    "precio": 1.6,
+    "precioMS": 1.6161616161616164,
+    "reducido": 0
+   },
+   {
+    "id": "sal",
+    "nombre": {
+     "es": "Sal común (NaCl)",
+     "en": "Salt (NaCl)"
+    },
+    "cat": "min",
+    "pct": 0.20356234096692113,
+    "ms": 99,
+    "pctTCO": 0.18413772364462186,
+    "precio": 3.2,
+    "precioMS": 3.2323232323232327,
+    "reducido": 0
+   },
+   {
+    "id": "premezcla",
+    "nombre": {
+     "es": "Premezcla de microminerales y vitaminas",
+     "en": "Trace-mineral and vitamin premix"
+    },
+    "cat": "adi",
+    "pct": 0.3,
+    "ms": 95,
+    "pctTCO": 0.2827992005463672,
+    "precio": 28,
+    "precioMS": 29.47368421052632,
+    "reducido": 0
+   }
+  ],
+  "nutrientes": {
+   "NEm": 1.8875191778803782,
+   "NEg": 1.2539999999999996,
+   "TND": 78.45852415470792,
+   "PC": 13.081005391951631,
+   "PM": 92.84499999999996,
+   "PDRb": 1.509903313490213e-14,
+   "PDR": 7.376901959758185,
+   "FDN": 21.832030107009956,
+   "FDNef": 12.518888695777612,
+   "For": 11.200179468023258,
+   "EE": 3.358224016090526,
+   "Ca": 0.5140000000000002,
+   "P": 0.34424227266560503,
+   "S": 0.11942453187356522,
+   "Na": 0.08,
+   "Ym": 3.3810908324233466
+  },
+  "prediccion": {
+   "dmi": 7.754845141557993,
+   "mpSup": 719.9985971679515,
+   "mpReq": 719.9963554232434,
+   "balPM": 0.0022417447081579667,
+   "fm": 3.4044921538470145,
+   "fg": 4.350352987710979,
+   "reDisp": 5.455342646589566,
+   "adgEM": 1.3499623856903178,
+   "adgPM": 1.350008142205244,
+   "adg": 1.3499623856903178,
+   "limita": "energia",
+   "balE": -0.00016674801627214464,
+   "ym": 3.3810908324233466,
+   "ch4": 86.92829663728001,
+   "nIng": 162.30587377675204,
+   "nRet": 32.22438593236323,
+   "nExc": 130.08148784438882
+  },
+  "restricciones": [
+   {
+    "tag": "suma",
+    "etiqueta": "Suma de ingredientes = 100 % de la MS",
+    "tipo": "suma",
+    "activa": true,
+    "dual": 0.5440847228713984
+   },
+   {
+    "tag": "nmin_NEg",
+    "etiqueta": "Energía neta de ganancia (ENg) ≥ 1.254",
+    "tipo": "nut",
+    "k": "NEg",
+    "lado": "min",
+    "req": 1.254,
+    "activa": true,
+    "dual": 2.3931888907883656
+   },
+   {
+    "tag": "nmax_PC",
+    "etiqueta": "Proteína cruda ≤ 15",
+    "tipo": "nut",
+    "k": "PC",
+    "lado": "max",
+    "req": 15,
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "nmin_PM",
+    "etiqueta": "Proteína metabolizable ≥ 92.845",
+    "tipo": "nut",
+    "k": "PM",
+    "lado": "min",
+    "req": 92.845,
+    "activa": true,
+    "dual": 0.009448899057516072
+   },
+   {
+    "tag": "nmin_PDRb",
+    "etiqueta": "Balance de proteína degradable (PDR − PCM) ≥ 0",
+    "tipo": "nut",
+    "k": "PDRb",
+    "lado": "min",
+    "req": 0,
+    "activa": true,
+    "dual": 0.003143012108711232
+   },
+   {
+    "tag": "nmin_FDNef",
+    "etiqueta": "FDN físicamente efectiva (FDNfe) ≥ 7",
+    "tipo": "nut",
+    "k": "FDNef",
+    "lado": "min",
+    "req": 7,
+    "activa": false,
+    "dual": -6.955665868755946e-16
+   },
+   {
+    "tag": "nmin_For",
+    "etiqueta": "Forraje en la dieta ≥ 8",
+    "tipo": "nut",
+    "k": "For",
+    "lado": "min",
+    "req": 8,
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "nmax_For",
+    "etiqueta": "Forraje en la dieta ≤ 15",
+    "tipo": "nut",
+    "k": "For",
+    "lado": "max",
+    "req": 15,
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "nmax_EE",
+    "etiqueta": "Extracto etéreo (grasa) ≤ 6.5",
+    "tipo": "nut",
+    "k": "EE",
+    "lado": "max",
+    "req": 6.5,
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "nmin_Ca",
+    "etiqueta": "Calcio ≥ 0.514",
+    "tipo": "nut",
+    "k": "Ca",
+    "lado": "min",
+    "req": 0.514,
+    "activa": true,
+    "dual": 0.028212549823426795
+   },
+   {
+    "tag": "nmin_P",
+    "etiqueta": "Fósforo ≥ 0.26",
+    "tipo": "nut",
+    "k": "P",
+    "lado": "min",
+    "req": 0.26,
+    "activa": false,
+    "dual": 3.987494730770001e-15
+   },
+   {
+    "tag": "nmax_S",
+    "etiqueta": "Azufre ≤ 0.282",
+    "tipo": "nut",
+    "k": "S",
+    "lado": "max",
+    "req": 0.282,
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "nmin_Na",
+    "etiqueta": "Sodio ≥ 0.08",
+    "tipo": "nut",
+    "k": "Na",
+    "lado": "min",
+    "req": 0.08,
+    "activa": true,
+    "dual": 0.06840301550768027
+   },
+   {
+    "tag": "imax_rastrojo",
+    "etiqueta": "Rastrojo de maíz ≤ 50 %",
+    "tipo": "ing",
+    "id": "rastrojo",
+    "lado": "max",
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "imax_melaza",
+    "etiqueta": "Melaza de caña ≤ 10 %",
+    "tipo": "ing",
+    "id": "melaza",
+    "lado": "max",
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "imax_ddgs",
+    "etiqueta": "Granos de destilería con solubles (DDGS) ≤ 30 %",
+    "tipo": "ing",
+    "id": "ddgs",
+    "lado": "max",
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "imax_urea",
+    "etiqueta": "Urea (46 % N) ≤ 1 %",
+    "tipo": "ing",
+    "id": "urea",
+    "lado": "max",
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "imax_carbonato",
+    "etiqueta": "Carbonato de calcio ≤ 2 %",
+    "tipo": "ing",
+    "id": "carbonato",
+    "lado": "max",
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "imax_sal",
+    "etiqueta": "Sal común (NaCl) ≤ 0.6 %",
+    "tipo": "ing",
+    "id": "sal",
+    "lado": "max",
+    "activa": false,
+    "dual": 0
+   },
+   {
+    "tag": "imin_premezcla",
+    "etiqueta": "Premezcla de microminerales y vitaminas ≥ 0.3 %",
+    "tipo": "ing",
+    "id": "premezcla",
+    "lado": "min",
+    "activa": true,
+    "dual": 28.92959948765492
+   },
+   {
+    "tag": "imax_premezcla",
+    "etiqueta": "Premezcla de microminerales y vitaminas ≤ 0.3 %",
+    "tipo": "ing",
+    "id": "premezcla",
+    "lado": "max",
+    "activa": true,
+    "dual": 0
+   }
+  ],
+  "certificado": {
+   "viol": 4.263256414560601e-14,
+   "dualViol": 1.4921397450962104e-13,
+   "brecha": 2.0151943639309904e-15,
+   "ok": true
+  },
+  "modelo": {
+   "n": 12,
+   "m": 21,
+   "piv": 39
+  }
+ }
+}

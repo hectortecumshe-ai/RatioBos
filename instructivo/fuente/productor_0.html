@@ -1,0 +1,132 @@
+<!-- ============================ PORTADA ============================ -->
+<section class="cover" id="portada">
+  <div class="band">{{BANDA}}</div>
+  <div class="in">
+    <div>
+      <div class="kick"><img src="logo.svg" alt="RatioBos"><div><div class="eyebrow" lang="es">Instructivo del Productor</div><div class="eyebrow" lang="en">Producer Guide</div><div style="font-size:15px;color:var(--muted)">RatioBos {{VERSION}}</div></div></div>
+      <h1 lang="es">La ración <em>más barata</em> para tu ganado, <span class="a">del corral a la utilidad</span></h1>
+      <h1 lang="en">The <em>cheapest</em> ration for your cattle, <span class="a">from the pen to the profit</span></h1>
+      <p class="sub" lang="es">Una guía práctica para formular, mezclar, costear y medir la huella de la ración de tu engorda con RatioBos, explicada con un caso real de Jalisco de principio a fin.</p>
+      <p class="sub" lang="en">A practical guide to formulating, mixing, costing and measuring the footprint of your feedlot ration with RatioBos, explained through one real case from Jalisco, start to finish.</p>
+      <div class="meta">
+        <div lang="es"><b>1.ª edición</b> · octubre de 2026 · describe RatioBos {{VERSION}}</div>
+        <div lang="en"><b>1st edition</b> · October 2026 · covers RatioBos {{VERSION}}</div>
+        <div>{{DOI}}<span lang="es">Licencia MIT</span><span lang="en">MIT License</span></div>
+      </div>
+      <div class="who">{{AUTORES}}<br><span lang="es">Hay otra guía para investigación y docencia: el <a href="instructivo-cientifico.html">Instructivo del Científico</a>.</span><span lang="en">There is a companion guide for research and teaching: the <a href="instructivo-cientifico.html">Scientist Guide</a>.</span></div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <div class="frame"><img lang="es" src="instructivo/img/resultado-es.jpg" alt=""><img lang="en" src="instructivo/img/resultado-en.jpg" alt=""></div>
+      <div class="frame b"><img lang="es" src="instructivo/img/mezcla-movil-es.jpg" alt="" style="height:300px;object-fit:cover;object-position:top"><img lang="en" src="instructivo/img/mezcla-movil-en.jpg" alt="" style="height:300px;object-fit:cover;object-position:top"></div>
+    </div>
+  </div>
+  <div class="steps">{{PASOS}}</div>
+</section>
+
+<div class="doc">
+
+<!-- ============================ PRELIMINARES ============================ -->
+<section class="chap" id="leer" data-toc="P" style="--c:var(--acc)">
+  <div class="chap-head"><span class="big">P</span>
+    <div class="eyebrow" lang="es">Antes de leer</div><div class="eyebrow" lang="en">Before reading</div>
+    <h2 lang="es">Cómo usar este instructivo</h2><h2 lang="en">How to use this guide</h2>
+    <p lang="es">Para quién es, cómo está organizado y qué significa cada señal que encontrarás en las páginas.</p>
+    <p lang="en">Who it is for, how it is organised and what each sign on the page means.</p>
+    <span class="rule"></span></div>
+
+  <p class="lead" lang="es">Este instructivo es para quien decide qué comen los bovinos de un rancho o de un corral de engorda: el ganadero, el encargado del carro mezclador, el médico veterinario zootecnista que asesora a varios productores. No necesitas saber programación ni matemáticas; necesitas conocer tu ganado.</p>
+  <p class="lead" lang="en">This guide is for whoever decides what the cattle on a ranch or in a feedlot eat: the producer, the mixer-wagon operator, the veterinarian or nutritionist who advises several operations. You need no coding or maths; you need to know your cattle.</p>
+
+  <p lang="es">Sigue el mismo orden que la app: un capítulo por cada bloque de la barra superior, del 1 al 11, cada uno con su color. Todos los ejemplos usan <b>un solo caso</b>, una engorda de 300 toretes en Jalisco, así que los números de un capítulo son los que entran al siguiente. Si lo lees de corrido, al terminar habrás formulado, mezclado, costeado y medido la huella de una ración real.</p>
+  <p lang="en">It follows the app’s order: one chapter for each block in the top bar, 1 to 11, each with its own colour. Every example uses <b>a single case</b>, a 300-bull feedlot in Jalisco, so the numbers in one chapter are the ones that feed the next. Read it start to finish and you will have formulated, mixed, costed and footprinted a real ration.</p>
+
+  <h3 id="convenciones"><span lang="es">Convenciones</span><span lang="en">Conventions</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Así se escribe</th><th lang="en">Written as</th><th lang="es">Significa</th><th lang="en">Means</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui pri" lang="es">⚙ Formular</span><span class="ui pri" lang="en">⚙ Formulate</span></td><td lang="es">Un botón o casilla de la app, con su texto tal como aparece en pantalla.</td><td lang="en">An app button or field, with its text exactly as on screen.</td></tr>
+      <tr><td><span class="path" lang="es">Informe<i>›</i>Guardar proyecto</span><span class="path" lang="en">Report<i>›</i>Save project</span></td><td lang="es">Una ruta: abre el primer elemento y luego el siguiente.</td><td lang="en">A path: open the first item, then the next.</td></tr>
+      <tr><td><span class="val">380</span></td><td lang="es">Un valor que escribes tal cual.</td><td lang="en">A value you type as shown.</td></tr>
+      <tr><td><b style="display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;font:700 12px var(--sans)">1</b></td><td lang="es">Una marca sobre la captura; su explicación está debajo con el mismo número.</td><td lang="en">A marker on a screenshot; it is explained below with the same number.</td></tr>
+      <tr><td><b>MS</b> · <b>TCO</b></td><td lang="es">Materia seca · tal como se ofrece (el alimento húmedo, como lo pesa la báscula del carro).</td><td lang="en">Dry matter · as fed (the wet feed, as the mixer scale weighs it). The app writes DM and AF in English.</td></tr>
+    </tbody></table></div>
+
+  <h3 id="recuadros"><span lang="es">Los cinco recuadros</span><span lang="en">The five boxes</span></h3>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span><p lang="es">El caso de ejemplo, paso a paso, con los números reales que da la app.</p><p lang="en">The worked case, step by step, with the real numbers the app returns.</p></div>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo</span><span class="bt" lang="en">Tip</span><p lang="es">Atajos y buenas prácticas que ahorran tiempo o dinero.</p><p lang="en">Shortcuts and good practice that save time or money.</p></div>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Atención</span><span class="bt" lang="en">Caution</span><p lang="es">Errores frecuentes que pueden costar dinero o la salud del ganado.</p><p lang="en">Common mistakes that can cost money or animal health.</p></div>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué?</span><span class="bt" lang="en">Why?</span><p lang="es">La razón detrás de una recomendación, en pocas líneas. Puedes saltarla.</p><p lang="en">The reason behind a recommendation, in a few lines. You can skip it.</p></div>
+  <div class="box rule"><span class="bi">→</span><span class="bt" lang="es">Regla de decisión</span><span class="bt" lang="en">Decision rule</span><p lang="es">Una tabla corta: si ves esto, haz aquello.</p><p lang="en">A short table: if you see this, do that.</p></div>
+
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Dos instructivos, dos vistas</span><span class="bt" lang="en">Two guides, two views</span>
+    <p lang="es">RatioBos tiene una <b>vista productor</b> y una <b>vista científica</b> (botón en la barra superior). Este instructivo describe la vista productor. Las ecuaciones, el modelo lineal, la validación y la exportación para investigación están en el <a href="instructivo-cientifico.html">Instructivo del Científico</a>.</p>
+    <p lang="en">RatioBos has a <b>producer view</b> and a <b>scientist view</b> (button in the top bar). This guide covers the producer view. The equations, the linear model, the validation and the research export are in the <a href="instructivo-cientifico.html">Scientist Guide</a>.</p></div>
+</section>
+
+<!-- ============================ 0 · PRIMEROS PASOS ============================ -->
+<section class="chap" id="empezar" data-toc="0" style="--c:var(--pri)">
+  <div class="chap-head"><span class="big">0</span>
+    <div class="eyebrow" lang="es">Primeros pasos</div><div class="eyebrow" lang="en">Getting started</div>
+    <h2 lang="es">Abre la app y conoce la pantalla</h2><h2 lang="en">Open the app and meet the screen</h2>
+    <p lang="es">RatioBos es una página web que funciona sola en tu navegador. No se instala, no pide cuenta y no manda tus datos a ningún lado.</p>
+    <p lang="en">RatioBos is a web page that runs on its own in your browser. Nothing to install, no account, and your data goes nowhere.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="38" height="28" rx="3"/><path d="M17 42h14M24 36v6M12 28l7-8 6 5 9-11"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="abrir" data-n="0.1"><span lang="es">Abrir RatioBos</span><span lang="en">Opening RatioBos</span></h3>
+  <p lang="es">Entra a <a href="https://hectortecumshe-ai.github.io/RatioBos/"><b>hectortecumshe-ai.github.io/RatioBos</b></a> desde la computadora, la tableta o el celular, o escanea el código QR de la última página. La primera vez se descarga un solo archivo de menos de medio megabyte; después funciona igual sin internet si dejas la pestaña abierta, y puedes guardar la página (<kbd>Ctrl</kbd> + <kbd>S</kbd>) para usarla en el rancho sin señal.</p>
+  <p lang="en">Go to <a href="https://hectortecumshe-ai.github.io/RatioBos/"><b>hectortecumshe-ai.github.io/RatioBos</b></a> from a computer, tablet or phone, or scan the QR code on the last page. The first time it downloads a single file of under half a megabyte; after that it works without internet if you leave the tab open, and you can save the page (<kbd>Ctrl</kbd> + <kbd>S</kbd>) to use it on the ranch with no signal.</p>
+
+  <h3 id="pantalla" data-n="0.2"><span lang="es">La pantalla de inicio</span><span lang="en">The home screen</span></h3>
+  <figure data-fig="inicio" data-marks="0,1,2,3,4">
+    <figcaption><span class="fn"></span><span lang="es"><b>Inicio.</b> Todo lo que necesitas para moverte está en la barra superior.</span><span lang="en"><b>Home.</b> Everything you need to get around is in the top bar.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>ES / EN</b> cambia el idioma de toda la app, también de los informes.</span><span lang="en"><b>ES / EN</b> switches the language of the whole app, reports included.</span></li>
+      <li><span lang="es"><b>Productor / Científico</b> cambia la vista; tus datos no se pierden.</span><span lang="en"><b>Producer / Scientist</b> switches the view; your data is kept.</span></li>
+      <li><span lang="es"><b>?</b> abre la ayuda general. Además, cada dato tiene su propio <b>?</b>.</span><span lang="en"><b>?</b> opens the general help. Every field also has its own <b>?</b>.</span></li>
+      <li><span lang="es">La <b>barra de bloques</b>, del 1 al 11. Puedes saltar a cualquiera; la palomita marca los que ya visitaste.</span><span lang="en">The <b>block bar</b>, 1 to 11. You can jump to any of them; a tick marks the ones you have visited.</span></li>
+      <li><span lang="es"><span class="ui pri">Empezar a formular →</span> te lleva al Bloque 1.</span><span lang="en"><span class="ui pri">Start formulating →</span> takes you to Block 1.</span></li>
+    </ol>
+  </figure>
+
+  <h3 id="vistas" data-n="0.3"><span lang="es">Dos vistas, una misma app</span><span lang="en">Two views, one app</span></h3>
+  <p lang="es">La vista productor muestra solo lo que necesitas para decidir: los 8 nutrientes clave, un semáforo de salud ruminal, la hoja del carro en kilos húmedos, la ganancia esperada y el costo por kilo producido. La vista científica agrega el modelo completo. Puedes cambiar de una a otra en cualquier momento, por ejemplo para mostrarle a tu asesor de dónde sale un número.</p>
+  <p lang="en">The producer view shows only what you need to decide: the 8 key nutrients, a rumen-health traffic light, the mixer sheet in wet kilos, the expected gain and the cost per kilo produced. The scientist view adds the full model. Switch at any time, for instance to show your advisor where a number comes from.</p>
+  <figure data-fig="vistas">
+    <figcaption><span class="fn"></span><span lang="es"><b>Una herramienta, dos miradas.</b> La tarjeta activa tiene borde.</span><span lang="en"><b>One tool, two views.</b> The active card has a border.</span></figcaption>
+  </figure>
+
+  <h3 id="ayuda" data-n="0.4"><span lang="es">La ayuda de cada dato</span><span lang="en">Help for every field</span></h3>
+  <p lang="es">Pasa el ratón (o toca, en el celular) sobre cualquier <b>?</b>. Aparece qué significa el dato y una <b>escala de decisión</b> con colores: verde, bien; amarillo, vigila; rojo, corrige. Es la forma más rápida de aprender sin salir de la app.</p>
+  <p lang="en">Hover (or tap, on a phone) over any <b>?</b>. You get what the field means and a colour-coded <b>decision scale</b>: green, fine; amber, watch; red, fix. It is the quickest way to learn without leaving the app.</p>
+  <figure data-fig="tooltip">
+    <figcaption><span class="fn"></span><span lang="es"><b>Ayuda del índice de temperatura y humedad (ITH).</b> Cada nivel de la escala dice qué hacer.</span><span lang="en"><b>Help for the temperature-humidity index (THI).</b> Each level of the scale tells you what to do.</span></figcaption>
+  </figure>
+
+  <h3 id="caso" data-n="0.5"><span lang="es">El caso de este instructivo</span><span lang="en">The case in this guide</span></h3>
+  <p lang="es">Para que cada paso tenga números concretos, seguiremos un mismo corral de principio a fin:</p>
+  <p lang="en">So that every step has concrete numbers, we will follow one pen from start to finish:</p>
+  <div class="case">
+    <div><span lang="es">Animales</span><span lang="en">Animals</span><b lang="es">300 toretes enteros</b><b lang="en">300 intact bulls</b></div>
+    <div><span lang="es">Biotipo</span><span lang="en">Biotype</span><b lang="es">Cruza cebú × europeo</b><b lang="en">Zebu × European cross</b></div>
+    <div><span lang="es">Peso de entrada</span><span lang="en">Entry weight</span><b>380 kg</b></div>
+    <div><span lang="es">Lugar</span><span lang="en">Location</span><b lang="es">Jalisco · Occidente y Bajío</b><b lang="en">Jalisco · West and Bajío</b></div>
+    <div><span lang="es">Temporada</span><span lang="en">Season</span><b lang="es">Seca y caliente (abr–jun)</b><b lang="en">Dry and hot (Apr–Jun)</b></div>
+    <div><span lang="es">Carro mezclador</span><span lang="en">Mixer wagon</span><b lang="es">carga de 3,000 kg</b><b lang="en">3,000 kg load</b></div>
+  </div>
+  <p lang="es">Compramos a <b>$62</b> el kilo en pie y vendemos a <b>$58</b>. La meta es que ganen <b>1.35 kg al día</b> hasta los 520 kg. Es una engorda típica del Bajío: sorgo y maíz de la región, rastrojo como fibra y una sombra de lámina en los corrales.</p>
+  <p lang="en">We buy at <b>$62</b> per kilo live weight and sell at <b>$58</b>. The target is <b>1.35 kg a day</b> up to 520 kg. It is a typical Bajío feedlot: local sorghum and corn, corn stover for fibre and a sheet-metal shade over the pens.</p>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué se vende más barato de lo que se compra?</span><span class="bt" lang="en">Why sell for less than you buy?</span>
+    <p lang="es">El becerro ligero se paga más caro por kilo que el novillo terminado. La engorda gana dinero porque cada kilo que el animal pone en el corral cuesta menos alimento que lo que vale al venderse. Por eso el número que más importa en RatioBos es el <b>costo de alimento por kilo ganado</b>.</p>
+    <p lang="en">A light calf costs more per kilo than a finished steer. A feedlot makes money because each kilo the animal puts on costs less in feed than it is worth at sale. That is why the number that matters most in RatioBos is the <b>feed cost per kilo gained</b>.</p></div>
+
+  <h3 id="camino" data-n="0.6"><span lang="es">El camino en once pasos</span><span lang="en">The path in eleven steps</span></h3>
+  <p lang="es">La primera vez te tomará unos 25 minutos. Después, con tus datos guardados, actualizar precios y volver a formular toma menos de dos.</p>
+  <p lang="en">The first time takes about 25 minutes. After that, with your data saved, updating prices and reformulating takes under two.</p>
+  <div class="flow">{{FLUJO}}</div>
+
+  <h3 id="guardado" data-n="0.7"><span lang="es">Tu trabajo se guarda solo</span><span lang="en">Your work saves itself</span></h3>
+  <p lang="es">Cada cambio queda guardado en el navegador de esa computadora. Si cierras la pestaña y vuelves mañana, todo está como lo dejaste. Para llevarlo a otra computadora o respaldarlo, usa <span class="path" lang="es">Informe<i>›</i>Guardar proyecto (.json)</span><span class="path" lang="en">Report<i>›</i>Save project (.json)</span> (capítulo 11).</p>
+  <p lang="en">Every change is stored in that computer’s browser. Close the tab and come back tomorrow, and everything is as you left it. To move it to another computer or back it up, use the path above (chapter 11).</p>
+</section>

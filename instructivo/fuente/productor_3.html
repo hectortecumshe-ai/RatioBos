@@ -1,0 +1,160 @@
+
+<!-- ============================ 9 · TABLERO ============================ -->
+<section class="chap" id="b9" data-toc="9" style="--c:var(--b9)">
+  <div class="chap-head"><span class="big">9</span>
+    <div class="eyebrow" lang="es">Bloque 9 · Tablero</div><div class="eyebrow" lang="en">Block 9 · Dashboard</div>
+    <h2 lang="es">Tablero de resultados</h2><h2 lang="en">Results dashboard</h2>
+    <p lang="es">Todos los números que importan en una sola vista y en gráficas: lo que logra la ración, la ganancia que deja más dinero, el costo en cada región y el riesgo del precio del grano.</p>
+    <p lang="en">Every number that matters in one view and in charts: what the ration achieves, the most profitable gain, the cost in each region and the grain-price risk.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42h36"/><rect x="9" y="26" width="6" height="12"/><rect x="21" y="18" width="6" height="20"/><rect x="33" y="10" width="6" height="28"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b9-param" data-n="9.1"><span lang="es">Parámetros logrados</span><span lang="en">Achieved performance</span></h3>
+  <p lang="es">La tabla pone lado a lado la <b>ración actual</b> y el <b>programa completo</b> con los cuatro indicadores clásicos de una engorda.</p>
+  <p lang="en">The table sets the <b>current ration</b> beside the <b>whole program</b> with the four classic feedlot indicators.</p>
+  <figure data-fig="parametros">
+    <figcaption><span class="fn"></span><span lang="es"><b>Parámetros logrados.</b> Cada indicador tiene su <b>?</b> con la escala de decisión.</span><span lang="en"><b>Achieved performance.</b> Each indicator has its <b>?</b> with the decision scale.</span></figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Indicador</th><th lang="en">Indicator</th><th lang="es">Cómo se calcula</th><th lang="en">How it is computed</th><th class="r" lang="es">Ración</th><th class="r" lang="en">Ration</th><th class="r" lang="es">Programa</th><th class="r" lang="en">Program</th></tr></thead>
+    <tbody>
+      <tr><td lang="es"><b>Ganancia diaria (GDP)</b></td><td lang="en"><b>Average daily gain (ADG)</b></td><td lang="es">kg ganados ÷ días</td><td lang="en">kg gained ÷ days</td><td class="r">1.35</td><td class="r">1.27</td></tr>
+      <tr><td lang="es"><b>Eficiencia alimenticia</b></td><td lang="en"><b>Feed efficiency</b></td><td lang="es">ganancia ÷ alimento (más alto, mejor)</td><td lang="en">gain ÷ feed (higher is better)</td><td class="r">0.174</td><td class="r">0.147</td></tr>
+      <tr><td lang="es"><b>Conversión alimenticia</b></td><td lang="en"><b>Feed conversion</b></td><td lang="es">alimento ÷ ganancia (más bajo, mejor)</td><td lang="en">feed ÷ gain (lower is better)</td><td class="r">5.74</td><td class="r">6.78</td></tr>
+      <tr><td lang="es"><b>Beneficio : costo</b></td><td lang="en"><b>Benefit : cost</b></td><td lang="es">lo que entra ÷ lo que sale (mayor que 1 = gana)</td><td lang="en">money in ÷ money out (over 1 = profit)</td><td class="r">1.78</td><td class="r">1.04</td></tr>
+    </tbody></table></div>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué dos relaciones beneficio : costo tan distintas?</span><span class="bt" lang="en">Why two such different benefit : cost ratios?</span>
+    <p lang="es">La de la ración compara el valor de lo que el animal gana en un día con lo que cuesta alimentarlo ese día: 1.78 dice que cada peso de alimento y manejo produce $1.78 de carne. La del programa incluye además la <b>compra del animal</b>, que es la mayor inversión: 1.04 es la rentabilidad real del negocio completo. La app muestra también el <b>valor agregado</b> (venta menos compra, entre alimento y otros costos): 1.23.</p>
+    <p lang="en">The ration ratio compares the value of what the animal gains in a day with what feeding it costs that day: 1.78 says each peso of feed and management produces $1.78 of beef. The program ratio also includes <b>buying the animal</b>, the biggest investment: 1.04 is the real return on the whole business. The app also shows the <b>value added</b> (sale minus purchase, over feed and other costs): 1.23.</p></div>
+
+  <h3 id="b9-optimo" data-n="9.2"><span lang="es">¿Qué ganancia deja más dinero?</span><span lang="en">Which gain pays best?</span></h3>
+  <p lang="es">Ganar más rápido no siempre conviene: cada kilo extra exige una ración más cara. La app formula la ración para varias metas de ganancia y dibuja dos curvas: el <b>margen por animal al día</b> (verde) y el <b>costo de alimento por kilo ganado</b> (terracota). El círculo marca el óptimo económico.</p>
+  <p lang="en">Faster gain does not always pay: each extra kilo demands a dearer ration. The app formulates for several gain targets and plots two curves: the <b>margin per head per day</b> (green) and the <b>feed cost per kilo gained</b> (terracotta). The circle marks the economic optimum.</p>
+  <figure data-fig="optimo">
+    <figcaption><span class="fn"></span><span lang="es"><b>La ganancia óptima.</b> La línea punteada es tu ración.</span><span lang="en"><b>The optimal gain.</b> The dashed line is your ration.</span></figcaption>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Con nuestros precios, la mayor utilidad diaria se logra con <b>1.40 kg/d</b>: $36.44 por animal al día contra $34.30 de nuestra meta de 1.35. La diferencia es pequeña: la meta ya está cerca del óptimo y la app lo dice con una palomita.</p>
+    <p lang="en">At our prices, the highest daily profit comes at <b>1.40 kg/d</b>: $36.44 per head per day against $34.30 at our 1.35 target. The gap is small: the target is already close to the optimum and the app says so with a tick.</p></div>
+
+  <h3 id="b9-regiones" data-n="9.3"><span lang="es">El mismo animal en cada región</span><span lang="en">The same animal in every region</span></h3>
+  <p lang="es">La app repite tu formulación en las 9 regiones, con el clima de la temporada, tu sombra y los precios estimados de cada una. Si el clima de una región no permite tu meta, usa la ganancia máxima posible allí y la marca con un asterisco.</p>
+  <p lang="en">The app repeats your formulation in all 9 regions, with the season’s climate, your shade and each region’s estimated prices. If a region’s climate does not allow your target, it uses the maximum feasible gain there and marks it with an asterisk.</p>
+  <figure data-fig="regiones">
+    <figcaption><span class="fn"></span><span lang="es"><b>Costo de alimento por kilo ganado en cada región</b>, temporada seca. Tu región va en terracota.</span><span lang="en"><b>Feed cost per kilo gained in each region</b>, dry season. Your region is in terracotta.</span></figcaption>
+  </figure>
+  {{FIG_REGIONES}}
+
+  <h3 id="b9-sensib" data-n="9.4"><span lang="es">Si cambia el precio del grano</span><span lang="en">If the grain price changes</span></h3>
+  <p lang="es">La gráfica mueve el precio del ingrediente que más pesa en el costo (en el caso, el sorgo) de 70 % a 130 % del actual y reformula en cada punto. La línea verde es el costo por tonelada; la terracota, cuánto sorgo queda en la ración.</p>
+  <p lang="en">The chart moves the price of the ingredient that weighs most in the cost (sorghum, in our case) from 70 % to 130 % of today’s and reformulates at each point. The green line is the cost per tonne; the terracotta one, how much sorghum stays in the ration.</p>
+  <figure data-fig="sensib">
+    <figcaption><span class="fn"></span><span lang="es"><b>Sensibilidad al precio del sorgo</b> y en qué se va el dinero.</span><span lang="en"><b>Sorghum-price sensitivity</b> and where the money goes.</span></figcaption>
+  </figure>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo · cómo leerla</span><span class="bt" lang="en">Tip · how to read it</span>
+    <p lang="es">Mientras la línea terracota sea plana, el sorgo es insustituible y su precio pega de lleno en tu costo: es el ingrediente para comprar por adelantado o con contrato. Cuando la línea cae, la app ya encontró con qué reemplazarlo. En el caso, desde 10 % de aumento empieza a sustituirlo con ensilaje, melaza y DDGS, y a partir de 25 % lo cambia por completo por maíz rolado.</p>
+    <p lang="en">While the terracotta line is flat, sorghum is irreplaceable and its price hits your cost in full: that is the ingredient to buy ahead or under contract. When the line drops, the app has found a substitute. In our case, from a 10 % rise it starts replacing it with silage, molasses and DDGS, and from 25 % it switches entirely to dry-rolled corn.</p></div>
+
+  <h3 id="b9-ref" data-n="9.5"><span lang="es">Compárate con engordas publicadas</span><span lang="en">Compare yourself with published feedlots</span></h3>
+  <p lang="es">Al final del tablero hay una tabla con la ganancia, el consumo, la eficiencia, la conversión y el beneficio : costo de engordas experimentales publicadas en México y en el sur de Estados Unidos, del CIPES de Sonora a Sinaloa, Zacatecas y El Centro, California. Sirve para saber si tus números son razonables.</p>
+  <p lang="en">At the end of the dashboard is a table with gain, intake, efficiency, conversion and benefit : cost from experimental feedlots published in Mexico and the southern United States, from CIPES in Sonora to Sinaloa, Zacatecas and El Centro, California. Use it to check that your numbers are reasonable.</p>
+  <figure data-fig="referencias">
+    <figcaption><span class="fn"></span><span lang="es"><b>Parámetros publicados en engordas de referencia.</b></span><span lang="en"><b>Published performance from reference feedlots.</b></span></figcaption>
+  </figure>
+</section>
+
+<!-- ============================ 10 · SOSTENIBILIDAD ============================ -->
+<section class="chap" id="b10" data-toc="10" style="--c:var(--b10)">
+  <div class="chap-head"><span class="big">10</span>
+    <div class="eyebrow" lang="es">Bloque 10 · Sostenibilidad</div><div class="eyebrow" lang="en">Block 10 · Sustainability</div>
+    <h2 lang="es">Huella ambiental y producción sostenible</h2><h2 lang="en">Environmental footprint and sustainable production</h2>
+    <p lang="es">Producir carne usa agua y suelo y deja gases, nutrientes y residuos. Aquí ves cuánto, y buscas el equilibrio entre utilidad y ambiente.</p>
+    <p lang="en">Producing beef uses water and land and leaves gases, nutrients and waste. Here you see how much, and look for the balance between profit and the environment.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38c0-16 12-28 30-28 0 18-12 30-28 30"/><path d="M10 38l14-14"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <p lang="es">RatioBos usa la palabra <b>sostenibilidad</b> como la define la FAO: producir hoy sin comprometer la capacidad de producir mañana, en sus tres dimensiones a la vez: <b>ambiental</b>, <b>económica</b> y <b>social</b>. Por eso este bloque no busca la ración «más verde» a cualquier precio, sino la que reduce la huella sin dejar de ser rentable.</p>
+  <p lang="en">RatioBos uses the word <b>sustainability</b> as FAO defines it: producing today without compromising the capacity to produce tomorrow, in its three dimensions at once: <b>environmental</b>, <b>economic</b> and <b>social</b>. That is why this block does not seek the “greenest” ration at any price, but the one that cuts the footprint and still pays.</p>
+
+  <h3 id="b10-semaforo" data-n="10.1"><span lang="es">El semáforo de sostenibilidad</span><span lang="en">The sustainability traffic light</span></h3>
+  <figure data-fig="semaforo">
+    <figcaption><span class="fn"></span><span lang="es"><b>Semáforo de sostenibilidad, gases y recursos.</b></span><span lang="en"><b>Sustainability traffic light, gases and resources.</b></span></figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Luz</th><th lang="en">Light</th><th lang="es">Qué mide</th><th lang="en">What it measures</th><th class="r" lang="es">En el caso</th><th class="r" lang="en">In our case</th></tr></thead>
+    <tbody>
+      <tr><td lang="es"><b>Gases de efecto invernadero</b></td><td lang="en"><b>Greenhouse gases</b></td><td lang="es">Metano del rumen y del estiércol, óxido nitroso y la producción del alimento, en CO₂ equivalente por kg ganado.</td><td lang="en">Methane from the rumen and manure, nitrous oxide and feed production, in CO₂ equivalent per kg gained.</td><td class="r">5.1 kg</td></tr>
+      <tr><td lang="es"><b>Agua</b></td><td lang="en"><b>Water</b></td><td lang="es">Agua de lluvia y de riego que costó producir el alimento, por kg ganado.</td><td lang="en">Rain and irrigation water it took to grow the feed, per kg gained.</td><td class="r">16.8 m³</td></tr>
+      <tr><td lang="es"><b>Amoniaco al aire</b></td><td lang="en"><b>Ammonia to air</b></td><td lang="es">Nitrógeno que se evapora del estiércol: olor, polvo fino y lluvia ácida.</td><td lang="en">Nitrogen volatilised from manure: odour, fine dust and acid rain.</td><td class="r">47 g/d</td></tr>
+      <tr><td lang="es"><b>Nitratos al agua</b></td><td lang="en"><b>Nitrates to water</b></td><td lang="es">Nitrógeno que puede lavarse hacia pozos y ríos en clima húmedo.</td><td lang="en">Nitrogen that can leach to wells and rivers in a wet climate.</td><td class="r">31 g/d</td></tr>
+      <tr><td lang="es"><b>Medicamentos</b></td><td lang="en"><b>Medicines</b></td><td lang="es">Si usas antibióticos de importancia médica en humanos (clasificación de la OMS).</td><td lang="en">Whether you use antibiotics important in human medicine (WHO list).</td><td class="r" lang="es">ninguno</td><td class="r" lang="en">none</td></tr>
+    </tbody></table></div>
+
+  <h3 id="b10-gei" data-n="10.2"><span lang="es">Gases y recursos</span><span lang="en">Gases and resources</span></h3>
+  <p lang="es">Las barras de gases separan de dónde viene cada kilo de CO₂ equivalente. En el caso, la <b>producción del alimento</b> (3.08 kg al día) pesa más que el <b>metano del rumen</b> (2.35 kg): en una ración alta en grano el rumen produce poco metano, pero el grano trae su propia huella del campo. Junto, cuatro tarjetas dan el agua de bebida, la huella hídrica del alimento, la tierra para producirlo y la superficie para aplicar el estiércol.</p>
+  <p lang="en">The gas bars split where each kilo of CO₂ equivalent comes from. In our case <b>feed production</b> (3.08 kg a day) outweighs <b>rumen methane</b> (2.35 kg): on a high-grain ration the rumen makes little methane, but the grain carries its own footprint from the field. Beside it, four cards give drinking water, the feed’s water footprint, the land to grow it and the area to spread the manure.</p>
+  {{FIG_GEI}}
+  <figure data-fig="huella">
+    <figcaption><span class="fn"></span><span lang="es"><b>Huella completa</b> por animal al día, por kg ganado y para todo el lote.</span><span lang="en"><b>Full footprint</b> per head per day, per kg gained and for the whole lot.</span></figcaption>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Nuestros 300 toretes, en 110 días, producen unas <b>397 toneladas de heces frescas</b> con 4.3 t de nitrógeno y 0.6 t de fósforo. Para aplicarlas sin contaminar se necesitan <b>24.9 hectáreas</b> de cultivo (límite de 170 kg de N o 25 kg de P por hectárea al año). Si no las tienes, hay que compostear el estiércol o venderlo a quien sí.</p>
+    <p lang="en">Our 300 bulls, over 110 days, produce about <b>397 tonnes of fresh faeces</b> with 4.3 t of nitrogen and 0.6 t of phosphorus. To spread it without polluting takes <b>24.9 hectares</b> of cropland (limit of 170 kg N or 25 kg P per hectare a year). If you do not have them, compost the manure or sell it to someone who does.</p></div>
+
+  <h3 id="b10-medic" data-n="10.3"><span lang="es">Medicamentos por categoría</span><span lang="en">Medicines by category</span></h3>
+  <p lang="es">Con lo que capturaste en el Bloque 4, la app calcula cuánto de cada producto recibe cada animal y todo el lote, y lo clasifica: ionóforos (sin importancia en medicina humana), implantes hormonales, antiparasitarios, vacunas y, si los usas, antibióticos según la lista de la OMS y β-agonistas.</p>
+  <p lang="en">From what you entered in Block 4, the app works out how much of each product each animal and the whole lot receive, and classifies it: ionophores (no importance in human medicine), hormonal implants, antiparasitics, vaccines and, if used, antibiotics by WHO category and β-agonists.</p>
+  <figure data-fig="medic">
+    <figcaption><span class="fn"></span><span lang="es"><b>Medicamentos y aditivos por animal</b>, 110 días.</span><span lang="en"><b>Medicines and additives per animal</b>, 110 days.</span></figcaption>
+  </figure>
+
+  <h3 id="b10-frontera" data-n="10.4"><span lang="es">Optimizar costo y ambiente a la vez</span><span lang="en">Optimising cost and environment together</span></h3>
+  <p lang="es">El botón <span class="ui pri">⚙ Calcular la frontera costo–huella</span> formula varias veces sumando al precio de cada ingrediente un <b>precio interno del carbono</b> por sus emisiones, de $0 a $20,000 por tonelada de CO₂e. Resultado: una curva con las mejores raciones posibles; ninguna otra es a la vez más barata y más limpia. El punto de <b>equilibrio</b> es el que más huella quita por cada peso extra.</p>
+  <p lang="en">The <span class="ui pri">⚙ Compute the cost–footprint frontier</span> button formulates several times, adding to each ingredient’s price an <b>internal carbon price</b> for its emissions, from $0 to $20,000 per tonne of CO₂e. The result is a curve of the best possible rations; no other is both cheaper and cleaner. The <b>balance</b> point is the one that removes the most footprint per extra peso.</p>
+  <figure data-fig="frontera" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>Frontera costo–huella.</b></span><span lang="en"><b>Cost–footprint frontier.</b></span></figcaption>
+    <ol class="legend"><li><span lang="es"><span class="ui">Usar la ración de equilibrio</span> la manda al Bloque 7 como tu ración.</span><span lang="en"><span class="ui">Use the balance ration</span> sends it to Block 7 as your ration.</span></li></ol>
+  </figure>
+  <div class="versus">
+    <div class="s"><span lang="es">Mínimo costo</span><span lang="en">Least cost</span><b>$ 25.93 · 5.15 kg</b></div>
+    <div class="arrow">→</div>
+    <div class="s win"><span lang="es">Equilibrio · $5,000/t CO₂e</span><span lang="en">Balance · $5,000/t CO₂e</span><b>$ 26.58 · 4.96 kg</b></div>
+  </div>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Con un precio interno de $5,000 por tonelada, la app cambia parte del sorgo por melaza y DDGS: la huella baja <b>3.6 %</b> (de 5.15 a 4.96 kg de CO₂e por kilo ganado) y el kilo ganado cuesta <b>2.5 %</b> más ($26.58). Cada tonelada de CO₂e evitada cuesta unos $3,500, del orden del costo social del carbono. Es una decisión de negocio: conviene si tu comprador paga una prima por carne de menor huella.</p>
+    <p lang="en">With an internal price of $5,000 per tonne, the app swaps part of the sorghum for molasses and DDGS: the footprint falls <b>3.6 %</b> (from 5.15 to 4.96 kg CO₂e per kilo gained) and each kilo gained costs <b>2.5 %</b> more ($26.58). Each tonne of CO₂e avoided costs about $3,500, in the range of the social cost of carbon. It is a business decision: worth it if your buyer pays a premium for lower-footprint beef.</p></div>
+</section>
+
+<!-- ============================ 11 · INFORME ============================ -->
+<section class="chap" id="b11" data-toc="11" style="--c:var(--b11)">
+  <div class="chap-head"><span class="big">11</span>
+    <div class="eyebrow" lang="es">Bloque 11 · Informe</div><div class="eyebrow" lang="en">Block 11 · Report</div>
+    <h2 lang="es">Informe y exportación</h2><h2 lang="en">Report and export</h2>
+    <p lang="es">Un reporte para tu asesor, tablas para Excel y un archivo con todo tu proyecto.</p>
+    <p lang="en">A report for your advisor, tables for Excel and a file with your whole project.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4h17l9 9v31H12z"/><path d="M29 4v9h9M18 24h14M18 31h14M18 38h9"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b11-informe" data-n="11.1"><span lang="es">El informe</span><span lang="en">The report</span></h3>
+  <p lang="es">Un resumen en una frase, la fórmula en materia seca, tal como se ofrece y en kilos por tonelada de mezcla, con el nombre del corral, el rancho y la fecha. <span class="ui pri">🖨 Imprimir / PDF</span> lo saca en papel o lo guarda en PDF para mandarlo por WhatsApp o correo.</p>
+  <p lang="en">A one-sentence summary and the formula on a dry-matter basis, as fed and in kilos per tonne of mix, with the pen, ranch and date. <span class="ui pri">🖨 Print / PDF</span> prints it or saves it as a PDF to send by WhatsApp or e-mail.</p>
+  <figure data-fig="informe">
+    <figcaption><span class="fn"></span><span lang="es"><b>Informe de la ración.</b></span><span lang="en"><b>Ration report.</b></span></figcaption>
+  </figure>
+
+  <h3 id="b11-exportar" data-n="11.2"><span lang="es">Exportar y guardar</span><span lang="en">Export and save</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Botón</th><th lang="en">Button</th><th lang="es">Qué hace</th><th lang="en">What it does</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui" lang="es">⬇ Fórmula (CSV)</span><span class="ui" lang="en">⬇ Formula (CSV)</span></td><td lang="es">La fórmula con precios y aporte al costo, para Excel.</td><td lang="en">The formula with prices and cost share, for Excel.</td></tr>
+      <tr><td><span class="ui" lang="es">⬇ Nutrientes (CSV)</span><span class="ui" lang="en">⬇ Nutrients (CSV)</span></td><td lang="es">El aporte de cada nutriente contra su mínimo y máximo.</td><td lang="en">Each nutrient’s supply against its minimum and maximum.</td></tr>
+      <tr><td><span class="ui" lang="es">💾 Guardar proyecto (.json)</span><span class="ui" lang="en">💾 Save project (.json)</span></td><td lang="es">Todo: animal, región, ingredientes, precios, resultado y programa. Ábrelo en otra computadora con <span class="ui">📂 Abrir proyecto</span>.</td><td lang="en">Everything: animal, region, ingredients, prices, result and program. Open it on another computer with <span class="ui">📂 Open project</span>.</td></tr>
+      <tr><td><span class="ui" lang="es">Reiniciar todo</span><span class="ui" lang="en">Reset everything</span></td><td lang="es">Vuelve a los valores de fábrica. Guarda antes tu proyecto.</td><td lang="en">Back to factory values. Save your project first.</td></tr>
+    </tbody></table></div>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo · un archivo por corral y por fecha</span><span class="bt" lang="en">Tip · one file per pen and date</span>
+    <p lang="es">Nombra el proyecto con el corral y la fecha (por ejemplo, «Corral 4 · 2026-10-06»). Al terminar la engorda podrás comparar lo que la app predijo con lo que pesaron tus animales: es la mejor forma de afinar los datos de tu rancho.</p>
+    <p lang="en">Name the project with the pen and date (for example, “Pen 4 · 2026-10-06”). When the feeding period ends you can compare what the app predicted with what your animals weighed: the best way to fine-tune your ranch’s data.</p></div>
+</section>

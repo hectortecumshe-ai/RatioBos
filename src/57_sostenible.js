@@ -1,6 +1,6 @@
 "use strict";
 /* =====================================================================
-   SUSTENTABILIDAD / SUSTAINABILITY
+   SOSTENIBILIDAD / SUSTAINABILITY
    Factores ambientales por kg de MS de cada ingrediente (editables):
      co2  = kg CO₂e de producir el alimento (cultivo, fertilizante, proceso y transporte, sin cambio de uso de suelo);
      agua = litros de huella hídrica verde + azul;   suelo = m²·año de superficie para producirlo.
@@ -79,9 +79,9 @@ function medicamentos(s, dias, dmi){
   if(m.antib==='tilosina') out.push({k:'mac', prod:{es:'Tilosina',en:'Tylosin'}, g:(m.antibDosis||11)*dmi*dias/1000, u:'g'});
   if(m.antib==='virginiamicina') out.push({k:'estr', prod:{es:'Virginiamicina',en:'Virginiamycin'}, g:(m.antibDosis||20)*dmi*dias/1000, u:'g'});
   if(m.beta && m.beta!=='ninguno') out.push({k:'beta', prod:{es:m.beta==='zilpaterol'?'Clorhidrato de zilpaterol':'Clorhidrato de ractopamina',en:m.beta==='zilpaterol'?'Zilpaterol hydrochloride':'Ractopamine hydrochloride'}, g:(m.betaDosis||6.5)*dmi*Math.min(dias, m.betaDias||30)/1000, u:'g'});
-  if(+m.implantes>0 && s.cond.implante) out.push({k:'hor', prod:{es:'Implante (trembolona/estradiol)',en:'Implant (trenbolone/estradiol)'}, g:+m.implantes, u:T('implantes','implants')});
-  if(+m.desparas>0) out.push({k:'par', prod:{es:'Desparasitante (p. ej. ivermectina)',en:'Dewormer (e.g. ivermectin)'}, g:+m.desparas, u:T('tratamientos','treatments')});
-  if(+m.vacunas>0) out.push({k:'vac', prod:{es:'Vacunas (clostridiales, respiratorias)',en:'Vaccines (clostridial, respiratory)'}, g:+m.vacunas, u:T('dosis','doses')});
+  if(+m.implantes>0 && s.cond.implante) out.push({k:'hor', prod:{es:'Implante (trembolona/estradiol)',en:'Implant (trenbolone/estradiol)'}, g:+m.implantes, u:T('implantes','implants'), u1:T('implante','implant')});
+  if(+m.desparas>0) out.push({k:'par', prod:{es:'Desparasitante (p. ej. ivermectina)',en:'Dewormer (e.g. ivermectin)'}, g:+m.desparas, u:T('tratamientos','treatments'), u1:T('tratamiento','treatment')});
+  if(+m.vacunas>0) out.push({k:'vac', prod:{es:'Vacunas (clostridiales, respiratorias)',en:'Vaccines (clostridial, respiratory)'}, g:+m.vacunas, u:T('dosis','doses'), u1:T('dosis','dose')});
   return out;
 }
 /* Formulación con precio interno del carbono, el agua y el suelo (objetivo ampliado) */
@@ -92,16 +92,19 @@ function formularSostenible(s, pesos){
 }
 function fronteraCarbono(s){
   const out = [];
-  for(const w of [0, 250, 500, 1000, 2000, 4000, 8000]){
+  /* $/t CO₂e: de cero al costo social del carbono (≈ 190 USD/t, EPA 2023) y más allá */
+  for(const w of [0, 1000, 2000, 3500, 5000, 8000, 12000, 20000]){
     const r = formularSostenible(s, {co2:w});
     if(!r.ok) continue;
     const ctx = contexto(s), I = impactos(s, r, ctx), base = ctx.crec && r.pred.adg>0 ? r.pred.adg : 1;
-    out.push({w, costo: r.dmi*r.costoKg/base, co2: I.co2e.total/base, r});
+    const p = {w, costo: r.dmi*r.costoKg/base, co2: I.co2e.total/base, r}, u = out[out.length-1];
+    if(u && Math.abs(u.costo-p.costo) < 0.005 && Math.abs(u.co2-p.co2) < 0.0005) continue;   // misma ración que con el precio anterior
+    out.push(p);
   }
   return out;
 }
 
-/* ================= BLOQUE 10 · SUSTENTABILIDAD ================= */
+/* ================= BLOQUE 10 · SOSTENIBILIDAD ================= */
 function renderSostenible(el){
   const r = S.resultado;
   el.innerHTML = `${cabecera('sostenible',T('Producir carne también consume agua y suelo y deja gases, nutrientes y residuos. Aquí ves la huella de tu ración por animal, por kg de carne y por lote, y puedes formularla poniéndole precio a esa carga ambiental para buscar el equilibrio entre utilidad y sostenibilidad.','Producing beef also uses water and land and leaves gases, nutrients and residues. Here you see your ration’s footprint per head, per kg of beef and per group, and you can formulate it with a price on that environmental load to find the balance between profit and sustainability.'))}
@@ -149,7 +152,7 @@ function pintarSostenible(){
     <div class="tbl"><table><thead><tr><th>${T('Indicador','Indicator')}</th><th>${T('Unidad','Unit')}</th><th class="r">${T('Por animal al día','Per head per day')}</th><th class="r">${T('Por kg ganado','Per kg gained')}</th><th class="r">${T('Lote','Group')} (${fmt(cab,0)} × ${fmt(dias,0)} d)</th></tr></thead><tbody>
       ${fila(T('Agua de bebida','Drinking water'),'L · m³',I.agua,'aguaB',0)}
       ${fila(T('Huella hídrica del alimento (verde + azul)','Feed water footprint (green + blue)'),'L · m³',I.aguaV,'huellaH',0)}
-      ${fila(T('Superficie para producir el alimento','Land to grow the feed'),'m²·año',I.suelo,'sueloA',1)}
+      ${fila(T('Superficie para producir el alimento','Land to grow the feed'),T('m²·año','m²·yr'),I.suelo,'sueloA',1)}
       ${fila(T('Metano entérico','Enteric methane'),'kg CH₄',I.chEnt,'ch4',3)}
       ${fila(T('Metano del estiércol','Manure methane'),'kg CH₄',I.chEst,'gei',4)}
       ${fila(T('GEI totales','Total GHG'),'kg CO₂e',I.co2e.total,'gei',2)}
@@ -163,7 +166,7 @@ function pintarSostenible(){
     <p class="small muted">${T('Superficie para el estiércol del lote','Manure land for the group')}: <b>${fmt(Math.max(I.sueloN,I.sueloP)*cab*dias/365,1)} ha</b> (${T('límite de','limit of')} 170 kg N/ha·año ${T('o','or')} 25 kg P/ha·año, ${T('el que pida más superficie','whichever needs more land')}). ${T('Los factores de emisión y de huella de cada ingrediente son orientativos y se pueden editar en la vista científica.','Emission and footprint factors per ingredient are indicative and can be edited in the scientist view.')}</p></div>
   <div class="card"><h3>${T('Medicamentos y aditivos por animal','Medicines and additives per head')} (${fmt(dias,0)} d)${ayuda('medic')}</h3>
     ${m.length?`<div class="tbl"><table><thead><tr><th>${T('Categoría','Category')}</th><th>${T('Producto','Product')}</th><th class="r">${T('Cantidad','Amount')}</th><th class="r">${T('Lote','Group')}</th><th>${T('Clasificación','Classification')}</th></tr></thead><tbody>
-      ${m.map(x=>`<tr><td>${esc(tx(MED_CAT[x.k].n))}</td><td>${esc(tx(x.prod))}</td><td class="r">${fmt(x.g,x.u==='g'?2:0)} ${esc(x.u)}</td><td class="r">${fmt(x.g*cab,x.u==='g'?0:0)} ${esc(x.u)}</td><td><span class="badge ${MED_CAT[x.k].c}">${esc(tx(MED_CAT[x.k].oms))}</span></td></tr>`).join('')}</tbody></table></div>`:`<p class="muted">${T('No se registraron medicamentos ni aditivos.','No medicines or additives recorded.')}</p>`}
+      ${m.map(x=>`<tr><td>${esc(tx(MED_CAT[x.k].n))}</td><td>${esc(tx(x.prod))}</td><td class="r">${fmt(x.g,x.u==='g'?2:0)} ${esc(x.g===1&&x.u1?x.u1:x.u)}</td><td class="r">${fmt(x.g*cab,x.u==='g'?0:0)} ${esc(x.u)}</td><td><span class="badge ${MED_CAT[x.k].c}">${esc(tx(MED_CAT[x.k].oms))}</span></td></tr>`).join('')}</tbody></table></div>`:`<p class="muted">${T('No se registraron medicamentos ni aditivos.','No medicines or additives recorded.')}</p>`}
     <p class="small muted">${T('Se capturan en el Bloque 4 (Manejo). Dosis en mg por kg de MS × consumo × días.','Entered in Block 4 (Management). Doses in mg per kg DM × intake × days.')}</p></div>
   <div class="card"><div class="row between"><h3 style="margin:0">${T('Optimizar costo y ambiente a la vez','Optimize cost and environment together')}${ayuda('precioC')}</h3><button class="btn accent" id="btnFrontera">⚙ ${T('Calcular la frontera costo–huella','Compute the cost–footprint frontier')}</button></div>
     <p class="small muted">${T('Se formula varias veces sumando al precio de cada ingrediente un «precio interno del carbono» por sus emisiones (alimento + metano + estiércol). Así se ve cuánto cuesta cada kilo de CO₂e evitado y dónde está el punto de equilibrio.','The ration is formulated several times adding to each ingredient’s price an internal carbon price on its emissions (feed + methane + manure). This shows what each kilo of CO₂e avoided costs and where the balance point lies.')}</p>
@@ -176,7 +179,7 @@ function pintarFrontera(box){
   /* punto de equilibrio: mayor reducción de CO₂e por peso adicional (codo de la frontera) */
   const b0 = Fr[0]; let eq = b0, mejor = 0;
   Fr.slice(1).forEach(x=>{ const dC = b0.co2 - x.co2, dP = x.costo - b0.costo; const ef = dC/Math.max(dP,1e-6); if(dC>0.02*b0.co2 && ef>mejor){ mejor=ef; eq=x; } });
-  box.innerHTML = `${graficaLineas({titulo:T('Frontera costo–huella','Cost–footprint frontier'), xlab:'kg CO₂e '+u, ylab:T('costo de alimento $ ','feed cost $ ')+u, dx:1, dy:2,
+  box.innerHTML = `${graficaLineas({titulo:T('Frontera costo–huella','Cost–footprint frontier'), xlab:'kg CO₂e '+u, ylab:T('costo de alimento $ ','feed cost $ ')+u, dx:2, dy:2,
       series:[{etq:T('Raciones óptimas','Optimal rations'), cls:'l1', pts:Fr.map(x=>[x.co2,x.costo]).sort((a,b)=>a[0]-b[0])}], marcas:[{x:eq.co2,y:eq.costo,t:T('equilibrio','balance')}]})}
     <div class="tbl"><table><thead><tr><th class="r">${T('Precio del carbono','Carbon price')} $/t CO₂e</th><th class="r">$ ${u}</th><th class="r">kg CO₂e ${u}</th><th class="r">${T('Costo de evitar 1 t CO₂e','Cost to avoid 1 t CO₂e')}</th></tr></thead><tbody>
     ${Fr.map(x=>`<tr class="${x===eq?'tot':''}"><td class="r">${fmt(x.w,0)}</td><td class="r">${fmt(x.costo,2)}</td><td class="r">${fmt(x.co2,2)}</td><td class="r">${x===b0||b0.co2-x.co2<=1e-6?'—':money((x.costo-b0.costo)/(b0.co2-x.co2)*1000,0)}</td></tr>`).join('')}</tbody></table></div>

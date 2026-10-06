@@ -1,0 +1,151 @@
+<!-- ============================ PORTADA ============================ -->
+<section class="cover" id="portada">
+  <div class="band">{{BANDA}}</div>
+  <div class="in">
+    <div>
+      <div class="kick"><img src="logo.svg" alt="RatioBos"><div><div class="eyebrow" lang="es">Instructivo del Científico</div><div class="eyebrow" lang="en">Scientist Guide</div><div style="font-size:15px;color:var(--muted)">RatioBos {{VERSION}}</div></div></div>
+      <h1 lang="es">Del <em>animal factorial</em> a la <span class="a">ración certificada</span></h1>
+      <h1 lang="en">From the <em>factorial animal</em> to the <span class="a">certified ration</span></h1>
+      <p class="sub" lang="es">Formulación de mínimo costo para bovinos de carne: ecuaciones NASEM (2016), ajuste iterativo de energía y consumo, programación lineal con certificado de dualidad, huella ambiental IPCC (2019) y validación con dietas publicadas.</p>
+      <p class="sub" lang="en">Least-cost beef cattle formulation: NASEM (2016) equations, iterative energy–intake adjustment, linear programming with a duality certificate, IPCC (2019) environmental footprint and validation against published diets.</p>
+      <div class="meta">
+        <div lang="es"><b>1.ª edición</b> · octubre de 2026 · describe RatioBos {{VERSION}}</div>
+        <div lang="en"><b>1st edition</b> · October 2026 · covers RatioBos {{VERSION}}</div>
+        <div>{{DOI}}<span lang="es">Licencia MIT</span><span lang="en">MIT License</span></div>
+      </div>
+      <div class="who">{{AUTORES}}<br><span lang="es">Guía complementaria del <a href="instructivo-productor.html">Instructivo del Productor</a>.</span><span lang="en">Companion to the <a href="instructivo-productor.html">Producer Guide</a>.</span></div>
+    </div>
+    <div class="art">
+      {{FIG_PORTADA}}
+      <div class="eqc"><math display="inline"><mrow><msub><mi>g</mi><mo>*</mo></msub><mo>:</mo><mspace width="0.3em"/><msub><mi>ENm</mi><mtext>dieta</mtext></msub><mo>(</mo><msup><mi>𝐱</mi><mo>*</mo></msup><mo>(</mo><msub><mi>g</mi><mo>*</mo></msub><mo>)</mo><mo>)</mo><mo>=</mo><msub><mi>g</mi><mo>*</mo></msub></mrow></math></div>
+    </div>
+  </div>
+  <div class="pillars">
+    <div><i lang="es">Animal</i><i lang="en">Animal</i><b>NASEM (2016)</b><span lang="es">energía neta de California y proteína metabolizable</span><span lang="en">California net energy and metabolizable protein</span></div>
+    <div><i lang="es">Método</i><i lang="en">Method</i><b lang="es">Símplex + punto fijo</b><b lang="en">Simplex + fixed point</b><span lang="es">la ENm supuesta y la de la ración coinciden</span><span lang="en">assumed and ration NEm agree</span></div>
+    <div><i lang="es">Validación</i><i lang="en">Validation</i><b>19 / 19 · 0.5 %</b><span lang="es">dietas igualadas o abaratadas · error en EN observada</span><span lang="en">diets matched or cheaper · observed NE error</span></div>
+    <div><i lang="es">Prueba</i><i lang="en">Test</i><b>500 / 500</b><span lang="es">problemas idénticos a HiGHS (SciPy)</span><span lang="en">problems identical to HiGHS (SciPy)</span></div>
+  </div>
+</section>
+
+<div class="doc">
+
+<!-- ============================ P · ALCANCE ============================ -->
+<section class="chap" id="leer" data-toc="P" style="--c:var(--acc)">
+  <div class="chap-head"><span class="big">P</span>
+    <div class="eyebrow" lang="es">Antes de leer</div><div class="eyebrow" lang="en">Before reading</div>
+    <h2 lang="es">Alcance, notación y cómo citar</h2><h2 lang="en">Scope, notation and citation</h2>
+    <p lang="es">Para quién es esta guía, qué supone del lector y cómo se organiza.</p>
+    <p lang="en">Who this guide is for, what it assumes of the reader and how it is organised.</p>
+    <span class="rule"></span></div>
+
+  <p class="lead" lang="es">Esta guía documenta el método de RatioBos con el detalle necesario para evaluarlo, enseñarlo y reproducirlo: cada ecuación del animal, la construcción del modelo lineal, el algoritmo que hace coincidir la energía de la ración con la que se supuso para predecir el consumo, la huella ambiental y la validación con experimentos publicados. Supone conocimientos de nutrición de rumiantes y nociones de programación lineal.</p>
+  <p class="lead" lang="en">This guide documents RatioBos’s method in the detail needed to evaluate, teach and reproduce it: every animal equation, the construction of the linear model, the algorithm that makes the ration’s energy match the one assumed to predict intake, the environmental footprint and the validation against published experiments. It assumes knowledge of ruminant nutrition and a basic grasp of linear programming.</p>
+  <p lang="es">Todos los números provienen de la app con el mismo caso del Instructivo del Productor: <b>300 toretes cruza cebú × europeo de 380 kg</b>, meta de 1.35 kg/d, Jalisco en temporada seca, con implante y monensina (30 mg/kg MS). En la app, la <b>vista científica</b> (botón en la barra superior) muestra todo lo que aquí se describe.</p>
+  <p lang="en">Every number comes from the app with the same case as the Producer Guide: <b>300 zebu × European cross bulls at 380 kg</b>, 1.35 kg/d target, Jalisco in the dry season, implanted and fed monensin (30 mg/kg DM). In the app, the <b>scientist view</b> (button in the top bar) shows everything described here.</p>
+
+  <h3 id="recuadros"><span lang="es">Recuadros</span><span lang="en">Boxes</span></h3>
+  <div class="box def"><span class="bi">≡</span><span class="bt" lang="es">Definición</span><span class="bt" lang="en">Definition</span><p lang="es">Un concepto con su significado exacto.</p><p lang="en">A concept with its exact meaning.</p></div>
+  <div class="box thm"><span class="bi">∴</span><span class="bt" lang="es">Resultado</span><span class="bt" lang="en">Result</span><p lang="es">Una propiedad que el programa aprovecha, con su consecuencia práctica.</p><p lang="en">A property the program relies on, with its practical consequence.</p></div>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span><p lang="es">Los números del caso, tal como los calcula la app.</p><p lang="en">The case numbers, exactly as the app computes them.</p></div>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución</span><span class="bt" lang="en">Caution</span><p lang="es">Un supuesto o límite del método que puede cambiar una conclusión.</p><p lang="en">An assumption or limitation that can change a conclusion.</p></div>
+
+  <h3 id="notacion"><span lang="es">Notación</span><span lang="en">Notation</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Símbolo</th><th lang="en">Symbol</th><th lang="es">Significado</th><th lang="en">Meaning</th><th lang="es">Unidad</th><th lang="en">Unit</th></tr></thead>
+    <tbody>
+      <tr><td>PV · SBW</td><td lang="es">peso vivo · peso vivo en ayuno (0.96 PV)</td><td lang="en">live weight · shrunk body weight (0.96 LW)</td><td>kg</td></tr>
+      <tr><td>EQSBW</td><td lang="es">peso equivalente: SBW × SRW / FSBW</td><td lang="en">equivalent weight: SBW × SRW / FSBW</td><td>kg</td></tr>
+      <tr><td>SWG · GDP</td><td lang="es">ganancia de peso en ayuno · ganancia diaria</td><td lang="en">shrunk weight gain · daily gain</td><td>kg/d</td></tr>
+      <tr><td>CMS</td><td lang="es">consumo de materia seca</td><td lang="en">dry matter intake (DMI)</td><td>kg/d</td></tr>
+      <tr><td>ENm · ENg</td><td lang="es">energía neta de mantenimiento · de ganancia</td><td lang="en">net energy for maintenance · for gain</td><td>Mcal/kg MS</td></tr>
+      <tr><td>ER</td><td lang="es">energía retenida (ENg requerida al día)</td><td lang="en">retained energy (daily NEg required)</td><td>Mcal/d</td></tr>
+      <tr><td>PM · PCM · PNDR</td><td lang="es">proteína metabolizable · microbiana cruda · no degradable</td><td lang="en">metabolizable · microbial crude · rumen-undegradable protein</td><td>g</td></tr>
+      <tr><td><math><msub><mi>x</mi><mi>i</mi></msub></math></td><td lang="es">inclusión del ingrediente <i>i</i></td><td lang="en">inclusion of ingredient <i>i</i></td><td lang="es">% de la MS</td><td lang="en">% of DM</td></tr>
+      <tr><td><math><msub><mi>c</mi><mi>i</mi></msub></math></td><td lang="es">precio del ingrediente en base seca</td><td lang="en">ingredient price on a DM basis</td><td>$/kg MS</td></tr>
+      <tr><td><math><mi>g</mi></math></td><td lang="es">ENm supuesta de la ración</td><td lang="en">assumed ration NEm</td><td>Mcal/kg MS</td></tr>
+    </tbody></table></div>
+
+  <h3 id="citar"><span lang="es">Cómo citar</span><span lang="en">How to cite</span></h3>
+  <div class="box ref"><span class="bi">“</span><span class="bt" lang="es">Programa</span><span class="bt" lang="en">Software</span>
+    <p lang="es">Mojica-Zárate, H. T., y Barrera-Guzmán, L. A. (2026). <i>RatioBos: Guided least-cost diet formulation for beef cattle</i> (Versión {{VERSION}}) [Software]. {{CITA_DOI}}</p>
+    <p lang="en">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. A. (2026). <i>RatioBos: Guided least-cost diet formulation for beef cattle</i> (Version {{VERSION}}) [Software]. {{CITA_DOI}}</p></div>
+</section>
+
+<!-- ============================ M · MODELO DEL ANIMAL ============================ -->
+<section class="chap" id="animal" data-toc="M" style="--c:var(--b1)">
+  <div class="chap-head"><span class="big">M</span>
+    <div class="eyebrow" lang="es">Bloques 1 a 4</div><div class="eyebrow" lang="en">Blocks 1 to 4</div>
+    <h2 lang="es">El modelo del animal</h2><h2 lang="en">The animal model</h2>
+    <p lang="es">Requerimientos factoriales del sistema de energía neta de California (Lofgreen y Garrett, 1968) con las ecuaciones de NRC (1996, 2000) y NASEM (2016).</p>
+    <p lang="en">Factorial requirements from the California net energy system (Lofgreen &amp; Garrett, 1968) with the NRC (1996, 2000) and NASEM (2016) equations.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14c3 0 5-3 5-6M40 14c-3 0-5-3-5-6M13 14h22l3 8-4 4v10a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V26l-4-4z"/><path d="M20 33h8"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="m-peso" data-n="M.1"><span lang="es">Peso equivalente</span><span lang="en">Equivalent weight</span></h3>
+  <p lang="es">La composición de la ganancia depende de qué tan cerca está el animal de su peso a engrasamiento objetivo. NASEM lo resuelve escalando el peso del animal al de un animal de referencia con 478 kg de peso en ayuno al 28 % de grasa en la canal (SRW):</p>
+  <p lang="en">Gain composition depends on how close the animal is to its target-fatness weight. NASEM handles this by scaling the animal’s weight to a reference animal with 478 kg shrunk weight at 28 % carcass fat (SRW):</p>
+  <div class="eq"><math display="block"><mrow><mi>SBW</mi><mo>=</mo><mn>0.96</mn><mspace width="0.2em"/><mi>PV</mi><mo>,</mo><mspace width="1.2em"/><mi>EQSBW</mi><mo>=</mo><mi>SBW</mi><mo>·</mo><mfrac><mi>SRW</mi><mi>FSBW</mi></mfrac></mrow></math><span class="no">(1)</span></div>
+  <p lang="es">donde FSBW es 0.96 veces el peso final de referencia del Bloque 3 (o el peso adulto en vaquillas).</p>
+  <p lang="en">where FSBW is 0.96 times the final reference weight in Block 3 (or the mature weight for heifers).</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">SBW = 0.96 × 380 = 364.8 kg; FSBW = 0.96 × 620 = 595.2 kg; EQSBW = 364.8 × 478 / 595.2 = <b>293.0 kg</b>.</p>
+    <p lang="en">SBW = 0.96 × 380 = 364.8 kg; FSBW = 0.96 × 620 = 595.2 kg; EQSBW = 364.8 × 478 / 595.2 = <b>293.0 kg</b>.</p></div>
+
+  <h3 id="m-mant" data-n="M.2"><span lang="es">Mantenimiento</span><span lang="en">Maintenance</span></h3>
+  <div class="eq"><math display="block"><mrow><msub><mi>ENm</mi><mtext>req</mtext></msub><mo>=</mo><mo>(</mo><mn>0.077</mn><mspace width="0.15em"/><msub><mi>f</mi><mtext>raza</mtext></msub><mspace width="0.15em"/><msub><mi>f</mi><mtext>sexo</mtext></msub><mspace width="0.15em"/><msub><mi>f</mi><mtext>lact</mtext></msub><mo>+</mo><msub><mi>a</mi><mn>2</mn></msub><mo>)</mo><mspace width="0.15em"/><msup><mi>SBW</mi><mn>0.75</mn></msup><mo>·</mo><msub><mi>f</mi><mtext>jadeo</mtext></msub><mo>·</mo><msub><mi>f</mi><mtext>act</mtext></msub></mrow></math><span class="no">(2)</span></div>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Factor</th><th lang="en">Factor</th><th lang="es">Valores</th><th lang="en">Values</th><th lang="es">Fuente</th><th lang="en">Source</th></tr></thead>
+    <tbody>
+      <tr><td><math><msub><mi>f</mi><mtext>raza</mtext></msub></math></td><td lang="es">británico y continental 1.00; cebú 0.90; cruza 0.95; criollo 1.00; lechero 1.20</td><td lang="en">British and Continental 1.00; zebu 0.90; cross 0.95; Criollo 1.00; dairy 1.20</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>sexo</mtext></msub></math></td><td lang="es">novillo y vaquilla 1.00; torete 1.15</td><td lang="en">steer and heifer 1.00; bull 1.15</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>lact</mtext></msub></math></td><td lang="es">1.20 en vacas lactando</td><td lang="en">1.20 in lactating cows</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>a</mi><mn>2</mn></msub></math></td><td lang="es">0.0007 (20 − T<sub>previa</sub>): aclimatación a la temperatura del mes anterior</td><td lang="en">0.0007 (20 − T<sub>previous</sub>): acclimation to the previous month’s temperature</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>jadeo</mtext></msub></math></td><td lang="es">1.07 con jadeo rápido (ITH efectivo 79–83); 1.18 con boca abierta (≥ 84)</td><td lang="en">1.07 with rapid panting (effective THI 79–83); 1.18 open-mouth (≥ 84)</td><td>NRC (1996)</td></tr>
+      <tr><td><math><msub><mi>f</mi><mtext>act</mtext></msub></math></td><td lang="es">corral 1.00; semiestabulado 1.05; pastoreo plano 1.10; lomerío 1.20</td><td lang="en">feedlot 1.00; semi-confined 1.05; flat grazing 1.10; hill grazing 1.20</td><td>NRC (1996)</td></tr>
+    </tbody></table></div>
+  <p lang="es">El ITH (NRC, 1971) es 0.81 T + HR/100 (T − 14.4) + 46.4. El <b>ITH efectivo</b> descuenta la sombra (lámina −2 puntos, sombra amplia −4, domo con ventiladores −6) y la adaptación del biotipo (cebú +3 puntos; cruzas y criollo +1.5; lechero −1), y decide el factor de jadeo.</p>
+  <p lang="en">THI (NRC, 1971) is 0.81 T + RH/100 (T − 14.4) + 46.4. The <b>effective THI</b> credits shade (sheet −2 points, ample shade −4, dome with fans −6) and biotype adaptation (zebu +3 points; crosses and Criollo +1.5; dairy −1), and sets the panting factor.</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Mes anterior a 17 °C: a<sub>2</sub> = 0.0021. ENm<sub>req</sub> = (0.077 × 0.95 × 1.15 + 0.0021) × 364.8<sup>0.75</sup> = <b>7.20 Mcal/d</b>. Sin jadeo (ITH efectivo 64.1) y en corral.</p>
+    <p lang="en">Previous month at 17 °C: a<sub>2</sub> = 0.0021. NEm<sub>req</sub> = (0.077 × 0.95 × 1.15 + 0.0021) × 364.8<sup>0.75</sup> = <b>7.20 Mcal/d</b>. No panting (effective THI 64.1), feedlot.</p></div>
+
+  <h3 id="m-consumo" data-n="M.3"><span lang="es">Consumo</span><span lang="en">Intake</span></h3>
+  <p lang="es">El consumo esperado depende de la ENm de la ración (NRC, 1996). Para animales en crecimiento:</p>
+  <p lang="en">Expected intake depends on the ration’s NEm (NRC, 1996). For growing cattle:</p>
+  <div class="eq"><math display="block"><mrow><mi>CMS</mi><mo>=</mo><msup><mi>SBW</mi><mn>0.75</mn></msup><mo>·</mo><mfrac><mrow><mn>0.2435</mn><mspace width="0.1em"/><mi>g</mi><mo>−</mo><mn>0.0466</mn><mspace width="0.1em"/><msup><mi>g</mi><mn>2</mn></msup><mo>−</mo><mi>k</mi></mrow><mi>g</mi></mfrac><mo>·</mo><munder><mo>∏</mo><mi>m</mi></munder><msub><mi>F</mi><mi>m</mi></msub></mrow></math><span class="no">(3)</span></div>
+  <p lang="es">con <i>k</i> = 0.1128 para añojos y 0.0869 para becerros, y <i>g</i> la ENm de la ración en Mcal/kg MS. En vacas: CMS = SBW<sup>0.75</sup> (0.04997 <i>g</i><sup>2</sup> + 0.03840)/<i>g</i> (0.04631 en lactación) + 0.2 × leche. Los factores <i>F</i> son: grasa corporal por EQSBW (de 1.00 a 0.73 entre 350 y 550 kg), sin implante 0.94, ionóforo 0.97, temperatura (0.65 a 1.16) y lodo (−1 % por cm). El usuario puede sustituir el consumo predicho por el observado.</p>
+  <p lang="en">with <i>k</i> = 0.1128 for yearlings and 0.0869 for calves, and <i>g</i> the ration NEm in Mcal/kg DM. For cows: DMI = SBW<sup>0.75</sup> (0.04997 <i>g</i><sup>2</sup> + 0.03840)/<i>g</i> (0.04631 in lactation) + 0.2 × milk. The factors <i>F</i> are: body fat by EQSBW (from 1.00 to 0.73 between 350 and 550 kg), no implant 0.94, ionophore 0.97, temperature (0.65 to 1.16) and mud (−1 % per cm). The user can replace predicted intake with observed intake.</p>
+
+  <h3 id="m-ganancia" data-n="M.4"><span lang="es">Energía y proteína de la ganancia</span><span lang="en">Energy and protein of gain</span></h3>
+  <div class="eq"><math display="block"><mtable columnalign="right left" rowspacing="0.6em">
+    <mtr><mtd><mi>ER</mi></mtd><mtd><mo>=</mo><mn>0.0635</mn><mspace width="0.15em"/><msup><mrow><mo>(</mo><mn>0.891</mn><mspace width="0.1em"/><mi>EQSBW</mi><mo>)</mo></mrow><mn>0.75</mn></msup><msup><mrow><mo>(</mo><mn>0.956</mn><mspace width="0.1em"/><mi>SWG</mi><mo>)</mo></mrow><mn>1.097</mn></msup></mtd></mtr>
+    <mtr><mtd><msub><mi>PN</mi><mi>g</mi></msub></mtd><mtd><mo>=</mo><mi>SWG</mi><mspace width="0.15em"/><mo>(</mo><mn>268</mn><mo>−</mo><mn>29.4</mn><mspace width="0.15em"/><mi>ER</mi><mo>/</mo><mi>SWG</mi><mo>)</mo></mtd></mtr>
+    <mtr><mtd><msub><mi>PM</mi><mi>g</mi></msub></mtd><mtd><mo>=</mo><msub><mi>PN</mi><mi>g</mi></msub><mo>/</mo><mi>e</mi><mo>,</mo><mspace width="1em"/><mi>e</mi><mo>=</mo><mn>0.834</mn><mo>−</mo><mn>0.00114</mn><mspace width="0.1em"/><mi>EQSBW</mi><mspace width="0.6em"/><mtext lang="es">(≥ 0.492)</mtext><mtext lang="en">(≥ 0.492)</mtext></mtd></mtr>
+    <mtr><mtd><msub><mi>PM</mi><mi>m</mi></msub></mtd><mtd><mo>=</mo><mn>3.8</mn><mspace width="0.15em"/><msup><mi>SBW</mi><mn>0.75</mn></msup></mtd></mtr>
+  </mtable></math><span class="no">(4)</span></div>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Con SWG = 1.35 kg/d: ER = <b>5.46 Mcal/d</b>; PN<sub>g</sub> = 201.4 g/d; <i>e</i> = 0.500; PM<sub>g</sub> = 402.8 g/d; PM<sub>m</sub> = 317.2 g/d; PM total = <b>720 g/d</b>.</p>
+    <p lang="en">With SWG = 1.35 kg/d: RE = <b>5.46 Mcal/d</b>; NP<sub>g</sub> = 201.4 g/d; <i>e</i> = 0.500; MP<sub>g</sub> = 402.8 g/d; MP<sub>m</sub> = 317.2 g/d; total MP = <b>720 g/d</b>.</p></div>
+
+  <h3 id="m-pm" data-n="M.5"><span lang="es">Aporte de proteína metabolizable</span><span lang="en">Metabolizable protein supply</span></h3>
+  <p lang="es">La síntesis microbiana se estima con la ecuación de Galyean y Tedeschi (2014), adoptada por NASEM (2016), a partir del TND consumido; la grasa añadida no se cuenta porque no alimenta a los microbios:</p>
+  <p lang="en">Microbial synthesis is estimated with the Galyean and Tedeschi (2014) equation, adopted by NASEM (2016), from TDN intake; added fat is excluded because it does not feed the microbes:</p>
+  <div class="eq"><math display="block"><mrow><mi>PCM</mi><mo>=</mo><mn>42.73</mn><mo>+</mo><mn>0.087</mn><mspace width="0.15em"/><msub><mi>TND</mi><mtext>cons</mtext></msub><mo>,</mo><mspace width="1.2em"/><mi>PM</mi><mo>=</mo><mn>0.64</mn><mspace width="0.15em"/><mi>PCM</mi><mo>+</mo><mn>0.80</mn><mspace width="0.15em"/><mi>PNDR</mi></mrow></math><span class="no">(5)</span></div>
+  <p lang="es">Además se exige que la proteína degradable cubra la proteína microbiana (balance PDR − PCM ≥ 0); si no la cubre, la PM aportada se reduce en consecuencia. El término constante 42.73 g/d se divide entre el consumo para expresarlo por kilo de MS, de modo que la restricción sigue siendo lineal en las inclusiones.</p>
+  <p lang="en">The degradable protein must also cover microbial protein (RDP − MCP balance ≥ 0); otherwise the MP supply is reduced accordingly. The constant 42.73 g/d is divided by intake to express it per kilo of DM, so the constraint stays linear in the inclusions.</p>
+
+  <h3 id="m-vacas" data-n="M.6"><span lang="es">Gestación, lactación y minerales</span><span lang="en">Pregnancy, lactation and minerals</span></h3>
+  <p lang="es">Gestación (NRC, 1996), con <i>t</i> días de gestación y PN el peso al nacer:</p>
+  <p lang="en">Pregnancy (NRC, 1996), with <i>t</i> days pregnant and BW<sub>b</sub> the birth weight:</p>
+  <div class="eq"><math display="block"><mtable columnalign="right left" rowspacing="0.6em">
+    <mtr><mtd><msub><mi>EM</mi><mi>y</mi></msub></mtd><mtd><mo>=</mo><mi>PN</mi><mspace width="0.15em"/><mo>(</mo><mn>0.4504</mn><mo>−</mo><mn>0.000766</mn><mspace width="0.1em"/><mi>t</mi><mo>)</mo><mspace width="0.15em"/><msup><mi>e</mi><mrow><mo>(</mo><mn>0.03233</mn><mo>−</mo><mn>0.0000275</mn><mi>t</mi><mo>)</mo><mi>t</mi></mrow></msup><mo>/</mo><mn>1000</mn></mtd></mtr>
+    <mtr><mtd><msub><mi>PM</mi><mi>y</mi></msub></mtd><mtd><mo>=</mo><mn>6.25</mn><mspace width="0.15em"/><mi>PN</mi><mspace width="0.15em"/><mo>(</mo><mn>0.001669</mn><mo>−</mo><mn>0.00000211</mn><mspace width="0.1em"/><mi>t</mi><mo>)</mo><mspace width="0.15em"/><msup><mi>e</mi><mrow><mo>(</mo><mn>0.0278</mn><mo>−</mo><mn>0.0000176</mn><mi>t</mi><mo>)</mo><mi>t</mi></mrow></msup><mo>/</mo><mn>0.65</mn></mtd></mtr>
+  </mtable></math><span class="no">(6)</span></div>
+  <p lang="es">La EM<sub>y</sub> se convierte a ENm con k<sub>m</sub> = ENm/EM de la ración. Lactación: ENl = leche × (0.3512 + 0.0962 × grasa %) y PM<sub>l</sub> = leche × proteína % × 10 / 0.65. Calcio y fósforo son factoriales: mantenimiento 15.4 y 16 mg/kg SBW, crecimiento 7.1 % y 3.9 % de la proteína retenida, más la gestación tardía y la leche, con absorción de 50 % (Ca) y 68 % (P).</p>
+  <p lang="en">ME<sub>y</sub> is converted to NEm with k<sub>m</sub> = ration NEm/ME. Lactation: NEl = milk × (0.3512 + 0.0962 × fat %) and MP<sub>l</sub> = milk × protein % × 10 / 0.65. Calcium and phosphorus are factorial: maintenance 15.4 and 16 mg/kg SBW, growth 7.1 % and 3.9 % of retained protein, plus late pregnancy and milk, with 50 % (Ca) and 68 % (P) absorption.</p>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución · límites prácticos</span><span class="bt" lang="en">Caution · practical limits</span>
+    <p lang="es">Forraje, FDN físicamente efectiva, grasa, azufre, sodio y proteína cruda máxima no salen de ecuaciones: son límites prácticos por tipo de animal (por ejemplo, 8–15 % de forraje y FDNfe ≥ 7 % en finalización). El máximo de azufre se reduce con el azufre que aporta el agua (3.5–5 L por kg de MS según la temperatura).</p>
+    <p lang="en">Forage, physically effective NDF, fat, sulfur, sodium and maximum crude protein do not come from equations: they are practical limits per animal type (e.g. 8–15 % forage and peNDF ≥ 7 % in finishing). The sulfur maximum is reduced by the sulfur supplied by water (3.5–5 L per kg DM depending on temperature).</p></div>
+</section>

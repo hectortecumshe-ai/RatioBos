@@ -1,0 +1,106 @@
+
+<!-- ============================ F · FORMULACIÓN ============================ -->
+<section class="chap" id="formulacion" data-toc="F" style="--c:var(--b7)">
+  <div class="chap-head"><span class="big">F</span>
+    <div class="eyebrow" lang="es">Bloques 5 a 7</div><div class="eyebrow" lang="en">Blocks 5 to 7</div>
+    <h2 lang="es">Formulación: programa lineal y punto fijo</h2><h2 lang="en">Formulation: linear program and fixed point</h2>
+    <p lang="es">El costo mínimo se obtiene con programación lineal; la dependencia entre la energía de la ración y el consumo se resuelve con un punto fijo alrededor del programa lineal.</p>
+    <p lang="en">Least cost comes from linear programming; the dependence between ration energy and intake is resolved with a fixed point around the linear program.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42V6M6 42h36"/><path d="M10 14l26 6-10 18z" fill="currentColor" fill-opacity=".14"/><circle cx="26" cy="38" r="2.6" fill="currentColor"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="f-pl" data-n="F.1"><span lang="es">El programa lineal</span><span lang="en">The linear program</span></h3>
+  <p lang="es">Las variables son las inclusiones <i>x<sub>i</sub></i> en % de la MS. Para un consumo <i>C</i> y unos requerimientos por kilo de MS dados, RatioBos resuelve:</p>
+  <p lang="en">The variables are the inclusions <i>x<sub>i</sub></i> in % of DM. For a given intake <i>C</i> and per-kilo requirements, RatioBos solves:</p>
+  <div class="eq"><math display="block">
+    <mtable columnalign="right left" rowspacing="0.55em">
+      <mtr><mtd><munder><mo movablelimits="false">min</mo><mi>𝐱</mi></munder></mtd><mtd><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>c</mi><mi>i</mi></msub><msub><mi>x</mi><mi>i</mi></msub></mtd></mtr>
+      <mtr><mtd><mtext lang="es">sujeto a</mtext><mtext lang="en">subject to</mtext></mtd><mtd><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mn>100</mn></mtd></mtr>
+      <mtr><mtd></mtd><mtd><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>x</mi><mi>i</mi></msub><mo>≥</mo><mn>100</mn><mo>(</mo><msubsup><mi>b</mi><mi>j</mi><mo>−</mo></msubsup><mo>−</mo><msub><mi>k</mi><mi>j</mi></msub><mo>(</mo><mi>C</mi><mo>)</mo><mo>)</mo><mo>,</mo><mspace width="0.8em"/><munder><mo>∑</mo><mi>i</mi></munder><msub><mi>a</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><msub><mi>x</mi><mi>i</mi></msub><mo>≤</mo><mn>100</mn><mo>(</mo><msubsup><mi>b</mi><mi>j</mi><mo>+</mo></msubsup><mo>−</mo><msub><mi>k</mi><mi>j</mi></msub><mo>(</mo><mi>C</mi><mo>)</mo><mo>)</mo></mtd></mtr>
+      <mtr><mtd></mtd><mtd><msub><mi>l</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>x</mi><mi>i</mi></msub><mo>≤</mo><msub><mi>u</mi><mi>i</mi></msub></mtd></mtr>
+    </mtable></math><span class="no">(7)</span></div>
+  <p lang="es">donde <i>a<sub>ij</sub></i> es el aporte de 1 kg de MS del ingrediente <i>i</i> al nutriente <i>j</i> y <i>k<sub>j</sub></i>(<i>C</i>) es el término constante de la síntesis microbiana (0.64 × 42.73/<i>C</i> para la PM y −42.73/<i>C</i> para el balance de PDR; cero para los demás). Los aportes por ingrediente de las restricciones derivadas son:</p>
+  <p lang="en">where <i>a<sub>ij</sub></i> is the contribution of 1 kg DM of ingredient <i>i</i> to nutrient <i>j</i> and <i>k<sub>j</sub></i>(<i>C</i>) is the constant term of microbial synthesis (0.64 × 42.73/<i>C</i> for MP and −42.73/<i>C</i> for the RDP balance; zero otherwise). The per-ingredient contributions of the derived constraints are:</p>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Restricción</th><th lang="en">Constraint</th><th lang="es">Aporte de 1 kg MS del ingrediente</th><th lang="en">Contribution of 1 kg DM of the ingredient</th></tr></thead>
+    <tbody>
+      <tr><td lang="es">Proteína metabolizable (g/kg)</td><td lang="en">Metabolizable protein (g/kg)</td><td>0.64 × 0.087 × 10 TND<sub>i</sub> + 0.80 × 10 PC<sub>i</sub> (1 − PDR<sub>i</sub>/100)</td></tr>
+      <tr><td lang="es">Balance PDR − PCM (g/kg)</td><td lang="en">RDP − MCP balance (g/kg)</td><td>10 PC<sub>i</sub> PDR<sub>i</sub>/100 − 0.087 × 10 TND<sub>i</sub></td></tr>
+      <tr><td lang="es">FDN físicamente efectiva (%)</td><td lang="en">Physically effective NDF (%)</td><td>FDN<sub>i</sub> × pef<sub>i</sub></td></tr>
+      <tr><td lang="es">Forraje (%)</td><td lang="en">Forage (%)</td><td lang="es">100 si es forraje seco, ensilaje o forraje verde; 0 si no</td><td lang="en">100 for dry forage, silage or fresh forage; 0 otherwise</td></tr>
+    </tbody></table></div>
+  <p lang="es">En la grasa añadida TND<sub>i</sub> se toma como cero en las dos primeras filas. Cada fila se escala dividiéndola entre su mayor coeficiente en valor absoluto antes de resolver.</p>
+  <p lang="en">For added fat TDN<sub>i</sub> is taken as zero in the first two rows. Each row is scaled by its largest absolute coefficient before solving.</p>
+
+  <h3 id="f-simplex" data-n="F.2"><span lang="es">Símplex y certificado de optimalidad</span><span lang="en">Simplex and optimality certificate</span></h3>
+  <div class="spec">
+    <div><span lang="es">Método</span><span lang="en">Method</span><b lang="es">Símplex tabular en dos fases</b><b lang="en">Two-phase tableau simplex</b></div>
+    <div><span lang="es">Pivoteo</span><span lang="en">Pivoting</span><b lang="es">Regla de Bland (anticiclado)</b><b lang="en">Bland’s rule (anti-cycling)</b></div>
+    <div><span lang="es">Aritmética</span><span lang="en">Arithmetic</span><b lang="es">Doble precisión (IEEE 754)</b><b lang="en">Double precision (IEEE 754)</b></div>
+    <div><span lang="es">Infactibilidad</span><span lang="en">Infeasibility</span><b lang="es">Suma de artificiales &gt; 10⁻⁷</b><b lang="en">Artificial sum &gt; 10⁻⁷</b></div>
+    <div><span lang="es">Certificado</span><span lang="en">Certificate</span><b lang="es">Dualidad fuerte, brecha &lt; 10⁻⁷</b><b lang="en">Strong duality, gap &lt; 10⁻⁷</b></div>
+    <div><span lang="es">Diagnóstico</span><span lang="en">Diagnosis</span><b lang="es">Relajación de una restricción a la vez</b><b lang="en">One-constraint-at-a-time relaxation</b></div>
+  </div>
+  <div class="box thm"><span class="bi">∴</span><span class="bt" lang="es">Resultado · dualidad fuerte</span><span class="bt" lang="en">Result · strong duality</span>
+    <p lang="es">Si <b>x</b> es factible en el primal, <b>y</b> es factible en el dual y <b>c</b>ᵀ<b>x</b> = <b>b</b>ᵀ<b>y</b>, ambos son óptimos (Dantzig, 1963). RatioBos comprueba las tres condiciones con los valores numéricos de la solución antes de mostrarla; si alguna falla, lo dice.</p>
+    <p lang="en">If <b>x</b> is primal feasible, <b>y</b> is dual feasible and <b>c</b>ᵀ<b>x</b> = <b>b</b>ᵀ<b>y</b>, both are optimal (Dantzig, 1963). RatioBos checks all three conditions on the numerical solution before displaying it; if one fails, it says so.</p></div>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">12 variables, 21 restricciones, 39 pivotes. Violación primal 4.3 × 10⁻¹⁴, violación dual 1.5 × 10⁻¹³, brecha relativa <b>2.0 × 10⁻¹⁵</b>. Restricciones activas: ENg ≥ 1.254 Mcal/kg (precio sombra $2.39 por Mcal/kg), PM ≥ 92.8 g/kg ($0.0095 por g/kg), balance de PDR ≥ 0, Ca ≥ 0.514 %, Na ≥ 0.08 % y la premezcla fija en 0.3 %.</p>
+    <p lang="en">12 variables, 21 constraints, 39 pivots. Primal violation 4.3 × 10⁻¹⁴, dual violation 1.5 × 10⁻¹³, relative gap <b>2.0 × 10⁻¹⁵</b>. Binding constraints: NEg ≥ 1.254 Mcal/kg (shadow price $2.39 per Mcal/kg), MP ≥ 92.8 g/kg ($0.0095 per g/kg), RDP balance ≥ 0, Ca ≥ 0.514 %, Na ≥ 0.08 % and premix fixed at 0.3 %.</p></div>
+  <p lang="es">El <b>precio sombra</b> se lee como el cambio del costo por kilo de MS al subir en una unidad el requerimiento: exigir 0.01 Mcal/kg más de ENg encarece la ración $23.9 por tonelada de MS. El <b>costo reducido</b> de un ingrediente no usado es lo que debería bajar su precio por kilo de MS para entrar; dividido entre 100/MS da el «precio de entrada» tal como se ofrece que ve el productor.</p>
+  <p lang="en">The <b>shadow price</b> reads as the change in cost per kilo of DM when the requirement rises by one unit: demanding 0.01 Mcal/kg more NEg raises the ration cost by $23.9 per tonne of DM. The <b>reduced cost</b> of an unused ingredient is how much its price per kilo of DM must fall for it to enter; converted to an as-fed basis it gives the “entry price” the producer sees.</p>
+
+  <h3 id="f-puntofijo" data-n="F.3"><span lang="es">El ajuste de energía y consumo</span><span lang="en">The energy–intake adjustment</span></h3>
+  <p lang="es">El programa lineal necesita el consumo <i>C</i> y la ENg requerida por kilo, pero ambos dependen de la ENm de la ración que todavía no se conoce. Para una ENm supuesta <i>g</i>, el consumo sale de (3) y la ENg requerida por kilo es</p>
+  <p lang="en">The linear program needs intake <i>C</i> and the NEg required per kilo, but both depend on the ration NEm, which is not yet known. For an assumed NEm <i>g</i>, intake comes from (3) and the NEg required per kilo is</p>
+  <div class="eq"><math display="block"><mrow><msub><mi>ENg</mi><mtext>req</mtext></msub><mo>(</mo><mi>g</mi><mo>)</mo><mo>=</mo><mfrac><mi>ER</mi><mrow><mi>C</mi><mo>(</mo><mi>g</mi><mo>)</mo><mo>−</mo><msub><mi>ENm</mi><mtext>req</mtext></msub><mo>/</mo><mo>(</mo><mi>g</mi><mspace width="0.1em"/><msub><mi>f</mi><mtext>ion</mtext></msub><mo>)</mo></mrow></mfrac></mrow></math><span class="no">(8)</span></div>
+  <p lang="es">(el alimento que se va en mantenimiento no queda para ganar). Con esos datos se resuelve (7) y se obtiene una ración con su propia ENm, ENm<sub>dieta</sub>(<i>g</i>). La solución coherente es un <b>punto fijo</b>: f(<i>g</i>) = ENm<sub>dieta</sub>(<i>g</i>) − <i>g</i> = 0. RatioBos lo busca así:</p>
+  <p lang="en">(feed spent on maintenance is not available for gain). With these data (7) is solved, giving a ration with its own NEm, NEm<sub>diet</sub>(<i>g</i>). The consistent solution is a <b>fixed point</b>: f(<i>g</i>) = NEm<sub>diet</sub>(<i>g</i>) − <i>g</i> = 0. RatioBos searches for it as follows:</p>
+  <ol>
+    <li lang="es"><b>Pasos directos amortiguados</b>: <i>g</i> ← <i>g</i> + 0.85 f(<i>g</i>), hasta 7 evaluaciones, deteniéndose si |f| &lt; 0.002 Mcal/kg.</li>
+    <li lang="en"><b>Damped direct steps</b>: <i>g</i> ← <i>g</i> + 0.85 f(<i>g</i>), up to 7 evaluations, stopping when |f| &lt; 0.002 Mcal/kg.</li>
+    <li lang="es">Si no converge, <b>barrido</b> de <i>g</i> entre 0.8 y 2.9 Mcal/kg cada 0.1, y <b>bisección</b> (30 pasos, tolerancia 0.0005) en el primer par de raciones factibles con cambio de signo (f ≥ 0 → f &lt; 0).</li>
+    <li lang="en">If it does not converge, a <b>sweep</b> of <i>g</i> from 0.8 to 2.9 Mcal/kg in 0.1 steps, and <b>bisection</b> (30 steps, tolerance 0.0005) on the first pair of feasible rations with a sign change (f ≥ 0 → f &lt; 0).</li>
+    <li lang="es">Se conserva la ración del lado <b>conservador</b> (f ≥ 0): su ENm real es al menos la supuesta, así que cumple el requerimiento verdadero. Sin cambio de signo, se usa la factible con f ≥ 0 más cercana a cero.</li>
+    <li lang="en">The ration on the <b>conservative</b> side (f ≥ 0) is kept: its true NEm is at least the assumed one, so it meets the true requirement. With no sign change, the feasible one with f ≥ 0 closest to zero is used.</li>
+  </ol>
+  {{FIG_PUNTOFIJO}}
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">Partiendo de <i>g</i> = 2.05: la ración resultante tiene 1.875 Mcal/kg; con <i>g</i> = 1.901 da 1.885; con <i>g</i> = 1.888 da 1.8875 (|f| = 0.0003). Tres programas lineales bastaron. Consumo final 7.75 kg MS/d; ENg requerida 1.254 Mcal/kg.</p>
+    <p lang="en">Starting from <i>g</i> = 2.05: the resulting ration has 1.875 Mcal/kg; with <i>g</i> = 1.901 it gives 1.885; with <i>g</i> = 1.888 it gives 1.8875 (|f| = 0.0003). Three linear programs sufficed. Final intake 7.75 kg DM/d; NEg required 1.254 Mcal/kg.</p></div>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Precaución · por qué no basta iterar</span><span class="bt" lang="en">Caution · why plain iteration is not enough</span>
+    <p lang="es">Con metas de ganancia bajas, el programa lineal de costo mínimo puede devolver raciones con ENm muy por debajo de la supuesta, y con ENm supuestas bajas el problema se vuelve infactible (el consumo cae y la ENg requerida por kilo se dispara). La iteración simple oscila o se detiene en la región infactible; el barrido con bisección encuentra el cruce si existe. Los minerales sin energía (carbonato, fosfato) se limitan a 2 % de la MS para impedir que funcionen como «diluyentes» baratos de la energía.</p>
+    <p lang="en">With low gain targets, the least-cost linear program can return rations with NEm far below the assumed value, and with low assumed NEm the problem turns infeasible (intake falls and the NEg required per kilo soars). Plain iteration oscillates or stalls in the infeasible region; the sweep with bisection finds the crossing if it exists. Energy-free minerals (limestone, phosphate) are capped at 2 % of DM to stop them acting as cheap energy “diluents”.</p></div>
+
+  <h3 id="f-gmax" data-n="F.4"><span lang="es">Ganancia máxima factible</span><span lang="en">Maximum feasible gain</span></h3>
+  <p lang="es">Si (7) no tiene solución para la meta, se busca por bisección (14 pasos entre 0.1 kg/d y la meta) la mayor ganancia con la que el procedimiento F.3 da una ración factible. Es la que ofrece el botón «Usar … kg/d y formular» y la que usan el programa y la comparación regional cuando el clima no permite la meta.</p>
+  <p lang="en">If (7) has no solution for the target, bisection (14 steps between 0.1 kg/d and the target) finds the highest gain for which the F.3 procedure yields a feasible ration. It is the gain behind the “Use … kg/d and formulate” button, and the one the program and the regional comparison use when the climate does not allow the target.</p>
+</section>
+
+<!-- ============================ D · DESEMPEÑO Y ECONOMÍA ============================ -->
+<section class="chap" id="desempeno" data-toc="D" style="--c:var(--b9)">
+  <div class="chap-head"><span class="big">D</span>
+    <div class="eyebrow" lang="es">Bloques 7 a 9</div><div class="eyebrow" lang="en">Blocks 7 to 9</div>
+    <h2 lang="es">Desempeño predicho y economía</h2><h2 lang="en">Predicted performance and economics</h2>
+    <p lang="es">De la ración a la ganancia, del día al ciclo completo y del ciclo a la utilidad.</p>
+    <p lang="en">From ration to gain, from one day to the whole cycle and from the cycle to profit.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42h36"/><rect x="9" y="26" width="6" height="12"/><rect x="21" y="18" width="6" height="20"/><rect x="33" y="10" width="6" height="28"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="d-ganancia" data-n="D.1"><span lang="es">Ganancia permitida por energía y por proteína</span><span lang="en">Energy- and protein-allowable gain</span></h3>
+  <p lang="es">Con la ración formulada se calcula el alimento destinado a mantenimiento, FM = ENm<sub>req</sub>/(ENm<sub>dieta</sub> · f<sub>ion</sub>), y la energía disponible para ganar, ER<sub>disp</sub> = (C − FM) ENg<sub>dieta</sub>. La <b>ganancia permitida por energía</b> es la inversa exacta de (4), resuelta por bisección (60 pasos). La <b>ganancia permitida por proteína</b> resuelve PN<sub>g</sub>(SWG) = (PM<sub>aportada</sub> − PM<sub>m</sub>) · <i>e</i>. La ganancia predicha es la menor de las dos y la app indica cuál limita.</p>
+  <p lang="en">With the formulated ration, feed for maintenance is FM = NEm<sub>req</sub>/(NEm<sub>diet</sub> · f<sub>ion</sub>) and energy available for gain is RE<sub>av</sub> = (C − FM) NEg<sub>diet</sub>. <b>Energy-allowable gain</b> is the exact inverse of (4), solved by bisection (60 steps). <b>Protein-allowable gain</b> solves NP<sub>g</sub>(SWG) = (MP<sub>supplied</sub> − MP<sub>m</sub>) · <i>e</i>. Predicted gain is the smaller of the two, and the app reports which one limits.</p>
+  <div class="box case"><span class="bi">◆</span><span class="bt" lang="es">En el caso</span><span class="bt" lang="en">In the case</span>
+    <p lang="es">FM = 3.40 kg MS/d; C − FM = 4.35 kg MS/d; ER<sub>disp</sub> = 5.455 Mcal/d; ganancia por energía 1.34996 kg/d y por proteína 1.35001 kg/d: <b>las dos restricciones están activas a la vez</b>, señal de una ración bien equilibrada.</p>
+    <p lang="en">FM = 3.40 kg DM/d; C − FM = 4.35 kg DM/d; RE<sub>av</sub> = 5.455 Mcal/d; energy-allowable gain 1.34996 kg/d and protein-allowable 1.35001 kg/d: <b>both constraints bind at once</b>, the mark of a well-balanced ration.</p></div>
+
+  <h3 id="d-programa" data-n="D.2"><span lang="es">Simulación del programa</span><span lang="en">Program simulation</span></h3>
+  <p lang="es">Para cada fase se formula una ración con el peso medio de la fase, su meta de ganancia (o la máxima factible, buscada por bisección) y su rango de forraje (en la recepción de engorda, además, FDNfe ≥ 12 %), y luego se simula el crecimiento <b>día a día</b>: cada día se recalculan el consumo esperado (con el término microbiano de la PM ajustado a ese consumo) y la ganancia permitida por esa ración al peso de ese día, hasta alcanzar el peso final de la fase. Se acumulan días, MS, costo, metano y nitrógeno. La utilidad incluye compra, alimento, otros costos por día y venta; el precio de equilibrio es el precio de venta que la hace cero.</p>
+  <p lang="en">For each phase a ration is formulated at the phase’s mid-weight, gain target (or the maximum feasible, found by bisection) and forage range (in feedlot receiving, also peNDF ≥ 12 %), then growth is simulated <b>day by day</b>: each day expected intake (with the microbial MP term adjusted to that intake) and the gain that ration allows at that day’s weight are recomputed, until the phase end weight is reached. Days, DM, cost, methane and nitrogen are accumulated. Profit includes purchase, feed, other daily costs and sale; the break-even price is the sale price that makes it zero.</p>
+
+  <h3 id="d-optimo" data-n="D.3"><span lang="es">Ganancia económica óptima, regiones y sensibilidad</span><span lang="en">Economic optimum gain, regions and sensitivity</span></h3>
+  <p lang="es">El tablero formula la ración para una rejilla de metas de ganancia y calcula para cada una el margen diario, GDP × precio de venta − CMS × costo − otros costos, y el costo de alimento por kilo ganado. El óptimo económico es la meta de mayor margen; en el caso, 1.40 kg/d ($36.44 por animal al día, contra $34.30 a 1.35 kg/d). La comparación regional repite el procedimiento F.3 con el clima de la temporada y los factores de precio de cada región; la sensibilidad mueve el precio del ingrediente de mayor aporte al costo entre 70 % y 130 % y reformula en cada punto.</p>
+  <p lang="en">The dashboard formulates the ration over a grid of gain targets and computes, for each, the daily margin, ADG × sale price − DMI × cost − other costs, and the feed cost per kilo gained. The economic optimum is the highest-margin target; in the case, 1.40 kg/d ($36.44 per head per day versus $34.30 at 1.35 kg/d). The regional comparison repeats procedure F.3 with each region’s seasonal climate and price factors; the sensitivity analysis moves the price of the ingredient with the largest cost share between 70 % and 130 % and reformulates at each point.</p>
+</section>

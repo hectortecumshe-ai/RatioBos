@@ -87,6 +87,8 @@ function renderInicio(el){
         <button class="btn lg" data-ir="animal">${T('Empezar a formular →','Start formulating →')}</button>
         <button class="btn ghost lg" data-ir="validacion">${T('Ver la validación científica','See the scientific validation')}</button>
         <button class="btn link" data-ir="teoria">${T('Leer la teoría','Read the theory')}</button>
+        <a class="btn link" href="instructivo-productor.html" target="_blank" rel="noopener">${T('Instructivo del Productor','Producer Guide')} ↗</a>
+        <a class="btn link" href="instructivo-cientifico.html" target="_blank" rel="noopener">${T('Instructivo del Científico','Scientist Guide')} ↗</a>
       </div>
       <div class="chips">
         <span class="chip">${T('Todo el cálculo ocurre en tu navegador','All calculations run in your browser')}</span><span class="chip">${T('Ningún dato sale de tu computadora','No data leaves your computer')}</span>
@@ -108,10 +110,10 @@ function renderInicio(el){
   </section>
 
   <div class="stats">
-    <div class="stat"><div class="v">5 × 5</div><div class="l">${T('tipos de animal × biotipos','animal types × biotypes')}</div></div>
+    <div class="stat"><div class="v">${Object.keys(CATEGORIAS).length} × ${Object.keys(BIOTIPOS).length}</div><div class="l">${T('tipos de animal × biotipos','animal types × biotypes')}</div></div>
     <div class="stat"><div class="v">${ING_LIB.length}</div><div class="l">${T('ingredientes en base seca','ingredients, dry basis')}</div></div>
     <div class="stat"><div class="v">${NUTRIENTES.length}</div><div class="l">${T('nutrientes e indicadores','nutrients and indicators')}</div></div>
-    <div class="stat"><div class="v" id="statVal">—</div>x</div></div>
+    <div class="stat"><div class="v" id="statVal">—</div><div class="l">${T('dietas publicadas igualadas o abaratadas','published diets matched or made cheaper')}</div></div>
     <div class="stat"><div class="v" id="statNE">—</div><div class="l">${T('error al reproducir la energía observada','error reproducing observed energy')}</div></div>
   </div>
 

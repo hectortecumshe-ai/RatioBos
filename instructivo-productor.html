@@ -1,0 +1,1574 @@
+<!doctype html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RatioBos · Instructivo del Productor</title>
+<meta name="description" content="Instructivo del Productor de RatioBos: formula paso a paso la ración de mínimo costo para tu ganado de carne. · RatioBos Producer Guide: formulate the least-cost beef cattle ration step by step.">
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<style>
+
+/* =====================================================================
+   RatioBos · Instructivos
+   Misma familia visual que la app: serif clásica, verde pino y terracota.
+   ===================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#f6f5f0; --paper:#fffefb; --soft:#efede5; --text:#1d2420; --muted:#5a645e; --faint:#8a918b;
+  --line:#e0ded4; --line2:#c9c6b8;
+  --pri:#2f5d50; --pri-d:#21453b; --pri-s:rgba(47,93,80,.09);
+  --acc:#b05434; --acc-d:#8a3a1f; --acc-s:rgba(176,84,52,.12);
+  --ok:#2f8f4a; --ok-s:#e9f5ec; --warn:#b5730c; --warn-s:#fcf3e2; --bad:#b8382e; --bad-s:#fbeae8; --info:#2d78b0; --info-s:#e8f1f8;
+  --b1:#2f5d50; --b2:#4f7d3a; --b3:#2f6f8f; --b4:#7a5c99; --b5:#a7801c; --b6:#b86a2a; --b7:#b05434; --b8:#8a3f5a; --b9:#39718a; --b10:#3f8a5c; --b11:#4a5d6b;
+  --font:"Palatino Linotype",Palatino,"Book Antiqua","URW Palladio L",P052,"TeX Gyre Pagella",Georgia,serif;
+  --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --shadow:0 1px 2px rgba(30,36,24,.06),0 10px 30px rgba(30,36,24,.08);
+  --shadow-lg:0 2px 6px rgba(30,36,24,.08),0 24px 60px rgba(30,36,24,.14);
+  --r:14px; --side:290px; --col:780px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#121614; --paper:#191e1b; --soft:#202622; --text:#e7ebe5; --muted:#a9b2ab; --faint:#7c857e;
+    --line:#2c342f; --line2:#3b453f;
+    --pri:#8fc2ad; --pri-d:#b5dccb; --pri-s:rgba(143,194,173,.12);
+    --acc:#ea926b; --acc-d:#f4b596; --acc-s:rgba(234,146,107,.14);
+    --ok:#6cc488; --ok-s:rgba(108,196,136,.12); --warn:#e7b052; --warn-s:rgba(231,176,82,.12); --bad:#ee8a7f; --bad-s:rgba(238,138,127,.12); --info:#78b8e4; --info-s:rgba(120,184,228,.12);
+    --b1:#8fc2ad; --b2:#a9cf7e; --b3:#7fbddb; --b4:#bba3d6; --b5:#e3c063; --b6:#e9a066; --b7:#ea926b; --b8:#e08aa8; --b9:#86c3dc; --b10:#86d1a2; --b11:#9fb4c2;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); --shadow-lg:0 2px 6px rgba(0,0,0,.45),0 24px 60px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#121614; --paper:#191e1b; --soft:#202622; --text:#e7ebe5; --muted:#a9b2ab; --faint:#7c857e;
+  --line:#2c342f; --line2:#3b453f;
+  --pri:#8fc2ad; --pri-d:#b5dccb; --pri-s:rgba(143,194,173,.12);
+  --acc:#ea926b; --acc-d:#f4b596; --acc-s:rgba(234,146,107,.14);
+  --ok:#6cc488; --ok-s:rgba(108,196,136,.12); --warn:#e7b052; --warn-s:rgba(231,176,82,.12); --bad:#ee8a7f; --bad-s:rgba(238,138,127,.12); --info:#78b8e4; --info-s:rgba(120,184,228,.12);
+  --b1:#8fc2ad; --b2:#a9cf7e; --b3:#7fbddb; --b4:#bba3d6; --b5:#e3c063; --b6:#e9a066; --b7:#ea926b; --b8:#e08aa8; --b9:#86c3dc; --b10:#86d1a2; --b11:#9fb4c2;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); --shadow-lg:0 2px 6px rgba(0,0,0,.45),0 24px 60px rgba(0,0,0,.5);
+}
+
+/* ---------- idioma: solo se ve el activo ---------- */
+html[data-lang="es"] [lang="en"]:not(html), html[data-lang="en"] [lang="es"]:not(html){display:none!important}
+
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:18px;line-height:1.68;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-variant-numeric:lining-nums proportional-nums}
+img{max-width:100%;display:block}
+a{color:var(--pri);text-decoration-thickness:1px;text-underline-offset:3px}
+b,strong{font-weight:700}
+h1,h2,h3,h4{font-weight:700;line-height:1.18;color:var(--text);font-variant-numeric:lining-nums}
+table,.num,.kpi b,figure figcaption .fn{font-variant-numeric:lining-nums tabular-nums}
+.sc{font-variant:small-caps;letter-spacing:.06em}
+.eyebrow{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--acc)}
+
+/* ---------- barra superior ---------- */
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:12px;padding:10px 22px;
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text);min-width:0}
+.top .brand img{width:34px;height:34px;border-radius:9px;flex:none}
+.top .brand span{font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top .brand i{color:var(--acc)}
+.top .brand small{color:var(--muted);font-style:italic;font-size:14px}
+.top .sp{flex:1}
+.seg{display:inline-flex;border:1px solid var(--line2);border-radius:999px;padding:3px;background:var(--paper)}
+.seg button{border:0;background:none;font:700 12.5px/1 var(--sans);letter-spacing:.06em;color:var(--muted);padding:7px 12px;border-radius:999px;cursor:pointer}
+.seg button.on{background:var(--pri);color:var(--paper)}
+:root[data-theme="dark"] .seg button.on{color:#10221b}
+.ib{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:var(--paper);color:var(--text);cursor:pointer;font-size:16px;text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--pri);background:var(--pri);color:var(--paper);font:700 13.5px/1 var(--sans);letter-spacing:.02em;padding:10px 16px;border-radius:999px;cursor:pointer;text-decoration:none}
+.btn.ghost{background:var(--paper);color:var(--pri);border-color:var(--line2)}
+.btn svg{width:16px;height:16px}
+#leido{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--pri),var(--acc))}
+#menuBtn{display:none}
+
+/* ---------- maqueta ---------- */
+.layout{display:grid;grid-template-columns:var(--side) minmax(0,1fr);max-width:1320px;margin:0 auto}
+aside.toc{position:sticky;top:59px;align-self:start;height:calc(100vh - 59px);overflow:auto;padding:26px 18px 40px 22px;border-right:1px solid var(--line);font-family:var(--sans);font-size:13.5px}
+.search{position:relative;margin-bottom:18px}
+.search input{width:100%;padding:10px 12px 10px 36px;border:1px solid var(--line2);border-radius:10px;background:var(--paper);color:var(--text);font:14px var(--sans)}
+.search svg{position:absolute;left:11px;top:50%;width:16px;height:16px;transform:translateY(-50%);color:var(--faint)}
+.search .hits{font-size:12px;color:var(--muted);margin:6px 2px 0;min-height:1em}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc li{margin:1px 0}
+.toc a{display:flex;gap:10px;align-items:baseline;padding:6px 10px;border-radius:8px;color:var(--muted);text-decoration:none;line-height:1.35}
+.toc a:hover{background:var(--soft);color:var(--text)}
+.toc a.act{background:var(--pri-s);color:var(--text);font-weight:600}
+.toc .n{flex:none;display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-size:11.5px;font-weight:700;color:#fff;background:var(--c,var(--faint))}
+:root[data-theme="dark"] .toc .n{color:#111}
+.toc .sub a{padding-left:42px;font-size:12.8px}
+.toc .sub a.act{font-weight:600}
+.toc .grp{margin:18px 10px 6px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.toc li.hide{display:none}
+
+main{min-width:0;padding:0 40px 120px}
+.doc{max-width:var(--col);margin:0 auto}
+
+/* ---------- portada ---------- */
+.cover{position:relative;margin:34px auto 30px;max-width:1040px;border-radius:24px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+.cover .band{display:flex;height:8px}.cover .band i{flex:1}
+.cover .in{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;padding:52px 56px 46px}
+.cover .kick{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.cover .kick img{width:52px;height:52px;border-radius:13px}
+.cover h1{font-size:clamp(38px,4.6vw,56px);margin:0 0 6px;letter-spacing:-.015em;line-height:1.02}
+.cover h1 em{font-style:italic;color:var(--pri);font-weight:600}
+.cover h1 .a{color:var(--acc)}
+.cover .sub{font-size:21px;color:var(--muted);margin:14px 0 22px;max-width:30ch;line-height:1.45}
+.cover .meta{font-family:var(--sans);font-size:13px;color:var(--muted);line-height:1.7}
+.cover .meta b{color:var(--text)}
+.cover .who{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:15.5px}
+.cover .who span{color:var(--muted);font-style:italic}
+.cover .art{position:relative;min-height:380px}
+.cover .art .frame{position:absolute;right:-110px;top:16px;width:calc(100% + 110px);border-radius:14px;overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line);transform:rotate(-2.2deg)}
+.cover .art .frame.b{top:210px;right:auto;left:-14px;width:46%;transform:rotate(3deg)}
+.cover .steps{display:grid;grid-template-columns:repeat(11,1fr);border-top:1px solid var(--line);font-family:var(--sans)}
+.cover .steps div{padding:12px 8px 14px;border-right:1px solid var(--line);font-size:12.5px;color:var(--muted);line-height:1.3}
+.cover .steps div:last-child{border-right:0}
+.cover .steps b{display:block;font-size:20px;font-family:var(--font);color:var(--c);margin-bottom:2px}
+
+/* ---------- capítulos ---------- */
+.chap{position:relative;margin-top:80px;padding-top:4px}
+.chap-head{position:relative;display:grid;grid-template-columns:auto 1fr;gap:4px 26px;align-items:end;padding:34px 0 26px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.chap-head .big{grid-row:span 3;font-size:118px;line-height:.8;font-weight:400;color:var(--c);font-variant-numeric:lining-nums;letter-spacing:-.04em}
+.chap-head .eyebrow{color:var(--c)}
+.chap-head h2{font-size:clamp(30px,3.6vw,42px);margin:4px 0 0;letter-spacing:-.01em;padding-right:76px}
+.chap-head p{grid-column:2;margin:10px 0 0;color:var(--muted);font-size:19px;line-height:1.5;max-width:56ch}
+.chap-head .rule{position:absolute;left:0;bottom:-1px;width:120px;height:3px;background:var(--c)}
+.chap-head .ico{position:absolute;right:0;top:20px;width:64px;height:64px;color:var(--c);opacity:.9}
+.inchap{display:flex;flex-wrap:wrap;gap:6px 18px;margin:-6px 0 28px;font-family:var(--sans);font-size:13px}
+.inchap a{color:var(--muted);text-decoration:none}
+.inchap a::before{content:attr(data-n)" ";color:var(--c);font-weight:700}
+.inchap a:hover{color:var(--text)}
+
+h3{font-size:25px;margin:46px 0 12px;letter-spacing:-.005em;scroll-margin-top:84px}
+h3 .sn{font-family:var(--sans);font-size:14px;font-weight:700;color:var(--c,var(--acc));margin-right:12px;vertical-align:3px;letter-spacing:.04em}
+h4{font-size:19px;margin:28px 0 8px}
+p{margin:0 0 16px}
+.lead{font-size:20.5px;line-height:1.6;color:var(--text)}
+.lead::first-letter{float:left;font-size:3.35em;line-height:.9;padding:6px 10px 0 0;color:var(--c,var(--pri));font-weight:600}
+ul,ol{padding-left:24px;margin:0 0 18px}
+li{margin:5px 0}
+li::marker{color:var(--c,var(--acc))}
+kbd,.ui{font-family:var(--sans);font-size:.78em;font-weight:700;letter-spacing:.01em;white-space:nowrap;padding:3px 9px 3px;border-radius:7px;border:1px solid var(--line2);border-bottom-width:2px;background:var(--paper);color:var(--text);vertical-align:1px}
+.ui.pri{background:var(--pri);border-color:var(--pri-d);color:var(--paper)}
+.path{font-family:var(--sans);font-size:.8em;font-weight:600;color:var(--pri);white-space:nowrap}
+.path i{font-style:normal;color:var(--faint);margin:0 5px}
+.val{font-family:var(--sans);font-size:.84em;font-weight:600;background:var(--soft);padding:1px 7px;border-radius:5px;white-space:nowrap}
+
+/* ---------- recuadros ---------- */
+.box{position:relative;margin:24px 0;padding:18px 22px 16px 62px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line);box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.box::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;border-radius:0 3px 3px 0;background:var(--k)}
+.box .bi{position:absolute;left:18px;top:18px;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--ks);color:var(--k);font:700 14px/1 var(--sans)}
+.box .bt{display:block;font:700 11.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--k);margin:6px 0 8px}
+.box p:last-child,.box ul:last-child,.box ol:last-child{margin-bottom:0}
+.box.tip{--k:var(--pri);--ks:var(--pri-s)}
+.box.warn{--k:var(--warn);--ks:var(--warn-s);background:color-mix(in srgb,var(--warn-s) 55%,var(--paper))}
+.box.why{--k:var(--info);--ks:var(--info-s)}
+.box.farm{--k:var(--acc);--ks:var(--acc-s);background:linear-gradient(135deg,color-mix(in srgb,var(--acc-s) 70%,var(--paper)),var(--paper) 60%)}
+.box.rule{--k:var(--ok);--ks:var(--ok-s)}
+.box.rule table{margin:6px 0 2px}
+.box.rule td:first-child{min-width:200px}
+
+/* ---------- reglas de decisión ---------- */
+table{width:100%;border-collapse:collapse;margin:14px 0 22px;font-size:16px}
+th{font:700 11.5px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--line2)}
+td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td.r,th.r{text-align:right}
+tr.hl td{background:var(--acc-s)}
+.tbl{overflow-x:auto;margin:0 -4px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:1px;background:var(--k)}
+.dot.ok{--k:var(--ok)} .dot.warn{--k:var(--warn)} .dot.bad{--k:var(--bad)} .dot.info{--k:var(--info)}
+.badge{display:inline-block;font:700 12px/1 var(--sans);padding:5px 10px;border-radius:999px;white-space:nowrap}
+.badge.ok{background:var(--ok-s);color:var(--ok)} .badge.warn{background:var(--warn-s);color:var(--warn)} .badge.info{background:var(--info-s);color:var(--info)} .badge.acc{background:var(--acc-s);color:var(--acc-d)} .badge.pri{background:var(--pri-s);color:var(--pri)}
+
+/* ---------- figuras con marcas ---------- */
+figure{margin:28px -40px 30px;padding:0}
+figure.narrow{margin-left:0;margin-right:0}
+.shot{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--paper);cursor:zoom-in}
+.shot img{width:100%;height:auto}
+.mk{position:absolute;pointer-events:none}
+.mk .ring{position:absolute;inset:-5px;border:2.5px solid var(--acc);border-radius:10px;box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 18%,transparent)}
+.mk .num{position:absolute;left:-14px;top:-14px;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#fff;font:700 14px/28px var(--sans);text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.25);border:2px solid #fff}
+.mk.dotonly .ring{display:none}
+figcaption{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:14px 40px 0;font-size:15.5px;color:var(--muted);line-height:1.5}
+figure.narrow figcaption{margin-left:0;margin-right:0}
+figcaption .fn{font:700 12px/1.6 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--c,var(--acc));white-space:nowrap;padding-top:2px}
+figcaption b{color:var(--text)}
+.legend{list-style:none;counter-reset:lg;margin:14px 40px 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px 22px;font-size:16px}
+figure.narrow .legend{margin-left:0;margin-right:0}
+.legend li{counter-increment:lg;display:grid;grid-template-columns:28px 1fr;gap:12px;margin:0;align-items:start}
+.legend li::before{content:counter(lg);display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;font:700 13px/1 var(--sans);margin-top:1px}
+.legend li::marker{content:none}
+.pair{display:grid;grid-template-columns:1.7fr 1fr;gap:22px;align-items:start;margin:28px -40px}
+.pair figure{margin:0}
+.pair figcaption{margin:12px 0 0}
+.phone{border-radius:28px;padding:10px;background:#1b1f1c;box-shadow:var(--shadow-lg);max-width:290px;margin:0 auto}
+.phone .shot{border-radius:20px;border:0}
+
+/* ---------- tarjetas de datos ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 24px}
+.kpi{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.kpi span{display:block;font:600 11.5px/1.3 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kpi b{display:block;font-size:26px;color:var(--pri-d);margin-top:4px;line-height:1.1}
+.kpi small{color:var(--muted);font-size:13.5px}
+.case{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);margin:20px 0 26px}
+.case div{padding:14px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.case div:nth-child(3n){border-right:0}
+.case div:nth-last-child(-n+3){border-bottom:0}
+.case span{display:block;font:600 11px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.case b{font-size:19px}
+
+/* ---------- flujo de 8 pasos ---------- */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0 28px;counter-reset:f}
+.flow a{position:relative;display:block;padding:16px 16px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:var(--text);transition:transform .15s,box-shadow .15s}
+.flow a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.flow a::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;border-radius:12px 12px 0 0;background:var(--c)}
+.flow b{display:block;font-size:17px}
+.flow .k{font:700 11px/1 var(--sans);letter-spacing:.12em;color:var(--c);text-transform:uppercase}
+.flow small{display:block;color:var(--muted);font-size:14px;line-height:1.4;margin-top:4px}
+.flow .t{position:absolute;right:12px;top:14px;font:600 11px/1 var(--sans);color:var(--faint)}
+
+/* ---------- comparación antes/después ---------- */
+.versus{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin:22px 0}
+.versus .s{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--paper)}
+.versus .s span{font:600 11.5px/1.3 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.versus .s b{display:block;font-size:28px;line-height:1.2;margin-top:4px}
+.versus .s.win{border-color:var(--ok);background:color-mix(in srgb,var(--ok-s) 60%,var(--paper))}
+.versus .s.win b{color:var(--ok)}
+.versus .arrow{font-size:28px;color:var(--faint)}
+
+/* ---------- diagrama de decisión ---------- */
+.dtree{margin:24px 0 30px;padding:22px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line)}
+.dtree .q{font-weight:700;font-size:17.5px;margin-bottom:12px}
+.dtree ol{list-style:none;padding:0;margin:0;display:grid;gap:10px;counter-reset:d}
+.dtree li{counter-increment:d;display:grid;grid-template-columns:34px 1fr;gap:12px;margin:0;padding:12px 14px;border-radius:10px;background:var(--soft)}
+.dtree li::before{content:counter(d);display:grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--c,var(--acc));color:#fff;font:700 14px/1 var(--sans)}
+.dtree li b{display:block}
+.dtree li span{color:var(--muted);font-size:16px}
+
+/* ---------- checklist ---------- */
+.check{list-style:none;padding:0}
+.check li{position:relative;padding-left:34px;margin:10px 0}
+.check li::before{content:"";position:absolute;left:0;top:4px;width:20px;height:20px;border:2px solid var(--line2);border-radius:5px;background:var(--paper)}
+
+/* ---------- FAQ ---------- */
+details{border:1px solid var(--line);border-radius:12px;background:var(--paper);margin:10px 0;padding:0 18px}
+summary{cursor:pointer;list-style:none;padding:14px 0;font-weight:700;display:flex;gap:12px;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font:700 18px/1 var(--sans);color:var(--acc);width:14px;flex:none}
+details[open] summary::before{content:"−"}
+details>div{padding:0 0 14px 26px;color:var(--text)}
+
+/* ---------- glosario ---------- */
+dl.glos{display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:0;margin:16px 0}
+dl.glos dt,dl.glos dd{padding:11px 0;border-bottom:1px solid var(--line);margin:0}
+dl.glos dt{font-weight:700;padding-right:18px}
+dl.glos dt small{display:block;font-weight:400;font-style:italic;color:var(--muted);font-size:14px}
+
+/* ---------- hoja de inicio rápido ---------- */
+.quick{margin:40px -40px 0;padding:40px 44px;border-radius:22px;background:var(--paper);border:1px solid var(--line);box-shadow:var(--shadow-lg)}
+.quick .qh{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;border-bottom:2px solid var(--text);padding-bottom:14px;margin-bottom:18px}
+.quick h2{margin:0;font-size:32px}
+.quick .qr{display:flex;gap:12px;align-items:center;font-family:var(--sans);font-size:12px;color:var(--muted);text-align:right}
+.quick .qr #qr{width:92px;height:92px;border-radius:6px;overflow:hidden;flex:none}
+.quick .qr #qr img{width:100%;height:100%;display:block;image-rendering:pixelated}
+.quick ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.quick ol li{display:grid;grid-template-columns:40px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);margin:0;break-inside:avoid}
+.quick ol li i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;font:700 15px/1 var(--sans)}
+.quick ol li b{display:block;font-size:17px}
+.quick ol li span{font-size:15px;color:var(--muted);line-height:1.45}
+.quick .foot{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px;font-size:15px}
+.quick .foot h4{margin:0 0 6px;font-size:15px;font-family:var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+.quick .foot ul{margin:0;padding-left:18px}
+.quick .foot li{margin:3px 0}
+
+/* ---------- colofón ---------- */
+.colophon{margin:90px 0 0;padding-top:24px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+.colophon p{margin:0 0 8px}
+
+/* ---------- visor de imagen ---------- */
+#zoom{position:fixed;inset:0;z-index:100;background:rgba(10,14,12,.86);display:none;place-items:center;padding:24px;cursor:zoom-out}
+#zoom.on{display:grid}
+#zoom .zi{position:relative;max-width:min(1600px,96vw)}
+#zoom img{max-height:92vh;width:auto;border-radius:10px}
+
+.totop{position:fixed;right:22px;bottom:22px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s}
+.totop.on{opacity:1;pointer-events:auto}
+mark{background:color-mix(in srgb,var(--acc) 30%,transparent);color:inherit;border-radius:3px;padding:0 1px}
+
+/* ---------- pantallas medianas y celular ---------- */
+@media screen and (max-width:1100px){
+  .layout{grid-template-columns:1fr}
+  aside.toc{position:fixed;left:0;top:59px;width:min(330px,88vw);z-index:45;background:var(--bg);transform:translateX(-102%);transition:transform .25s;box-shadow:var(--shadow-lg)}
+  aside.toc.open{transform:none}
+  #menuBtn{display:inline-grid}
+  main{padding:0 28px 100px}
+  figure,.pair,.quick{margin-left:0;margin-right:0}
+  figcaption,.legend{margin-left:0;margin-right:0}
+}
+@media screen and (max-width:760px){
+  body{font-size:17px}
+  .top{padding:8px 14px;gap:8px}
+  .top .brand small,.top .pdf span,.top .btn.ghost{display:none}
+  .top .brand span{font-size:15.5px}
+  .seg button{padding:6px 9px}
+  .top .btn.pdf{padding:9px 11px}
+  .cover h1{font-size:34px}
+  .cover .sub{font-size:18px}
+  main{padding:0 16px 80px}
+  .cover{margin:16px 0 20px;border-radius:18px}
+  .cover .in{grid-template-columns:1fr;padding:30px 22px 26px}
+  .cover .art{min-height:240px;overflow:hidden}
+  .cover .art .frame{position:relative;right:auto;top:0;width:100%;transform:none}
+  .cover .art .frame.b{display:none}
+  .cover .steps{grid-template-columns:repeat(4,1fr)}
+  .cover .steps div:nth-child(4n){border-right:0}
+  .cover .steps div:nth-child(-n+8){border-bottom:1px solid var(--line)}
+  .chap-head{grid-template-columns:1fr}
+  .chap-head .big{grid-row:auto;font-size:76px}
+  .chap-head p{grid-column:1}
+  .chap-head .ico{width:44px;height:44px}
+  .kpis,.flow{grid-template-columns:1fr 1fr}
+  .case{grid-template-columns:1fr 1fr}
+  .case div{border-right:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important}
+  .pair{grid-template-columns:1fr}
+  .versus{grid-template-columns:1fr}
+  .versus .arrow{transform:rotate(90deg);justify-self:center}
+  .quick{padding:24px 18px}
+  .quick ol{grid-template-columns:1fr}
+  .quick .foot{grid-template-columns:1fr}
+  .quick .qh{flex-direction:column}
+  dl.glos{grid-template-columns:1fr}
+  dl.glos dt{border-bottom:0;padding-bottom:0}
+  .box{padding:16px 16px 14px 54px}
+  .box .bi{left:14px}
+  .mk .num{width:22px;height:22px;font-size:12px;line-height:22px;left:-11px;top:-11px}
+  .mk .ring{border-width:2px;inset:-3px}
+  .box.rule td:first-child{min-width:0}
+  .box.rule table,.box.rule tbody,.box.rule tr,.box.rule td{display:block}
+  .box.rule thead{display:none}
+  .box.rule td{padding:4px 0;border:0}
+  .box.rule tr{padding:8px 0;border-bottom:1px solid var(--line)}
+}
+
+/* ---------- impresión / PDF ---------- */
+@page{size:A4;margin:18mm 17mm 20mm}
+@page{@bottom-center{content:counter(page);font-family:"Palatino Linotype",Palatino,serif;font-size:9pt;color:#777}}
+@page :first{margin:0;@bottom-center{content:none}}
+@media print{
+  :root{--bg:#fff;--paper:#fff}
+  html{scroll-behavior:auto}
+  body{font-size:10.6pt;line-height:1.55;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .top,aside.toc,.totop,#zoom,.no-print,.inchap{display:none!important}
+  .layout{display:block;max-width:none}
+  main{padding:0}
+  .doc{max-width:none}
+  .cover{margin:0;border-radius:0;box-shadow:none;border:0;min-height:297mm;display:flex;flex-direction:column;page-break-after:always}
+  .cover .in{flex:1;padding:24mm 18mm 10mm}
+  .cover .in{grid-template-columns:1fr;gap:6mm}
+  .cover h1{font-size:40pt}
+  .cover .sub{max-width:none}
+  .cover .art{min-height:92mm}
+  .cover .art .frame{right:-18mm;top:0;width:150mm}
+  .cover .art .frame.b{left:4mm;right:auto;top:14mm;width:52mm}
+  .chap{margin-top:0;break-before:page}
+  .chap-head{padding-top:0}
+  .chap-head .big{font-size:84pt}
+  h3{break-after:avoid;margin-top:26px}
+  figure,.box,.dtree,.kpis,.case,.versus,table,details,.flow,.pair{break-inside:avoid}
+  figure{margin:16px 0 18px}
+  figcaption,.legend{margin-left:0;margin-right:0}
+  .pair{margin:16px 0}
+  .shot{box-shadow:none}
+  details{border:0;padding:0}
+  details>div{display:block!important;padding-left:0}
+  summary::before{content:none}
+  .quick{margin:0;break-before:page;box-shadow:none;border:0;padding:0}
+  a{color:inherit;text-decoration:none}
+  .lead::first-letter{font-size:3.1em}
+}
+
+/* ---------- figuras propias (SVG con datos de la app) ---------- */
+figure.svgfig{padding:18px 18px 4px}
+figure.svgfig svg{display:block;width:100%;height:auto;font-family:var(--sans)}
+figure.svgfig svg text:not([fill]):not(.mu){fill:var(--text)}
+figure.svgfig svg .mu{fill:var(--muted)}
+figure.svgfig svg .ln{stroke:var(--line2)}
+.chap-head .big{min-width:1.2ch}
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <button class="ib" id="menuBtn" aria-label="Índice / Contents">☰</button>
+  <a class="brand" href="./" title="RatioBos">
+    <img src="logo.svg" alt="">
+    <span>Ratio<i>Bos</i> <small lang="es">· Instructivo del Productor</small><small lang="en">· Producer Guide</small></span>
+  </a>
+  <span class="sp"></span>
+  <a class="btn ghost no-print" href="./" target="_blank" rel="noopener"><span lang="es">Abrir la app</span><span lang="en">Open the app</span> ↗</a>
+  <div class="seg" role="group" aria-label="Idioma / Language"><button data-lang="es">ES</button><button data-lang="en">EN</button></div>
+  <a class="btn pdf" id="pdfBtn" title="PDF" href="instructivo/RatioBos-Instructivo-Productor.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M5 21h14"/></svg><span>PDF</span></a>
+  <button class="ib" id="temaBtn" aria-label="Tema / Theme">☾</button>
+  <div id="leido"></div>
+</header>
+
+<div class="layout">
+<aside class="toc" id="toc">
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg>
+    <input id="q" type="search" autocomplete="off" placeholder="Buscar en el instructivo…" aria-label="Buscar / Search">
+    <div class="hits" id="hits"></div>
+  </div>
+  <ol id="tocList"></ol>
+</aside>
+
+<main>
+<!-- ============================ PORTADA ============================ -->
+<section class="cover" id="portada">
+  <div class="band"><i style="background:var(--b1)"></i><i style="background:var(--b2)"></i><i style="background:var(--b3)"></i><i style="background:var(--b4)"></i><i style="background:var(--b5)"></i><i style="background:var(--b6)"></i><i style="background:var(--b7)"></i><i style="background:var(--b8)"></i><i style="background:var(--b9)"></i><i style="background:var(--b10)"></i><i style="background:var(--b11)"></i></div>
+  <div class="in">
+    <div>
+      <div class="kick"><img src="logo.svg" alt="RatioBos"><div><div class="eyebrow" lang="es">Instructivo del Productor</div><div class="eyebrow" lang="en">Producer Guide</div><div style="font-size:15px;color:var(--muted)">RatioBos 1.0.0</div></div></div>
+      <h1 lang="es">La ración <em>más barata</em> para tu ganado, <span class="a">del corral a la utilidad</span></h1>
+      <h1 lang="en">The <em>cheapest</em> ration for your cattle, <span class="a">from the pen to the profit</span></h1>
+      <p class="sub" lang="es">Una guía práctica para formular, mezclar, costear y medir la huella de la ración de tu engorda con RatioBos, explicada con un caso real de Jalisco de principio a fin.</p>
+      <p class="sub" lang="en">A practical guide to formulating, mixing, costing and measuring the footprint of your feedlot ration with RatioBos, explained through one real case from Jalisco, start to finish.</p>
+      <div class="meta">
+        <div lang="es"><b>1.ª edición</b> · octubre de 2026 · describe RatioBos 1.0.0</div>
+        <div lang="en"><b>1st edition</b> · October 2026 · covers RatioBos 1.0.0</div>
+        <div><span lang="es">Licencia MIT</span><span lang="en">MIT License</span></div>
+      </div>
+      <div class="who">Héctor Tecumshé Mojica-Zárate · Luis Ángel Barrera-Guzmán<br><span lang="es">Hay otra guía para investigación y docencia: el <a href="instructivo-cientifico.html">Instructivo del Científico</a>.</span><span lang="en">There is a companion guide for research and teaching: the <a href="instructivo-cientifico.html">Scientist Guide</a>.</span></div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <div class="frame"><img lang="es" src="instructivo/img/resultado-es.jpg" alt=""><img lang="en" src="instructivo/img/resultado-en.jpg" alt=""></div>
+      <div class="frame b"><img lang="es" src="instructivo/img/mezcla-movil-es.jpg" alt="" style="height:300px;object-fit:cover;object-position:top"><img lang="en" src="instructivo/img/mezcla-movil-en.jpg" alt="" style="height:300px;object-fit:cover;object-position:top"></div>
+    </div>
+  </div>
+  <div class="steps"><div style="--c:var(--b1)"><b>1</b><span lang="es">Animal</span><span lang="en">Animal</span></div><div style="--c:var(--b2)"><b>2</b><span lang="es">Región</span><span lang="en">Region</span></div><div style="--c:var(--b3)"><b>3</b><span lang="es">Requerimientos</span><span lang="en">Requirements</span></div><div style="--c:var(--b4)"><b>4</b><span lang="es">Manejo</span><span lang="en">Management</span></div><div style="--c:var(--b5)"><b>5</b><span lang="es">Ingredientes</span><span lang="en">Ingredients</span></div><div style="--c:var(--b6)"><b>6</b><span lang="es">Precios</span><span lang="en">Prices</span></div><div style="--c:var(--b7)"><b>7</b><span lang="es">Formulación</span><span lang="en">Formulation</span></div><div style="--c:var(--b8)"><b>8</b><span lang="es">Programa</span><span lang="en">Program</span></div><div style="--c:var(--b9)"><b>9</b><span lang="es">Tablero</span><span lang="en">Dashboard</span></div><div style="--c:var(--b10)"><b>10</b><span lang="es">Sostenibilidad</span><span lang="en">Sustainability</span></div><div style="--c:var(--b11)"><b>11</b><span lang="es">Informe</span><span lang="en">Report</span></div></div>
+</section>
+
+<div class="doc">
+
+<!-- ============================ PRELIMINARES ============================ -->
+<section class="chap" id="leer" data-toc="P" style="--c:var(--acc)">
+  <div class="chap-head"><span class="big">P</span>
+    <div class="eyebrow" lang="es">Antes de leer</div><div class="eyebrow" lang="en">Before reading</div>
+    <h2 lang="es">Cómo usar este instructivo</h2><h2 lang="en">How to use this guide</h2>
+    <p lang="es">Para quién es, cómo está organizado y qué significa cada señal que encontrarás en las páginas.</p>
+    <p lang="en">Who it is for, how it is organised and what each sign on the page means.</p>
+    <span class="rule"></span></div>
+
+  <p class="lead" lang="es">Este instructivo es para quien decide qué comen los bovinos de un rancho o de un corral de engorda: el ganadero, el encargado del carro mezclador, el médico veterinario zootecnista que asesora a varios productores. No necesitas saber programación ni matemáticas; necesitas conocer tu ganado.</p>
+  <p class="lead" lang="en">This guide is for whoever decides what the cattle on a ranch or in a feedlot eat: the producer, the mixer-wagon operator, the veterinarian or nutritionist who advises several operations. You need no coding or maths; you need to know your cattle.</p>
+
+  <p lang="es">Sigue el mismo orden que la app: un capítulo por cada bloque de la barra superior, del 1 al 11, cada uno con su color. Todos los ejemplos usan <b>un solo caso</b>, una engorda de 300 toretes en Jalisco, así que los números de un capítulo son los que entran al siguiente. Si lo lees de corrido, al terminar habrás formulado, mezclado, costeado y medido la huella de una ración real.</p>
+  <p lang="en">It follows the app’s order: one chapter for each block in the top bar, 1 to 11, each with its own colour. Every example uses <b>a single case</b>, a 300-bull feedlot in Jalisco, so the numbers in one chapter are the ones that feed the next. Read it start to finish and you will have formulated, mixed, costed and footprinted a real ration.</p>
+
+  <h3 id="convenciones"><span lang="es">Convenciones</span><span lang="en">Conventions</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Así se escribe</th><th lang="en">Written as</th><th lang="es">Significa</th><th lang="en">Means</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui pri" lang="es">⚙ Formular</span><span class="ui pri" lang="en">⚙ Formulate</span></td><td lang="es">Un botón o casilla de la app, con su texto tal como aparece en pantalla.</td><td lang="en">An app button or field, with its text exactly as on screen.</td></tr>
+      <tr><td><span class="path" lang="es">Informe<i>›</i>Guardar proyecto</span><span class="path" lang="en">Report<i>›</i>Save project</span></td><td lang="es">Una ruta: abre el primer elemento y luego el siguiente.</td><td lang="en">A path: open the first item, then the next.</td></tr>
+      <tr><td><span class="val">380</span></td><td lang="es">Un valor que escribes tal cual.</td><td lang="en">A value you type as shown.</td></tr>
+      <tr><td><b style="display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;font:700 12px var(--sans)">1</b></td><td lang="es">Una marca sobre la captura; su explicación está debajo con el mismo número.</td><td lang="en">A marker on a screenshot; it is explained below with the same number.</td></tr>
+      <tr><td><b>MS</b> · <b>TCO</b></td><td lang="es">Materia seca · tal como se ofrece (el alimento húmedo, como lo pesa la báscula del carro).</td><td lang="en">Dry matter · as fed (the wet feed, as the mixer scale weighs it). The app writes DM and AF in English.</td></tr>
+    </tbody></table></div>
+
+  <h3 id="recuadros"><span lang="es">Los cinco recuadros</span><span lang="en">The five boxes</span></h3>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span><p lang="es">El caso de ejemplo, paso a paso, con los números reales que da la app.</p><p lang="en">The worked case, step by step, with the real numbers the app returns.</p></div>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo</span><span class="bt" lang="en">Tip</span><p lang="es">Atajos y buenas prácticas que ahorran tiempo o dinero.</p><p lang="en">Shortcuts and good practice that save time or money.</p></div>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Atención</span><span class="bt" lang="en">Caution</span><p lang="es">Errores frecuentes que pueden costar dinero o la salud del ganado.</p><p lang="en">Common mistakes that can cost money or animal health.</p></div>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué?</span><span class="bt" lang="en">Why?</span><p lang="es">La razón detrás de una recomendación, en pocas líneas. Puedes saltarla.</p><p lang="en">The reason behind a recommendation, in a few lines. You can skip it.</p></div>
+  <div class="box rule"><span class="bi">→</span><span class="bt" lang="es">Regla de decisión</span><span class="bt" lang="en">Decision rule</span><p lang="es">Una tabla corta: si ves esto, haz aquello.</p><p lang="en">A short table: if you see this, do that.</p></div>
+
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Dos instructivos, dos vistas</span><span class="bt" lang="en">Two guides, two views</span>
+    <p lang="es">RatioBos tiene una <b>vista productor</b> y una <b>vista científica</b> (botón en la barra superior). Este instructivo describe la vista productor. Las ecuaciones, el modelo lineal, la validación y la exportación para investigación están en el <a href="instructivo-cientifico.html">Instructivo del Científico</a>.</p>
+    <p lang="en">RatioBos has a <b>producer view</b> and a <b>scientist view</b> (button in the top bar). This guide covers the producer view. The equations, the linear model, the validation and the research export are in the <a href="instructivo-cientifico.html">Scientist Guide</a>.</p></div>
+</section>
+
+<!-- ============================ 0 · PRIMEROS PASOS ============================ -->
+<section class="chap" id="empezar" data-toc="0" style="--c:var(--pri)">
+  <div class="chap-head"><span class="big">0</span>
+    <div class="eyebrow" lang="es">Primeros pasos</div><div class="eyebrow" lang="en">Getting started</div>
+    <h2 lang="es">Abre la app y conoce la pantalla</h2><h2 lang="en">Open the app and meet the screen</h2>
+    <p lang="es">RatioBos es una página web que funciona sola en tu navegador. No se instala, no pide cuenta y no manda tus datos a ningún lado.</p>
+    <p lang="en">RatioBos is a web page that runs on its own in your browser. Nothing to install, no account, and your data goes nowhere.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="8" width="38" height="28" rx="3"/><path d="M17 42h14M24 36v6M12 28l7-8 6 5 9-11"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="abrir" data-n="0.1"><span lang="es">Abrir RatioBos</span><span lang="en">Opening RatioBos</span></h3>
+  <p lang="es">Entra a <a href="https://hectortecumshe-ai.github.io/RatioBos/"><b>hectortecumshe-ai.github.io/RatioBos</b></a> desde la computadora, la tableta o el celular, o escanea el código QR de la última página. La primera vez se descarga un solo archivo de menos de medio megabyte; después funciona igual sin internet si dejas la pestaña abierta, y puedes guardar la página (<kbd>Ctrl</kbd> + <kbd>S</kbd>) para usarla en el rancho sin señal.</p>
+  <p lang="en">Go to <a href="https://hectortecumshe-ai.github.io/RatioBos/"><b>hectortecumshe-ai.github.io/RatioBos</b></a> from a computer, tablet or phone, or scan the QR code on the last page. The first time it downloads a single file of under half a megabyte; after that it works without internet if you leave the tab open, and you can save the page (<kbd>Ctrl</kbd> + <kbd>S</kbd>) to use it on the ranch with no signal.</p>
+
+  <h3 id="pantalla" data-n="0.2"><span lang="es">La pantalla de inicio</span><span lang="en">The home screen</span></h3>
+  <figure data-fig="inicio" data-marks="0,1,2,3,4">
+    <figcaption><span class="fn"></span><span lang="es"><b>Inicio.</b> Todo lo que necesitas para moverte está en la barra superior.</span><span lang="en"><b>Home.</b> Everything you need to get around is in the top bar.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>ES / EN</b> cambia el idioma de toda la app, también de los informes.</span><span lang="en"><b>ES / EN</b> switches the language of the whole app, reports included.</span></li>
+      <li><span lang="es"><b>Productor / Científico</b> cambia la vista; tus datos no se pierden.</span><span lang="en"><b>Producer / Scientist</b> switches the view; your data is kept.</span></li>
+      <li><span lang="es"><b>?</b> abre la ayuda general. Además, cada dato tiene su propio <b>?</b>.</span><span lang="en"><b>?</b> opens the general help. Every field also has its own <b>?</b>.</span></li>
+      <li><span lang="es">La <b>barra de bloques</b>, del 1 al 11. Puedes saltar a cualquiera; la palomita marca los que ya visitaste.</span><span lang="en">The <b>block bar</b>, 1 to 11. You can jump to any of them; a tick marks the ones you have visited.</span></li>
+      <li><span lang="es"><span class="ui pri">Empezar a formular →</span> te lleva al Bloque 1.</span><span lang="en"><span class="ui pri">Start formulating →</span> takes you to Block 1.</span></li>
+    </ol>
+  </figure>
+
+  <h3 id="vistas" data-n="0.3"><span lang="es">Dos vistas, una misma app</span><span lang="en">Two views, one app</span></h3>
+  <p lang="es">La vista productor muestra solo lo que necesitas para decidir: los 8 nutrientes clave, un semáforo de salud ruminal, la hoja del carro en kilos húmedos, la ganancia esperada y el costo por kilo producido. La vista científica agrega el modelo completo. Puedes cambiar de una a otra en cualquier momento, por ejemplo para mostrarle a tu asesor de dónde sale un número.</p>
+  <p lang="en">The producer view shows only what you need to decide: the 8 key nutrients, a rumen-health traffic light, the mixer sheet in wet kilos, the expected gain and the cost per kilo produced. The scientist view adds the full model. Switch at any time, for instance to show your advisor where a number comes from.</p>
+  <figure data-fig="vistas">
+    <figcaption><span class="fn"></span><span lang="es"><b>Una herramienta, dos miradas.</b> La tarjeta activa tiene borde.</span><span lang="en"><b>One tool, two views.</b> The active card has a border.</span></figcaption>
+  </figure>
+
+  <h3 id="ayuda" data-n="0.4"><span lang="es">La ayuda de cada dato</span><span lang="en">Help for every field</span></h3>
+  <p lang="es">Pasa el ratón (o toca, en el celular) sobre cualquier <b>?</b>. Aparece qué significa el dato y una <b>escala de decisión</b> con colores: verde, bien; amarillo, vigila; rojo, corrige. Es la forma más rápida de aprender sin salir de la app.</p>
+  <p lang="en">Hover (or tap, on a phone) over any <b>?</b>. You get what the field means and a colour-coded <b>decision scale</b>: green, fine; amber, watch; red, fix. It is the quickest way to learn without leaving the app.</p>
+  <figure data-fig="tooltip">
+    <figcaption><span class="fn"></span><span lang="es"><b>Ayuda del índice de temperatura y humedad (ITH).</b> Cada nivel de la escala dice qué hacer.</span><span lang="en"><b>Help for the temperature-humidity index (THI).</b> Each level of the scale tells you what to do.</span></figcaption>
+  </figure>
+
+  <h3 id="caso" data-n="0.5"><span lang="es">El caso de este instructivo</span><span lang="en">The case in this guide</span></h3>
+  <p lang="es">Para que cada paso tenga números concretos, seguiremos un mismo corral de principio a fin:</p>
+  <p lang="en">So that every step has concrete numbers, we will follow one pen from start to finish:</p>
+  <div class="case">
+    <div><span lang="es">Animales</span><span lang="en">Animals</span><b lang="es">300 toretes enteros</b><b lang="en">300 intact bulls</b></div>
+    <div><span lang="es">Biotipo</span><span lang="en">Biotype</span><b lang="es">Cruza cebú × europeo</b><b lang="en">Zebu × European cross</b></div>
+    <div><span lang="es">Peso de entrada</span><span lang="en">Entry weight</span><b>380 kg</b></div>
+    <div><span lang="es">Lugar</span><span lang="en">Location</span><b lang="es">Jalisco · Occidente y Bajío</b><b lang="en">Jalisco · West and Bajío</b></div>
+    <div><span lang="es">Temporada</span><span lang="en">Season</span><b lang="es">Seca y caliente (abr–jun)</b><b lang="en">Dry and hot (Apr–Jun)</b></div>
+    <div><span lang="es">Carro mezclador</span><span lang="en">Mixer wagon</span><b lang="es">carga de 3,000 kg</b><b lang="en">3,000 kg load</b></div>
+  </div>
+  <p lang="es">Compramos a <b>$62</b> el kilo en pie y vendemos a <b>$58</b>. La meta es que ganen <b>1.35 kg al día</b> hasta los 520 kg. Es una engorda típica del Bajío: sorgo y maíz de la región, rastrojo como fibra y una sombra de lámina en los corrales.</p>
+  <p lang="en">We buy at <b>$62</b> per kilo live weight and sell at <b>$58</b>. The target is <b>1.35 kg a day</b> up to 520 kg. It is a typical Bajío feedlot: local sorghum and corn, corn stover for fibre and a sheet-metal shade over the pens.</p>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué se vende más barato de lo que se compra?</span><span class="bt" lang="en">Why sell for less than you buy?</span>
+    <p lang="es">El becerro ligero se paga más caro por kilo que el novillo terminado. La engorda gana dinero porque cada kilo que el animal pone en el corral cuesta menos alimento que lo que vale al venderse. Por eso el número que más importa en RatioBos es el <b>costo de alimento por kilo ganado</b>.</p>
+    <p lang="en">A light calf costs more per kilo than a finished steer. A feedlot makes money because each kilo the animal puts on costs less in feed than it is worth at sale. That is why the number that matters most in RatioBos is the <b>feed cost per kilo gained</b>.</p></div>
+
+  <h3 id="camino" data-n="0.6"><span lang="es">El camino en once pasos</span><span lang="en">The path in eleven steps</span></h3>
+  <p lang="es">La primera vez te tomará unos 25 minutos. Después, con tus datos guardados, actualizar precios y volver a formular toma menos de dos.</p>
+  <p lang="en">The first time takes about 25 minutes. After that, with your data saved, updating prices and reformulating takes under two.</p>
+  <div class="flow"><a href="#b1" style="--c:var(--b1)"><span class="k" lang="es">Paso 1</span><span class="k" lang="en">Step 1</span><span class="t">1 min</span><b lang="es">Animal</b><b lang="en">Animal</b><small lang="es">Tipo, biotipo y sexo</small><small lang="en">Type, biotype and sex</small></a><a href="#b2" style="--c:var(--b2)"><span class="k" lang="es">Paso 2</span><span class="k" lang="en">Step 2</span><span class="t">2 min</span><b lang="es">Región</b><b lang="en">Region</b><small lang="es">Estado, temporada y corrales</small><small lang="en">State, season and pens</small></a><a href="#b3" style="--c:var(--b3)"><span class="k" lang="es">Paso 3</span><span class="k" lang="en">Step 3</span><span class="t">2 min</span><b lang="es">Requerimientos</b><b lang="en">Requirements</b><small lang="es">Peso y meta de ganancia</small><small lang="en">Weight and gain target</small></a><a href="#b4" style="--c:var(--b4)"><span class="k" lang="es">Paso 4</span><span class="k" lang="en">Step 4</span><span class="t">2 min</span><b lang="es">Manejo</b><b lang="en">Management</b><small lang="es">Implante, lote y precios</small><small lang="en">Implant, lot and prices</small></a><a href="#b5" style="--c:var(--b5)"><span class="k" lang="es">Paso 5</span><span class="k" lang="en">Step 5</span><span class="t">3 min</span><b lang="es">Ingredientes</b><b lang="en">Ingredients</b><small lang="es">Los que puedes conseguir</small><small lang="en">The ones you can get</small></a><a href="#b6" style="--c:var(--b6)"><span class="k" lang="es">Paso 6</span><span class="k" lang="en">Step 6</span><span class="t">5 min</span><b lang="es">Precios</b><b lang="en">Prices</b><small lang="es">Puestos en el rancho</small><small lang="en">Delivered to the ranch</small></a><a href="#b7" style="--c:var(--b7)"><span class="k" lang="es">Paso 7</span><span class="k" lang="en">Step 7</span><span class="t">1 min</span><b lang="es">Formulación</b><b lang="en">Formulation</b><small lang="es">La ración más barata</small><small lang="en">The cheapest ration</small></a><a href="#b8" style="--c:var(--b8)"><span class="k" lang="es">Paso 8</span><span class="k" lang="en">Step 8</span><span class="t">2 min</span><b lang="es">Programa</b><b lang="en">Program</b><small lang="es">Días, costo y utilidad</small><small lang="en">Days, cost and profit</small></a><a href="#b9" style="--c:var(--b9)"><span class="k" lang="es">Paso 9</span><span class="k" lang="en">Step 9</span><span class="t">3 min</span><b lang="es">Tablero</b><b lang="en">Dashboard</b><small lang="es">Indicadores y gráficas</small><small lang="en">Indicators and charts</small></a><a href="#b10" style="--c:var(--b10)"><span class="k" lang="es">Paso 10</span><span class="k" lang="en">Step 10</span><span class="t">3 min</span><b lang="es">Sostenibilidad</b><b lang="en">Sustainability</b><small lang="es">Agua, suelo y gases</small><small lang="en">Water, land and gases</small></a><a href="#b11" style="--c:var(--b11)"><span class="k" lang="es">Paso 11</span><span class="k" lang="en">Step 11</span><span class="t">1 min</span><b lang="es">Informe</b><b lang="en">Report</b><small lang="es">Para tu asesor</small><small lang="en">For your advisor</small></a></div>
+
+  <h3 id="guardado" data-n="0.7"><span lang="es">Tu trabajo se guarda solo</span><span lang="en">Your work saves itself</span></h3>
+  <p lang="es">Cada cambio queda guardado en el navegador de esa computadora. Si cierras la pestaña y vuelves mañana, todo está como lo dejaste. Para llevarlo a otra computadora o respaldarlo, usa <span class="path" lang="es">Informe<i>›</i>Guardar proyecto (.json)</span><span class="path" lang="en">Report<i>›</i>Save project (.json)</span> (capítulo 11).</p>
+  <p lang="en">Every change is stored in that computer’s browser. Close the tab and come back tomorrow, and everything is as you left it. To move it to another computer or back it up, use the path above (chapter 11).</p>
+</section>
+
+<!-- ============================ 1 · ANIMAL ============================ -->
+<section class="chap" id="b1" data-toc="1" style="--c:var(--b1)">
+  <div class="chap-head"><span class="big">1</span>
+    <div class="eyebrow" lang="es">Bloque 1 · Animal</div><div class="eyebrow" lang="en">Block 1 · Animal</div>
+    <h2 lang="es">Tipo de animal, biotipo y sexo</h2><h2 lang="en">Animal type, biotype and sex</h2>
+    <p lang="es">Lo primero es saber a quién vas a alimentar. Un becerro, un torete en finalización y una vaca lactando necesitan raciones muy distintas.</p>
+    <p lang="en">First, know whom you are feeding. A calf, a finishing bull and a nursing cow need very different rations.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14c3 0 5-3 5-6M40 14c-3 0-5-3-5-6M13 14h22l3 8-4 4v10a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V26l-4-4z"/><circle cx="19" cy="24" r="1.5" fill="currentColor"/><circle cx="29" cy="24" r="1.5" fill="currentColor"/><path d="M20 33h8"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b1-tipo" data-n="1.1"><span lang="es">Elige el tipo de animal</span><span lang="en">Choose the animal type</span></h3>
+  <p lang="es">Hay cinco tarjetas. Las tres primeras usan el <b>modelo de crecimiento</b> (el animal debe ganar peso); las dos últimas, el <b>modelo de vaca</b> (mantenerse, gestar o producir leche).</p>
+  <p lang="en">There are five cards. The first three use the <b>growth model</b> (the animal must gain weight); the last two, the <b>cow model</b> (maintain, carry a calf or make milk).</p>
+  <figure data-fig="animal" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 1.</b> La tarjeta seleccionada lleva una palomita y una etiqueta con el modelo que usa.</span><span lang="en"><b>Block 1.</b> The selected card shows a tick and a label with the model it uses.</span></figcaption>
+    <ol class="legend"><li><span lang="es"><b>Engorda en corral (finalización)</b>, la de nuestro caso.</span><span lang="en"><b>Feedlot (finishing)</b>, the one in our case.</span></li></ol>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Tipo</th><th lang="en">Type</th><th lang="es">Para qué sirve</th><th lang="en">What it is for</th></tr></thead>
+    <tbody>
+      <tr><td lang="es"><b>Becerros en desarrollo</b></td><td lang="en"><b>Growing calves</b></td><td lang="es">Del destete a ≈ 320 kg. Mucho forraje: crecer hueso y músculo sin engrasar.</td><td lang="en">Weaning to ≈ 320 kg. Plenty of forage: build bone and muscle without fattening.</td></tr>
+      <tr><td lang="es"><b>Engorda en corral</b></td><td lang="en"><b>Feedlot</b></td><td lang="es">Toretes y novillos hasta el peso de venta. Dietas altas en grano: máxima ganancia con el rumen sano.</td><td lang="en">Bulls and steers up to sale weight. High-grain diets: top gain with a healthy rumen.</td></tr>
+      <tr><td lang="es"><b>Vaquillas de reemplazo</b></td><td lang="en"><b>Replacement heifers</b></td><td lang="es">Crecimiento moderado para llegar al empadre con 60–65 % del peso adulto, sin engrasarse.</td><td lang="en">Moderate growth to reach breeding at 60–65 % of mature weight, without getting fat.</td></tr>
+      <tr><td lang="es"><b>Vacas gestantes</b></td><td lang="en"><b>Pregnant cows</b></td><td lang="es">Vacas secas en el segundo o último tercio. El último tercio decide el peso del becerro y la siguiente preñez.</td><td lang="en">Dry cows in mid or late pregnancy. The last third decides calf weight and the next pregnancy.</td></tr>
+      <tr><td lang="es"><b>Vacas en lactación</b></td><td lang="en"><b>Lactating cows</b></td><td lang="es">Vacas amamantando. La leche dispara la necesidad de energía, proteína y minerales.</td><td lang="en">Nursing cows. Milk sharply raises energy, protein and mineral needs.</td></tr>
+    </tbody></table></div>
+
+  <h3 id="b1-biotipo" data-n="1.2"><span lang="es">Biotipo y sexo</span><span lang="en">Biotype and sex</span></h3>
+  <p lang="es">El biotipo agrupa razas que se comportan parecido en el corral. Cambia cuánto gasta el animal solo en mantenerse vivo (el <b>mantenimiento</b>) y a qué peso engrasa. El sexo hace lo mismo: el torete entero gasta 15 % más en mantenimiento, pero hace más músculo.</p>
+  <p lang="en">The biotype groups breeds that behave alike in the pen. It changes how much the animal spends just staying alive (its <b>maintenance</b>) and at what weight it fattens. Sex does the same: an intact bull spends 15 % more on maintenance, but builds more muscle.</p>
+  <figure data-fig="biotipo" data-marks="0,1">
+    <figcaption><span class="fn"></span><span lang="es"><b>Biotipos y sexo.</b> La etiqueta azul de cada tarjeta es su factor de mantenimiento.</span><span lang="en"><b>Biotypes and sex.</b> The blue label on each card is its maintenance factor.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>Cruza cebú × europeo</b> (F1, Beefmaster, Brangus, Simbrah…): mantenimiento × 0.95.</span><span lang="en"><b>Zebu × European cross</b> (F1, Beefmaster, Brangus, Simbrah…): maintenance × 0.95.</span></li>
+      <li><span lang="es"><b>Torete (entero)</b>.</span><span lang="en"><b>Bull (intact)</b>.</span></li>
+    </ol>
+  </figure>
+  <div class="box rule"><span class="bi">→</span><span class="bt" lang="es">Regla de decisión · ¿qué biotipo elijo?</span><span class="bt" lang="en">Decision rule · which biotype?</span>
+    <table><tbody>
+      <tr><td lang="es">Angus, Hereford</td><td lang="en">Angus, Hereford</td><td lang="es"><b>Británico</b> (× 1.00). Engrasan temprano: vende a menor peso.</td><td lang="en"><b>British</b> (× 1.00). Fatten early: sell lighter.</td></tr>
+      <tr><td lang="es">Charolais, Limousin, Simmental</td><td lang="en">Charolais, Limousin, Simmental</td><td lang="es"><b>Continental</b>. Más días y más peso para terminar.</td><td lang="en"><b>Continental</b>. More days and weight to finish.</td></tr>
+      <tr><td lang="es">Brahman, Nelore, Gyr, Indubrasil</td><td lang="en">Brahman, Nelore, Gyr, Indubrasil</td><td lang="es"><b>Cebú</b> (× 0.90). Aguanta el calor; crece más lento.</td><td lang="en"><b>Zebu</b> (× 0.90). Handles heat; grows slower.</td></tr>
+      <tr><td lang="es">F1, Beefmaster, Brangus, Suizo × cebú</td><td lang="en">F1, Beefmaster, Brangus, Brown Swiss × zebu</td><td lang="es"><b>Cruza</b> (× 0.95). El más común en las engordas de México.</td><td lang="en"><b>Cross</b> (× 0.95). The most common in Mexican feedlots.</td></tr>
+      <tr><td lang="es">Criollo Coreño, Chinampo, de Rodeo</td><td lang="en">Coreño, Chinampo, Rodeo Criollo</td><td lang="es"><b>Criollo mexicano</b>. Pequeño y rústico; útil en agostadero.</td><td lang="en"><b>Mexican Criollo</b>. Small and hardy; suited to rangeland.</td></tr>
+      <tr><td lang="es">Machos Holstein, Suizo pardo</td><td lang="en">Holstein, Brown Swiss males</td><td lang="es"><b>Lechero</b> (× 1.20). Gasta más y come 8 % más.</td><td lang="en"><b>Dairy</b> (× 1.20). Spends more and eats 8 % more.</td></tr>
+    </tbody></table></div>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Nuestros toretes son cruzas cebú × europeo de un lote de la costa de Jalisco. Tocamos <b>Engorda en corral</b>, <b>Cruza cebú × europeo</b> y <b>Torete (entero)</b>, y avanzamos con <span class="ui pri">Siguiente →</span>.</p>
+    <p lang="en">Our bulls are zebu × European crosses from a lot on the Jalisco coast. We tap <b>Feedlot</b>, <b>Zebu × European cross</b> and <b>Bull (intact)</b>, and move on with <span class="ui pri">Next →</span>.</p></div>
+</section>
+
+<!-- ============================ 2 · REGIÓN ============================ -->
+<section class="chap" id="b2" data-toc="2" style="--c:var(--b2)">
+  <div class="chap-head"><span class="big">2</span>
+    <div class="eyebrow" lang="es">Bloque 2 · Región</div><div class="eyebrow" lang="en">Block 2 · Region</div>
+    <h2 lang="es">Región, clima e infraestructura</h2><h2 lang="en">Region, climate and infrastructure</h2>
+    <p lang="es">No es lo mismo engordar en Sonora que en Querétaro o en Veracruz. El clima, el precio de los granos y el estado de los corrales cambian la ganancia y el costo.</p>
+    <p lang="en">Fattening cattle in Sonora is not the same as in Querétaro or Veracruz. Climate, grain prices and pen condition change gain and cost.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 44s14-12 14-24a14 14 0 0 0-28 0c0 12 14 24 14 24z"/><circle cx="24" cy="20" r="5"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b2-mapa" data-n="2.1"><span lang="es">Toca tu estado en el mapa</span><span lang="en">Tap your state on the map</span></h3>
+  <p lang="es">El mapa agrupa las 32 entidades en <b>9 regiones ganaderas</b>. Al tocar tu estado, la app carga el clima de la región, sus suelos, razas, sistemas de producción, insumos y retos, y debajo muestra los resultados publicados en esa región cuando los hay.</p>
+  <p lang="en">The map groups Mexico’s 32 states into <b>9 cattle regions</b>. Tap your state and the app loads the region’s climate, soils, breeds, production systems, inputs and challenges, and below it shows published results from that region when available.</p>
+  <figure data-fig="mapa" data-marks="0,1,2">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 2.</b> Jalisco, en la región Occidente y Bajío.</span><span lang="en"><b>Block 2.</b> Jalisco, in the West and Bajío region.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es">El estado elegido lleva borde negro; su región se ilumina.</span><span lang="en">The chosen state has a black outline; its region lights up.</span></li>
+      <li><span lang="es"><span class="ui pri">Usar precios de esta región</span> ajusta los precios de ejemplo con un factor regional (producción local, flete, frontera o puerto).</span><span lang="en"><span class="ui pri">Use this region’s prices</span> adjusts the sample prices by a regional factor (local supply, freight, border or port).</span></li>
+      <li><span lang="es"><span class="ui">Seleccionar sus ingredientes típicos</span> marca en el Bloque 5 los alimentos comunes en la región.</span><span lang="en"><span class="ui">Select its typical ingredients</span> ticks in Block 5 the feeds common in the region.</span></li>
+    </ol>
+  </figure>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Atención · los precios regionales son una guía</span><span class="bt" lang="en">Caution · regional prices are a guide</span>
+    <p lang="es">Sirven para comparar regiones y para empezar. Antes de fabricar, escribe en el Bloque 6 lo que <b>tú</b> pagas esta semana, puesto en el rancho.</p>
+    <p lang="en">They are for comparing regions and getting started. Before mixing, enter in Block 6 what <b>you</b> pay this week, delivered to the ranch.</p></div>
+
+  <h3 id="b2-ith" data-n="2.2"><span lang="es">Temporada y estrés por calor</span><span lang="en">Season and heat stress</span></h3>
+  <p lang="es">Elige la temporada: <b>seca y caliente</b> (abril a junio), <b>lluvias</b> (julio a octubre) o <b>fresca</b> (noviembre a marzo). La app calcula el <b>índice de temperatura y humedad (ITH)</b>, que resume el calor que siente el animal: con humedad alta cuesta más enfriarse sudando y jadeando.</p>
+  <p lang="en">Pick the season: <b>dry and hot</b> (April to June), <b>rainy</b> (July to October) or <b>cool</b> (November to March). The app computes the <b>temperature-humidity index (THI)</b>, which sums up the heat the animal feels: with high humidity it is harder to cool off by sweating and panting.</p>
+  <figure data-fig="ith" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>Temporada y ITH.</b> La barra va de verde (normal) a rojo (emergencia). La raya negra es tu ITH efectivo.</span><span lang="en"><b>Season and THI.</b> The bar runs from green (normal) to red (emergency). The black tick is your effective THI.</span></figcaption>
+    <ol class="legend"><li><span lang="es">La temporada activa, en terracota.</span><span lang="en">The active season, in terracotta.</span></li></ol>
+  </figure>
+  <figure class="svgfig"><svg viewBox="0 0 760 360" role="img" aria-label="ITH"><rect x="190.0" y="32" width="343.8" height="280" fill="#2f8f4a" opacity=".09"/><rect x="533.8" y="32" width="55.0" height="280" fill="#2d78b0" opacity=".09"/><rect x="588.8" y="32" width="68.8" height="280" fill="#b5730c" opacity=".09"/><rect x="657.5" y="32" width="82.5" height="280" fill="#b8382e" opacity=".09"/><text lang="es" x="355.0" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">normal</text><text lang="en" x="355.0" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">normal</text><text lang="es" x="561.2" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">alerta</text><text lang="en" x="561.2" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">alert</text><text lang="es" x="623.1" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">peligro</text><text lang="en" x="623.1" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">danger</text><text lang="es" x="698.8" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">emergencia</text><text lang="en" x="698.8" y="24" text-anchor="middle" font-size="12" font-weight="700" class="mu">emergency</text><line class="ln" x1="190" x2="740" y1="54" y2="54" stroke-dasharray="2 4"/><text lang="es" x="178" y="58" text-anchor="end" font-size="13" font-weight="400">Noroeste</text><text lang="en" x="178" y="58" text-anchor="end" font-size="13" font-weight="400">Northwest</text><line x1="383.9" x2="624.5" y1="54" y2="54" stroke="#e0a13c" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="383.9" cy="54" r="6" fill="var(--paper)" stroke="#e0a13c" stroke-width="2.4"/><circle cx="502.1" cy="54" r="6.5" fill="#e0a13c"/><rect x="618.5" y="48" width="12" height="12" transform="rotate(45 624.5 54)" fill="#e0a13c"/><line class="ln" x1="190" x2="740" y1="84" y2="84" stroke-dasharray="2 4"/><text lang="es" x="178" y="88" text-anchor="end" font-size="13" font-weight="400">Golfo</text><text lang="en" x="178" y="88" text-anchor="end" font-size="13" font-weight="400">Gulf</text><line x1="491.1" x2="610.8" y1="84" y2="84" stroke="#3b6aa0" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="491.1" cy="84" r="6" fill="var(--paper)" stroke="#3b6aa0" stroke-width="2.4"/><circle cx="592.9" cy="84" r="6.5" fill="#3b6aa0"/><rect x="604.8" y="78" width="12" height="12" transform="rotate(45 610.8 84)" fill="#3b6aa0"/><line class="ln" x1="190" x2="740" y1="114" y2="114" stroke-dasharray="2 4"/><text lang="es" x="178" y="118" text-anchor="end" font-size="13" font-weight="400">Pacífico Sur</text><text lang="en" x="178" y="118" text-anchor="end" font-size="13" font-weight="400">South Pacific</text><line x1="533.8" x2="602.5" y1="114" y2="114" stroke="#9b4f2e" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="533.8" cy="114" r="6" fill="var(--paper)" stroke="#9b4f2e" stroke-width="2.4"/><circle cx="584.6" cy="114" r="6.5" fill="#9b4f2e"/><rect x="596.5" y="108" width="12" height="12" transform="rotate(45 602.5 114)" fill="#9b4f2e"/><line class="ln" x1="190" x2="740" y1="144" y2="144" stroke-dasharray="2 4"/><text lang="es" x="178" y="148" text-anchor="end" font-size="13" font-weight="400">Península de Yucatán</text><text lang="en" x="178" y="148" text-anchor="end" font-size="13" font-weight="400">Yucatán Peninsula</text><line x1="485.6" x2="602.5" y1="144" y2="144" stroke="#e8935f" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="485.6" cy="144" r="6" fill="var(--paper)" stroke="#e8935f" stroke-width="2.4"/><circle cx="584.6" cy="144" r="6.5" fill="#e8935f"/><rect x="596.5" y="138" width="12" height="12" transform="rotate(45 602.5 144)" fill="#e8935f"/><line class="ln" x1="190" x2="740" y1="174" y2="174" stroke-dasharray="2 4"/><text lang="es" x="178" y="178" text-anchor="end" font-size="13" font-weight="400">Noreste</text><text lang="en" x="178" y="178" text-anchor="end" font-size="13" font-weight="400">Northeast</text><line x1="353.6" x2="573.6" y1="174" y2="174" stroke="#d98c4a" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="353.6" cy="174" r="6" fill="var(--paper)" stroke="#d98c4a" stroke-width="2.4"/><circle cx="536.5" cy="174" r="6.5" fill="#d98c4a"/><rect x="567.6" y="168" width="12" height="12" transform="rotate(45 573.6 174)" fill="#d98c4a"/><line class="ln" x1="190" x2="740" y1="204" y2="204" stroke-dasharray="2 4"/><text lang="es" x="178" y="208" text-anchor="end" font-size="13" font-weight="400">Norte árido</text><text lang="en" x="178" y="208" text-anchor="end" font-size="13" font-weight="400">Arid north</text><line x1="261.5" x2="492.5" y1="204" y2="204" stroke="#c99b5e" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="261.5" cy="204" r="6" fill="var(--paper)" stroke="#c99b5e" stroke-width="2.4"/><circle cx="440.2" cy="204" r="6.5" fill="#c99b5e"/><rect x="486.5" y="198" width="12" height="12" transform="rotate(45 492.5 204)" fill="#c99b5e"/><line class="ln" x1="190" x2="740" y1="234" y2="234" stroke-dasharray="2 4"/><text lang="es" x="178" y="238" text-anchor="end" font-size="13" font-weight="700">Occidente y Bajío</text><text lang="en" x="178" y="238" text-anchor="end" font-size="13" font-weight="700">West and Bajío</text><line x1="348.1" x2="458.1" y1="234" y2="234" stroke="#5f9a4a" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="348.1" cy="234" r="6" fill="var(--paper)" stroke="#5f9a4a" stroke-width="2.4"/><circle cx="432.0" cy="234" r="6.5" fill="#5f9a4a"/><rect x="452.1" y="228" width="12" height="12" transform="rotate(45 458.1 234)" fill="#5f9a4a"/><line class="ln" x1="190" x2="740" y1="264" y2="264" stroke-dasharray="2 4"/><text lang="es" x="178" y="268" text-anchor="end" font-size="13" font-weight="400">Centro-norte</text><text lang="en" x="178" y="268" text-anchor="end" font-size="13" font-weight="400">North-central</text><line x1="276.6" x2="390.7" y1="264" y2="264" stroke="#b5d98b" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="276.6" cy="264" r="6" fill="var(--paper)" stroke="#b5d98b" stroke-width="2.4"/><circle cx="371.5" cy="264" r="6.5" fill="#b5d98b"/><rect x="384.7" y="258" width="12" height="12" transform="rotate(45 390.7 264)" fill="#b5d98b"/><line class="ln" x1="190" x2="740" y1="294" y2="294" stroke-dasharray="2 4"/><text lang="es" x="178" y="298" text-anchor="end" font-size="13" font-weight="400">Centro</text><text lang="en" x="178" y="298" text-anchor="end" font-size="13" font-weight="400">Central highlands</text><line x1="275.3" x2="345.4" y1="294" y2="294" stroke="#8fb3a5" stroke-width="5" stroke-linecap="round" opacity=".55"/><circle cx="275.3" cy="294" r="6" fill="var(--paper)" stroke="#8fb3a5" stroke-width="2.4"/><circle cx="345.4" cy="294" r="6.5" fill="#8fb3a5"/><rect x="329.8" y="288" width="12" height="12" transform="rotate(45 335.8 294)" fill="#8fb3a5"/><text x="190.0" y="334" text-anchor="middle" font-size="12" class="mu">50</text><text x="258.8" y="334" text-anchor="middle" font-size="12" class="mu">55</text><text x="327.5" y="334" text-anchor="middle" font-size="12" class="mu">60</text><text x="396.2" y="334" text-anchor="middle" font-size="12" class="mu">65</text><text x="465.0" y="334" text-anchor="middle" font-size="12" class="mu">70</text><text x="533.8" y="334" text-anchor="middle" font-size="12" class="mu">75</text><text x="602.5" y="334" text-anchor="middle" font-size="12" class="mu">80</text><text x="671.2" y="334" text-anchor="middle" font-size="12" class="mu">85</text><text x="740.0" y="334" text-anchor="middle" font-size="12" class="mu">90</text><circle cx="190" cy="350" r="6" fill="var(--paper)" stroke="var(--text)" stroke-width="2"/><text lang="es" x="202" y="354" font-size="12">fresca</text><text lang="en" x="202" y="354" font-size="12">cool</text><circle cx="300" cy="350" r="6.5" fill="var(--text)"/><text lang="es" x="312" y="354" font-size="12">seca y caliente</text><text lang="en" x="312" y="354" font-size="12">dry and hot</text><rect x="454" y="344" width="12" height="12" transform="rotate(45 460 350)" fill="var(--text)"/><text lang="es" x="472" y="354" font-size="12">lluvias</text><text lang="en" x="472" y="354" font-size="12">rainy</text><text lang="es" x="740" y="354" text-anchor="end" font-size="12" class="mu">ITH medio, sin sombra</text><text lang="en" x="740" y="354" text-anchor="end" font-size="12" class="mu">mean THI, no shade</text></svg><figcaption><span class="fn"></span><span lang="es"><b>El calor de México por región y temporada.</b> ITH medio de cada región (sin descontar sombra ni biotipo). El trópico húmedo y las costas pasan la zona de alerta en seca y lluvias; el altiplano casi nunca. Datos de la app.</span><span lang="en"><b>Mexico’s heat by region and season.</b> Mean THI for each region (before shade or biotype credit). The humid tropics and coasts cross into the alert zone in the dry and rainy seasons; the highlands hardly ever do. Data from the app.</span></figcaption></figure>
+  <div class="box rule"><span class="bi">→</span><span class="bt" lang="es">Regla de decisión · ITH efectivo</span><span class="bt" lang="en">Decision rule · effective THI</span>
+    <table><tbody>
+      <tr><td><span class="badge ok" lang="es">Menos de 75 · normal</span><span class="badge ok" lang="en">Below 75 · normal</span></td><td lang="es">Sin ajuste. Agua limpia y a libre acceso.</td><td lang="en">No adjustment. Clean water, free access.</td></tr>
+      <tr><td><span class="badge info" lang="es">75–78 · alerta</span><span class="badge info" lang="en">75–78 · alert</span></td><td lang="es">Revisa sombra y bebederos. Ofrece más alimento por la tarde.</td><td lang="en">Check shade and troughs. Feed more in the late afternoon.</td></tr>
+      <tr><td><span class="badge warn" lang="es">79–83 · peligro</span><span class="badge warn" lang="en">79–83 · danger</span></td><td lang="es">Jadeo rápido: el mantenimiento sube 7 % y la ganancia baja. Amplía la sombra.</td><td lang="en">Rapid panting: maintenance rises 7 % and gain drops. Add shade.</td></tr>
+      <tr><td><span class="badge bad" lang="es">84 o más · emergencia</span><span class="badge bad" lang="en">84 or more · emergency</span></td><td lang="es">Boca abierta: +18 % de mantenimiento. Aspersores o ventiladores; no muevas ganado en las horas de calor.</td><td lang="en">Open-mouth panting: +18 % maintenance. Sprinklers or fans; do not move cattle in the heat of the day.</td></tr>
+    </tbody></table></div>
+
+  <h3 id="b2-infra" data-n="2.3"><span lang="es">Infraestructura y sistema</span><span lang="en">Infrastructure and system</span></h3>
+  <p lang="es">Cuatro datos de tus corrales entran al modelo. Cada uno trae debajo una ficha con la recomendación práctica.</p>
+  <p lang="en">Four facts about your pens enter the model. Each has a card underneath with the practical recommendation.</p>
+  <figure data-fig="infra" data-marks="0,1,2,3">
+    <figcaption><span class="fn"></span><span lang="es"><b>Infraestructura y sistema.</b></span><span lang="en"><b>Infrastructure and system.</b></span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>Sombra:</b> resta puntos al ITH. Un domo con ventiladores alivia más que una lámina.</span><span lang="en"><b>Shade:</b> takes points off the THI. A dome with fans helps more than a metal sheet.</span></li>
+      <li><span lang="es"><b>Piso y drenaje:</b> decide cuánto lodo habrá en lluvias. El lodo enfría y cansa: el animal come más y gana menos.</span><span lang="en"><b>Floor and drainage:</b> decides how much mud there will be in the rains. Mud chills and tires the animal: it eats more and gains less.</span></li>
+      <li><span lang="es"><b>Sistema:</b> en pastoreo el animal camina; en lomerío o sierra gasta hasta 20 % más.</span><span lang="en"><b>System:</b> on pasture the animal walks; on hills it spends up to 20 % more.</span></li>
+      <li><span lang="es"><b>Sulfatos del agua:</b> el azufre del agua se suma al de la ración. Arriba de 1,000 mg/L hay riesgo de polioencefalomalacia.</span><span lang="en"><b>Water sulfates:</b> water sulfur adds to the ration’s. Above 1,000 mg/L there is a risk of polioencephalomalacia.</span></li>
+    </ol>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Tocamos <b>Jalisco</b> y presionamos <span class="ui pri">Usar precios de esta región</span>. En la temporada <b>seca y caliente</b> el Bajío tiene 23 °C de media y 30 % de humedad: ITH de <b>67.6</b>, que baja a <b>64.1</b> con la sombra de lámina y la tolerancia de la cruza. Normal: el calor no frena a nuestros toretes en esta época. Dejamos piso <b>con pendiente y montículos</b>, corral de engorda y 150 mg/L de sulfatos.</p>
+    <p lang="en">We tap <b>Jalisco</b> and press <span class="ui pri">Use this region’s prices</span>. In the <b>dry and hot</b> season the Bajío averages 23 °C and 30 % humidity: a THI of <b>67.6</b>, which drops to <b>64.1</b> with the metal shade and the cross’s heat tolerance. Normal: heat does not hold our bulls back at this time of year. We keep a <b>sloped floor with mounds</b>, feedlot system and 150 mg/L sulfates.</p></div>
+</section>
+
+<!-- ============================ 3 · PESO Y REQUERIMIENTOS ============================ -->
+<section class="chap" id="b3" data-toc="3" style="--c:var(--b3)">
+  <div class="chap-head"><span class="big">3</span>
+    <div class="eyebrow" lang="es">Bloque 3 · Requerimientos</div><div class="eyebrow" lang="en">Block 3 · Requirements</div>
+    <h2 lang="es">Peso, meta y requerimientos</h2><h2 lang="en">Weight, target and requirements</h2>
+    <p lang="es">Con el peso de tus animales y lo que quieres lograr, la app calcula lo que necesitan cada día con las ecuaciones de NASEM (2016).</p>
+    <p lang="en">From your animals’ weight and what you want to achieve, the app computes their daily needs with the NASEM (2016) equations.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 40h32M14 40l4-24h12l4 24M18 16a6 6 0 0 1 12 0"/><path d="M24 26v6"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b3-peso" data-n="3.1"><span lang="es">Peso y meta de ganancia</span><span lang="en">Weight and gain target</span></h3>
+  <p lang="es">Escribe el <b>peso vivo actual</b> promedio del lote y la <b>ganancia diaria objetivo</b>. Si pesas a tus animales con regularidad y sabes cuánto comen de verdad, captura el <b>consumo real de MS</b>; si lo dejas vacío, la app lo predice. En vacas, en lugar de ganancia capturas los días de gestación o los litros de leche.</p>
+  <p lang="en">Enter the lot’s average <b>current live weight</b> and the <b>daily gain target</b>. If you weigh your cattle regularly and know what they really eat, enter the <b>actual DM intake</b>; leave it blank and the app predicts it. For cows, instead of gain you enter the days pregnant or the litres of milk.</p>
+  <figure data-fig="peso" data-marks="0,1">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 3.</b> Los datos del animal.</span><span lang="en"><b>Block 3.</b> The animal’s data.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>Peso vivo actual:</b> <span class="val">380</span> kg.</span><span lang="en"><b>Current live weight:</b> <span class="val">380</span> kg.</span></li>
+      <li><span lang="es"><b>Ganancia diaria objetivo:</b> <span class="val">1.35</span> kg/d.</span><span lang="en"><b>Daily gain target:</b> <span class="val">1.35</span> kg/d.</span></li>
+    </ol>
+  </figure>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo · una meta realista</span><span class="bt" lang="en">Tip · a realistic target</span>
+    <p lang="es">En engorda con dieta alta en grano, las cruzas ganan de 1.2 a 1.5 kg/d; el cebú, de 1.0 a 1.3; los británicos y continentales, de 1.4 a 1.7. Si pides más de lo que los ingredientes permiten, la app te dirá cuál es la ganancia máxima posible (capítulo 7).</p>
+    <p lang="en">On high-grain feedlot diets, crosses gain 1.2–1.5 kg/d; zebu, 1.0–1.3; British and Continental, 1.4–1.7. Ask for more than the ingredients allow and the app will tell you the maximum feasible gain (chapter 7).</p></div>
+
+  <h3 id="b3-diarios" data-n="3.2"><span lang="es">Lo que necesita cada animal al día</span><span lang="en">What each animal needs per day</span></h3>
+  <figure data-fig="requer">
+    <figcaption><span class="fn"></span><span lang="es"><b>Requerimientos diarios por animal</b> del torete de 380 kg que debe ganar 1.35 kg/d.</span><span lang="en"><b>Daily requirements per animal</b> for the 380 kg bull that must gain 1.35 kg/d.</span></figcaption>
+  </figure>
+  <div class="kpis">
+    <div class="kpi"><span lang="es">Consumo esperado</span><span lang="en">Expected intake</span><b>7.53 kg</b><small lang="es">de MS al día · 1.98 % del peso</small><small lang="en">DM per day · 1.98 % of weight</small></div>
+    <div class="kpi"><span lang="es">Energía para mantenerse</span><span lang="en">Energy to maintain</span><b>7.20 Mcal</b><small lang="es">ENm al día</small><small lang="en">NEm per day</small></div>
+    <div class="kpi"><span lang="es">Energía para ganar</span><span lang="en">Energy to gain</span><b>5.46 Mcal</b><small lang="es">ENg al día</small><small lang="en">NEg per day</small></div>
+    <div class="kpi"><span lang="es">Proteína metabolizable</span><span lang="en">Metabolizable protein</span><b>720 g</b><small lang="es">317 mant. + 403 crecimiento</small><small lang="en">317 maint. + 403 growth</small></div>
+  </div>
+  <figure class="svgfig"><svg viewBox="0 0 760 230" role="img"><text lang="es" x="30" y="26" font-size="15" font-weight="700">Lo que come un torete en un día: 7.75 kg de materia seca</text><text lang="en" x="30" y="26" font-size="15" font-weight="700">What one bull eats in a day: 7.75 kg of dry matter</text><rect x="30" y="44" width="307.1" height="54" rx="8" fill="var(--b3)" opacity=".85"/><rect x="340.1" y="44" width="389.9" height="54" rx="8" fill="var(--b7)" opacity=".9"/><text lang="es" x="183.5" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3.40 kg · para mantenerse</text><text lang="en" x="183.5" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3.40 kg · to stay alive</text><text lang="es" x="183.5" y="88" text-anchor="middle" font-size="12.5" fill="#fff">ENm 7.20 Mcal</text><text lang="en" x="183.5" y="88" text-anchor="middle" font-size="12.5" fill="#fff">NEm 7.20 Mcal</text><text lang="es" x="533.5" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4.35 kg · para ganar peso</text><text lang="en" x="533.5" y="70" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4.35 kg · to gain weight</text><text lang="es" x="533.5" y="88" text-anchor="middle" font-size="12.5" fill="#fff">ENg 5.46 Mcal → 1.35 kg/d</text><text lang="en" x="533.5" y="88" text-anchor="middle" font-size="12.5" fill="#fff">NEg 5.46 Mcal → 1.35 kg/d</text><line class="ln" x1="30.0" x2="30.0" y1="102" y2="108"/><text x="30.0" y="122" text-anchor="middle" font-size="11.5" class="mu">0</text><line class="ln" x1="120.3" x2="120.3" y1="102" y2="108"/><text x="120.3" y="122" text-anchor="middle" font-size="11.5" class="mu">1</text><line class="ln" x1="210.6" x2="210.6" y1="102" y2="108"/><text x="210.6" y="122" text-anchor="middle" font-size="11.5" class="mu">2</text><line class="ln" x1="301.0" x2="301.0" y1="102" y2="108"/><text x="301.0" y="122" text-anchor="middle" font-size="11.5" class="mu">3</text><line class="ln" x1="391.3" x2="391.3" y1="102" y2="108"/><text x="391.3" y="122" text-anchor="middle" font-size="11.5" class="mu">4</text><line class="ln" x1="481.6" x2="481.6" y1="102" y2="108"/><text x="481.6" y="122" text-anchor="middle" font-size="11.5" class="mu">5</text><line class="ln" x1="571.9" x2="571.9" y1="102" y2="108"/><text x="571.9" y="122" text-anchor="middle" font-size="11.5" class="mu">6</text><line class="ln" x1="662.3" x2="662.3" y1="102" y2="108"/><text x="662.3" y="122" text-anchor="middle" font-size="11.5" class="mu">7</text><text lang="es" x="730" y="122" text-anchor="end" font-size="11.5" class="mu">kg de MS</text><text lang="en" x="730" y="122" text-anchor="end" font-size="11.5" class="mu">kg DM</text><text lang="es" x="30" y="160" font-size="13.5">44 % del alimento solo mantiene vivo al animal: ese gasto no depende de cuánto gane.</text><text lang="en" x="30" y="160" font-size="13.5">44 % of the feed only keeps the animal alive: that cost does not depend on how much it gains.</text><text lang="es" x="30" y="182" font-size="13.5">Por eso un animal que gana poco paga el mantenimiento con menos kilos y su costo por kilo ganado sube.</text><text lang="en" x="30" y="182" font-size="13.5">That is why a slow-gaining animal spreads maintenance over fewer kilos and its cost per kilo gained rises.</text><text lang="es" x="30" y="204" font-size="13.5" class="mu">Más ganancia, mientras la ración lo permita, abarata cada kilo (capítulo 9).</text><text lang="en" x="30" y="204" font-size="13.5" class="mu">More gain, as far as the ration allows, makes each kilo cheaper (chapter 9).</text></svg><figcaption><span class="fn"></span><span lang="es"><b>A dónde va el alimento.</b> Reparto del consumo del torete del caso entre mantenimiento y ganancia, según la app (sección 7.5).</span><span lang="en"><b>Where the feed goes.</b> Split of the case bull’s intake between maintenance and gain, as computed by the app (section 7.5).</span></figcaption></figure>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué dos energías?</span><span class="bt" lang="en">Why two energies?</span>
+    <p lang="es">El bovino usa la energía del alimento con distinta eficiencia para mantenerse que para ganar peso. Por eso el sistema de California, que usa NASEM, separa la <b>energía neta de mantenimiento (ENm)</b> de la <b>energía neta de ganancia (ENg)</b>. Primero se cubre el mantenimiento; lo que sobra se convierte en kilos.</p>
+    <p lang="en">Cattle use feed energy with different efficiency to maintain themselves than to gain weight. That is why the California system, used by NASEM, separates <b>net energy for maintenance (NEm)</b> from <b>net energy for gain (NEg)</b>. Maintenance is covered first; whatever is left becomes kilos.</p></div>
+
+  <h3 id="b3-tabla" data-n="3.3"><span lang="es">La tabla de concentraciones</span><span lang="en">The concentration table</span></h3>
+  <p lang="es">Lo diario se convierte en <b>cuánto debe tener cada kilo de materia seca</b>. La energía, la proteína metabolizable, el calcio y el fósforo salen de las ecuaciones; el forraje, la fibra efectiva, la grasa, el azufre y el sodio son límites prácticos del tipo de animal. En la vista productor se ven los 8 nutrientes clave; los demás se siguen respetando al formular.</p>
+  <p lang="en">The daily amounts become <b>how much each kilo of dry matter must contain</b>. Energy, metabolizable protein, calcium and phosphorus come from the equations; forage, effective fibre, fat, sulfur and sodium are practical limits for the animal type. The producer view shows the 8 key nutrients; the rest are still enforced when formulating.</p>
+  <figure data-fig="tablareq" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>Concentración por kg de materia seca.</b> Una casilla vacía no restringe.</span><span lang="en"><b>Concentration per kg of dry matter.</b> An empty cell does not constrain.</span></figcaption>
+    <ol class="legend"><li><span lang="es"><span class="ui">↺ Recalcular con el animal</span> regresa a los valores de las ecuaciones si editaste algo.</span><span lang="en"><span class="ui">↺ Recompute from the animal</span> goes back to the equation values if you edited anything.</span></li></ol>
+  </figure>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Atención · si editas la tabla, el ajuste automático se apaga</span><span class="bt" lang="en">Caution · editing the table switches off the automatic adjustment</span>
+    <p lang="es">La energía que hace falta por kilo depende de la propia ración: una ración más concentrada se come en menor cantidad. RatioBos ajusta energía y consumo solo, hasta que cuadran. Si escribes tus propios valores, la app respeta los tuyos y deja de ajustar. Úsalo solo si tu nutriólogo te dio una especificación.</p>
+    <p lang="en">The energy needed per kilo depends on the ration itself: a denser ration is eaten in smaller amounts. RatioBos adjusts energy and intake on its own until they match. If you type your own values, the app keeps yours and stops adjusting. Only do it if your nutritionist gave you a specification.</p></div>
+</section>
+
+<!-- ============================ 4 · MANEJO Y MERCADO ============================ -->
+<section class="chap" id="b4" data-toc="4" style="--c:var(--b4)">
+  <div class="chap-head"><span class="big">4</span>
+    <div class="eyebrow" lang="es">Bloque 4 · Manejo</div><div class="eyebrow" lang="en">Block 4 · Management</div>
+    <h2 lang="es">Manejo y mercado</h2><h2 lang="en">Management and market</h2>
+    <p lang="es">Implantes, ionóforos y el tamaño del lote cambian lo que el animal come y rinde; los precios de compra y venta deciden si el negocio deja utilidad.</p>
+    <p lang="en">Implants, ionophores and lot size change what the animal eats and yields; buying and selling prices decide whether the business makes a profit.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38V20l16-10 16 10v18"/><path d="M18 38V26h12v12M8 38h32"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b4-manejo" data-n="4.1"><span lang="es">Manejo y sanidad</span><span lang="en">Management and health</span></h3>
+  <figure data-fig="manejo" data-marks="0,1">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 4 · Manejo.</b></span><span lang="en"><b>Block 4 · Management.</b></span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>Implante anabólico.</b> Sin implante, el consumo esperado baja ≈ 6 %.</span><span lang="en"><b>Anabolic implant.</b> Without one, expected intake drops ≈ 6 %.</span></li>
+      <li><span lang="es"><b>Ionóforo</b> (monensina, lasalocida). Baja el consumo ≈ 3 % y aprovecha mejor la energía: la ENm de la ración se multiplica por 1.12.</span><span lang="en"><b>Ionophore</b> (monensin, lasalocid). Lowers intake ≈ 3 % and improves energy use: the ration’s NEm is multiplied by 1.12.</span></li>
+    </ol>
+  </figure>
+  <p lang="es">Escribe también cuántos <b>animales hay en el lote</b> y la <b>carga del carro mezclador</b> en kilos tal como se ofrece: con eso la app calcula cuántos kilos mezclar al día. La tarjeta <b>Sanidad y aditivos</b> (dosis de ionóforo, antibiótico, β-agonista, implantes, desparasitaciones y vacunas) no cambia la ración: alimenta el inventario de medicamentos del Bloque 10.</p>
+  <p lang="en">Also enter how many <b>animals are in the lot</b> and the <b>mixer-wagon load</b> in as-fed kilos: from those the app works out how many kilos to mix per day. The <b>Health and additives</b> card (ionophore dose, antibiotic, β-agonist, implants, dewormings and vaccines) does not change the ration: it feeds the medicine inventory in Block 10.</p>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Atención · el clenbuterol está prohibido</span><span class="bt" lang="en">Caution · clenbuterol is banned</span>
+    <p lang="es">En México el clenbuterol está prohibido en el ganado. Los β-agonistas autorizados (zilpaterol, ractopamina) exigen respetar el periodo de retiro antes del sacrificio, y algunos mercados de exportación no los aceptan.</p>
+    <p lang="en">In Mexico clenbuterol is banned in livestock. Approved β-agonists (zilpaterol, ractopamine) require the withdrawal period before slaughter, and some export markets do not accept them.</p></div>
+
+  <h3 id="b4-mercado" data-n="4.2"><span lang="es">Mercado</span><span lang="en">Market</span></h3>
+  <figure data-fig="mercado" data-marks="0,1,2">
+    <figcaption><span class="fn"></span><span lang="es"><b>Mercado.</b> Precios por kilo en pie.</span><span lang="en"><b>Market.</b> Prices per kilo live weight.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>Precio de compra</b> del becerro o torete que entra al corral.</span><span lang="en"><b>Purchase price</b> of the animal entering the pen.</span></li>
+      <li><span lang="es"><b>Precio de venta</b> del animal terminado.</span><span lang="en"><b>Sale price</b> of the finished animal.</span></li>
+      <li><span lang="es"><b>Otros costos</b> por animal al día: mano de obra, sanidad, electricidad, interés del capital.</span><span lang="en"><b>Other costs</b> per head per day: labour, health, power, interest on capital.</span></li>
+    </ol>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Dejamos implante e ionóforo marcados (30 mg de monensina por kg de MS), escribimos <span class="val">300</span> animales y una carga de <span class="val">3000</span> kg. En mercado: compra <span class="val">62</span>, venta <span class="val">58</span> y <span class="val">9</span> pesos de otros costos por animal al día.</p>
+    <p lang="en">We keep implant and ionophore ticked (30 mg monensin per kg DM), type <span class="val">300</span> animals and a <span class="val">3000</span> kg load. In the market card: buy <span class="val">62</span>, sell <span class="val">58</span> and <span class="val">9</span> pesos of other costs per head per day.</p></div>
+</section>
+
+<!-- ============================ 5 · INGREDIENTES ============================ -->
+<section class="chap" id="b5" data-toc="5" style="--c:var(--b5)">
+  <div class="chap-head"><span class="big">5</span>
+    <div class="eyebrow" lang="es">Bloque 5 · Ingredientes</div><div class="eyebrow" lang="en">Block 5 · Ingredients</div>
+    <h2 lang="es">Ingredientes disponibles</h2><h2 lang="en">Available ingredients</h2>
+    <p lang="es">Marca solo lo que de verdad puedes conseguir. Mientras más opciones tenga la app, más barata puede salir la ración.</p>
+    <p lang="en">Tick only what you can actually get. The more options the app has, the cheaper the ration can be.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42V18M24 18c0-6 4-10 10-10 0 6-4 10-10 10zM24 26c0-6-4-10-10-10 0 6 4 10 10 10zM24 34c0-5 3-8 8-8 0 5-3 8-8 8z"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b5-lista" data-n="5.1"><span lang="es">La biblioteca de ingredientes</span><span lang="en">The ingredient library</span></h3>
+  <p lang="es">RatioBos trae <b>37 ingredientes</b> agrupados en forrajes secos, ensilajes y forrajes verdes, granos, subproductos, proteicos, nitrógeno no proteico, grasas, minerales y premezclas. Sus valores son de la tabla de Oklahoma State University (Beck, Lalman y Moehlenpah, 2024) con datos de NASEM (2016), y todos están en <b>base seca</b>.</p>
+  <p lang="en">RatioBos ships with <b>37 ingredients</b> grouped into dry forages, silages and fresh forages, grains, by-products, protein sources, non-protein nitrogen, fats, minerals and premixes. Their values come from the Oklahoma State University table (Beck, Lalman &amp; Moehlenpah, 2024) with NASEM (2016) data, and all are on a <b>dry-matter basis</b>.</p>
+  <figure data-fig="ingredientes" data-marks="0,1,2">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 5.</b> Una fila por ingrediente, con materia seca, energía, proteína y fibra.</span><span lang="en"><b>Block 5.</b> One row per ingredient, with dry matter, energy, protein and fibre.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es">La <b>casilla</b> lo pone a disposición del optimizador.</span><span lang="en">The <b>checkbox</b> makes it available to the optimiser.</span></li>
+      <li><span lang="es"><span class="ui">Editar</span> abre su composición completa.</span><span lang="en"><span class="ui">Edit</span> opens its full composition.</span></li>
+      <li><span lang="es"><span class="ui pri">+ Agregar</span> crea un ingrediente nuevo (por ejemplo, un subproducto local).</span><span lang="en"><span class="ui pri">+ Add</span> creates a new ingredient (a local by-product, for instance).</span></li>
+    </ol>
+  </figure>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué en base seca?</span><span class="bt" lang="en">Why on a dry basis?</span>
+    <p lang="es">El ensilaje de maíz tiene 34 % de materia seca: dos terceras partes de lo que pesa son agua. Comparar un kilo de ensilaje con un kilo de sorgo (90 % de MS) sería injusto. En base seca todos se comparan por lo que de verdad alimenta; al final la app te regresa los kilos húmedos para el carro.</p>
+    <p lang="en">Corn silage is 34 % dry matter: two thirds of its weight is water. Comparing a kilo of silage with a kilo of sorghum (90 % DM) would be unfair. On a dry basis everything is compared by what actually feeds; at the end the app gives you back the wet kilos for the wagon.</p></div>
+
+  <h3 id="b5-editar" data-n="5.2"><span lang="es">Usa tus análisis de laboratorio</span><span lang="en">Use your lab analyses</span></h3>
+  <p lang="es">Si mandaste a analizar tu ensilaje o tu rastrojo, presiona <span class="ui">Editar</span> y cambia los valores. Lo que más pesa en el resultado es la <b>materia seca</b>, la <b>proteína cruda</b> y la <b>FDN</b>; la energía puedes dejarla si el laboratorio no la reporta.</p>
+  <p lang="en">If you sent your silage or stover for analysis, press <span class="ui">Edit</span> and change the values. What weighs most in the result is <b>dry matter</b>, <b>crude protein</b> and <b>NDF</b>; leave the energy if the lab does not report it.</p>
+  <figure data-fig="editar" data-marks="0,1">
+    <figcaption><span class="fn"></span><span lang="es"><b>Composición de un ingrediente.</b> Cada dato tiene su <b>?</b>.</span><span lang="en"><b>An ingredient’s composition.</b> Every field has its <b>?</b>.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><span class="ui">↺ Valores de tabla</span> deshace tus cambios.</span><span lang="en"><span class="ui">↺ Table values</span> undoes your changes.</span></li>
+      <li><span lang="es"><span class="ui pri">Cerrar</span>.</span><span lang="en"><span class="ui pri">Close</span>.</span></li>
+    </ol>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Tenemos 12 ingredientes marcados: heno de alfalfa, rastrojo de maíz, ensilaje de maíz, maíz rolado, sorgo rolado, melaza, DDGS, pasta de soya 44 %, urea, carbonato de calcio, sal y premezcla de microminerales y vitaminas.</p>
+    <p lang="en">We have 12 ingredients ticked: alfalfa hay, corn stover, corn silage, dry-rolled corn, dry-rolled sorghum, molasses, DDGS, 44 % soybean meal, urea, limestone, salt and the trace-mineral and vitamin premix.</p></div>
+</section>
+
+<!-- ============================ 6 · PRECIOS ============================ -->
+<section class="chap" id="b6" data-toc="6" style="--c:var(--b6)">
+  <div class="chap-head"><span class="big">6</span>
+    <div class="eyebrow" lang="es">Bloque 6 · Precios</div><div class="eyebrow" lang="en">Block 6 · Prices</div>
+    <h2 lang="es">Precios locales y límites de inclusión</h2><h2 lang="en">Local prices and inclusion limits</h2>
+    <p lang="es">El precio que escribas aquí es el que la app minimiza. Un precio viejo da una ración que ya no es la más barata.</p>
+    <p lang="en">The price you enter here is what the app minimises. A stale price gives a ration that is no longer the cheapest.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 24 24 6h16v16L22 40z"/><circle cx="32" cy="14" r="3"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b6-precios" data-n="6.1"><span lang="es">Escribe lo que pagas</span><span lang="en">Enter what you pay</span></h3>
+  <p lang="es">Escribe el precio por kilo <b>tal como lo compras</b> y <b>puesto en el rancho</b> (con flete y descarga). La app lo convierte a precio por kilo de materia seca, que es lo que compara.</p>
+  <p lang="en">Enter the price per kilo <b>as you buy it</b> and <b>delivered to the ranch</b> (freight and unloading included). The app converts it to price per kilo of dry matter, which is what it compares.</p>
+  <figure data-fig="precios" data-marks="0,1,2">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 6.</b> Precios y límites de los 12 ingredientes marcados.</span><span lang="en"><b>Block 6.</b> Prices and limits for the 12 ticked ingredients.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es"><b>$/kg TCO</b>: tu precio, tal como se ofrece.</span><span lang="en"><b>$/kg AF</b>: your price, as fed.</span></li>
+      <li><span lang="es"><b>Mínimo %</b> de la materia seca: obliga a usarlo al menos en esa cantidad.</span><span lang="en"><b>Minimum %</b> of dry matter: forces at least that much in.</span></li>
+      <li><span lang="es"><b>Máximo %</b>: el tope por salud del animal, palatabilidad o logística.</span><span lang="en"><b>Maximum %</b>: the cap for animal health, palatability or logistics.</span></li>
+    </ol>
+  </figure>
+
+  <h3 id="b6-comparar" data-n="6.2"><span lang="es">Compara precios con dos columnas</span><span lang="en">Compare prices with two columns</span></h3>
+  <p lang="es">Las columnas <b>$ por Mcal ENg</b> y <b>$ por kg PC</b> dicen cuánto cuesta cada unidad de energía y de proteína en cada ingrediente. Es la forma correcta de comparar: el sorgo de nuestro caso da la energía más barata ($3.38 por Mcal) y los DDGS, la proteína más barata después de la urea ($19.57 por kg de PC).</p>
+  <p lang="en">The <b>$ per Mcal NEg</b> and <b>$ per kg CP</b> columns tell you what each unit of energy and protein costs in each ingredient. That is the right way to compare: the sorghum in our case gives the cheapest energy ($3.38 per Mcal) and DDGS the cheapest protein after urea ($19.57 per kg CP).</p>
+  <div class="box rule"><span class="bi">→</span><span class="bt" lang="es">Regla de decisión · límites que conviene respetar</span><span class="bt" lang="en">Decision rule · limits worth keeping</span>
+    <table><tbody>
+      <tr><td lang="es"><b>Urea</b></td><td lang="en"><b>Urea</b></td><td lang="es">Máximo 1 % de la MS, siempre bien mezclada. Más es riesgo de intoxicación.</td><td lang="en">At most 1 % of DM, always well mixed. More risks toxicity.</td></tr>
+      <tr><td lang="es"><b>DDGS</b></td><td lang="en"><b>DDGS</b></td><td lang="es">Máximo 30 %: aporta azufre y grasa.</td><td lang="en">At most 30 %: they bring sulfur and fat.</td></tr>
+      <tr><td lang="es"><b>Melaza</b></td><td lang="en"><b>Molasses</b></td><td lang="es">Máximo 10 % en engorda con grano.</td><td lang="en">At most 10 % in grain-based finishing.</td></tr>
+      <tr><td lang="es"><b>Semilla de algodón</b></td><td lang="en"><b>Whole cottonseed</b></td><td lang="es">Máximo 15 % por el gosipol.</td><td lang="en">At most 15 % because of gossypol.</td></tr>
+      <tr><td lang="es"><b>Carbonato de calcio</b></td><td lang="en"><b>Limestone</b></td><td lang="es">Máximo 2 %: es fuente de calcio, no relleno.</td><td lang="en">At most 2 %: it is a calcium source, not a filler.</td></tr>
+      <tr><td lang="es"><b>Premezcla</b></td><td lang="en"><b>Premix</b></td><td lang="es">Mínimo = máximo = la dosis del fabricante (0.3 % en el caso).</td><td lang="en">Minimum = maximum = the maker’s dose (0.3 % in our case).</td></tr>
+    </tbody></table></div>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo · para fijar una inclusión exacta</span><span class="bt" lang="en">Tip · to fix an exact inclusion</span>
+    <p lang="es">Escribe el mismo valor en mínimo y máximo. Úsalo para la premezcla o para un ingrediente que ya compraste y quieres terminar.</p>
+    <p lang="en">Type the same value as minimum and maximum. Use it for the premix or for an ingredient you have already bought and want to use up.</p></div>
+</section>
+
+<!-- ============================ 7 · FORMULACIÓN ============================ -->
+<section class="chap" id="b7" data-toc="7" style="--c:var(--b7)">
+  <div class="chap-head"><span class="big">7</span>
+    <div class="eyebrow" lang="es">Bloque 7 · Formulación</div><div class="eyebrow" lang="en">Block 7 · Formulation</div>
+    <h2 lang="es">Formulación de mínimo costo</h2><h2 lang="en">Least-cost formulation</h2>
+    <p lang="es">Un botón. La app busca, entre todas las mezclas posibles, la más barata que cubre lo que tu ganado necesita, y te dice cuánto va a ganar y cuánto cuesta cada kilo.</p>
+    <p lang="en">One button. The app searches every possible blend for the cheapest one that covers what your cattle need, and tells you how much they will gain and what each kilo costs.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="6"/><path d="M24 4v6M24 38v6M4 24h6M38 24h6M10 10l4 4M34 34l4 4M10 38l4-4M34 14l4-4"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b7-formular" data-n="7.1"><span lang="es">Presiona Formular</span><span lang="en">Press Formulate</span></h3>
+  <figure data-fig="formular" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 7.</b> Arriba, un resumen de lo que vas a formular.</span><span lang="en"><b>Block 7.</b> At the top, a summary of what you are about to formulate.</span></figcaption>
+    <ol class="legend"><li><span lang="es"><span class="ui pri">⚙ Formular</span>. Tarda menos de un segundo.</span><span lang="en"><span class="ui pri">⚙ Formulate</span>. It takes under a second.</span></li></ol>
+  </figure>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Qué hace la app en ese segundo?</span><span class="bt" lang="en">What does the app do in that second?</span>
+    <p lang="es">Resuelve un problema de <b>programación lineal</b>: entre todas las combinaciones de tus ingredientes que cumplen cada mínimo y cada máximo, encuentra la de menor costo por kilo de materia seca. Luego revisa si la energía de esa ración coincide con la que supuso para calcular el consumo; si no, corrige y vuelve a resolver hasta que cuadran. Al final comprueba con un certificado matemático que no existe otra más barata.</p>
+    <p lang="en">It solves a <b>linear programming</b> problem: among every combination of your ingredients that meets each minimum and maximum, it finds the one with the lowest cost per kilo of dry matter. Then it checks whether that ration’s energy matches the one it assumed to estimate intake; if not, it corrects and solves again until they match. Finally it proves with a mathematical certificate that no cheaper one exists.</p></div>
+
+  <h3 id="b7-resultado" data-n="7.2"><span lang="es">Las cuatro tarjetas del resultado</span><span lang="en">The four result cards</span></h3>
+  <figure data-fig="resultado" data-marks="0,1">
+    <figcaption><span class="fn"></span><span lang="es"><b>Resultado.</b> El mensaje verde confirma que es la ración más barata posible.</span><span lang="en"><b>Result.</b> The green message confirms it is the cheapest possible ration.</span></figcaption>
+    <ol class="legend">
+      <li><span lang="es">Confirmación de mínimo costo.</span><span lang="en">Least-cost confirmation.</span></li>
+      <li><span lang="es">Las <b>cuatro tarjetas</b> que se explican abajo.</span><span lang="en">The <b>four cards</b> explained below.</span></li>
+    </ol>
+  </figure>
+  <div class="kpis">
+    <div class="kpi"><span lang="es">Costo por t de MS</span><span lang="en">Cost per t DM</span><b>$ 4,513</b><small lang="es">$ 4,042 por t tal como se ofrece</small><small lang="en">$ 4,042 per t as fed</small></div>
+    <div class="kpi"><span lang="es">Por animal al día</span><span lang="en">Per head per day</span><b>$ 35.00</b><small lang="es">7.75 kg MS · 8.7 kg TCO</small><small lang="en">7.75 kg DM · 8.7 kg AF</small></div>
+    <div class="kpi"><span lang="es">Ganancia esperada</span><span lang="en">Expected gain</span><b>1.35 kg/d</b><small lang="es">limita: energía</small><small lang="en">limited by: energy</small></div>
+    <div class="kpi"><span lang="es">Alimento por kg ganado</span><span lang="en">Feed per kg gained</span><b>$ 25.93</b><small lang="es">conversión 5.74</small><small lang="en">feed conversion 5.74</small></div>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Tarjeta</th><th lang="en">Card</th><th lang="es">Qué te dice</th><th lang="en">What it tells you</th></tr></thead>
+    <tbody>
+      <tr><td lang="es"><b>Costo por t de MS</b></td><td lang="en"><b>Cost per t DM</b></td><td lang="es">Lo que cuesta una tonelada de la ración sin agua. Abajo, la misma tonelada húmeda, como sale del carro.</td><td lang="en">What a tonne of the ration costs without water. Below, the same tonne wet, as it leaves the wagon.</td></tr>
+      <tr><td lang="es"><b>Costo por animal al día</b></td><td lang="en"><b>Cost per head per day</b></td><td lang="es">Consumo esperado × precio. El gasto diario de alimento de cada cabeza.</td><td lang="en">Expected intake × price. Each head’s daily feed bill.</td></tr>
+      <tr><td lang="es"><b>Ganancia esperada</b></td><td lang="en"><b>Expected gain</b></td><td lang="es">La que permite la ración, y qué la limita: energía o proteína.</td><td lang="en">The gain the ration allows, and what limits it: energy or protein.</td></tr>
+      <tr><td lang="es"><b>Costo de alimento por kg ganado</b></td><td lang="en"><b>Feed cost per kg gained</b></td><td lang="es">El número del negocio. Debe quedar bien por debajo de tu precio de venta.</td><td lang="en">The business number. It must sit well below your sale price.</td></tr>
+    </tbody></table></div>
+
+  <h3 id="b7-rancho" data-n="7.3"><span lang="es">Qué significa para tu rancho</span><span lang="en">What it means for your ranch</span></h3>
+  <p lang="es">Debajo de las tarjetas, la app traduce los números a frases: cuánto come cada animal, cuántos días faltan para el peso de venta, cuántos kilos mezclar al día y qué ingrediente empezaría a convenirte si bajara de precio.</p>
+  <p lang="en">Below the cards, the app turns the numbers into sentences: how much each animal eats, how many days remain to sale weight, how many kilos to mix per day and which ingredient would start to pay off if its price fell.</p>
+  <figure data-fig="granja">
+    <figcaption><span class="fn"></span><span lang="es"><b>Qué significa para tu rancho.</b> Siempre en lenguaje llano.</span><span lang="en"><b>What it means for your ranch.</b> Always in plain language.</span></figcaption>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">La ración cuesta <b>$4,042 por tonelada</b> tal como se mezcla. Cada torete come 8.7 kg al día y cuesta <b>$35.00</b>. Se espera que gane <b>1.35 kg/d</b>, a <b>$25.93 de alimento por kilo ganado</b>: menos de la mitad de los $58 a los que lo venderemos. Para los 300 animales hay que preparar <b>2,598 kg al día</b>, poco menos de una carga del carro, y llegarán al peso de venta en unos 104 días.</p>
+    <p lang="en">The ration costs <b>$4,042 per tonne</b> as mixed. Each bull eats 8.7 kg a day and costs <b>$35.00</b>. Expected gain is <b>1.35 kg/d</b>, at <b>$25.93 of feed per kilo gained</b>: less than half the $58 we will sell it for. For the 300 animals we must prepare <b>2,598 kg a day</b>, just under one wagon load, and they will reach sale weight in about 104 days.</p></div>
+
+  <h3 id="b7-mezcla" data-n="7.4"><span lang="es">La hoja del carro mezclador</span><span lang="en">The mixer-wagon sheet</span></h3>
+  <p lang="es">Es lo que se lleva al corral. Los kilos son <b>húmedos</b>, tal como los pesa la báscula del carro, y vienen en el <b>orden de carga</b>: primero forrajes y ensilajes, luego granos y pastas, al final los ingredientes pequeños premezclados. Cada renglón tiene una casilla para palomear al cargar.</p>
+  <p lang="en">This is what goes to the pen. The kilos are <b>wet</b>, as the wagon scale weighs them, and come in <b>loading order</b>: forages and silages first, then grains and meals, and the small pre-blended ingredients last. Each line has a box to tick as you load.</p>
+  <div class="pair">
+    <figure data-fig="mezcla" data-marks="0">
+      <figcaption><span class="fn"></span><span lang="es"><b>Hoja de mezclado</b> para una carga de 3,000 kg.</span><span lang="en"><b>Mixing sheet</b> for a 3,000 kg load.</span></figcaption>
+      <ol class="legend"><li><span lang="es"><span class="ui">🖨 Imprimir</span> saca solo la hoja, en una página.</span><span lang="en"><span class="ui">🖨 Print</span> prints just the sheet, on one page.</span></li></ol>
+    </figure>
+    <figure data-fig="mezcla-movil" data-phone="1">
+      <figcaption><span class="fn"></span><span lang="es"><b>En el celular</b>, junto al carro.</span><span lang="en"><b>On a phone</b>, by the wagon.</span></figcaption>
+    </figure>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Orden</th><th lang="en">Order</th><th lang="es">Ingrediente</th><th lang="en">Ingredient</th><th class="r">kg</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td lang="es">Rastrojo de maíz</td><td lang="en">Corn stover</td><td class="r">354.0</td></tr>
+      <tr><td>2</td><td lang="es">Sorgo rolado</td><td lang="en">Dry-rolled sorghum</td><td class="r">2,500.5</td></tr>
+      <tr><td>3</td><td lang="es">Granos de destilería (DDGS)</td><td lang="en">Distillers grains (DDGS)</td><td class="r">84.7</td></tr>
+      <tr><td>4</td><td lang="es">Urea · carbonato · sal · premezcla <i>(premezclados)</i></td><td lang="en">Urea · limestone · salt · premix <i>(pre-blended)</i></td><td class="r">21.9 · 25.0 · 5.52 · 8.48</td></tr>
+      <tr class="hl"><td></td><td lang="es"><b>Total de la carga</b> · $12,125.09 · alcanza para 346 animales-día</td><td lang="en"><b>Load total</b> · $12,125.09 · feeds 346 head-days</td><td class="r"><b>3,000</b></td></tr>
+    </tbody></table></div>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Atención · urea, sal y premezcla</span><span class="bt" lang="en">Caution · urea, salt and premix</span>
+    <p lang="es">Juntos son 61 kg en una carga de 3,000. Si se echan directo al carro, se reparten mal y unos animales comen de más. <b>Revuélvelos antes con unos 50 kg de sorgo molido</b> y agrega esa premezcla al final. La urea mal mezclada puede intoxicar.</p>
+    <p lang="en">Together they are 61 kg in a 3,000 kg load. Tipped straight into the wagon they spread badly and some animals get too much. <b>Blend them first with about 50 kg of ground sorghum</b> and add that premix last. Poorly mixed urea can poison cattle.</p></div>
+
+  <h3 id="b7-formula" data-n="7.5"><span lang="es">La fórmula y el semáforo ruminal</span><span lang="en">The formula and the rumen traffic light</span></h3>
+  <p lang="es">La fórmula se ve en una dona y en una tabla, en materia seca o tal como se ofrece (botón arriba a la derecha). La tabla dice también cuántos kilos come cada animal de cada ingrediente y cuánto aporta cada uno al costo.</p>
+  <p lang="en">The formula appears as a doughnut and a table, on a dry-matter or as-fed basis (button at the top right). The table also shows how many kilos of each ingredient each animal eats and how much each adds to the cost.</p>
+  <figure data-fig="formula">
+    <figcaption><span class="fn"></span><span lang="es"><b>Fórmula en materia seca.</b> Sorgo 83.76 %, rastrojo 11.20 %, DDGS 2.80 %, carbonato 0.92 %, urea 0.81 %, premezcla 0.30 % y sal 0.20 %.</span><span lang="en"><b>Formula on a dry-matter basis.</b> Sorghum 83.76 %, stover 11.20 %, DDGS 2.80 %, limestone 0.92 %, urea 0.81 %, premix 0.30 % and salt 0.20 %.</span></figcaption>
+  </figure>
+  <p lang="es">Más abajo, dos barras comparan la energía y la proteína del día contra lo que el animal necesita, y el <b>semáforo de salud ruminal</b> revisa lo que el costo mínimo podría descuidar.</p>
+  <p lang="en">Further down, two bars compare the day’s energy and protein against what the animal needs, and the <b>rumen-health traffic light</b> checks what least cost might neglect.</p>
+  <figure data-fig="ruminal">
+    <figcaption><span class="fn"></span><span lang="es"><b>Energía y proteína del día, salud ruminal y huella.</b></span><span lang="en"><b>The day’s energy and protein, rumen health and footprint.</b></span></figcaption>
+  </figure>
+  <div class="box rule"><span class="bi">→</span><span class="bt" lang="es">Regla de decisión · semáforo ruminal</span><span class="bt" lang="en">Decision rule · rumen traffic light</span>
+    <table><tbody>
+      <tr><td lang="es"><b>Fibra efectiva</b> (FDNfe)</td><td lang="en"><b>Effective fibre</b> (peNDF)</td><td lang="es">Abajo de 7 % en finalización: riesgo de acidosis y timpanismo. Sube el rastrojo.</td><td lang="en">Below 7 % in finishing: risk of acidosis and bloat. Add stover.</td></tr>
+      <tr><td lang="es"><b>Grasa total</b></td><td lang="en"><b>Total fat</b></td><td lang="es">Arriba de 6–7 % frena la digestión de la fibra.</td><td lang="en">Above 6–7 % slows fibre digestion.</td></tr>
+      <tr><td lang="es"><b>Urea</b></td><td lang="en"><b>Urea</b></td><td lang="es">Amarillo arriba de 1 % de la MS o de 25 % de la proteína; rojo arriba de 1.2 % o de 35 %: riesgo de intoxicación.</td><td lang="en">Amber above 1 % of DM or 25 % of the protein; red above 1.2 % or 35 %: toxicity risk.</td></tr>
+      <tr><td lang="es"><b>Azufre</b></td><td lang="en"><b>Sulfur</b></td><td lang="es">Amarillo arriba de 0.30 %, rojo arriba de 0.40 %: polioencefalomalacia. El semáforo no cuenta el agua; si tu agua es sulfatada, quédate lejos del límite.</td><td lang="en">Amber above 0.30 %, red above 0.40 %: polioencephalomalacia. The light does not count water; if your water is high in sulfate, stay well below the limit.</td></tr>
+      <tr><td lang="es"><b>Ca : P</b></td><td lang="en"><b>Ca : P</b></td><td lang="es">Verde desde 1.5 : 1; amarillo entre 1.2 y 1.5; rojo abajo de 1.2. Un Ca : P bajo eleva el riesgo de cálculos urinarios en machos: sube un poco el carbonato.</td><td lang="en">Green from 1.5 : 1; amber between 1.2 and 1.5; red below 1.2. A low Ca : P raises the risk of urinary stones in males: add a little limestone.</td></tr>
+    </tbody></table></div>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Todo en verde salvo el <b>Ca : P</b>, en amarillo (1.49 : 1, apenas abajo de 1.5). En toretes conviene corregirlo: si en el Bloque 6 subimos el mínimo de carbonato a <span class="val">1.1</span> % y volvemos a formular, el Ca : P pasa a <b>1.69 : 1</b> y la tonelada de MS cuesta solo $2 más ($4,515). Para no mover los números del ejemplo, en los capítulos siguientes seguimos con la fórmula original.</p>
+    <p lang="en">All green except <b>Ca : P</b>, in amber (1.49 : 1, just under 1.5). In bulls it is worth fixing: if in Block 6 we raise the limestone minimum to <span class="val">1.1</span> % and formulate again, Ca : P rises to <b>1.69 : 1</b> and a tonne of DM costs only $2 more ($4,515). To keep the example’s numbers, the following chapters stay with the original formula.</p></div>
+
+  <h3 id="b7-vigilar" data-n="7.6"><span lang="es">¿Qué ingredientes conviene vigilar?</span><span lang="en">Which ingredients are worth watching?</span></h3>
+  <p lang="es">La tabla <b>Ingredientes no usados · precio de entrada</b> dice a qué precio empezaría a convenirte un ingrediente que quedó fuera. Úsala para negociar con tu proveedor.</p>
+  <p lang="en">The <b>Unused ingredients · entry price</b> table tells you at what price an ingredient left out would start to pay off. Use it when negotiating with your supplier.</p>
+  <figure data-fig="vigilar">
+    <figcaption><span class="fn"></span><span lang="es"><b>Precio de entrada.</b> Si el ensilaje de maíz baja de $1.23 a $1.19, entra a la ración.</span><span lang="en"><b>Entry price.</b> If corn silage drops from $1.23 to $1.19, it enters the ration.</span></figcaption>
+  </figure>
+
+  <h3 id="b7-sinsol" data-n="7.7"><span lang="es">Si aparece «Sin solución»</span><span lang="en">If “No solution” appears</span></h3>
+  <p lang="es">Significa que ninguna mezcla de tus ingredientes cumple todo a la vez. En animales en crecimiento, lo más común es que la meta de ganancia sea más alta de lo que permiten los ingredientes o el clima. La app calcula la <b>ganancia máxima posible</b> y ofrece un botón para usarla.</p>
+  <p lang="en">It means no blend of your ingredients meets everything at once. In growing animals, the usual cause is a gain target higher than the ingredients or the climate allow. The app works out the <b>maximum feasible gain</b> and offers a button to use it.</p>
+  <figure data-fig="infactible" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>El mismo corral en Veracruz, temporada seca.</b> Con ese calor la meta de 1.35 kg/d no es posible: el máximo es 1.30.</span><span lang="en"><b>The same pen in Veracruz, dry season.</b> In that heat the 1.35 kg/d target is not possible: the maximum is 1.30.</span></figcaption>
+    <ol class="legend"><li><span lang="es"><span class="ui pri">Usar 1.30 kg/d y formular</span>.</span><span lang="en"><span class="ui pri">Use 1.30 kg/d and formulate</span>.</span></li></ol>
+  </figure>
+  <div class="dtree" style="--c:var(--b7)">
+    <div class="q" lang="es">¿Qué hago si no hay solución? Prueba en este orden:</div>
+    <div class="q" lang="en">What do I do if there is no solution? Try in this order:</div>
+    <ol>
+      <li><div><b lang="es">¿La app ofrece una ganancia máxima?</b><b lang="en">Does the app offer a maximum gain?</b><span lang="es">Úsala, o agrega un ingrediente de más energía (maíz hojueleado, grasa) para alcanzar tu meta.</span><span lang="en">Use it, or add a higher-energy ingredient (steam-flaked corn, fat) to reach your target.</span></div></li>
+      <li><div><b lang="es">¿Editaste la tabla del Bloque 3?</b><b lang="en">Did you edit the Block 3 table?</b><span lang="es">Presiona <i>↺ Recalcular con el animal</i> y formula otra vez.</span><span lang="en">Press <i>↺ Recompute from the animal</i> and formulate again.</span></div></li>
+      <li><div><b lang="es">¿Dice «Ningún ingrediente aporta…»?</b><b lang="en">Does it say “No selected ingredient supplies…”?</b><span lang="es">Marca en el Bloque 5 uno que lo aporte: carbonato para el calcio, sal para el sodio, una pasta para la proteína.</span><span lang="en">Tick one in Block 5 that supplies it: limestone for calcium, salt for sodium, a meal for protein.</span></div></li>
+      <li><div><b lang="es">¿Sigue sin solución?</b><b lang="en">Still no solution?</b><span lang="es">La app lista las restricciones que, relajando <b>una sola</b>, darían solución. Revisa esos límites en el Bloque 6.</span><span lang="en">The app lists the constraints where relaxing <b>just one</b> would give a solution. Check those limits in Block 6.</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================ 8 · PROGRAMA ============================ -->
+<section class="chap" id="b8" data-toc="8" style="--c:var(--b8)">
+  <div class="chap-head"><span class="big">8</span>
+    <div class="eyebrow" lang="es">Bloque 8 · Programa</div><div class="eyebrow" lang="en">Block 8 · Program</div>
+    <h2 lang="es">Programa de alimentación</h2><h2 lang="en">Feeding program</h2>
+    <p lang="es">Toda la estancia en el corral, día a día: cuántos días tarda, cuánto alimento y dinero se va y cuánto te queda por cabeza.</p>
+    <p lang="en">The whole stay in the pen, day by day: how many days it takes, how much feed and money it uses and what is left per head.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="36" height="32" rx="3"/><path d="M6 18h36M16 6v8M32 6v8M14 28h6M14 34h12"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b8-fases" data-n="8.1"><span lang="es">Las fases</span><span lang="en">The phases</span></h3>
+  <p lang="es">En engorda, la app propone tres fases: <b>recepción y adaptación</b> (mucho forraje para que el rumen se acostumbre al grano), <b>crecimiento</b> y <b>finalización</b>. Para cada una puedes cambiar el peso al que termina, la meta de ganancia y el rango de forraje. Escribe el <b>peso de venta</b> y presiona <span class="ui pri">⚙ Formular el programa</span>.</p>
+  <p lang="en">For a feedlot the app proposes three phases: <b>receiving and step-up</b> (plenty of forage so the rumen adapts to grain), <b>growing</b> and <b>finishing</b>. For each you can change its end weight, gain target and forage range. Enter the <b>sale weight</b> and press <span class="ui pri">⚙ Formulate the program</span>.</p>
+  <figure data-fig="programa">
+    <figcaption><span class="fn"></span><span lang="es"><b>Bloque 8.</b> Cuatro tarjetas resumen toda la engorda.</span><span lang="en"><b>Block 8.</b> Four cards sum up the whole feeding period.</span></figcaption>
+  </figure>
+  <figure class="svgfig"><svg viewBox="0 0 760 250" role="img"><rect x="32.0" y="30" width="263.3" height="64" rx="10" fill="var(--b2)" opacity=".9"/><text lang="es" x="44.0" y="56" font-size="16" font-weight="700" fill="#fff">Recepción</text><text lang="en" x="44.0" y="56" font-size="16" font-weight="700" fill="#fff">Receiving</text><text lang="es" x="44.0" y="80" font-size="13" fill="#fff">42 días · 380→425 kg</text><text lang="en" x="44.0" y="80" font-size="13" fill="#fff">42 days · 380→425 kg</text><text lang="es" x="44.0" y="124" font-size="12" class="mu">forraje</text><text lang="en" x="44.0" y="124" font-size="12" class="mu">forage</text><rect x="96.0" y="114" width="177.3" height="10" rx="5" fill="var(--soft)"/><rect x="96.0" y="114" width="133.9" height="10" rx="5" fill="var(--b2)"/><text x="283.3" y="124" text-anchor="end" font-size="12" font-weight="700">34 %</text><text lang="es" x="44.0" y="152" font-size="12" class="mu">ganancia</text><text lang="en" x="44.0" y="152" font-size="12" class="mu">gain</text><text x="283.3" y="152" text-anchor="end" font-size="15" font-weight="700">1.08 kg/d</text><text lang="es" x="44.0" y="178" font-size="12" class="mu">ración</text><text lang="en" x="44.0" y="178" font-size="12" class="mu">ration</text><text x="283.3" y="178" text-anchor="end" font-size="15" font-weight="700">$ 3,931/t</text><rect x="299.3" y="30" width="225.1" height="64" rx="10" fill="var(--b8)" opacity=".9"/><text lang="es" x="311.3" y="56" font-size="16" font-weight="700" fill="#fff">Crecimiento</text><text lang="en" x="311.3" y="56" font-size="16" font-weight="700" fill="#fff">Growing</text><text lang="es" x="311.3" y="80" font-size="13" fill="#fff">36 días · 425→474 kg</text><text lang="en" x="311.3" y="80" font-size="13" fill="#fff">36 days · 425→474 kg</text><text lang="es" x="311.3" y="124" font-size="12" class="mu">forraje</text><text lang="en" x="311.3" y="124" font-size="12" class="mu">forage</text><rect x="363.3" y="114" width="139.1" height="10" rx="5" fill="var(--soft)"/><rect x="363.3" y="114" width="77.3" height="10" rx="5" fill="var(--b8)"/><text x="512.4" y="124" text-anchor="end" font-size="12" font-weight="700">25 %</text><text lang="es" x="311.3" y="152" font-size="12" class="mu">ganancia</text><text lang="en" x="311.3" y="152" font-size="12" class="mu">gain</text><text x="512.4" y="152" text-anchor="end" font-size="15" font-weight="700">1.35 kg/d</text><text lang="es" x="311.3" y="178" font-size="12" class="mu">ración</text><text lang="en" x="311.3" y="178" font-size="12" class="mu">ration</text><text x="512.4" y="178" text-anchor="end" font-size="15" font-weight="700">$ 4,481/t</text><rect x="528.4" y="30" width="199.6" height="64" rx="10" fill="var(--b7)" opacity=".9"/><text lang="es" x="540.4" y="56" font-size="16" font-weight="700" fill="#fff">Finalización</text><text lang="en" x="540.4" y="56" font-size="16" font-weight="700" fill="#fff">Finishing</text><text lang="es" x="540.4" y="80" font-size="13" fill="#fff">32 días · 474→520 kg</text><text lang="en" x="540.4" y="80" font-size="13" fill="#fff">32 days · 474→520 kg</text><text lang="es" x="540.4" y="124" font-size="12" class="mu">forraje</text><text lang="en" x="540.4" y="124" font-size="12" class="mu">forage</text><rect x="592.4" y="114" width="113.6" height="10" rx="5" fill="var(--soft)"/><rect x="592.4" y="114" width="20.2" height="10" rx="5" fill="var(--b7)"/><text x="716.0" y="124" text-anchor="end" font-size="12" font-weight="700">8 %</text><text lang="es" x="540.4" y="152" font-size="12" class="mu">ganancia</text><text lang="en" x="540.4" y="152" font-size="12" class="mu">gain</text><text x="716.0" y="152" text-anchor="end" font-size="15" font-weight="700">1.45 kg/d</text><text lang="es" x="540.4" y="178" font-size="12" class="mu">ración</text><text lang="en" x="540.4" y="178" font-size="12" class="mu">ration</text><text x="716.0" y="178" text-anchor="end" font-size="15" font-weight="700">$ 5,643/t</text><line class="ln" x1="30" x2="730" y1="200" y2="200"/><line class="ln" x1="30.0" x2="30.0" y1="196" y2="204"/><text x="30.0" y="220" text-anchor="middle" font-size="11.5" class="mu">0</text><line class="ln" x1="93.6" x2="93.6" y1="196" y2="204"/><text x="93.6" y="220" text-anchor="middle" font-size="11.5" class="mu">10</text><line class="ln" x1="157.3" x2="157.3" y1="196" y2="204"/><text x="157.3" y="220" text-anchor="middle" font-size="11.5" class="mu">20</text><line class="ln" x1="220.9" x2="220.9" y1="196" y2="204"/><text x="220.9" y="220" text-anchor="middle" font-size="11.5" class="mu">30</text><line class="ln" x1="284.5" x2="284.5" y1="196" y2="204"/><text x="284.5" y="220" text-anchor="middle" font-size="11.5" class="mu">40</text><line class="ln" x1="348.2" x2="348.2" y1="196" y2="204"/><text x="348.2" y="220" text-anchor="middle" font-size="11.5" class="mu">50</text><line class="ln" x1="411.8" x2="411.8" y1="196" y2="204"/><text x="411.8" y="220" text-anchor="middle" font-size="11.5" class="mu">60</text><line class="ln" x1="475.5" x2="475.5" y1="196" y2="204"/><text x="475.5" y="220" text-anchor="middle" font-size="11.5" class="mu">70</text><line class="ln" x1="539.1" x2="539.1" y1="196" y2="204"/><text x="539.1" y="220" text-anchor="middle" font-size="11.5" class="mu">80</text><line class="ln" x1="602.7" x2="602.7" y1="196" y2="204"/><text x="602.7" y="220" text-anchor="middle" font-size="11.5" class="mu">90</text><line class="ln" x1="666.4" x2="666.4" y1="196" y2="204"/><text x="666.4" y="220" text-anchor="middle" font-size="11.5" class="mu">100</text><line class="ln" x1="730.0" x2="730.0" y1="196" y2="204"/><text x="730.0" y="220" text-anchor="middle" font-size="11.5" class="mu">110</text><text lang="es" x="30" y="242" font-size="12.5" class="mu">días en corral · 380 → 520 kg en 110 días (1.27 kg/d de promedio)</text><text lang="en" x="30" y="242" font-size="12.5" class="mu">days on feed · 380 → 520 kg in 110 days (1.27 kg/d on average)</text></svg><figcaption><span class="fn"></span><span lang="es"><b>El programa de un vistazo.</b> Al bajar el forraje sube la ganancia, pero también el costo de la ración. Datos del programa del caso.</span><span lang="en"><b>The program at a glance.</b> As forage drops, gain rises, but so does the ration cost. Data from the case program.</span></figcaption></figure>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué la ganancia del programa es menor que la meta?</span><span class="bt" lang="en">Why is the program’s gain lower than the target?</span>
+    <p lang="es">Porque la recepción, con 34 % de forraje, gana menos (1.08 kg/d) y porque en cada fase la app hace crecer al animal con la ganancia que <b>de verdad</b> permite la ración, día a día. El promedio de los 110 días es 1.27 kg/d. Por la misma razón el costo por kilo del programa ($31.40) es mayor que el de la ración del Bloque 7 ($25.93), calculada para el torete de 380 kg: la finalización es más cara y el animal pesado convierte peor.</p>
+    <p lang="en">Because receiving, with 34 % forage, gains less (1.08 kg/d) and because in every phase the app grows the animal at the gain the ration <b>really</b> allows, day by day. The 110-day average is 1.27 kg/d. For the same reason the program’s cost per kilo ($31.40) is higher than that of the Block 7 ration ($25.93), computed for the 380 kg bull: finishing is dearer and the heavier animal converts worse.</p></div>
+
+  <h3 id="b8-curva" data-n="8.2"><span lang="es">La curva de crecimiento</span><span lang="en">The growth curve</span></h3>
+  <figure data-fig="curva">
+    <figcaption><span class="fn"></span><span lang="es"><b>Curva de crecimiento.</b> Las líneas punteadas marcan el cambio de ración.</span><span lang="en"><b>Growth curve.</b> Dashed lines mark the ration changes.</span></figcaption>
+  </figure>
+
+  <h3 id="b8-economia" data-n="8.3"><span lang="es">La economía del lote</span><span lang="en">Batch economics</span></h3>
+  <figure data-fig="fases" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>Economía del lote y resumen por fase.</b></span><span lang="en"><b>Batch economics and phase summary.</b></span></figcaption>
+    <ol class="legend"><li><span lang="es"><span class="ui">⬇ Descargar programa (CSV)</span> para abrirlo en Excel.</span><span lang="en"><span class="ui">⬇ Download program (CSV)</span> to open it in Excel.</span></li></ol>
+  </figure>
+  <div class="versus">
+    <div class="s"><span lang="es">Compra + alimento + otros</span><span lang="en">Purchase + feed + other</span><b>$ 8,684,650</b></div>
+    <div class="arrow">→</div>
+    <div class="s win"><span lang="es">Venta de 300 toretes de 520 kg</span><span lang="en">Sale of 300 bulls at 520 kg</span><b>$ 9,049,594</b></div>
+  </div>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">El programa tarda <b>110 días</b> de 380 a 520 kg. Cada torete come 950 kg de materia seca, que cuestan <b>$4,399</b>. La utilidad es de <b>$1,216 por cabeza</b> y <b>$364,943</b> para el lote. El <b>precio de equilibrio</b> es $55.66: si el kilo en pie baja de ahí, el lote pierde dinero. Con un margen de apenas $2.34 por kilo sobre el equilibrio, conviene cerrar la venta antes de comprar.</p>
+    <p lang="en">The program takes <b>110 days</b> from 380 to 520 kg. Each bull eats 950 kg of dry matter, costing <b>$4,399</b>. Profit is <b>$1,216 per head</b> and <b>$364,943</b> for the lot. The <b>break-even price</b> is $55.66: if live weight sells below that, the lot loses money. With a margin of only $2.34 per kilo over break-even, it pays to agree the sale before buying.</p></div>
+</section>
+
+<!-- ============================ 9 · TABLERO ============================ -->
+<section class="chap" id="b9" data-toc="9" style="--c:var(--b9)">
+  <div class="chap-head"><span class="big">9</span>
+    <div class="eyebrow" lang="es">Bloque 9 · Tablero</div><div class="eyebrow" lang="en">Block 9 · Dashboard</div>
+    <h2 lang="es">Tablero de resultados</h2><h2 lang="en">Results dashboard</h2>
+    <p lang="es">Todos los números que importan en una sola vista y en gráficas: lo que logra la ración, la ganancia que deja más dinero, el costo en cada región y el riesgo del precio del grano.</p>
+    <p lang="en">Every number that matters in one view and in charts: what the ration achieves, the most profitable gain, the cost in each region and the grain-price risk.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 42h36"/><rect x="9" y="26" width="6" height="12"/><rect x="21" y="18" width="6" height="20"/><rect x="33" y="10" width="6" height="28"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b9-param" data-n="9.1"><span lang="es">Parámetros logrados</span><span lang="en">Achieved performance</span></h3>
+  <p lang="es">La tabla pone lado a lado la <b>ración actual</b> y el <b>programa completo</b> con los cuatro indicadores clásicos de una engorda.</p>
+  <p lang="en">The table sets the <b>current ration</b> beside the <b>whole program</b> with the four classic feedlot indicators.</p>
+  <figure data-fig="parametros">
+    <figcaption><span class="fn"></span><span lang="es"><b>Parámetros logrados.</b> Cada indicador tiene su <b>?</b> con la escala de decisión.</span><span lang="en"><b>Achieved performance.</b> Each indicator has its <b>?</b> with the decision scale.</span></figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Indicador</th><th lang="en">Indicator</th><th lang="es">Cómo se calcula</th><th lang="en">How it is computed</th><th class="r" lang="es">Ración</th><th class="r" lang="en">Ration</th><th class="r" lang="es">Programa</th><th class="r" lang="en">Program</th></tr></thead>
+    <tbody>
+      <tr><td lang="es"><b>Ganancia diaria (GDP)</b></td><td lang="en"><b>Average daily gain (ADG)</b></td><td lang="es">kg ganados ÷ días</td><td lang="en">kg gained ÷ days</td><td class="r">1.35</td><td class="r">1.27</td></tr>
+      <tr><td lang="es"><b>Eficiencia alimenticia</b></td><td lang="en"><b>Feed efficiency</b></td><td lang="es">ganancia ÷ alimento (más alto, mejor)</td><td lang="en">gain ÷ feed (higher is better)</td><td class="r">0.174</td><td class="r">0.147</td></tr>
+      <tr><td lang="es"><b>Conversión alimenticia</b></td><td lang="en"><b>Feed conversion</b></td><td lang="es">alimento ÷ ganancia (más bajo, mejor)</td><td lang="en">feed ÷ gain (lower is better)</td><td class="r">5.74</td><td class="r">6.78</td></tr>
+      <tr><td lang="es"><b>Beneficio : costo</b></td><td lang="en"><b>Benefit : cost</b></td><td lang="es">lo que entra ÷ lo que sale (mayor que 1 = gana)</td><td lang="en">money in ÷ money out (over 1 = profit)</td><td class="r">1.78</td><td class="r">1.04</td></tr>
+    </tbody></table></div>
+  <div class="box why"><span class="bi">?</span><span class="bt" lang="es">¿Por qué dos relaciones beneficio : costo tan distintas?</span><span class="bt" lang="en">Why two such different benefit : cost ratios?</span>
+    <p lang="es">La de la ración compara el valor de lo que el animal gana en un día con lo que cuesta alimentarlo ese día: 1.78 dice que cada peso de alimento y manejo produce $1.78 de carne. La del programa incluye además la <b>compra del animal</b>, que es la mayor inversión: 1.04 es la rentabilidad real del negocio completo. La app muestra también el <b>valor agregado</b> (venta menos compra, entre alimento y otros costos): 1.23.</p>
+    <p lang="en">The ration ratio compares the value of what the animal gains in a day with what feeding it costs that day: 1.78 says each peso of feed and management produces $1.78 of beef. The program ratio also includes <b>buying the animal</b>, the biggest investment: 1.04 is the real return on the whole business. The app also shows the <b>value added</b> (sale minus purchase, over feed and other costs): 1.23.</p></div>
+
+  <h3 id="b9-optimo" data-n="9.2"><span lang="es">¿Qué ganancia deja más dinero?</span><span lang="en">Which gain pays best?</span></h3>
+  <p lang="es">Ganar más rápido no siempre conviene: cada kilo extra exige una ración más cara. La app formula la ración para varias metas de ganancia y dibuja dos curvas: el <b>margen por animal al día</b> (verde) y el <b>costo de alimento por kilo ganado</b> (terracota). El círculo marca el óptimo económico.</p>
+  <p lang="en">Faster gain does not always pay: each extra kilo demands a dearer ration. The app formulates for several gain targets and plots two curves: the <b>margin per head per day</b> (green) and the <b>feed cost per kilo gained</b> (terracotta). The circle marks the economic optimum.</p>
+  <figure data-fig="optimo">
+    <figcaption><span class="fn"></span><span lang="es"><b>La ganancia óptima.</b> La línea punteada es tu ración.</span><span lang="en"><b>The optimal gain.</b> The dashed line is your ration.</span></figcaption>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Con nuestros precios, la mayor utilidad diaria se logra con <b>1.40 kg/d</b>: $36.44 por animal al día contra $34.30 de nuestra meta de 1.35. La diferencia es pequeña: la meta ya está cerca del óptimo y la app lo dice con una palomita.</p>
+    <p lang="en">At our prices, the highest daily profit comes at <b>1.40 kg/d</b>: $36.44 per head per day against $34.30 at our 1.35 target. The gap is small: the target is already close to the optimum and the app says so with a tick.</p></div>
+
+  <h3 id="b9-regiones" data-n="9.3"><span lang="es">El mismo animal en cada región</span><span lang="en">The same animal in every region</span></h3>
+  <p lang="es">La app repite tu formulación en las 9 regiones, con el clima de la temporada, tu sombra y los precios estimados de cada una. Si el clima de una región no permite tu meta, usa la ganancia máxima posible allí y la marca con un asterisco.</p>
+  <p lang="en">The app repeats your formulation in all 9 regions, with the season’s climate, your shade and each region’s estimated prices. If a region’s climate does not allow your target, it uses the maximum feasible gain there and marks it with an asterisk.</p>
+  <figure data-fig="regiones">
+    <figcaption><span class="fn"></span><span lang="es"><b>Costo de alimento por kilo ganado en cada región</b>, temporada seca. Tu región va en terracota.</span><span lang="en"><b>Feed cost per kilo gained in each region</b>, dry season. Your region is in terracotta.</span></figcaption>
+  </figure>
+  
+
+  <h3 id="b9-sensib" data-n="9.4"><span lang="es">Si cambia el precio del grano</span><span lang="en">If the grain price changes</span></h3>
+  <p lang="es">La gráfica mueve el precio del ingrediente que más pesa en el costo (en el caso, el sorgo) de 70 % a 130 % del actual y reformula en cada punto. La línea verde es el costo por tonelada; la terracota, cuánto sorgo queda en la ración.</p>
+  <p lang="en">The chart moves the price of the ingredient that weighs most in the cost (sorghum, in our case) from 70 % to 130 % of today’s and reformulates at each point. The green line is the cost per tonne; the terracotta one, how much sorghum stays in the ration.</p>
+  <figure data-fig="sensib">
+    <figcaption><span class="fn"></span><span lang="es"><b>Sensibilidad al precio del sorgo</b> y en qué se va el dinero.</span><span lang="en"><b>Sorghum-price sensitivity</b> and where the money goes.</span></figcaption>
+  </figure>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo · cómo leerla</span><span class="bt" lang="en">Tip · how to read it</span>
+    <p lang="es">Mientras la línea terracota sea plana, el sorgo es insustituible y su precio pega de lleno en tu costo: es el ingrediente para comprar por adelantado o con contrato. Cuando la línea cae, la app ya encontró con qué reemplazarlo. En el caso, desde 10 % de aumento empieza a sustituirlo con ensilaje, melaza y DDGS, y a partir de 25 % lo cambia por completo por maíz rolado.</p>
+    <p lang="en">While the terracotta line is flat, sorghum is irreplaceable and its price hits your cost in full: that is the ingredient to buy ahead or under contract. When the line drops, the app has found a substitute. In our case, from a 10 % rise it starts replacing it with silage, molasses and DDGS, and from 25 % it switches entirely to dry-rolled corn.</p></div>
+
+  <h3 id="b9-ref" data-n="9.5"><span lang="es">Compárate con engordas publicadas</span><span lang="en">Compare yourself with published feedlots</span></h3>
+  <p lang="es">Al final del tablero hay una tabla con la ganancia, el consumo, la eficiencia, la conversión y el beneficio : costo de engordas experimentales publicadas en México y en el sur de Estados Unidos, del CIPES de Sonora a Sinaloa, Zacatecas y El Centro, California. Sirve para saber si tus números son razonables.</p>
+  <p lang="en">At the end of the dashboard is a table with gain, intake, efficiency, conversion and benefit : cost from experimental feedlots published in Mexico and the southern United States, from CIPES in Sonora to Sinaloa, Zacatecas and El Centro, California. Use it to check that your numbers are reasonable.</p>
+  <figure data-fig="referencias">
+    <figcaption><span class="fn"></span><span lang="es"><b>Parámetros publicados en engordas de referencia.</b></span><span lang="en"><b>Published performance from reference feedlots.</b></span></figcaption>
+  </figure>
+</section>
+
+<!-- ============================ 10 · SOSTENIBILIDAD ============================ -->
+<section class="chap" id="b10" data-toc="10" style="--c:var(--b10)">
+  <div class="chap-head"><span class="big">10</span>
+    <div class="eyebrow" lang="es">Bloque 10 · Sostenibilidad</div><div class="eyebrow" lang="en">Block 10 · Sustainability</div>
+    <h2 lang="es">Huella ambiental y producción sostenible</h2><h2 lang="en">Environmental footprint and sustainable production</h2>
+    <p lang="es">Producir carne usa agua y suelo y deja gases, nutrientes y residuos. Aquí ves cuánto, y buscas el equilibrio entre utilidad y ambiente.</p>
+    <p lang="en">Producing beef uses water and land and leaves gases, nutrients and waste. Here you see how much, and look for the balance between profit and the environment.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 38c0-16 12-28 30-28 0 18-12 30-28 30"/><path d="M10 38l14-14"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <p lang="es">RatioBos usa la palabra <b>sostenibilidad</b> como la define la FAO: producir hoy sin comprometer la capacidad de producir mañana, en sus tres dimensiones a la vez: <b>ambiental</b>, <b>económica</b> y <b>social</b>. Por eso este bloque no busca la ración «más verde» a cualquier precio, sino la que reduce la huella sin dejar de ser rentable.</p>
+  <p lang="en">RatioBos uses the word <b>sustainability</b> as FAO defines it: producing today without compromising the capacity to produce tomorrow, in its three dimensions at once: <b>environmental</b>, <b>economic</b> and <b>social</b>. That is why this block does not seek the “greenest” ration at any price, but the one that cuts the footprint and still pays.</p>
+
+  <h3 id="b10-semaforo" data-n="10.1"><span lang="es">El semáforo de sostenibilidad</span><span lang="en">The sustainability traffic light</span></h3>
+  <figure data-fig="semaforo">
+    <figcaption><span class="fn"></span><span lang="es"><b>Semáforo de sostenibilidad, gases y recursos.</b></span><span lang="en"><b>Sustainability traffic light, gases and resources.</b></span></figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Luz</th><th lang="en">Light</th><th lang="es">Qué mide</th><th lang="en">What it measures</th><th class="r" lang="es">En el caso</th><th class="r" lang="en">In our case</th></tr></thead>
+    <tbody>
+      <tr><td lang="es"><b>Gases de efecto invernadero</b></td><td lang="en"><b>Greenhouse gases</b></td><td lang="es">Metano del rumen y del estiércol, óxido nitroso y la producción del alimento, en CO₂ equivalente por kg ganado.</td><td lang="en">Methane from the rumen and manure, nitrous oxide and feed production, in CO₂ equivalent per kg gained.</td><td class="r">5.1 kg</td></tr>
+      <tr><td lang="es"><b>Agua</b></td><td lang="en"><b>Water</b></td><td lang="es">Agua de lluvia y de riego que costó producir el alimento, por kg ganado.</td><td lang="en">Rain and irrigation water it took to grow the feed, per kg gained.</td><td class="r">16.8 m³</td></tr>
+      <tr><td lang="es"><b>Amoniaco al aire</b></td><td lang="en"><b>Ammonia to air</b></td><td lang="es">Nitrógeno que se evapora del estiércol: olor, polvo fino y lluvia ácida.</td><td lang="en">Nitrogen volatilised from manure: odour, fine dust and acid rain.</td><td class="r">47 g/d</td></tr>
+      <tr><td lang="es"><b>Nitratos al agua</b></td><td lang="en"><b>Nitrates to water</b></td><td lang="es">Nitrógeno que puede lavarse hacia pozos y ríos en clima húmedo.</td><td lang="en">Nitrogen that can leach to wells and rivers in a wet climate.</td><td class="r">31 g/d</td></tr>
+      <tr><td lang="es"><b>Medicamentos</b></td><td lang="en"><b>Medicines</b></td><td lang="es">Si usas antibióticos de importancia médica en humanos (clasificación de la OMS).</td><td lang="en">Whether you use antibiotics important in human medicine (WHO list).</td><td class="r" lang="es">ninguno</td><td class="r" lang="en">none</td></tr>
+    </tbody></table></div>
+
+  <h3 id="b10-gei" data-n="10.2"><span lang="es">Gases y recursos</span><span lang="en">Gases and resources</span></h3>
+  <p lang="es">Las barras de gases separan de dónde viene cada kilo de CO₂ equivalente. En el caso, la <b>producción del alimento</b> (3.08 kg al día) pesa más que el <b>metano del rumen</b> (2.35 kg): en una ración alta en grano el rumen produce poco metano, pero el grano trae su propia huella del campo. Junto, cuatro tarjetas dan el agua de bebida, la huella hídrica del alimento, la tierra para producirlo y la superficie para aplicar el estiércol.</p>
+  <p lang="en">The gas bars split where each kilo of CO₂ equivalent comes from. In our case <b>feed production</b> (3.08 kg a day) outweighs <b>rumen methane</b> (2.35 kg): on a high-grain ration the rumen makes little methane, but the grain carries its own footprint from the field. Beside it, four cards give drinking water, the feed’s water footprint, the land to grow it and the area to spread the manure.</p>
+  <figure class="svgfig"><svg viewBox="0 0 760 150" role="img"><text lang="es" x="30" y="24" font-size="15" font-weight="700">6.95 kg de CO₂e por animal al día</text><text lang="en" x="30" y="24" font-size="15" font-weight="700">6.95 kg CO₂e per head per day</text><rect x="30.0" y="38" width="308.2" height="34" fill="var(--b5)" opacity=".9"/><text x="185.1" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">44 %</text><rect x="340.2" y="38" width="234.7" height="34" fill="var(--b7)" opacity=".9"/><text x="458.6" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">34 %</text><rect x="576.9" y="38" width="142.0" height="34" fill="var(--b4)" opacity=".9"/><text x="648.9" y="60" text-anchor="middle" font-size="13" font-weight="700" fill="#fff">21 %</text><rect x="720.9" y="38" width="7.1" height="34" fill="var(--b11)" opacity=".9"/><rect x="30" y="88" width="12" height="12" rx="2" fill="var(--b5)"/><text lang="es" x="50" y="98" font-size="13">Producción del alimento · 3.08 kg</text><text lang="en" x="50" y="98" font-size="13">Feed production · 3.08 kg</text><rect x="390" y="88" width="12" height="12" rx="2" fill="var(--b7)"/><text lang="es" x="410" y="98" font-size="13">Metano del rumen · 2.35 kg</text><text lang="en" x="410" y="98" font-size="13">Rumen methane · 2.35 kg</text><rect x="30" y="112" width="12" height="12" rx="2" fill="var(--b4)"/><text lang="es" x="50" y="122" font-size="13">Óxido nitroso del estiércol · 1.43 kg</text><text lang="en" x="50" y="122" font-size="13">Manure nitrous oxide · 1.43 kg</text><rect x="390" y="112" width="12" height="12" rx="2" fill="var(--b11)"/><text lang="es" x="410" y="122" font-size="13">Metano del estiércol · 0.09 kg</text><text lang="en" x="410" y="122" font-size="13">Manure methane · 0.09 kg</text></svg><figcaption><span class="fn"></span><span lang="es"><b>De dónde vienen los gases.</b> En una ración alta en grano, el campo que produjo el alimento pesa más que el rumen. Datos del caso.</span><span lang="en"><b>Where the gases come from.</b> On a high-grain ration, the field that grew the feed weighs more than the rumen. Data from the case.</span></figcaption></figure>
+  <figure data-fig="huella">
+    <figcaption><span class="fn"></span><span lang="es"><b>Huella completa</b> por animal al día, por kg ganado y para todo el lote.</span><span lang="en"><b>Full footprint</b> per head per day, per kg gained and for the whole lot.</span></figcaption>
+  </figure>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Nuestros 300 toretes, en 110 días, producen unas <b>397 toneladas de heces frescas</b> con 4.3 t de nitrógeno y 0.6 t de fósforo. Para aplicarlas sin contaminar se necesitan <b>24.9 hectáreas</b> de cultivo (límite de 170 kg de N o 25 kg de P por hectárea al año). Si no las tienes, hay que compostear el estiércol o venderlo a quien sí.</p>
+    <p lang="en">Our 300 bulls, over 110 days, produce about <b>397 tonnes of fresh faeces</b> with 4.3 t of nitrogen and 0.6 t of phosphorus. To spread it without polluting takes <b>24.9 hectares</b> of cropland (limit of 170 kg N or 25 kg P per hectare a year). If you do not have them, compost the manure or sell it to someone who does.</p></div>
+
+  <h3 id="b10-medic" data-n="10.3"><span lang="es">Medicamentos por categoría</span><span lang="en">Medicines by category</span></h3>
+  <p lang="es">Con lo que capturaste en el Bloque 4, la app calcula cuánto de cada producto recibe cada animal y todo el lote, y lo clasifica: ionóforos (sin importancia en medicina humana), implantes hormonales, antiparasitarios, vacunas y, si los usas, antibióticos según la lista de la OMS y β-agonistas.</p>
+  <p lang="en">From what you entered in Block 4, the app works out how much of each product each animal and the whole lot receive, and classifies it: ionophores (no importance in human medicine), hormonal implants, antiparasitics, vaccines and, if used, antibiotics by WHO category and β-agonists.</p>
+  <figure data-fig="medic">
+    <figcaption><span class="fn"></span><span lang="es"><b>Medicamentos y aditivos por animal</b>, 110 días.</span><span lang="en"><b>Medicines and additives per animal</b>, 110 days.</span></figcaption>
+  </figure>
+
+  <h3 id="b10-frontera" data-n="10.4"><span lang="es">Optimizar costo y ambiente a la vez</span><span lang="en">Optimising cost and environment together</span></h3>
+  <p lang="es">El botón <span class="ui pri">⚙ Calcular la frontera costo–huella</span> formula varias veces sumando al precio de cada ingrediente un <b>precio interno del carbono</b> por sus emisiones, de $0 a $20,000 por tonelada de CO₂e. Resultado: una curva con las mejores raciones posibles; ninguna otra es a la vez más barata y más limpia. El punto de <b>equilibrio</b> es el que más huella quita por cada peso extra.</p>
+  <p lang="en">The <span class="ui pri">⚙ Compute the cost–footprint frontier</span> button formulates several times, adding to each ingredient’s price an <b>internal carbon price</b> for its emissions, from $0 to $20,000 per tonne of CO₂e. The result is a curve of the best possible rations; no other is both cheaper and cleaner. The <b>balance</b> point is the one that removes the most footprint per extra peso.</p>
+  <figure data-fig="frontera" data-marks="0">
+    <figcaption><span class="fn"></span><span lang="es"><b>Frontera costo–huella.</b></span><span lang="en"><b>Cost–footprint frontier.</b></span></figcaption>
+    <ol class="legend"><li><span lang="es"><span class="ui">Usar la ración de equilibrio</span> la manda al Bloque 7 como tu ración.</span><span lang="en"><span class="ui">Use the balance ration</span> sends it to Block 7 as your ration.</span></li></ol>
+  </figure>
+  <div class="versus">
+    <div class="s"><span lang="es">Mínimo costo</span><span lang="en">Least cost</span><b>$ 25.93 · 5.15 kg</b></div>
+    <div class="arrow">→</div>
+    <div class="s win"><span lang="es">Equilibrio · $5,000/t CO₂e</span><span lang="en">Balance · $5,000/t CO₂e</span><b>$ 26.58 · 4.96 kg</b></div>
+  </div>
+  <div class="box farm"><span class="bi">◆</span><span class="bt" lang="es">En el corral</span><span class="bt" lang="en">In the pen</span>
+    <p lang="es">Con un precio interno de $5,000 por tonelada, la app cambia parte del sorgo por melaza y DDGS: la huella baja <b>3.6 %</b> (de 5.15 a 4.96 kg de CO₂e por kilo ganado) y el kilo ganado cuesta <b>2.5 %</b> más ($26.58). Cada tonelada de CO₂e evitada cuesta unos $3,500, del orden del costo social del carbono. Es una decisión de negocio: conviene si tu comprador paga una prima por carne de menor huella.</p>
+    <p lang="en">With an internal price of $5,000 per tonne, the app swaps part of the sorghum for molasses and DDGS: the footprint falls <b>3.6 %</b> (from 5.15 to 4.96 kg CO₂e per kilo gained) and each kilo gained costs <b>2.5 %</b> more ($26.58). Each tonne of CO₂e avoided costs about $3,500, in the range of the social cost of carbon. It is a business decision: worth it if your buyer pays a premium for lower-footprint beef.</p></div>
+</section>
+
+<!-- ============================ 11 · INFORME ============================ -->
+<section class="chap" id="b11" data-toc="11" style="--c:var(--b11)">
+  <div class="chap-head"><span class="big">11</span>
+    <div class="eyebrow" lang="es">Bloque 11 · Informe</div><div class="eyebrow" lang="en">Block 11 · Report</div>
+    <h2 lang="es">Informe y exportación</h2><h2 lang="en">Report and export</h2>
+    <p lang="es">Un reporte para tu asesor, tablas para Excel y un archivo con todo tu proyecto.</p>
+    <p lang="en">A report for your advisor, tables for Excel and a file with your whole project.</p>
+    <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4h17l9 9v31H12z"/><path d="M29 4v9h9M18 24h14M18 31h14M18 38h9"/></svg>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="b11-informe" data-n="11.1"><span lang="es">El informe</span><span lang="en">The report</span></h3>
+  <p lang="es">Un resumen en una frase, la fórmula en materia seca, tal como se ofrece y en kilos por tonelada de mezcla, con el nombre del corral, el rancho y la fecha. <span class="ui pri">🖨 Imprimir / PDF</span> lo saca en papel o lo guarda en PDF para mandarlo por WhatsApp o correo.</p>
+  <p lang="en">A one-sentence summary and the formula on a dry-matter basis, as fed and in kilos per tonne of mix, with the pen, ranch and date. <span class="ui pri">🖨 Print / PDF</span> prints it or saves it as a PDF to send by WhatsApp or e-mail.</p>
+  <figure data-fig="informe">
+    <figcaption><span class="fn"></span><span lang="es"><b>Informe de la ración.</b></span><span lang="en"><b>Ration report.</b></span></figcaption>
+  </figure>
+
+  <h3 id="b11-exportar" data-n="11.2"><span lang="es">Exportar y guardar</span><span lang="en">Export and save</span></h3>
+  <div class="tbl"><table>
+    <thead><tr><th lang="es">Botón</th><th lang="en">Button</th><th lang="es">Qué hace</th><th lang="en">What it does</th></tr></thead>
+    <tbody>
+      <tr><td><span class="ui" lang="es">⬇ Fórmula (CSV)</span><span class="ui" lang="en">⬇ Formula (CSV)</span></td><td lang="es">La fórmula con precios y aporte al costo, para Excel.</td><td lang="en">The formula with prices and cost share, for Excel.</td></tr>
+      <tr><td><span class="ui" lang="es">⬇ Nutrientes (CSV)</span><span class="ui" lang="en">⬇ Nutrients (CSV)</span></td><td lang="es">El aporte de cada nutriente contra su mínimo y máximo.</td><td lang="en">Each nutrient’s supply against its minimum and maximum.</td></tr>
+      <tr><td><span class="ui" lang="es">💾 Guardar proyecto (.json)</span><span class="ui" lang="en">💾 Save project (.json)</span></td><td lang="es">Todo: animal, región, ingredientes, precios, resultado y programa. Ábrelo en otra computadora con <span class="ui">📂 Abrir proyecto</span>.</td><td lang="en">Everything: animal, region, ingredients, prices, result and program. Open it on another computer with <span class="ui">📂 Open project</span>.</td></tr>
+      <tr><td><span class="ui" lang="es">Reiniciar todo</span><span class="ui" lang="en">Reset everything</span></td><td lang="es">Vuelve a los valores de fábrica. Guarda antes tu proyecto.</td><td lang="en">Back to factory values. Save your project first.</td></tr>
+    </tbody></table></div>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo · un archivo por corral y por fecha</span><span class="bt" lang="en">Tip · one file per pen and date</span>
+    <p lang="es">Nombra el proyecto con el corral y la fecha (por ejemplo, «Corral 4 · 2026-10-06»). Al terminar la engorda podrás comparar lo que la app predijo con lo que pesaron tus animales: es la mejor forma de afinar los datos de tu rancho.</p>
+    <p lang="en">Name the project with the pen and date (for example, “Pen 4 · 2026-10-06”). When the feeding period ends you can compare what the app predicted with what your animals weighed: the best way to fine-tune your ranch’s data.</p></div>
+</section>
+
+<!-- ============================ CONSULTA · EN EL CORRAL ============================ -->
+<section class="chap" id="corral" data-toc="A" style="--c:var(--pri)">
+  <div class="chap-head"><span class="big">A</span>
+    <div class="eyebrow" lang="es">Consulta</div><div class="eyebrow" lang="en">Reference</div>
+    <h2 lang="es">Del papel al comedero</h2><h2 lang="en">From paper to feed bunk</h2>
+    <p lang="es">La mejor ración no sirve si se mezcla mal o se cambia de golpe. Cinco minutos de revisión evitan una carga equivocada y un brote de acidosis.</p>
+    <p lang="en">The best ration is worthless if it is mixed badly or changed overnight. Five minutes of checking prevent a wrong load and an acidosis outbreak.</p>
+    <span class="rule"></span></div>
+  <nav class="inchap"></nav>
+
+  <h3 id="antes" data-n="A.1"><span lang="es">Antes de cargar el carro</span><span lang="en">Before loading the wagon</span></h3>
+  <ul class="check">
+    <li lang="es">Los <b>precios</b> del Bloque 6 son de esta semana, puestos en el rancho.</li>
+    <li lang="en">The <b>prices</b> in Block 6 are this week’s, delivered to the ranch.</li>
+    <li lang="es">La <b>materia seca</b> del ensilaje está al día: cambia con cada silo y con la lluvia. Una prueba con microondas o con un horno basta.</li>
+    <li lang="en">The silage <b>dry matter</b> is up to date: it changes with every silo and with rain. A microwave or oven test is enough.</li>
+    <li lang="es">El <b>peso</b> y la <b>meta</b> del Bloque 3 son los del lote que va a comer esta ración.</li>
+    <li lang="en">The <b>weight</b> and <b>target</b> in Block 3 are those of the lot that will eat this ration.</li>
+    <li lang="es">Todos los ingredientes de la fórmula están <b>en bodega</b>, en la cantidad necesaria.</li>
+    <li lang="en">Every ingredient in the formula is <b>in stock</b>, in the amount needed.</li>
+    <li lang="es">La <b>carga del carro</b> del Bloque 4 es la de tu mezclador y la báscula está calibrada.</li>
+    <li lang="en">The <b>wagon load</b> in Block 4 matches your mixer, and the scale is calibrated.</li>
+    <li lang="es">Urea, sal, minerales y premezcla están <b>premezclados</b> con un poco de grano molido.</li>
+    <li lang="en">Urea, salt, minerals and premix are <b>pre-blended</b> with a little ground grain.</li>
+    <li lang="es">Tu <b>médico veterinario zootecnista</b> o nutriólogo revisó el informe. RatioBos es una herramienta de apoyo, no un sustituto.</li>
+    <li lang="en">Your <b>veterinarian</b> or nutritionist has reviewed the report. RatioBos is a support tool, not a substitute.</li>
+  </ul>
+
+  <h3 id="adaptar" data-n="A.2"><span lang="es">Cambia de ración poco a poco</span><span lang="en">Change rations gradually</span></h3>
+  <p lang="es">El rumen necesita tiempo para cambiar sus microbios del forraje al grano. Por eso el programa empieza con una ración de recepción con 30–45 % de forraje. Entre una ración y la siguiente, haz el cambio en <b>3 a 5 días</b>, mezclando ambas o subiendo el grano de a poco, y no subas el grano más de 10 puntos de una vez.</p>
+  <p lang="en">The rumen needs time to shift its microbes from forage to grain. That is why the program starts with a receiving ration of 30–45 % forage. Between one ration and the next, switch over <b>3 to 5 days</b>, blending both or raising grain step by step, and never raise grain by more than 10 points at once.</p>
+  <div class="box warn"><span class="bi">!</span><span class="bt" lang="es">Atención · señales de acidosis</span><span class="bt" lang="en">Caution · signs of acidosis</span>
+    <p lang="es">Heces líquidas y con burbujas, animales que dejan de comer, cojeras unos días después y consumo que sube y baja. Si las ves, regresa a la ración anterior y consulta a tu veterinario.</p>
+    <p lang="en">Loose, bubbly faeces, animals going off feed, lameness a few days later and intake that swings up and down. If you see them, go back to the previous ration and call your veterinarian.</p></div>
+
+  <h3 id="comedero" data-n="A.3"><span lang="es">Lee el comedero cada mañana</span><span lang="en">Read the bunk every morning</span></h3>
+  <p lang="es">El consumo real manda. Antes de la primera repartición, mira cuánto alimento sobró y ajusta la cantidad del día:</p>
+  <p lang="en">Actual intake rules. Before the first feeding, look at what is left and adjust the day’s amount:</p>
+  <div class="box rule"><span class="bi">→</span><span class="bt" lang="es">Regla de decisión · lectura de comedero</span><span class="bt" lang="en">Decision rule · bunk reading</span>
+    <table><tbody>
+      <tr><td><span class="badge bad" lang="es">Lamido, sin nada</span><span class="badge bad" lang="en">Licked clean</span></td><td lang="es">Sube 5 % la cantidad del día.</td><td lang="en">Raise the day’s amount 5 %.</td></tr>
+      <tr><td><span class="badge ok" lang="es">Migajas, una capa delgada</span><span class="badge ok" lang="en">Crumbs, a thin layer</span></td><td lang="es">Correcto. No cambies.</td><td lang="en">Right. No change.</td></tr>
+      <tr><td><span class="badge warn" lang="es">Sobra 5–10 %</span><span class="badge warn" lang="en">5–10 % left</span></td><td lang="es">Baja 5 %. Revisa si hay calor o un animal enfermo.</td><td lang="en">Cut 5 %. Check for heat or a sick animal.</td></tr>
+      <tr><td><span class="badge bad" lang="es">Sobra más de 10 %</span><span class="badge bad" lang="en">Over 10 % left</span></td><td lang="es">Baja 10 % y revisa la mezcla, el agua y la salud del corral.</td><td lang="en">Cut 10 % and check the mix, water and pen health.</td></tr>
+    </tbody></table></div>
+  <div class="box tip"><span class="bi">✓</span><span class="bt" lang="es">Consejo · cierra el ciclo</span><span class="bt" lang="en">Tip · close the loop</span>
+    <p lang="es">Cuando conozcas el consumo real de tu lote durante una o dos semanas, escríbelo en el Bloque 3 (<b>Consumo real de MS</b>). La app lo usará en lugar de su predicción y la ganancia esperada se ajustará a tu corral.</p>
+    <p lang="en">Once you know your lot’s actual intake over a week or two, enter it in Block 3 (<b>Actual DM intake</b>). The app will use it instead of its prediction, and the expected gain will match your pen.</p></div>
+</section>
+
+<!-- ============================ PROBLEMAS FRECUENTES ============================ -->
+<section class="chap" id="problemas" data-toc="B" style="--c:var(--pri)">
+  <div class="chap-head"><span class="big">B</span>
+    <div class="eyebrow" lang="es">Consulta</div><div class="eyebrow" lang="en">Reference</div>
+    <h2 lang="es">Problemas frecuentes</h2><h2 lang="en">Troubleshooting</h2>
+    <p lang="es">Las preguntas más comunes, con su causa y su solución.</p>
+    <p lang="en">The most common questions, with cause and fix.</p>
+    <span class="rule"></span></div>
+
+  <details><summary><span lang="es">Cambié un precio y el resultado desapareció.</span><span lang="en">I changed a price and the result disappeared.</span></summary>
+    <div><p lang="es">Es a propósito. Cualquier cambio en precios, ingredientes o requerimientos borra la fórmula anterior para que nunca mezcles con un resultado viejo. Vuelve a presionar <span class="ui pri">⚙ Formular</span>.</p><p lang="en">That is deliberate. Any change in prices, ingredients or requirements clears the previous formula so you never mix from a stale result. Press <span class="ui pri">⚙ Formulate</span> again.</p></div></details>
+  <details><summary><span lang="es">Aparece «Sin solución».</span><span lang="en">“No solution” appears.</span></summary>
+    <div><p lang="es">Sigue el diagrama de la <a href="#b7-sinsol">sección 7.7</a>. En animales en crecimiento, casi siempre basta con usar la ganancia máxima que propone la app.</p><p lang="en">Follow the chart in <a href="#b7-sinsol">section 7.7</a>. For growing animals, using the maximum gain the app proposes is almost always enough.</p></div></details>
+  <details><summary><span lang="es">La ganancia esperada es mayor que mi meta.</span><span lang="en">The expected gain is higher than my target.</span></summary>
+    <div><p lang="es">Pasa con metas bajas en engorda: el forraje está limitado a 8–15 %, así que la ración no puede diluirse más y el animal gana más de lo que pediste. Es buena noticia. Si quieres una ganancia moderada, usa el tipo <b>Becerros en desarrollo</b>, que admite más forraje.</p><p lang="en">It happens with low feedlot targets: forage is capped at 8–15 %, so the ration cannot be diluted further and the animal gains more than you asked. That is good news. For moderate gain, use the <b>Growing calves</b> type, which allows more forage.</p></div></details>
+  <details><summary><span lang="es">La ración no lleva el ingrediente que más uso.</span><span lang="en">The ration leaves out my main ingredient.</span></summary>
+    <div><p lang="es">A ese precio no conviene. Mira su <b>precio de entrada</b> en la sección 7.6. Si de todos modos quieres usarlo (por ejemplo, porque ya lo compraste), fija un mínimo en el Bloque 6.</p><p lang="en">At that price it does not pay. Check its <b>entry price</b> in section 7.6. If you want to use it anyway (because you have already bought it, say), set a minimum in Block 6.</p></div></details>
+  <details><summary><span lang="es">Los kilos del carro no suman lo que esperaba.</span><span lang="en">The wagon kilos are not what I expected.</span></summary>
+    <div><p lang="es">Revisa la <b>materia seca</b> de los ensilajes y forrajes verdes: un ensilaje capturado con 34 % de MS pesa casi el triple tal como se ofrece. Si tu silo tiene 28 %, cámbialo en el Bloque 5.</p><p lang="en">Check the <b>dry matter</b> of silages and fresh forages: a silage entered at 34 % DM weighs almost three times more as fed. If your silo is at 28 %, change it in Block 5.</p></div></details>
+  <details><summary><span lang="es">Abrí la app en otra computadora y no están mis datos.</span><span lang="en">I opened the app on another computer and my data is missing.</span></summary>
+    <div><p lang="es">Los datos se guardan en el navegador de cada computadora. Lleva tu proyecto con <span class="path" lang="es">Informe<i>›</i>Guardar proyecto</span><span class="path" lang="en">Report<i>›</i>Save project</span> y ábrelo allá con <span class="ui">📂 Abrir proyecto</span>.</p><p lang="en">Data is kept in each computer’s browser. Carry your project with the save button and open it there with <span class="ui">📂 Open project</span>.</p></div></details>
+  <details><summary><span lang="es">El ITH dice «emergencia» y mi ganado está bien.</span><span lang="en">The THI says “emergency” but my cattle are fine.</span></summary>
+    <div><p lang="es">La app usa el clima promedio de la región y temporada. Si tu rancho es más fresco (altura, viento, más sombra), corrige la temperatura y la humedad en <b>Ambiente que usa el modelo</b>, al final del Bloque 2.</p><p lang="en">The app uses the regional average for the season. If your ranch is cooler (altitude, wind, more shade), correct temperature and humidity under <b>Environment used by the model</b>, at the end of Block 2.</p></div></details>
+  <details><summary><span lang="es">¿Puedo formular para vacas en agostadero?</span><span lang="en">Can I formulate for cows on rangeland?</span></summary>
+    <div><p lang="es">Sí. Elige <b>Vacas gestantes</b> o <b>Vacas en lactación</b>, el sistema <b>Pastoreo</b> (plano o lomerío) en el Bloque 2 y captura el forraje del potrero como ingrediente, con su análisis. La app calculará qué suplemento le falta al pasto.</p><p lang="en">Yes. Choose <b>Pregnant cows</b> or <b>Lactating cows</b>, the <b>Grazing</b> system (flat or hilly) in Block 2, and enter the pasture forage as an ingredient, with its analysis. The app will work out what supplement the grass lacks.</p></div></details>
+</section>
+
+<!-- ============================ GLOSARIO ============================ -->
+<section class="chap" id="glosario" data-toc="C" style="--c:var(--pri)">
+  <div class="chap-head"><span class="big">C</span>
+    <div class="eyebrow" lang="es">Consulta</div><div class="eyebrow" lang="en">Reference</div>
+    <h2 lang="es">Glosario</h2><h2 lang="en">Glossary</h2>
+    <p lang="es">Las palabras técnicas de este instructivo, en lenguaje llano.</p>
+    <p lang="en">The technical words in this guide, in plain language.</p>
+    <span class="rule"></span></div>
+  <dl class="glos" id="glos"></dl>
+</section>
+
+<!-- ============================ UNA PÁGINA ============================ -->
+<section class="chap" id="rapido" data-toc="★" style="--c:var(--pri)">
+  <div class="quick">
+    <div class="qh">
+      <div><div class="eyebrow" lang="es">Para imprimir y pegar junto al carro mezclador</div><div class="eyebrow" lang="en">Print it and pin it by the mixer wagon</div>
+        <h2 lang="es">RatioBos en una página</h2><h2 lang="en">RatioBos on one page</h2></div>
+      <div class="qr"><div><b>hectortecumshe-ai.github.io/RatioBos</b><br><span lang="es">Escanea para abrir la app</span><span lang="en">Scan to open the app</span></div><div id="qr"><img src="instructivo/qr-app.svg" alt="QR: hectortecumshe-ai.github.io/RatioBos"></div></div>
+    </div>
+    <ol><li style="--c:var(--b1)"><i>1</i><div><b lang="es">Animal</b><b lang="en">Animal</b><span lang="es">Tipo de animal, biotipo (cruza, cebú…) y sexo.</span><span lang="en">Animal type, biotype (cross, zebu…) and sex.</span></div></li><li style="--c:var(--b2)"><i>2</i><div><b lang="es">Región</b><b lang="en">Region</b><span lang="es">Toca tu estado y la temporada. Revisa el ITH, la sombra y el piso.</span><span lang="en">Tap your state and season. Check THI, shade and floor.</span></div></li><li style="--c:var(--b3)"><i>3</i><div><b lang="es">Requerimientos</b><b lang="en">Requirements</b><span lang="es">Peso del lote y ganancia diaria objetivo.</span><span lang="en">Lot weight and daily gain target.</span></div></li><li style="--c:var(--b4)"><i>4</i><div><b lang="es">Manejo</b><b lang="en">Management</b><span lang="es">Implante, ionóforo, cabezas, carga del carro, compra y venta.</span><span lang="en">Implant, ionophore, head count, wagon load, buy and sell.</span></div></li><li style="--c:var(--b5)"><i>5</i><div><b lang="es">Ingredientes</b><b lang="en">Ingredients</b><span lang="es">Marca lo que hay. Corrige la MS del ensilaje.</span><span lang="en">Tick what you have. Fix the silage DM.</span></div></li><li style="--c:var(--b6)"><i>6</i><div><b lang="es">Precios</b><b lang="en">Prices</b><span lang="es">Precio de esta semana, puesto en el rancho. Revisa los máximos.</span><span lang="en">This week’s delivered price. Check the maximums.</span></div></li><li style="--c:var(--b7)"><i>7</i><div><b lang="es">Formulación</b><b lang="en">Formulation</b><span lang="es">⚙ Formular. Revisa el semáforo e imprime la hoja del carro.</span><span lang="en">⚙ Formulate. Check the traffic light and print the wagon sheet.</span></div></li><li style="--c:var(--b8)"><i>8</i><div><b lang="es">Programa</b><b lang="en">Program</b><span lang="es">⚙ Formular el programa: días en corral y utilidad por cabeza.</span><span lang="en">⚙ Formulate the program: days on feed and profit per head.</span></div></li><li style="--c:var(--b9)"><i>9</i><div><b lang="es">Tablero</b><b lang="en">Dashboard</b><span lang="es">GDP, eficiencia, conversión, B : C y la ganancia óptima.</span><span lang="en">ADG, efficiency, conversion, B : C and the optimal gain.</span></div></li><li style="--c:var(--b10)"><i>10</i><div><b lang="es">Sostenibilidad</b><b lang="en">Sustainability</b><span lang="es">Huella de la ración y frontera costo–huella.</span><span lang="en">Ration footprint and cost–footprint frontier.</span></div></li><li style="--c:var(--b11)"><i>11</i><div><b lang="es">Informe</b><b lang="en">Report</b><span lang="es">PDF para tu asesor y Guardar proyecto (.json).</span><span lang="en">PDF for your advisor and Save project (.json).</span></div></li></ol>
+    <div class="foot">
+      <div><h4 lang="es">Si sale «Sin solución»</h4><h4 lang="en">If “No solution”</h4>
+        <ul><li lang="es">Usa la ganancia máxima que propone.</li><li lang="en">Use the maximum gain it proposes.</li><li lang="es">Recalcula la tabla del Bloque 3.</li><li lang="en">Recompute the Block 3 table.</li><li lang="es">Marca el ingrediente que falta.</li><li lang="en">Tick the missing ingredient.</li></ul></div>
+      <div><h4 lang="es">Antes de mezclar</h4><h4 lang="en">Before mixing</h4>
+        <ul><li lang="es">Precios y MS del ensilaje al día.</li><li lang="en">Prices and silage DM up to date.</li><li lang="es">Urea y minerales premezclados.</li><li lang="en">Urea and minerals pre-blended.</li><li lang="es">Cambio de ración en 3–5 días.</li><li lang="en">Ration change over 3–5 days.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<div class="colophon">
+  <p lang="es"><b>RatioBos · Instructivo del Productor</b>, 1.ª edición, octubre de 2026. Describe RatioBos 1.0.0. Todas las capturas son de la app real, con los datos del caso descrito en la sección 0.5; los precios son ilustrativos.</p>
+  <p lang="en"><b>RatioBos · Producer Guide</b>, 1st edition, October 2026. Covers RatioBos 1.0.0. Every screenshot comes from the real app with the case data in section 0.5; prices are illustrative.</p>
+  <p lang="es">Herramienta de apoyo: los resultados deben ser revisados por un profesional en nutrición animal. © 2026 Héctor Tecumshé Mojica-Zárate. El programa se distribuye con licencia MIT.</p>
+  <p lang="en">Decision-support tool: results should be reviewed by a qualified animal nutritionist. © 2026 Héctor Tecumshé Mojica-Zárate. The software is distributed under the MIT License.</p>
+</div>
+
+</div><!-- .doc -->
+
+</main>
+</div>
+
+<a class="ib totop" href="#portada" aria-label="Arriba / Top">↑</a>
+<div id="zoom" role="dialog" aria-label="Imagen ampliada / Enlarged image"><div class="zi"></div></div>
+
+<script src="instructivo/capturas.js"></script>
+<script>
+"use strict";
+const $ = (s, el = document) => el.querySelector(s), $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const CAP = window.CAPTURAS || {};
+
+/* ---------- idioma ---------- */
+function getLang(){
+  const u = new URLSearchParams(location.search).get('lang');
+  if (u === 'es' || u === 'en') return u;
+  try { const s = localStorage.getItem('ratiobos_lang'); if (s === 'es' || s === 'en') return s; } catch (_) {}
+  return (navigator.language || 'es').toLowerCase().startsWith('es') ? 'es' : 'en';
+}
+let LANG = getLang();
+function setLang(l){
+  LANG = l; document.documentElement.lang = l; document.documentElement.dataset.lang = l;
+  $$('.seg button').forEach(b => b.classList.toggle('on', b.dataset.lang === l));
+  $('#q').placeholder = l === 'es' ? 'Buscar en el instructivo…' : 'Search the guide…';
+  document.title = l === 'es' ? 'RatioBos · Instructivo del Productor' : 'RatioBos · Producer Guide';
+  try { localStorage.setItem('ratiobos_lang', l); } catch (_) {}
+  $('#pdfBtn').href = l === 'es' ? 'instructivo/RatioBos-Instructivo-Productor.pdf' : 'instructivo/RatioBos-Producer-Guide.pdf';
+  buildToc(); numberFigures(); buscar();
+}
+$$('.seg button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+/* ---------- tema ---------- */
+function setTheme(t){
+  if (t) document.documentElement.dataset.theme = t; else delete document.documentElement.dataset.theme;
+  const dark = t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  $('#temaBtn').textContent = dark ? '☀' : '☾';
+}
+try { setTheme(localStorage.getItem('ratiobos_tema')); } catch (_) { setTheme(null); }
+$('#temaBtn').addEventListener('click', () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const nt = cur === 'dark' ? 'light' : 'dark'; setTheme(nt); try { localStorage.setItem('ratiobos_tema', nt); } catch (_) {}
+});
+
+/* ---------- figuras: dos idiomas + marcas sobre la captura ---------- */
+$$('figure[data-fig]').forEach(fig => {
+  const id = fig.dataset.fig, cap = fig.querySelector('figcaption');
+  const order = (fig.dataset.marks || '').split(',').filter(Boolean).map(Number);
+  const fix = Object.fromEntries((fig.dataset.fix || '').split(';').filter(Boolean).map(s => { const [k, v] = s.split(':'); return [+k, v.split(',').map(Number)]; }));
+  const holder = document.createElement('div');
+  ['es', 'en'].forEach(l => {
+    const shot = document.createElement('div'); shot.className = 'shot'; shot.lang = l;
+    const img = new Image(); img.src = `instructivo/img/${id}-${l}.jpg`; img.loading = new URLSearchParams(location.search).has('eager') ? 'eager' : 'lazy'; img.decoding = 'async';
+    img.alt = (cap ? cap.querySelector(`[lang="${l}"] b, [lang="${l}"]`)?.textContent : '') || id;
+    shot.appendChild(img);
+    const data = CAP[`${id}-${l}`];
+    order.forEach((mi, n) => {
+      const m = data && data.marks && data.marks[mi];
+      const mk = document.createElement('span'); mk.className = 'mk';
+      if (fix[n]) { mk.classList.add('dotonly'); mk.style.left = fix[n][0] + '%'; mk.style.top = fix[n][1] + '%'; mk.style.width = mk.style.height = '0'; }
+      else if (m) { mk.style.left = m.l + '%'; mk.style.top = m.t + '%'; mk.style.width = (m.r - m.l) + '%'; mk.style.height = (m.b - m.t) + '%'; }
+      else return;
+      mk.innerHTML = `<span class="ring"></span><span class="num">${n + 1}</span>`;
+      shot.appendChild(mk);
+    });
+    shot.addEventListener('click', () => abrirZoom(shot));
+    holder.appendChild(shot);
+  });
+  if (fig.dataset.phone) { holder.className = 'phone'; }
+  fig.insertBefore(holder, fig.firstChild);
+});
+function numberFigures(){
+  $$('section.chap').forEach(sec => {
+    const n = sec.dataset.toc; let i = 0;
+    $$('figure .fn', sec).forEach(fn => { i++; fn.textContent = (LANG === 'es' ? 'Figura ' : 'Figure ') + n + '.' + i; });
+  });
+}
+
+/* ---------- visor ---------- */
+function abrirZoom(shot){ const z = $('#zoom .zi'); z.innerHTML = ''; const c = shot.cloneNode(true); c.style.cursor = 'zoom-out'; c.querySelector('img').loading = 'eager'; z.appendChild(c); $('#zoom').classList.add('on'); }
+$('#zoom').addEventListener('click', () => $('#zoom').classList.remove('on'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { $('#zoom').classList.remove('on'); $('#toc').classList.remove('open'); } });
+
+/* ---------- índice lateral ---------- */
+const GRUPOS = { leer: ['Para empezar', 'Getting started'], b1: ['Los once bloques', 'The eleven blocks'], corral: ['Consulta', 'Reference'] };
+function txt(el){ const x = el.querySelector(`[lang="${LANG}"]`); return (x || el).textContent.trim(); }
+function buildToc(){
+  const ol = $('#tocList'); ol.innerHTML = '';
+  $$('section.chap').forEach(sec => {
+    const g = GRUPOS[sec.id]; if (g) { const li = document.createElement('li'); li.className = 'grp'; li.textContent = g[LANG === 'es' ? 0 : 1]; ol.appendChild(li); }
+    const h2 = sec.querySelector('h2[lang="' + LANG + '"]') || sec.querySelector('h2');
+    const li = document.createElement('li'); li.dataset.sec = sec.id;
+    li.innerHTML = `<a href="#${sec.id}" style="--c:${getComputedStyle(sec).getPropertyValue('--c')}"><span class="n">${sec.dataset.toc}</span><span>${h2 ? h2.textContent : ''}</span></a>`;
+    ol.appendChild(li);
+    const subs = $$('h3[id]', sec);
+    if (subs.length && /^[\dA-Z]+$/.test(sec.dataset.toc) && sec.dataset.toc !== 'P') {
+      const so = document.createElement('ol'); so.className = 'sub';
+      subs.forEach(h => { const s = document.createElement('li'); s.dataset.sec = h.id; s.innerHTML = `<a href="#${h.id}">${txt(h)}</a>`; so.appendChild(s); });
+      li.appendChild(so);
+    }
+    const nav = sec.querySelector('.inchap');
+    if (nav) nav.innerHTML = subs.map(h => `<a href="#${h.id}" data-n="${h.dataset.n || ''}">${txt(h)}</a>`).join('');
+    subs.forEach(h => { if (h.dataset.n && !h.querySelector('.sn')) h.insertAdjacentHTML('afterbegin', `<span class="sn">${h.dataset.n}</span>`); });
+  });
+  spy();
+}
+$('#tocList').addEventListener('click', e => { if (e.target.closest('a')) $('#toc').classList.remove('open'); });
+$('#menuBtn').addEventListener('click', () => $('#toc').classList.toggle('open'));
+
+/* ---------- posición de lectura ---------- */
+function spy(){
+  const y = scrollY + 120; let cur = null;
+  $$('section.chap, h3[id]').forEach(el => { if (el.getBoundingClientRect().top + scrollY <= y) cur = el.id; });
+  $$('#tocList a').forEach(a => a.classList.toggle('act', a.getAttribute('href') === '#' + cur));
+  const h = document.documentElement.scrollHeight - innerHeight;
+  $('#leido').style.width = (h > 0 ? 100 * scrollY / h : 0) + '%';
+  $('.totop').classList.toggle('on', scrollY > 900);
+}
+addEventListener('scroll', spy, { passive: true });
+
+/* ---------- buscador ---------- */
+const norm = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+function buscar(){
+  const q = norm($('#q').value.trim()), hits = $('#hits');
+  const items = $$('#tocList > li[data-sec]');
+  if (q.length < 2) { items.forEach(li => { li.classList.remove('hide'); $$('.sub li', li).forEach(s => s.classList.remove('hide')); }); hits.textContent = ''; return; }
+  let n = 0;
+  items.forEach(li => {
+    const sec = document.getElementById(li.dataset.sec);
+    const vis = el => norm($$(`[lang="${LANG}"]`, el).map(x => x.textContent).join(' ') + ' ' + (el.dataset.toc || ''));
+    let any = false;
+    $$('.sub li', li).forEach(s => {
+      const h = document.getElementById(s.dataset.sec); let seg = '', el = h;
+      do { seg += ' ' + (el.matches && el.matches(`[lang="${LANG}"]`) ? el.textContent : $$(`[lang="${LANG}"]`, el).map(x => x.textContent).join(' ')); el = el.nextElementSibling; } while (el && el.tagName !== 'H3');
+      const ok = norm(seg).includes(q); s.classList.toggle('hide', !ok); if (ok) { any = true; n++; }
+    });
+    const self = vis(sec).includes(q); if (self && !any) n++;
+    li.classList.toggle('hide', !(self || any));
+  });
+  hits.textContent = n ? (LANG === 'es' ? `${n} coincidencia${n > 1 ? 's' : ''}` : `${n} match${n > 1 ? 'es' : ''}`) : (LANG === 'es' ? 'Sin coincidencias' : 'No matches');
+}
+$('#q').addEventListener('input', buscar);
+$('#q').addEventListener('keydown', e => { if (e.key === 'Enter') { const a = $('#tocList li:not(.hide) .sub li:not(.hide) a') || $('#tocList li:not(.hide) a'); if (a) a.click(); } });
+
+/* ---------- glosario ---------- */
+const GLOS = [
+[
+"Acidosis ruminal",
+"Rumen acidosis",
+"Exceso de ácido en el rumen por mucho grano y poca fibra; baja el consumo y causa cojeras.",
+"Too much acid in the rumen from much grain and little fibre; cuts intake and causes lameness."
+],
+[
+"Base seca (MS)",
+"Dry basis (DM)",
+"El alimento sin su agua. Así se comparan los ingredientes y se calcula la ración.",
+"Feed without its water. Ingredients are compared and the ration computed this way."
+],
+[
+"Beneficio : costo",
+"Benefit : cost",
+"Lo que entra entre lo que sale. Mayor que 1 significa utilidad.",
+"Money in over money out. Above 1 means profit."
+],
+[
+"Biotipo",
+"Biotype",
+"Grupo de razas que se comportan parecido: británico, continental, cebú, cruza, criollo, lechero.",
+"Group of breeds that behave alike: British, Continental, zebu, cross, Criollo, dairy."
+],
+[
+"Conversión alimenticia",
+"Feed conversion",
+"Kilos de alimento (MS) por kilo de peso ganado. Más baja, mejor.",
+"Kilos of feed (DM) per kilo of weight gained. Lower is better."
+],
+[
+"CO₂ equivalente (CO₂e)",
+"CO₂ equivalent (CO₂e)",
+"Gases sumados según su efecto en el clima: 1 kg de metano = 27 kg de CO₂; 1 kg de óxido nitroso = 273.",
+"Gases added by their climate effect: 1 kg methane = 27 kg CO₂; 1 kg nitrous oxide = 273."
+],
+[
+"Eficiencia alimenticia",
+"Feed efficiency",
+"Kilos ganados por kilo de alimento. Más alta, mejor.",
+"Kilos gained per kilo of feed. Higher is better."
+],
+[
+"Energía neta de ganancia (ENg)",
+"Net energy for gain (NEg)",
+"La energía del alimento que se convierte en kilos, en Mcal por kg de MS.",
+"The feed energy that becomes kilos, in Mcal per kg DM."
+],
+[
+"Energía neta de mantenimiento (ENm)",
+"Net energy for maintenance (NEm)",
+"La energía que el animal gasta solo en mantenerse vivo, sin ganar peso.",
+"The energy the animal spends just staying alive, without gaining weight."
+],
+[
+"FDN físicamente efectiva (FDNfe)",
+"Physically effective NDF (peNDF)",
+"La fibra larga que hace rumiar y produce saliva, el amortiguador natural del rumen.",
+"Long fibre that makes cattle chew cud and produce saliva, the rumen’s natural buffer."
+],
+[
+"GDP",
+"ADG",
+"Ganancia diaria de peso, en kg por día.",
+"Average daily gain, in kg per day."
+],
+[
+"Ionóforo",
+"Ionophore",
+"Aditivo (monensina, lasalocida) que mejora el aprovechamiento de la energía y reduce la acidosis.",
+"Additive (monensin, lasalocid) that improves energy use and reduces acidosis."
+],
+[
+"ITH",
+"THI",
+"Índice de temperatura y humedad: el calor que siente el animal.",
+"Temperature-humidity index: the heat the animal feels."
+],
+[
+"Mínimo costo",
+"Least cost",
+"La ración más barata entre todas las que cumplen los requerimientos.",
+"The cheapest ration among all those that meet the requirements."
+],
+[
+"Precio de entrada",
+"Entry price",
+"Precio al que un ingrediente que quedó fuera empezaría a convenir.",
+"Price at which an ingredient left out would start to pay off."
+],
+[
+"Precio de equilibrio",
+"Break-even price",
+"Precio de venta por kilo en pie al que el lote ni gana ni pierde.",
+"Sale price per kilo live weight at which the lot neither gains nor loses."
+],
+[
+"Premezcla",
+"Premix",
+"Mezcla previa de los ingredientes pequeños con un poco de grano molido, para repartirlos bien.",
+"A pre-blend of the small ingredients with a little ground grain, so they spread evenly."
+],
+[
+"Proteína metabolizable (PM)",
+"Metabolizable protein (MP)",
+"La proteína que de verdad llega al intestino: la de los microbios del rumen más la que no se degrada.",
+"The protein that actually reaches the gut: rumen microbial protein plus undegraded protein."
+],
+[
+"Sostenibilidad",
+"Sustainability",
+"Según la FAO: producir hoy sin comprometer la capacidad de producir mañana, en lo ambiental, lo económico y lo social.",
+"As FAO defines it: producing today without compromising the capacity to produce tomorrow, environmentally, economically and socially."
+],
+[
+"Tal como se ofrece (TCO)",
+"As fed (AF)",
+"El alimento con su agua, como lo pesa la báscula del carro.",
+"Feed with its water, as the wagon scale weighs it."
+],
+[
+"Urea",
+"Urea",
+"Nitrógeno no proteico barato que los microbios del rumen convierten en proteína. Máximo ≈ 1 % de la MS.",
+"Cheap non-protein nitrogen that rumen microbes turn into protein. At most ≈ 1 % of DM."
+]
+];
+$('#glos').innerHTML = GLOS.map(g => `<dt><span lang="es">${g[0]}<small>${g[1]}</small></span><span lang="en">${g[1]}<small>${g[0]}</small></span></dt><dd><span lang="es">${g[2]}</span><span lang="en">${g[3]}</span></dd>`).join('');
+
+/* ---------- al imprimir, carga todas las imágenes ---------- */
+addEventListener('beforeprint', () => $$('img[loading="lazy"]').forEach(i => i.loading = 'eager'));
+
+
+setLang(LANG);
+/* al abrir con #ancla, ir ahí cuando las figuras ya ocupan su lugar */
+addEventListener('load', () => { const h = decodeURIComponent(location.hash.slice(1)); const el = h && document.getElementById(h); if (el) { document.documentElement.style.scrollBehavior = 'auto'; el.scrollIntoView(); document.documentElement.style.scrollBehavior = ''; } });
+</script>
+</body>
+</html>

@@ -6,6 +6,10 @@
 
 👉 **App:** https://hectortecumshe-ai.github.io/RatioBos/ (botón **ES / EN** para cambiar de idioma)
 
+📘 **Instructivo del Productor · Producer Guide:** https://hectortecumshe-ai.github.io/RatioBos/instructivo-productor.html · [PDF ES](instructivo/RatioBos-Instructivo-Productor.pdf) · [PDF EN](instructivo/RatioBos-Producer-Guide.pdf)
+
+🔬 **Instructivo del Científico · Scientist Guide:** https://hectortecumshe-ai.github.io/RatioBos/instructivo-cientifico.html · [PDF ES](instructivo/RatioBos-Instructivo-Cientifico.pdf) · [PDF EN](instructivo/RatioBos-Scientist-Guide.pdf)
+
 *Ratio* (latín): razón, cálculo, origen de la palabra «ración». *Bos*: bovino.
 
 ---
@@ -146,7 +150,7 @@ RatioBos formulates **least-cost rations for beef cattle** in Mexico: growing ca
 
 ## Desarrollo · Development
 
-The sources are in `src/`. `build.ps1` joins them into `index.html`:
+The sources are in `src/`. `build.ps1` joins them into `index.html`. The guides are built from `instructivo/fuente/` with `python armar.py`.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File build.ps1
