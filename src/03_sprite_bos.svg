@@ -1,0 +1,116 @@
+<!-- LOGO: barras que forman una H y una T; sobre la T, la cabeza de un toro -->
+<symbol id="i-logo" viewBox="0 0 64 64">
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#lg-logo)"/>
+  <rect x="11" y="31" width="7" height="21" rx="2" fill="#f6f1e4"/>
+  <rect x="23" y="25" width="7" height="27" rx="2" fill="#f6f1e4"/>
+  <rect x="11" y="37" width="19" height="5" rx="1.5" fill="#f6f1e4"/>
+  <rect x="39" y="25" width="7" height="27" rx="2" fill="#e8935f"/>
+  <rect x="33.5" y="20.5" width="18" height="6" rx="2" fill="#e8935f"/>
+  <path d="M36.6 9.6C33 9.6 30.4 7.6 29.8 4.4c2 1.8 4.5 2.4 7.4 2.2z" fill="#efe3c8"/>
+  <path d="M48.4 9.6c3.6 0 6.2-2 6.8-5.2-2 1.8-4.5 2.4-7.4 2.2z" fill="#efe3c8"/>
+  <ellipse cx="34.4" cy="11.4" rx="3.1" ry="1.6" transform="rotate(-22 34.4 11.4)" fill="#f6f1e4"/>
+  <ellipse cx="50.6" cy="11.4" rx="3.1" ry="1.6" transform="rotate(22 50.6 11.4)" fill="#f6f1e4"/>
+  <path d="M37 6.4h11c1.4 0 2.2 1.1 2 2.5l-1.4 8c-.3 2-2 3.4-4 3.4h-4.2c-2 0-3.7-1.4-4-3.4l-1.4-8c-.2-1.4.6-2.5 2-2.5z" fill="#f6f1e4"/>
+  <path d="M39.6 6.6c1 2 4.8 2 5.8 0z" fill="#e2d3b0"/>
+  <ellipse cx="42.5" cy="17.4" rx="4.4" ry="2.8" fill="#e8a882"/>
+  <circle cx="40.9" cy="17.6" r=".75" fill="#7a3b22"/><circle cx="44.1" cy="17.6" r=".75" fill="#7a3b22"/>
+  <circle cx="39.6" cy="11.6" r="1" fill="#173a31"/><circle cx="45.4" cy="11.6" r="1" fill="#173a31"/>
+  <rect x="9" y="52" width="46" height="2.4" rx="1.2" fill="#f6f1e4" opacity=".55"/>
+</symbol>
+
+<!-- Bovino de carne visto de lado. Colores por variables CSS:
+     --cw pelaje, --cf cara, --cl patas, --hu giba y papada (cebú), --pa manchas (lechero),
+     --ud ubre (vaca), --ho cuernos, --mz morro, --st contorno -->
+<symbol id="i-steer" viewBox="0 0 170 120">
+  <ellipse cx="88" cy="112" rx="62" ry="5" fill="#000" opacity=".08"/>
+  <g class="cola"><path d="M37 54C28 60 25 74 27 88" stroke="var(--cw,#8a4b2e)" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+  <ellipse cx="27" cy="92" rx="3.6" ry="6.4" fill="var(--ct,#3b2a20)"/></g>
+  <path d="M43 78l-2 25h8l2-23zM57 80v23h8V80z" fill="var(--cl,var(--cw,#8a4b2e))"/>
+  <path d="M111 80v23h8V80zM125 78l2 25h8l-3-25z" fill="var(--cl,var(--cw,#8a4b2e))"/>
+  <path d="M40 100h10v4.5H40zM56 100h10v4.5H56zM110 100h10v4.5h-10zM126 100h10v4.5h-10z" fill="#2b2420"/>
+  <ellipse cx="62" cy="85" rx="11" ry="6.5" fill="var(--ud,transparent)"/>
+  <path d="M56 89v4M61 90v4.5M66 90v4.5M70 89v3.5" stroke="var(--ud,transparent)" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M36 54c0-14 14-20 32-20l44-2c12 0 20 6 22 16l2 22c0 10-8 14-18 14H52c-10 0-18-6-18-16z" fill="var(--cw,#8a4b2e)" stroke="var(--st,rgba(0,0,0,.16))" stroke-width="1.2"/>
+  <path d="M58 37c11 7 8 21-3 23-8-1-10-12-4-20zM92 49c12-4 20 6 14 18-10 4-18-4-14-18zM120 62c8 0 12 8 8 14-6 2-10-2-8-14z" fill="var(--pa,transparent)"/>
+  <path d="M50 77c20 9 54 9 74 1v4c-14 6-54 6-74 0z" fill="#000" opacity=".08"/>
+  <path d="M110 34c4-13 21-14 24 1-8-2-16-2-24-1z" fill="var(--hu,transparent)"/>
+  <path d="M135 58c-3 14 3 27 12 26-2-8-2-17-4-26z" fill="var(--hu,transparent)"/>
+  <g class="cabeza"><path d="M131 40c6-8 20-8 26 0l6 20c2 8-2 14-10 14h-4c-8-2-12-10-14-20z" fill="var(--cf,var(--cw,#8a4b2e))" stroke="var(--st,rgba(0,0,0,.16))" stroke-width="1.2"/>
+  <ellipse cx="133" cy="42" rx="7.5" ry="3.4" transform="rotate(-25 133 42)" fill="var(--cw,#8a4b2e)" stroke="var(--st,rgba(0,0,0,.16))"/>
+  <path d="M145 35c1-8 7-11 12-9-4 2-6 5-7 10z" fill="var(--ho,#efe6d2)"/>
+  <ellipse cx="157" cy="67" rx="7.5" ry="6" fill="var(--mz,#d9a088)"/>
+  <ellipse cx="160" cy="66" rx="1.4" ry="1" fill="#5a3324"/>
+  <circle cx="149" cy="48" r="2.3" fill="#1d1d1d"/><circle cx="149.8" cy="47.3" r=".7" fill="#fff"/></g>
+</symbol>
+
+<!-- Paca de heno -->
+<symbol id="i-hay" viewBox="0 0 100 80">
+  <ellipse cx="50" cy="73" rx="40" ry="4" fill="#000" opacity=".08"/>
+  <path d="M14 26l12-12h62l-12 12z" fill="#f0d68a" stroke="#b98f2e" stroke-width="1.5" stroke-linejoin="round"/>
+  <path d="M76 26l12-12v42l-12 12z" fill="#d9b453" stroke="#b98f2e" stroke-width="1.5" stroke-linejoin="round"/>
+  <rect x="12" y="26" width="64" height="42" rx="3" fill="#e6c46a" stroke="#b98f2e" stroke-width="1.5"/>
+  <path d="M18 34h20M24 42h30M16 50h24M30 58h36M46 34h22M58 46h14" stroke="#c9a23f" stroke-width="2" stroke-linecap="round"/>
+  <path d="M32 26v42M56 26v42M38 14l-6 12M62 14l-6 12" stroke="#8a5a2c" stroke-width="2.4"/>
+</symbol>
+
+<!-- Silo y ensilaje -->
+<symbol id="i-silo" viewBox="0 0 110 100">
+  <ellipse cx="55" cy="94" rx="46" ry="4" fill="#000" opacity=".08"/>
+  <rect x="58" y="22" width="30" height="70" fill="#dfe6e2" stroke="#9fb3aa" stroke-width="2"/>
+  <path d="M58 22a15 13 0 0 1 30 0z" fill="#2f5d50"/>
+  <path d="M58 40h30M58 58h30M58 76h30" stroke="#b6c6bf" stroke-width="2"/>
+  <path d="M8 92l10-26h34l8 26z" fill="#9cbf5a" stroke="#6f9a3a" stroke-width="1.5"/>
+  <path d="M14 76c10-4 26-4 38 0M11 84c12-4 32-4 44 0" stroke="#c9dd8e" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M16 68c8-6 30-6 38 0" stroke="#2b2b2b" stroke-width="3" fill="none" stroke-linecap="round"/>
+</symbol>
+
+<!-- Pasto -->
+<symbol id="i-grass" viewBox="0 0 100 80">
+  <ellipse cx="50" cy="74" rx="40" ry="4" fill="#000" opacity=".08"/>
+  <g class="hoja"><path d="M20 72c2-18 0-30-8-42 10 8 14 20 14 42zM30 72c0-24 6-40 16-52-4 14-8 30-8 52zM44 72c4-20 2-34-4-46 8 10 12 26 10 46zM56 72c2-26 10-42 22-50-8 12-14 28-14 50zM68 72c4-16 12-26 22-30-6 8-12 18-14 30z" fill="#6aa84a"/>
+  <path d="M26 72c4-14 12-22 22-26-6 8-10 16-12 26zM50 72c-2-14-8-24-16-28 10 2 18 12 22 28z" fill="#8cc466"/>
+  <path d="M46 20c2-6 6-8 8-6-1 3-4 5-8 6zM78 22c2-5 6-6 8-4-2 3-5 4-8 4z" fill="#c9b458"/></g>
+</symbol>
+
+<!-- Carro mezclador (ración totalmente mezclada) -->
+<symbol id="i-mixer" viewBox="0 0 140 90">
+  <ellipse cx="70" cy="84" rx="60" ry="4" fill="#000" opacity=".08"/>
+  <path d="M18 26h92l-8 40H26z" fill="#2f5d50" stroke="#1c3b33" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M24 26c10-10 70-10 80 0" fill="#e6c46a" stroke="#b98f2e" stroke-width="1.5"/>
+  <circle cx="40" cy="22" r="3" fill="#9cbf5a"/><circle cx="58" cy="19" r="3" fill="#e9ad2f"/><circle cx="76" cy="20" r="3" fill="#c99b5e"/><circle cx="90" cy="23" r="3" fill="#9cbf5a"/>
+  <path d="M30 46c8-8 16 8 24 0s16 8 24 0 16 8 24 0" stroke="#8fb3a5" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M110 40l18 10-4 6-18-8z" fill="#e8935f" stroke="#b05434" stroke-width="1.5"/>
+  <path d="M8 60h18" stroke="#1c3b33" stroke-width="4" stroke-linecap="round"/>
+  <g class="gira"><circle cx="44" cy="72" r="10" fill="#2b2b2b"/><circle cx="44" cy="72" r="4" fill="#9aa5a0"/><path d="M44 63v18M35 72h18" stroke="#555" stroke-width="2"/></g>
+  <g class="gira"><circle cx="86" cy="72" r="10" fill="#2b2b2b"/><circle cx="86" cy="72" r="4" fill="#9aa5a0"/><path d="M86 63v18M77 72h18" stroke="#555" stroke-width="2"/></g>
+</symbol>
+
+<!-- Tablero: tarjetas con barras y línea -->
+<symbol id="i-panel" viewBox="0 0 100 90">
+  <rect x="6" y="8" width="88" height="72" rx="10" fill="#fffaf0" stroke="#b9c3be" stroke-width="2"/>
+  <rect x="14" y="16" width="30" height="20" rx="4" fill="#e6ece9"/><rect x="50" y="16" width="36" height="20" rx="4" fill="#e6ece9"/>
+  <path d="M18 30h12M54 30h20" stroke="#2f5d50" stroke-width="3" stroke-linecap="round"/>
+  <rect x="16" y="56" width="8" height="16" rx="2" fill="#2f5d50"/><rect x="28" y="50" width="8" height="22" rx="2" fill="#2f5d50"/><rect x="40" y="44" width="8" height="28" rx="2" fill="#e8935f"/>
+  <path d="M54 66l10-10 8 6 14-16" stroke="#b05434" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="86" cy="46" r="3" fill="#b05434"/>
+</symbol>
+
+<!-- Metano: nube con CH4 y hoja -->
+<symbol id="i-gas" viewBox="0 0 100 80">
+  <path d="M24 60c-12 0-18-8-16-16 2-8 10-12 18-10 2-12 14-20 28-16 8-8 24-6 28 6 10 0 16 8 14 18-2 10-10 18-22 18z" fill="#e8eef6" stroke="#9fb3c8" stroke-width="2"/>
+  <text x="50" y="50" text-anchor="middle" font-size="18" font-weight="700" fill="#3b6aa0" font-family="Palatino Linotype,Palatino,serif">CH₄</text>
+  <path d="M74 74c-2-10 4-18 16-20 0 10-6 18-16 20z" fill="#7fb556"/><path d="M74 74c4-6 9-11 15-17" stroke="#4c8a3c" stroke-width="1.6"/>
+</symbol>
+
+<!-- Crecimiento: becerro → novillo -->
+<symbol id="i-growth" viewBox="0 0 170 110">
+  <use href="#i-steer" x="0" y="52" width="70" height="50" style="--cw:#b5764a;--hu:transparent"/>
+  <path d="M64 70c14-14 26-16 38-14" stroke="#b05434" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="4 5"/>
+  <path d="M98 50l8 6-9 4" stroke="#b05434" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <use href="#i-steer" x="66" y="18" width="106" height="78"/>
+</symbol>
+
+<!-- Vaca con becerro -->
+<symbol id="i-herd" viewBox="0 0 170 120">
+  <use href="#i-steer" x="0" y="0" width="170" height="120" style="--ud:#efb4a0;--ho:#efe6d2"/>
+  <use href="#i-steer" x="98" y="58" width="72" height="52" style="--cw:#c8875a;--ud:transparent;--ho:transparent"/>
+</symbol>

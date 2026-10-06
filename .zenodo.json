@@ -1,0 +1,25 @@
+{
+  "title": "RatioBos: Guided least-cost diet formulation for beef cattle",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "license": "mit",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Mojica-Zárate, Héctor Tecumshé"
+    },
+    {
+      "name": "Barrera-Guzmán, Luis Ángel"
+    }
+  ],
+  "description": "Bilingual (Spanish/English) single-file web application for least-cost beef cattle ration formulation in Mexico (growing calves, feedlot cattle, replacement heifers, pregnant and lactating cows). California Net Energy System with NASEM (2016) equations and NRC (1996) adjustments, metabolizable protein, iterative energy–intake adjustment and two-phase simplex with a duality certificate. Interactive map of 9 Mexican cattle regions with seasonal climate, temperature-humidity index, infrastructure and regional prices. Feeding program, animated dashboard (ADG, feed efficiency, feed conversion, benefit:cost, economic optimum, regional comparison) and FAO-sense sustainability dashboard (IPCC 2019 greenhouse gases, water, land, manure area, ammonia, medicines by WHO category, cost–footprint frontier). Validated against 19 published diets from 9 papers and against HiGHS on 500 random problems. Producer and scientist views; no third-party dependencies.",
+  "keywords": [
+    "beef cattle",
+    "least-cost formulation",
+    "linear programming",
+    "ruminant nutrition",
+    "sustainability",
+    "Mexico",
+    "bovinos de carne"
+  ]
+}

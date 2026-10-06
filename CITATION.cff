@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below. / Si usas este software, cítalo como se indica."
+title: "RatioBos: Guided least-cost diet formulation for beef cattle"
+version: 1.0.0
+date-released: 2026-10-06
+type: software
+license: MIT
+authors:
+  - given-names: "Héctor Tecumshé"
+    family-names: "Mojica-Zárate"
+  - given-names: "Luis Ángel"
+    family-names: "Barrera-Guzmán"
+repository-code: "https://github.com/hectortecumshe-ai/RatioBos"
+url: "https://hectortecumshe-ai.github.io/RatioBos/"
+keywords: [beef cattle, least-cost formulation, linear programming, ruminant nutrition, NASEM 2016, sustainability, Mexico, bovinos de carne]

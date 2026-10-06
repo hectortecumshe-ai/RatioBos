@@ -1,0 +1,102 @@
+/* ================= RatioBos · capa visual propia ================= */
+.opt .oico.big{width:64px;height:46px;margin-right:22px}
+.hero .art .chip-n{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:6px 10px;box-shadow:var(--shadow);font-size:12px;color:var(--muted);line-height:1.3}
+.hero .art .chip-n b{display:block;font-size:16px;color:var(--accent-text)}
+/* base de expresión: materia seca / tal como se ofrece */
+.basesw{display:inline-flex;border:1px solid var(--border-strong);border-radius:var(--r-pill);padding:3px;background:var(--card)}
+.basesw button{border:0;background:none;color:var(--muted);font-weight:700;font-size:12.5px;padding:4px 11px;border-radius:var(--r-pill);cursor:pointer;font-family:inherit}
+.basesw button.on{background:var(--accent);color:#fff}
+/* requerimientos diarios del animal */
+.req-d{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:4px 0 14px}
+.req-d div{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--r-md);padding:10px 12px}
+.req-d .l{font-size:12.5px;color:var(--muted)}
+.req-d .v{font-size:21px;font-weight:700;color:var(--primary-dark);font-variant-numeric:tabular-nums}
+.req-d .s{font-size:12px;color:var(--muted)}
+/* balance (aporte vs. requerimiento diario) */
+.bal{display:grid;grid-template-columns:150px minmax(0,1fr) 92px;gap:10px;align-items:center;font-size:14px;margin:7px 0}
+.bal .tr{position:relative;height:16px;background:var(--bg-soft);border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.bal .tr i{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:linear-gradient(90deg,var(--primary),color-mix(in srgb,var(--primary) 65%,var(--accent)))}
+.bal .tr i.mant{background:color-mix(in srgb,var(--primary) 35%,var(--bg-soft))}
+.bal .tr b{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--text);opacity:.6}
+.bal .p{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+/* gráfica de crecimiento */
+.curva svg{width:100%;height:auto;display:block}
+.curva .eje{stroke:var(--border-strong);stroke-width:1}
+.curva .rej{stroke:var(--border);stroke-width:1;stroke-dasharray:3 4}
+.curva text{fill:var(--muted);font-size:12px;font-family:var(--font)}
+.curva .lin{fill:none;stroke:var(--primary);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.curva .area{fill:color-mix(in srgb,var(--primary) 12%,transparent)}
+.curva .fase{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 5}
+/* iteraciones del modelo energético */
+.iter td,.iter th{font-size:13.5px}
+.conv{display:inline-flex;align-items:center;gap:6px}
+.conv i{width:9px;height:9px;border-radius:50%;background:var(--ok);display:inline-block}
+/* tarjetas de ambiente / sostenibilidad */
+.eco{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.eco .e{display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:var(--r-md);padding:12px 14px}
+.eco .e svg{flex:none;width:52px;height:42px}
+.eco .e .v{font-size:20px;font-weight:700;color:var(--primary-dark);font-variant-numeric:tabular-nums}
+.eco .e .l{font-size:12.5px;color:var(--muted)}
+/* semáforo de riesgos ruminales */
+.semaf{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:10px}
+.semaf div{border:1px solid var(--border);border-left:4px solid var(--ok);border-radius:var(--r-md);padding:10px 12px;background:var(--card);font-size:14px}
+.semaf div.warn{border-left-color:var(--warn)} .semaf div.bad{border-left-color:var(--bad)} .semaf div.info{border-left-color:var(--info)}
+.semaf b{display:block}
+/* mapa de México */
+.mapa-wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;align-items:start}
+.mapa{width:100%;height:auto;display:block}
+.mapa .edo{fill:color-mix(in srgb,var(--rc) 38%,var(--card));stroke:var(--card);stroke-width:1.3;cursor:pointer;transition:fill .2s,opacity .2s}
+.mapa .edo:hover{fill:color-mix(in srgb,var(--rc) 75%,var(--card))}
+.mapa .edo.sel{fill:var(--rc)}
+.mapa .edo.edosel{stroke:var(--text);stroke-width:2.6}
+.mapa .etq text{font-family:var(--font);font-size:17px;font-weight:700;fill:var(--text);opacity:.55;paint-order:stroke;stroke:var(--card);stroke-width:4px}
+.mapa .etq.sel text{opacity:1}
+.mapa.chico .edo{cursor:default}
+.rchip{cursor:pointer;font-family:inherit}
+.rchip i{width:11px;height:11px;border-radius:3px;background:var(--rc);display:inline-block}
+.rchip.on{border-color:var(--text);font-weight:700}
+.rinfo dl{margin:0 0 12px;display:grid;gap:4px}
+.rinfo dt{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text);margin-top:6px}
+.rinfo dd{margin:0;font-size:14.5px;color:var(--text)}
+/* barra del ITH */
+.ith{position:relative;height:46px;margin:6px 0 4px}
+.ith .tramos{position:absolute;left:0;right:0;top:8px;height:14px;border-radius:7px;overflow:hidden;background:var(--bg-soft)}
+.ith .tramos i{position:absolute;top:0;bottom:0}
+.ith .tramos i.ok{background:var(--ok)} .ith .tramos i.info{background:var(--info)} .ith .tramos i.warn{background:var(--warn)} .ith .tramos i.bad{background:var(--bad)}
+.ith .m{position:absolute;top:2px;width:4px;height:26px;margin-left:-2px;border-radius:2px;background:var(--text)}
+.ith .m.efe{background:var(--card);border:2px solid var(--text);width:10px;margin-left:-5px}
+.ith .esc{position:absolute;left:0;right:0;top:28px;font-size:11.5px;color:var(--muted)}
+.ith .esc span{position:absolute;transform:translateX(-50%)} .ith .esc span:first-child{left:0;transform:none} .ith .esc span:last-child{transform:none}
+/* tablero */
+.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:18px}
+.dash .card{margin:0}
+.graf svg{width:100%;height:auto;display:block}
+.graf text{fill:var(--muted);font-size:12px;font-family:var(--font)}
+.graf .eje{stroke:var(--border-strong)} .graf .rej{stroke:var(--border);stroke-dasharray:3 4}
+.graf .l1{fill:none;stroke:var(--primary);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.graf .l2{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.graf .pt{fill:var(--card);stroke-width:2.5}
+.graf .opt{fill:var(--accent)}
+.graf .b{fill:color-mix(in srgb,var(--primary) 70%,var(--card))} .graf .b.yo{fill:var(--accent)}
+.graf .rad{fill:color-mix(in srgb,var(--primary) 22%,transparent);stroke:var(--primary);stroke-width:2.5}
+.graf .rad0{fill:none;stroke:var(--accent);stroke-width:1.6;stroke-dasharray:5 4}
+.dibuja{stroke-dasharray:1;stroke-dashoffset:1;animation:dibujar 1.4s var(--ease) forwards}
+@keyframes dibujar{to{stroke-dashoffset:0}}
+.crece{transform-box:fill-box;transform-origin:left center;animation:crecer .9s var(--ease) both}
+.creceV{transform-box:fill-box;transform-origin:center bottom;animation:crecerV .9s var(--ease) both}
+@keyframes crecer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes crecerV{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.aparece{animation:subir .6s var(--ease) both}
+/* animación de las ilustraciones (se activa con --anim:running) */
+.cola{transform-box:fill-box;transform-origin:100% 0%;animation:colear 2.6s ease-in-out infinite;animation-play-state:var(--anim,paused)}
+@keyframes colear{0%,100%{transform:rotate(0)}50%{transform:rotate(9deg)}}
+.cabeza{transform-box:view-box;transform-origin:132px 50px;animation:cabecear 5.5s ease-in-out infinite;animation-play-state:var(--anim,paused)}
+@keyframes cabecear{0%,70%,100%{transform:rotate(0)}80%{transform:rotate(-5deg) translateY(1px)}90%{transform:rotate(2deg)}}
+.hoja{transform-box:fill-box;transform-origin:50% 100%;animation:mecer 3.2s ease-in-out infinite;animation-play-state:var(--anim,paused)}
+@keyframes mecer{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
+.gira{transform-box:fill-box;transform-origin:center;animation:girar 3s linear infinite;animation-play-state:var(--anim,paused)}
+@keyframes girar{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){ .cola,.cabeza,.hoja,.gira,.dibuja,.crece,.creceV,.aparece{animation:none!important;stroke-dashoffset:0} }
+@media (max-width:900px){ .mapa-wrap{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:600px){ .bal{grid-template-columns:96px minmax(0,1fr) 70px} .basesw button{padding:4px 8px} }
+@media print{ .basesw{display:none!important} }
