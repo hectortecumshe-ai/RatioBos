@@ -10,7 +10,7 @@ const CONFIG = {
   citaAutores: {es:'Mojica-Zárate, H. T., y Barrera-Guzmán, L. A.', en:'Mojica-Zárate, H. T., & Barrera-Guzmán, L. A.'},
   titulo: {es:'Formulación guiada de dietas de mínimo costo para bovinos productores de carne', en:'Guided least-cost diet formulation for beef cattle'},
   repo: 'https://github.com/hectortecumshe-ai/RatioBos',
-  doi: ''   // ← cuando Zenodo asigne el DOI, escríbelo aquí
+  doi: '10.5281/zenodo.23197134'   // ← cuando Zenodo asigne el DOI, escríbelo aquí
 };
 
 /* =====================================================================

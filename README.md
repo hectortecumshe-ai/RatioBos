@@ -2,6 +2,8 @@
 
 # RatioBos
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23197134.svg)](https://doi.org/10.5281/zenodo.23197134)
+
 **La razón al servicio del ganado · Reason in the service of cattle**
 
 👉 **App:** https://hectortecumshe-ai.github.io/RatioBos/ (botón **ES / EN** para cambiar de idioma)
@@ -158,7 +160,7 @@ powershell -ExecutionPolicy Bypass -File build.ps1
 
 ## Cómo citar · How to cite
 
-Mojica-Zárate, H. T., & Barrera-Guzmán, L. A. (2026). *RatioBos: Guided least-cost diet formulation for beef cattle* (Version 1.0.0) [Software]. https://github.com/hectortecumshe-ai/RatioBos
+Mojica-Zárate, H. T., & Barrera-Guzmán, L. A. (2026). *RatioBos: Guided least-cost diet formulation for beef cattle* (Version 1.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.23197134
 
 ## Autores · Authors
 

@@ -5,7 +5,7 @@ import json, os, re
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.abspath(os.path.join(AQUI, '..', '..'))
 VERSION = '1.0.0'
-DOI = ''          # ← cuando Zenodo asigne el DOI, escríbelo aquí (p. ej. '10.5281/zenodo.123')
+DOI = '10.5281/zenodo.23197134'          # ← cuando Zenodo asigne el DOI, escríbelo aquí (p. ej. '10.5281/zenodo.123')
 AUTORES = 'Héctor Tecumshé Mojica-Zárate · Luis Ángel Barrera-Guzmán'
 
 leer = lambda n: open(os.path.join(AQUI, n), encoding='utf-8').read()

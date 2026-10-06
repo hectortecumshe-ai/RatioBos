@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below. / Si usas este software, cítalo como se indica."
 title: "RatioBos: Guided least-cost diet formulation for beef cattle"
 version: 1.0.0
+doi: "10.5281/zenodo.23197134"
 date-released: 2026-10-06
 type: software
 license: MIT
