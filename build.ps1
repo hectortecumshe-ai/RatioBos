@@ -20,6 +20,9 @@ $sprite = '<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;widt
 $logo = [IO.File]::ReadAllText((Join-Path $d 'logo.svg')).Trim()
 $fav = 'data:image/svg+xml,' + [Uri]::EscapeDataString($logo)
 
+# Enlaces a las demás apps de la familia Ratio
+$familia = Leer '90_familia.html'
+
 $head = @"
 <!DOCTYPE html>
 <html lang="es">
@@ -72,7 +75,7 @@ $sprite
   <div class="progress no-print"><span id="progTxt"></span><div class="track"><div class="fill" id="progFill"></div></div></div>
 </header>
 <main id="main"></main>
-<footer class="pie" id="pie"></footer>
+$familia<footer class="pie" id="pie"></footer>
 <div class="toast" id="toast"></div>
 <dialog id="dlgAyuda"></dialog>
 "@
