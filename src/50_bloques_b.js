@@ -342,7 +342,7 @@ function renderInforme(el){
     resumen = `<div class="card"><div class="row between"><div><h2 style="margin:0 0 4px">${esc(S.proyecto.nombre||T('Ración para bovinos de carne','Beef cattle ration'))}</h2>
       <p class="muted small" style="margin-top:0">${S.proyecto.rancho?esc(S.proyecto.rancho)+' · ':''}${S.proyecto.autor?esc(S.proyecto.autor)+' · ':''}${new Date(r.fecha).toLocaleDateString(LOC())} · RatioBos ${CONFIG.version}</p></div><svg style="width:54px;height:54px"><use href="#i-logo" width="100%" height="100%"/></svg></div>
       <p style="max-width:88ch">${SCI()?textoSci:textoProd}</p>
-      <p class="small muted sci" style="max-width:88ch">${T('Cítese el software como','Cite the software as')}: ${esc(tx(CONFIG.citaAutores))} (${CONFIG.anio}). <i>${CONFIG.app}: ${esc(tx(CONFIG.titulo))}</i> (${T('Versión','Version')} ${CONFIG.version}) [Software]. ${CONFIG.doi?'https://doi.org/'+CONFIG.doi:esc(CONFIG.repo)}</p>
+      <p class="small muted sci" style="max-width:88ch">${T('Cómo citarla (APA, 7.ª ed.)','How to cite it (APA 7th ed.)')}: ${esc(tx(CONFIG.citaAutores))} (${CONFIG.anio}). <i>${CONFIG.app}: ${esc(tx(CONFIG.titulo))}</i> (${T('Versión','Version')} ${CONFIG.version}) [Software]. Zenodo. ${CONFIG.doi?'https://doi.org/'+CONFIG.doi:esc(CONFIG.repo)}</p>
       <div class="tbl"><table><thead><tr><th>${T('Ingrediente','Ingredient')}</th><th class="r">% MS</th><th class="r">% ${T('TCO','AF')}</th><th class="r">kg ${T('TCO por t de mezcla','AF per t of mix')}</th></tr></thead><tbody>
       ${usados.map(x=>`<tr><td>${esc(nombre(x))}</td><td class="r">${fmt(x.pct,2)}</td><td class="r">${fmt(x.pctTCO,2)}</td><td class="r">${fmt(x.pctTCO*10,1)}</td></tr>`).join('')}</tbody></table></div></div>`;
   }

@@ -7,7 +7,7 @@ const CONFIG = {
   version: '1.0.0',
   anio: 2026,
   autores: 'Héctor Tecumshé Mojica Zárate · Luis Ángel Barrera Guzmán',
-  citaAutores: {es:'Mojica-Zárate, H. T., y Barrera-Guzmán, L. A.', en:'Mojica-Zárate, H. T., & Barrera-Guzmán, L. A.'},
+  citaAutores: {es:'Mojica-Zárate, H. T., y Barrera-Guzmán, L. Á.', en:'Mojica-Zárate, H. T., & Barrera-Guzmán, L. Á.'},
   titulo: {es:'Formulación guiada de dietas de mínimo costo para bovinos productores de carne', en:'Guided least-cost diet formulation for beef cattle'},
   repo: 'https://github.com/hectortecumshe-ai/RatioBos',
   doi: '10.5281/zenodo.23197134'   // ← cuando Zenodo asigne el DOI, escríbelo aquí

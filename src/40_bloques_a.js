@@ -66,7 +66,7 @@ function renderInicio(el){
     ['informe','i-report',T('Informe','Report'),T('Resumen redactado, hoja de mezclado para el carro, PDF, CSV y el proyecto completo en un archivo.','Written summary, mixer sheet, PDF, CSV and the whole project in one file.')],
     ['validacion','i-check',T('Validación','Validation'),T('Reproduce dietas de engordas de Sinaloa y de la Universidad de California publicadas en revistas científicas.','Reproduces feedlot diets from Sinaloa and the University of California published in scientific journals.')]
   ];
-  const cita = `${esc(tx(CONFIG.citaAutores))} (${CONFIG.anio}). <i>${CONFIG.app}: ${esc(tx(CONFIG.titulo))}</i> (${T('Versión','Version')} ${CONFIG.version}) [Software]. ${CONFIG.doi?`https://doi.org/${CONFIG.doi}`:esc(CONFIG.repo)}`;
+  const cita = `${esc(tx(CONFIG.citaAutores))} (${CONFIG.anio}). <i>${CONFIG.app}: ${esc(tx(CONFIG.titulo))}</i> (${T('Versión','Version')} ${CONFIG.version}) [Software]. Zenodo. ${CONFIG.doi?`https://doi.org/${CONFIG.doi}`:esc(CONFIG.repo)}`;
   const nuevo = [
     [T('El animal, no una tabla','The animal, not a table'),T('Los requerimientos salen de ecuaciones factoriales para tu peso, ganancia, biotipo, sexo, gestación y leche.','Requirements come from factorial equations for your weight, gain, biotype, sex, pregnancy and milk.')],
     [T('Energía y consumo que se ajustan solos','Self-adjusting energy and intake'),T('La ENg que hace falta depende de la ENm de la propia dieta; RatioBos itera hasta que todo cuadra.','The NEg needed depends on the diet’s own NEm; RatioBos iterates until everything matches.')],
@@ -159,7 +159,7 @@ function renderInicio(el){
       <p class="muted" style="margin:0">${T('En bovinos no basta una tabla: lo que necesita un torete de 380 kg depende de su raza, de cuánto quieres que gane, del calor del corral y de la energía de la misma dieta que vas a darle. RatioBos pone las ecuaciones del animal, la economía del corral y la salud del rumen junto al número que las justifica, en el momento de decidir, y muestra con dietas publicadas qué tanto puedes confiar en el resultado.','In cattle a table is not enough: what a 380 kg bull needs depends on its breed, how much you want it to gain, pen heat and the energy of the very diet you will feed. RatioBos places animal equations, pen economics and rumen health next to the number that justifies them, right when the decision is made, and shows with published diets how far you can trust the result.')}</p>
     </div>
     <div class="cite">
-      <div class="k">${T('SI LA USAS EN UN TRABAJO, CÍTALA','IF YOU USE IT IN YOUR WORK, PLEASE CITE IT')}</div>
+      <div class="k">${T('¿CÓMO CITARLA? (APA, 7.ª ED.)','HOW TO CITE IT? (APA 7TH ED.)')}</div>
       <p style="margin:0 0 10px" id="citaTxt">${cita}</p>
       <div class="row"><button class="btn ghost sm" id="copiarCita">⧉ ${T('Copiar referencia','Copy reference')}</button>${CONFIG.doi?`<a class="doi" href="https://doi.org/${CONFIG.doi}" target="_blank" rel="noopener"><span>DOI</span><span>${CONFIG.doi}</span></a>`:''}</div>
     </div>
