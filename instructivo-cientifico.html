@@ -183,6 +183,10 @@ li::marker{color:var(--c,var(--acc))}
 .box.warn{--k:var(--warn);--ks:var(--warn-s);background:color-mix(in srgb,var(--warn-s) 55%,var(--paper))}
 .box.case{--k:var(--acc);--ks:var(--acc-s);background:linear-gradient(135deg,color-mix(in srgb,var(--acc-s) 70%,var(--paper)),var(--paper) 60%)}
 .box.tip{--k:var(--ok);--ks:var(--ok-s)}
+.qr-guia{display:flex;gap:16px;align-items:center;margin:26px 0 6px;font-family:var(--sans);font-size:14px;line-height:1.5;color:var(--muted);break-inside:avoid}
+.qr-guia img{width:112px;height:112px;flex:none;border:1px solid var(--line);border-radius:8px;image-rendering:pixelated;background:#fff}
+.qr-guia p{margin:0}
+.qr-guia b{color:var(--text)}
 .box.ref{--k:var(--faint);--ks:var(--soft);font-size:16.5px}
 
 /* ---------- tablas ---------- */
@@ -451,6 +455,7 @@ ul.refs a{word-break:break-all}
   <div class="box ref"><span class="bi">“</span><span class="bt" lang="es">Este instructivo (APA, 7.ª ed.)</span><span class="bt" lang="en">This guide (APA 7th ed.)</span>
     <p lang="es">Mojica-Zárate, H. T., y Barrera-Guzmán, L. Á. (2026). <i>RatioBos: Instructivo del Científico</i> (1.ª ed.). https://hectortecumshe-ai.github.io/RatioBos/instructivo-cientifico.html</p>
     <p lang="en">Mojica-Zárate, H. T., &amp; Barrera-Guzmán, L. Á. (2026). <i>RatioBos: Scientist Guide</i> (1st ed.). https://hectortecumshe-ai.github.io/RatioBos/instructivo-cientifico.html</p></div>
+  <div class="qr-guia"><img src="instructivo/qr-app.svg" alt="QR: hectortecumshe-ai.github.io/RatioBos"><p><b>hectortecumshe-ai.github.io/RatioBos</b><br><span lang="es">Escanea el código para abrir la app en tu celular o compartirla.</span><span lang="en">Scan the code to open the app on your phone or share it.</span></p></div>
 </section>
 
 <!-- ============================ M · MODELO DEL ANIMAL ============================ -->

@@ -343,3 +343,8 @@ html[data-modo="prod"] .sci, html[data-modo="cien"] .prod{display:none!important
 .mezcla label:has(input:checked){opacity:.5;text-decoration:line-through}
 .granja{margin:0;padding-left:20px;display:grid;gap:6px}
 @media (max-width:600px){ .modesw span{display:none} .modesw button{padding:5px 8px} }
+/* Código QR de la app (tarjeta «¿Cómo citarla?») */
+.qr-app{display:flex;gap:14px;align-items:center;margin-top:14px;font-size:13px;line-height:1.45;color:var(--muted)}
+.qr-app .qr-img{flex:none;width:104px;height:104px;border-radius:8px;overflow:hidden;border:1px solid var(--line, #dcd9cd);background:#fff}
+.qr-app .qr-img svg{width:100%;height:100%;display:block}
+.qr-app b{color:var(--text, inherit);overflow-wrap:anywhere}

@@ -162,6 +162,7 @@ function renderInicio(el){
       <div class="k">${T('¿CÓMO CITARLA? (APA, 7.ª ED.)','HOW TO CITE IT? (APA 7TH ED.)')}</div>
       <p style="margin:0 0 10px" id="citaTxt">${cita}</p>
       <div class="row"><button class="btn ghost sm" id="copiarCita">⧉ ${T('Copiar referencia','Copy reference')}</button>${CONFIG.doi?`<a class="doi" href="https://doi.org/${CONFIG.doi}" target="_blank" rel="noopener"><span>DOI</span><span>${CONFIG.doi}</span></a>`:''}</div>
+      <div class="qr-app"><span class="qr-img">${CONFIG.qr}</span><span><b>${CONFIG.url.replace(/^https:\/\//,'').replace(/\/$/,'').replace('.io/','.io/<wbr>')}</b><br>${T('Escanea el código para abrirla en tu celular o compartirla.','Scan the code to open it on your phone or share it.')}</span></div>
     </div>
   </section>
   ${siguiente('inicio')}`;
