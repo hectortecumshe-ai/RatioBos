@@ -1,6 +1,8 @@
 """Arma los instructivos de RatioBos a partir de las partes de esta carpeta.
 Uso: python armar.py            (genera ../../instructivo-productor.html)"""
 import json, os, re
+from enlaces_web import web   # enlaces públicos (no localhost) en el HTML y en los PDF
+APP_WEB = 'https://hectortecumshe-ai.github.io/RatioBos/'
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 RAIZ = os.path.abspath(os.path.join(AQUI, '..', '..'))
@@ -326,7 +328,7 @@ def productor():
 </html>
 '''
     out = os.path.join(RAIZ, 'instructivo-productor.html')
-    open(out, 'w', encoding='utf-8', newline='\n').write(html)
+    open(out, 'w', encoding='utf-8', newline='\n').write(web(html, APP_WEB))
     print('instructivo-productor.html', round(len(html.encode('utf-8')) / 1024), 'KB')
 
 if __name__ == '__main__':

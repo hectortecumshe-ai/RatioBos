@@ -1,5 +1,6 @@
 """Instructivo del Científico de RatioBos: figuras con datos de la app y armado del HTML."""
 import html as _html
+from enlaces_web import web   # enlaces públicos (no localhost) en el HTML y en los PDF
 import json
 import os
 import re
@@ -277,5 +278,5 @@ def cientifico():
     pie = plantilla[plantilla.index('</main>'):plantilla.index('<script>', plantilla.index('capturas.js'))]
     out_html = f'{cab}<style>\n{css_cien()}\n{medio}\n{cuerpo}\n{pie}<script>{js_cien(t_es, t_en, pdf_es, pdf_en)}</script>\n</body>\n</html>\n'
     out = os.path.join(RAIZ, 'instructivo-cientifico.html')
-    open(out, 'w', encoding='utf-8', newline='\n').write(out_html)
+    open(out, 'w', encoding='utf-8', newline='\n').write(web(out_html, 'https://hectortecumshe-ai.github.io/RatioBos/'))
     print('instructivo-cientifico.html', round(len(out_html.encode('utf-8')) / 1024), 'KB ·', nref, 'referencias')
