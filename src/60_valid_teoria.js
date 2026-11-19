@@ -277,7 +277,7 @@ function render(){
   $('#brandSub').textContent = T('· la razón al servicio del ganado','· reason in the service of cattle');
   const b = B(S.bloque) || BLOQUES[0];
   b.render()($('#main'));
-  $('#pie').innerHTML = `<svg style="width:26px;height:26px;vertical-align:middle;margin-right:6px"><use href="#i-logo" width="100%" height="100%"/></svg><b>RatioBos</b> ${CONFIG.version} · ${T('Formulación de raciones para bovinos productores de carne','Beef cattle ration formulation')} · ${esc(CONFIG.autores)} · ${CONFIG.anio}<br><span class="tiny">${T('Herramienta de apoyo: los resultados deben ser revisados por un profesional en nutrición animal.','Decision-support tool: results should be reviewed by a qualified animal nutritionist.')} · MIT</span>`;
+  $('#pie').innerHTML = `<svg style="width:26px;height:26px;vertical-align:middle;margin-right:6px"><use href="#i-logo" width="100%" height="100%"/></svg><b>RatioBos</b> ${CONFIG.version} · ${T('Formulación de raciones para bovinos productores de carne','Beef cattle ration formulation')} · ${esc(CONFIG.autores)} · <a href="mailto:hectortecumshe@gmail.com">hectortecumshe@gmail.com</a> · ${CONFIG.anio}<br><span class="tiny">${T('Herramienta de apoyo: los resultados deben ser revisados por un profesional en nutrición animal.','Decision-support tool: results should be reviewed by a qualified animal nutritionist.')} · MIT</span>`;
   renderNav(); actualizarPill(); renderAyuda();
 }
 function irA(id){ S.visitados[S.bloque]=true; S.bloque=id; guardar(); render(); window.scrollTo({top:0,behavior:'smooth'}); }
